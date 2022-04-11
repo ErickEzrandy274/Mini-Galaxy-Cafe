@@ -24,7 +24,7 @@ const LandingPage = () => {
     return (
         <div className="flex flex-col gap-20 bg-gray-700 min-h-screen">
             <Navbar />
-            <div className="flex gap-6 justify-center">
+            <div className="flex md:flex-row flex-col gap-6 justify-center">
                 {welcomingCardData.map(
                     (item: WelcomingCardProps, index: number) => {
                         return (
