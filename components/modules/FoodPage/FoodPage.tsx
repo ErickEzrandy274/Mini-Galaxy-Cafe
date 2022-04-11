@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCard from "../../elements/Card/ProductCard";
-import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import Navbar from "../Header/Navbar";
 import { LandingPageProps } from "./interface";
 
 const FoodPage: React.FC<LandingPageProps> = ({ data }) => {
@@ -20,7 +21,8 @@ const FoodPage: React.FC<LandingPageProps> = ({ data }) => {
 						/>
 					);
 				})}
-			</div>
+            </div> 
+            <Footer />
 		</div>
 	);
 };

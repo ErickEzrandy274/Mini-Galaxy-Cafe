@@ -5,13 +5,13 @@ import { ProductCardProps } from "./interface";
 
 const ProductCard: React.FC<ProductCardProps> = ({name, harga, image, index}) => {
     return (
-        <div className="cursor-default xl:w-1/5 p-5">
+        <div className="cursor-default lg:w-1/4 xl:w-1/5 p-5 mx-auto">
             <div className="card card-compact bg-base-100 shadow-xl">
                 <Image
                     src={image}
                     alt={"Foods-" + index}
-                    width={350}
-                    height={250}
+                    width={300}
+                    height={270}
                     layout="fixed"
                     objectFit="cover"
                 />
