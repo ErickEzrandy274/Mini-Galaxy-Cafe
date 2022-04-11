@@ -1,23 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
 /* This example requires Tailwind CSS v2.0+ */
-import React from "react";
+import React, {useState} from "react";
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 
-const navigation = [
-    { name: "Home", href: "/", current: true },
-    { name: "Food", href: "/food", current: false },
-    { name: "Beverage", href: "/beverage", current: false },
-    { name: "Snack", href: "/snack", current: false },
-    { name: "Checkout", href: "/checkout", current: false },
-];
 
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
+    const [navigation, setNav] = useState([
+        { name: "Home", href: "/", current: true },
+        { name: "Food", href: "/food", current: false },
+        { name: "Beverage", href: "/beverage", current: false },
+        { name: "Snack", href: "/snack", current: false },
+        { name: "Checkout", href: "/checkout", current: false },
+    ])
+
+    const [activeNav, setActiveNav] = useState("Home")
+
+    const handleClick = (active :string) => {    
+
+    }
+
     return (
         <Disclosure as="nav" className="bg-gray-800">
             {({ open }) => (
@@ -76,11 +83,12 @@ const Navbar = () => {
                                                 passHref
                                             >
                                                 <a
+                                                    onClick={() => handleClick(item.name)}
                                                     className={classNames(
                                                         item.current
                                                             ? "bg-gray-900 text-white"
                                                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                                                        "px-3 py-2 rounded-md text-sm font-medium"
+                                                        "px-3 py-2 rounded-md tracking-wide font-medium"
                                                     )}
                                                     aria-current={
                                                         item.current
@@ -107,7 +115,7 @@ const Navbar = () => {
                                     href={item.href}
                                     className={classNames(
                                         item.current
-                                            ? "bg-gray-900 text-white"
+                                            ? "bg-gray-900 text-white font-bold"
                                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                                         "block px-3 py-2 rounded-md text-base font-medium"
                                     )}

@@ -1,22 +1,23 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import React from "react";
 import { WelcomingCardProps } from "./interface";
 
 const WelcomingCard: React.FC<WelcomingCardProps> = ({name, image, href}) => {
-    // const image: string =
-    //     "https://cdn1-production-images-kly.akamaized.net/KxuztQKl3tnUN0Fw5iAwKsnX_u0=/0x148:1920x1230/640x360/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3093328/original/069244600_1585909700-fried-2509089_1920.jpg";
-    
+
     return (
-        <div className="max-w-sm text-center w-1/2 sm:w-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 cursor-default">
-            <img
+        <div className="max-w-sm text-center w-1/2 sm:w-[300px] bg-white rounded-lg border 
+            border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700 cursor-default">
+            <Image
                 className="rounded-t-lg"
                 src={image}
                 alt={href}
-                height={300}
+                height={250}
+                width={300}
+                layout="fixed"
             />
 
             <div className="p-5">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {name}
                 </h5>
             
