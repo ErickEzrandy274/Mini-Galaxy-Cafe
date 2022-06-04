@@ -38,7 +38,7 @@ const Navbar = () => {
                                     <Link href="/" passHref>
                                         <a>
                                             <img
-                                                className="block lg:hidden h-16 sm:h-8 w-auto"
+                                                className="block lg:hidden h-16 w-auto"
                                                 src="/gal-logo.svg"
                                                 alt="Galaxy Cafe Logo"
                                             />
@@ -48,7 +48,7 @@ const Navbar = () => {
                                     <Link href="/" passHref>
                                         <a>
                                             <img
-                                                className="hidden lg:block h-8 w-auto"
+                                                className="hidden lg:block h-10 w-auto"
                                                 src="/gal-logo.svg"
                                                 alt="Galaxy Cafe Logo"
                                             />

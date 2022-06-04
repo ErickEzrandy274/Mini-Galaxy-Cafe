@@ -13,9 +13,9 @@ const ProductCard: React.FC<ProductCardProps> = ({name, harga, image, index}) =>
 
                 <div className="card-body text-white tracking-wide">
                     <h2 className="card-title font-semibold">{name}</h2>
-                    <p className="sm:text-base text-lg">Rp {harga}</p>
+                    <p className="text-lg">Rp {harga}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary sm:text-base text-lg shadow-xl">Buy Now</button>
+                        <button className="btn btn-primary text-lg shadow-xl">Buy Now</button>
                     </div>
                 </div>
             </div>
