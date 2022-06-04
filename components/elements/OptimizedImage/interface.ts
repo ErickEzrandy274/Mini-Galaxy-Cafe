@@ -1,4 +1,5 @@
 export interface OptimizedImageProps {
     image: string,
-    index: number
+    index: number,
+    welcoming?: boolean
 }

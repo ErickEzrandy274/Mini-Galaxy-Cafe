@@ -5,6 +5,7 @@ export interface CardProps {
 
 export interface WelcomingCardProps extends CardProps {
     href: string
+    index: number
 }
 
 export interface ProductCardProps extends CardProps {

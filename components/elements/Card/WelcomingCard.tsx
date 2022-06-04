@@ -1,21 +1,16 @@
-import Image from "next/image";
 import React from "react";
+import OptimizedImage from "../OptimizedImage/OptimizedImage";
 import { WelcomingCardProps } from "./interface";
 
-const WelcomingCard: React.FC<WelcomingCardProps> = ({name, image, href}) => {
+const WelcomingCard: React.FC<WelcomingCardProps> = ({ name, image, href, index }) => {
 
     return (
-        <div className="max-w-sm text-center w-1/2 sm:w-[300px] bg-white rounded-lg border 
+        <div className="w-3/5 sm:w-2/5 lg:w-1/4 xl:w-1/5 text-center bg-white rounded-xl border sm:my-3 sm:mb-10
             border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700 cursor-default">
-            <Image
-                className="rounded-t-lg"
-                src={image}
-                alt={href}
-                height={250}
-                width={300}
-                layout="fixed"
-                loading="eager"
-                priority
+            <OptimizedImage
+                image={image}
+                index={index}
+                welcoming={true}
             />
 
             <div className="p-5">

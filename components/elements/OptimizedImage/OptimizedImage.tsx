@@ -2,7 +2,7 @@ import React from 'react'
 import { OptimizedImageProps } from './interface'
 import Image from 'next/image'
 
-const OptimizedImage: React.FC<OptimizedImageProps> = ({ image, index }) => {
+const OptimizedImage: React.FC<OptimizedImageProps> = ({ image, index, welcoming }) => {
     return (
         <Image
             src={image}
@@ -13,6 +13,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({ image, index }) => {
             loading="eager"
             priority
             quality={100}
+            className={welcoming ? `rounded-t-xl` : `rounded-lg`}
         />
     )
 }
