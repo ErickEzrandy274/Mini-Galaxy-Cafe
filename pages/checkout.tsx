@@ -1,5 +1,5 @@
 import React from 'react'
-import CheckOut from '../components/modules/CheckOut.tsx/CheckOut'
+import CheckOut from '../components/modules/CheckOut/CheckOut'
 import MainLayout from '../components/modules/MainLayout/MainLayout'
 
 const checkout = () => {
