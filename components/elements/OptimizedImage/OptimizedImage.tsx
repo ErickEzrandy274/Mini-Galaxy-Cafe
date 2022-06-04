@@ -7,12 +7,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({ image, index }) => {
         <Image
             src={image}
             alt={"Foods-" + index}
-            width={300}
-            height={270}
-            layout="fixed"
+            width={500}
+            height={400}
             objectFit="cover"
             loading="eager"
             priority
+            quality={100}
         />
     )
 }

@@ -5,7 +5,7 @@ const Footer = () => {
 	return (
 		<footer className="w-auto p-4 bottom-0 h-auto relative bg-gray-600 ">
 			<div className="lg:flex  lg:mt-3 md:mx-12 lg:mx-28 lg:justify-between">
-				<div className="mb-4 lg:columns-1 w-96">
+				<div className="mb-4 lg:columns-1 sm:w-96">
 					<p className="text-white font-bold mb-1 mt-3">About Us</p>
 					<p className="text-gray-200 text-sm">
 						Mini Galaxy Cafe didirikan oleh Erick Ezrandy pada tahun
@@ -23,10 +23,10 @@ const Footer = () => {
 					</h3>
 
 					<div className="">
-						<div className=" flex lg:items-center ">
+						<div className=" flex lg:items-center">
 							<div className="lg:container lg:max-w-screen-lg ">
 								<div>
-									<div className="lg:flex lg:flex-wrap gap-2 ">
+									<div className="flex flex-wrap gap-2">
 										<Link
 											href="https://github.com/ErickEzrandy274"
 											passHref
