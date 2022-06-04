@@ -1,19 +1,19 @@
 import React from "react";
-import ProductPage from "../components/modules/ProductPage/ProductPage";
 import MainLayout from "../components/modules/MainLayout/MainLayout";
+import ProductPage from "../components/modules/ProductPage/ProductPage";
 import { getData, setType } from "../components/utils/function";
 import { dataProps } from "./api/hello";
 
-setType('food')
+setType('snack')
 
-const food: React.FC<dataProps> = ({ data }) => {
-    return (
+const snack: React.FC<dataProps> = ({ data }) => {
+	return (
         <MainLayout>
-          <ProductPage data={data} type='Foods' />
+          <ProductPage data={data} type='Snacks' />
         </MainLayout>
     )
 };
 
 export const getServerSideProps = getData
 
-export default food;
+export default snack;

@@ -1,6 +1,6 @@
 import React from 'react'
-import BeveragePage from '../components/modules/BeveragePage/BeveragePage';
 import MainLayout from '../components/modules/MainLayout/MainLayout';
+import ProductPage from '../components/modules/ProductPage/ProductPage';
 import { getData, setType } from '../components/utils/function';
 import { dataProps } from './api/hello';
 
@@ -9,7 +9,7 @@ setType('beverage')
 const beverage: React.FC<dataProps> = ({ data }) => {
     return (
         <MainLayout>
-          <BeveragePage data={data} />
+          <ProductPage data={data} type='Beverages' />
         </MainLayout>
     )
 };
