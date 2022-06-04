@@ -14,6 +14,8 @@ const ProductCard: React.FC<ProductCardProps> = ({name, harga, image, index}) =>
                     height={270}
                     layout="fixed"
                     objectFit="cover"
+                    loading="eager"
+                    priority
                 />
 
                 <div className="card-body text-white tracking-wide">

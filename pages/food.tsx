@@ -1,10 +1,12 @@
 import React from "react";
 import FoodPage from "../components/modules/FoodPage/FoodPage";
 import MainLayout from "../components/modules/MainLayout/MainLayout";
-import { getFoodData } from "../components/utils/function";
-import { foodProps } from "./api/hello";
+import { getData, setType } from "../components/utils/function";
+import { dataProps } from "./api/hello";
 
-const food: React.FC<foodProps> = ({ data }) => {
+setType('food')
+
+const food: React.FC<dataProps> = ({ data }) => {
     return (
         <MainLayout>
           <FoodPage data={data} />
@@ -12,6 +14,6 @@ const food: React.FC<foodProps> = ({ data }) => {
     )
 };
 
-export const getServerSideProps = getFoodData
+export const getServerSideProps = getData
 
 export default food;
