@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({name, harga, image, index}) =>
                     <h2 className="card-title font-semibold">{name}</h2>
                     <p className="text-base">Rp {harga}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button className="btn btn-primary shadow-xl">Buy Now</button>
                     </div>
                 </div>
             </div>

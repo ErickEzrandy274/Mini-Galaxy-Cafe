@@ -1,29 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
-/* This example requires Tailwind CSS v2.0+ */
-import React, {useState} from "react";
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
-
-
-function classNames(...classes: any) {
-    return classes.filter(Boolean).join(" ");
-}
+import { useRouter } from "next/router";
+import { navigation, classNames } from "./constant";
 
 const Navbar = () => {
-    const [navigation, setNav] = useState([
-        { name: "Home", href: "/", current: true },
-        { name: "Food", href: "/food", current: false },
-        { name: "Beverage", href: "/beverage", current: false },
-        { name: "Snack", href: "/snack", current: false },
-        { name: "Checkout", href: "/checkout", current: false },
-    ])
-
-    const [activeNav, setActiveNav] = useState("Home")
-
-    const handleClick = (active :string) => {    
-
-    }
+    const { pathname } = useRouter()
 
     return (
         <Disclosure as="nav" className="bg-gray-800">
@@ -76,27 +58,26 @@ const Navbar = () => {
 
                                 <div className="hidden sm:block sm:ml-6">
                                     <div className="flex space-x-4">
-                                        {navigation.map((item) => (
+                                        {navigation.map(({name, href}) => (
                                             <Link
-                                                key={item.name}
-                                                href={item.href}
+                                                key={name}
+                                                href={href}
                                                 passHref
                                             >
                                                 <a
-                                                    onClick={() => handleClick(item.name)}
                                                     className={classNames(
-                                                        item.current
+                                                        pathname === href
                                                             ? "bg-gray-900 text-white"
                                                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                                                         "px-3 py-2 rounded-md tracking-wide font-medium"
                                                     )}
                                                     aria-current={
-                                                        item.current
+                                                        pathname === href
                                                             ? "page"
                                                             : undefined
                                                     }
                                                 >
-                                                    {item.name}
+                                                    {name}
                                                 </a>
                                             </Link>
                                         ))}
@@ -108,22 +89,22 @@ const Navbar = () => {
 
                     <Disclosure.Panel className="sm:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1">
-                            {navigation.map((item) => (
+                            {navigation.map(({name, href}) => (
                                 <Disclosure.Button
-                                    key={item.name}
+                                    key={name}
                                     as="a"
-                                    href={item.href}
+                                    href={href}
                                     className={classNames(
-                                        item.current
+                                        pathname === href
                                             ? "bg-gray-900 text-white font-bold"
                                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                                         "block px-3 py-2 rounded-md text-base font-medium"
                                     )}
                                     aria-current={
-                                        item.current ? "page" : undefined
+                                        pathname === href ? "page" : undefined
                                     }
                                 >
-                                    {item.name}
+                                    {name}
                                 </Disclosure.Button>
                             ))}
                         </div>

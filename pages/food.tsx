@@ -1,19 +1,17 @@
-import axios from "axios";
 import React from "react";
 import FoodPage from "../components/modules/FoodPage/FoodPage";
+import MainLayout from "../components/modules/MainLayout/MainLayout";
+import { getFoodData } from "../components/utils/function";
+import { foodProps } from "./api/hello";
 
-export async function getStaticProps() {
-    const { data } = await axios.get("https://mini-galaxy-cafe.herokuapp.com/data/findFoodAll")
-
-    return {
-      props: {
-        data,
-      }
-    }
-}
-
-const food = ({data}:{data:any}) => {
-    return <FoodPage data={data} />;
+const food: React.FC<foodProps> = ({ data }) => {
+    return (
+        <MainLayout>
+          <FoodPage data={data} />
+        </MainLayout>
+    )
 };
+
+export const getServerSideProps = getFoodData
 
 export default food;

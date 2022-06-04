@@ -14,6 +14,8 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({name, image, href}) => {
                 height={250}
                 width={300}
                 layout="fixed"
+                loading="eager"
+                priority
             />
 
             <div className="p-5">
@@ -23,7 +25,9 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({name, image, href}) => {
             
                 <a
                     href={href}
-                    className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white 
+                        bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
+                        dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 shadow-lg"
                 >
                     See more
                     <svg
