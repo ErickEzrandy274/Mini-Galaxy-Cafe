@@ -11,8 +11,10 @@ const nextConfig = {
       "cdn.yummy.co.id","image.akurat.co","statics.indozone.news","d1vbn70lmn1nqe.cloudfront.net",
       "kurio-img.kurioapps.com","sicmtechmesin.com","img.qraved.co","img.qraved.co","www.dapurkintamani.com",
       "blog.tokowahab.com","www.sugarandsoul.co/","images.immediate.co.uk", "www.sugarandsoul.co",
-      "", "", "", "",
-      "", "", "", "",
+      "vismaifood.com", "cdn0-production-images-kly.akamaized.net", "www.rukita.co", "kbu-cdn.com",
+      "asset.kompas.com", "i0.wp.com", "cdn-cas.orami.co.id", "st.depositphotos.com","i0.wp.com",
+      "www.chewoutloud.com", "www.blenderbabes.com", "decoratedtreats.com", "www.hersheyland.com",
+      "assets.digination.id","selerasa.com",
 		],
 	},
 };
