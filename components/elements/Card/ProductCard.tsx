@@ -1,21 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
 import React from "react";
+import OptimizedImage from "../OptimizedImage/OptimizedImage";
 import { ProductCardProps } from "./interface";
 
 const ProductCard: React.FC<ProductCardProps> = ({name, harga, image, index}) => {
     return (
         <div className="cursor-default lg:w-1/4 xl:w-1/5 p-5 mx-auto">
             <div className="card card-compact bg-base-100 shadow-xl">
-                <Image
-                    src={image}
-                    alt={"Foods-" + index}
-                    width={300}
-                    height={270}
-                    layout="fixed"
-                    objectFit="cover"
-                    loading="eager"
-                    priority
+                <OptimizedImage
+                    image={image}
+                    index={index}
                 />
 
                 <div className="card-body text-white tracking-wide">
