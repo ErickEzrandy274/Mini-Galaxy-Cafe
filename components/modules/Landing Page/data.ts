@@ -1,6 +1,6 @@
 import { WelcomingCardProps } from "../../elements/Card/interface";
 
-export const welcomingCardData: WelcomingCardProps[] = [
+export const WelcomingCardData: WelcomingCardProps[] = [
     {
         name: "Food",
         image: "https://cdn1-production-images-kly.akamaized.net/KxuztQKl3tnUN0Fw5iAwKsnX_u0=/0x148:1920x1230/640x360/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3093328/original/069244600_1585909700-fried-2509089_1920.jpg",
