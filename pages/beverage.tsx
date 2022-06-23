@@ -1,7 +1,7 @@
 import React from 'react'
 import MainLayout from '../components/modules/MainLayout/MainLayout';
 import ProductPage from '../components/modules/ProductPage/ProductPage';
-import { getData, setType } from '../components/utils/function';
+import { getData, setType } from '../components/utils/function/function';
 import { dataProps } from './api/hello';
 
 setType('beverage')
