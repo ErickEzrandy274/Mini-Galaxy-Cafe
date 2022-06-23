@@ -12,7 +12,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
 	return (
 		<form
 			onSubmit={typeForm === "Login" ? handleLogin : handleRegister}
-			className="flex flex-col gap-2"
+			className="flex flex-col gap-4"
 		>
 			{typeForm === "Register" && (
 				<Input name="nickname" handleChange={handleChange} />
