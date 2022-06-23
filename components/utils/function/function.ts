@@ -1,8 +1,12 @@
 import axios from "axios";
 import { LoginInputType, TypeForm } from "../../modules/Authentication/interface";
 
-interface DisabilityButtonParamType extends TypeForm, LoginInputType {
+export interface DisabilityButtonParamType extends TypeForm, LoginInputType {
 	nickname?: string
+}
+
+export interface FeedbackType {
+	disable: boolean, message: string
 }
 
 let typeX = "";
@@ -39,7 +43,7 @@ export const toCapitalize = (text: string) => {
 };
 
 export const checkDisabilityButton = (item: DisabilityButtonParamType) => {
-	const feedback: { disable: boolean, message: string } = {
+	const feedback: FeedbackType = {
 		disable: false,
 		message: ""
 	}
@@ -65,5 +69,7 @@ export const checkDisabilityButton = (item: DisabilityButtonParamType) => {
 			return {...feedback, disable: true, message: "Nickname Anda tidak valid!"}
 		}
 	}
+
+	return feedback
 	
 }
