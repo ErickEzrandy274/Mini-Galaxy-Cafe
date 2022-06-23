@@ -3,7 +3,7 @@ import Footer from "../Footer/Footer";
 import Navbar from "../Header/Navbar";
 import { MainLayoutProps } from "./interface";
 
-const MainLayout: React.FC<MainLayoutProps> = ({children}) => {
+const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 	return (
 		<div className="flex flex-col gap-5 bg-gray-700 min-h-screen">
 			<Navbar />
