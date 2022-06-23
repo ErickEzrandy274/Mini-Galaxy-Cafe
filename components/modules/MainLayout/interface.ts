@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface MainLayoutProps {
-	children: JSX.Element
+	children: React.ReactNode
 }
