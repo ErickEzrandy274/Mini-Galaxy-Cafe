@@ -32,8 +32,7 @@ const Register = () => {
 			await register(data.email, data.password, data.nickname);
 			router.push("/");
 		} catch (err: any) {
-			// setError(extractError(err));
-			console.log(err.code);
+			setError(extractError(err));
 		}
 	};
 

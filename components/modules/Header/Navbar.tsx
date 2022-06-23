@@ -3,11 +3,14 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
+import { useWindowSize } from "../../utils/function/useWindowSize";
 import { navigation, classNames, authNavs } from "./constant";
 
 const Navbar = () => {
 	const { pathname, push } = useRouter();
-	const { user, logout } = useAuth();
+    const { user, logout } = useAuth();
+    const { width } = useWindowSize()
+
 	const customClassLogOut = `px-2 py-1 hover:font-semibold text-lg bg-red-600 transition-colors duration-200 transform rounded-lg 
 		hover:bg-red-700 text-gray-200 hover:text-gray-100 md:mx-2`;
 
@@ -90,30 +93,6 @@ const Navbar = () => {
 												</a>
 											</Link>
 										))}
-										{!user &&
-											authNavs.map(({ name, href }) => (
-												<Link
-													key={name}
-													href={href}
-													passHref
-												>
-													<a
-														className={classNames(
-															pathname === href
-																? "bg-gray-900 text-white"
-																: "text-gray-300 hover:bg-gray-700 hover:text-white",
-															"px-3 py-2 rounded-md tracking-wide font-medium"
-														)}
-														aria-current={
-															pathname === href
-																? "page"
-																: undefined
-														}
-													>
-														{name}
-													</a>
-												</Link>
-											))}
 									</div>
 								</div>
 							</div>
@@ -171,7 +150,7 @@ const Navbar = () => {
 					</div>
 
 					<Disclosure.Panel className="md:hidden">
-						<div className="px-2 pt-2 pb-3 space-y-1">
+						<div className="flex flex-col px-3 pt-2 pb-3 space-y-1">
 							{navigation.map(({ name, href }) => (
 								<Disclosure.Button
 									key={name}
@@ -191,7 +170,7 @@ const Navbar = () => {
 								</Disclosure.Button>
 							))}
 							{user ? (
-										<div className="flex flex-col px-2 md:flex-row text-center gap-3 md:items-center">
+										<div className="flex flex-col px-3 md:flex-row text-center gap-3 md:items-center">
 											<div className="flex gap-2 md:gap-0 md:flex-col items-start md:items-center font-semibold text-white">
 												<p>Hello</p>
 												<p>
