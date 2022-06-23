@@ -6,7 +6,7 @@ export interface DisabilityButtonParamType extends TypeForm, LoginInputType {
 }
 
 export interface FeedbackType {
-	disable: boolean, message: string
+	disable: boolean, message: string[]
 }
 
 let typeX = "";
@@ -43,10 +43,12 @@ export const toCapitalize = (text: string) => {
 };
 
 export const checkDisabilityButton = (item: DisabilityButtonParamType) => {
-	const feedback: FeedbackType = {
+	let feedback: FeedbackType = {
 		disable: false,
-		message: ""
+		message: []
 	}
+
+	const tempMessage: string[] = []
 	// Taken from https://stackoverflow.com/questions/19605150/passwordRegex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
 	// Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:
 	const passwordRegex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
@@ -57,16 +59,19 @@ export const checkDisabilityButton = (item: DisabilityButtonParamType) => {
 
 	const { typeForm, email, password } = item
 	if (!passwordRegex.test(password)) {
-		return {...feedback, disable: true, message: "Password minimal mengandung delapan karakter, setidaknya satu huruf besar, satu huruf kecil, satu angka, dan satu karakter khusus!"}
+		tempMessage.push("Password minimal mengandung delapan karakter, setidaknya satu huruf besar, satu huruf kecil, satu angka, dan satu karakter khusus!")
+		feedback = {...feedback, disable: true, message: tempMessage}
 	} 
 
 	if (!emailRegex.test(email)) {
-		return {...feedback, disable: true, message: "Email Anda tidak valid!"}
+		tempMessage.push("Email Anda tidak valid!")
+		feedback = {...feedback, disable: true, message: tempMessage}
 	}
 
 	if (typeForm === "Register") {
 		if (item.nickname !== undefined && !nicknameRegex.test(item.nickname)) {
-			return {...feedback, disable: true, message: "Nickname Anda tidak valid!"}
+			tempMessage.push("Nickname Anda tidak valid!")
+			feedback = {...feedback, disable: true, message: tempMessage}
 		}
 	}
 
