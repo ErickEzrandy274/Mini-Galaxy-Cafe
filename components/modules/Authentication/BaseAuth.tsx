@@ -14,7 +14,7 @@ const BaseAuth: React.FC<BaseAuthProps> = ({
 
 	return (
 		<div className="bg-gray-900 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-4 sm:mx-auto rounded-lg">
-			<div className="flex justify-center lg:h-[35rem] rounded-lg">
+			<div className="flex justify-center lg:h-[40rem] rounded-lg">
 				<div className="hidden bg-cover lg:block lg:w-2/3 bg-[url('../public/Chan-Walrus.jpg')] rounded-l-lg">
 					<div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40 rounded-l-lg">
 						<div>
