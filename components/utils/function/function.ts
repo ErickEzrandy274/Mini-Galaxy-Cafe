@@ -1,17 +1,24 @@
-import axios from "axios"
+import axios from "axios";
 
-let typeX = ''
+let typeX = "";
 
 export const setType = (type: String) => {
-    typeX = type === 'food' ? 'findFoodAll' : type === 'beverage' ? 'findBeverageAll' : 'findSnackAll'
-}
+	typeX =
+		type === "food"
+			? "findFoodAll"
+			: type === "beverage"
+			? "findBeverageAll"
+			: "findSnackAll";
+};
 
 export async function getData() {
-    const { data } = await axios.get(`https://mini-galaxy-cafe.herokuapp.com/data/${typeX}`)
+	const { data } = await axios.get(
+		`https://mini-galaxy-cafe.herokuapp.com/data/${typeX}`
+	);
 
-    return {
-        props: { data }
-    }
+	return {
+		props: { data },
+	};
 }
 
 export const extractError = (err: any) => {
@@ -20,4 +27,8 @@ export const extractError = (err: any) => {
 	newError[0] =
 		newError[0].substring(0, 1).toUpperCase() + newError[0].substring(1);
 	return newError.join(" ");
+};
+
+export const toCapitalize = (text: string) => {
+	return text.substring(0, 1).toUpperCase() + text.substring(1);
 };
