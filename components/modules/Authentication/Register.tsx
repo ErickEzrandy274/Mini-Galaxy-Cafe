@@ -52,13 +52,13 @@ const Register = () => {
 					nickname: "",
 				});
 				setError(null);
-			}, 1500);
+			}, 3500);
 		}
 	}, [user, error]);
 
 	return (
         <BaseAuth typeForm="Register" error={error}>
-            <AuthForm typeForm="Register" handleChange={handleChange} handleRegister={handleRegister} />
+            <AuthForm typeForm="Register" handleChange={handleChange} handleRegister={handleRegister} {...data} />
 
 			<HandlerAccount
 				href="/login"

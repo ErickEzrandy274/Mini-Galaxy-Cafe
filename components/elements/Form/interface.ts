@@ -1,6 +1,7 @@
-import { TypeForm } from "../../modules/Authentication/interface";
+import { DisabilityButtonParamType } from "../../utils/function/function";
 
-export interface AuthFormProps extends TypeForm {
+export interface AuthFormProps extends DisabilityButtonParamType {
+	nickname?: string
 	handleChange: (e: any) => void;
 	handleRegister?: (e: any) => void;
 	handleLogin?: (e: any) => void;
