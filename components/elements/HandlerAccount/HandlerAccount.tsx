@@ -5,7 +5,7 @@ import { HandlerAccountProps } from "./interface";
 const HandlerAccount: React.FC<HandlerAccountProps> = ({ content, href, className }) => {
 	
 	return (
-		<p className="mt-6 text-sm text-center text-gray-400">
+		<p className="my-6 mb-3 text-sm text-center text-gray-400">
 			{content}{" "}
 			<a
 				href={href}
