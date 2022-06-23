@@ -60,7 +60,7 @@ export const checkDisabilityButton = (item: DisabilityButtonParamType) => {
 		return {...feedback, disable: true, message: "Password minimal mengandung delapan karakter, setidaknya satu huruf besar, satu huruf kecil, satu angka, dan satu karakter khusus!"}
 	} 
 
-	if (!emailRegex.test(email) {
+	if (!emailRegex.test(email)) {
 		return {...feedback, disable: true, message: "Email Anda tidak valid!"}
 	}
 
