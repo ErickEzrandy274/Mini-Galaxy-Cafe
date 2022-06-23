@@ -1,13 +1,8 @@
-import React from 'react'
-import CheckOut from '../components/modules/CheckOut/CheckOut'
-import MainLayout from '../components/modules/MainLayout/MainLayout'
+import React from "react";
+import CheckOut from "../components/modules/CheckOut/CheckOut";
 
 const checkout = () => {
-    return (
-        <MainLayout>
-            <CheckOut />
-        </MainLayout>
-    )
-}
+	return <CheckOut />;
+};
 
-export default checkout
+export default checkout;
