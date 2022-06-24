@@ -8,7 +8,6 @@ const Button: React.FC<ButtonProps> = ({
 	error,
 }) => {
 	const disable = error.findIndex((item: boolean) => item === true);
-	console.log(disable)
 
 	const additionClass =
 		disable === -1
@@ -17,7 +16,11 @@ const Button: React.FC<ButtonProps> = ({
 			: `text-gray-400 bg-gray-500 cursor-not-allowed`;
 
 	return (
-		<button className={className + additionClass} type={buttonType} disabled={disable !== -1}>
+		<button
+			className={className + additionClass}
+			type={buttonType}
+			disabled={disable !== -1}
+		>
 			{buttonName}
 		</button>
 	);
