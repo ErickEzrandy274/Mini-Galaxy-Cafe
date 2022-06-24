@@ -9,14 +9,11 @@ const LandingPage = () => {
             <div className="text-white text-center text-4xl sm:text-5xl lg:text-6xl tracking-wider">Please Choose Our Menus...</div>
             <div className="flex lg:flex-row flex-col gap-8 justify-center items-center">
                 {WelcomingCardData.map(
-                    (item: WelcomingCardProps, index: number) => {
+                    (item: WelcomingCardProps) => {
                         return (
                             <WelcomingCard
-                                key={"welcomingCard-" + index}
-                                index={index}
-                                name={item.name}
-                                image={item.image}
-                                href={item.href}
+                                key={"welcomingCard-" + item.index}
+                                {...item}
                             />
                         );
                     }
