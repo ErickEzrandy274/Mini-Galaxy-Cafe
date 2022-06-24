@@ -1,5 +1,6 @@
 import React from "react";
 import Alert from "../../elements/Alert/Alert";
+import { useWindowSize } from "../../utils/function/useWindowSize";
 import { BaseAuthProps } from "./interface";
 
 const BaseAuth: React.FC<BaseAuthProps> = ({
@@ -7,13 +8,15 @@ const BaseAuth: React.FC<BaseAuthProps> = ({
 	children,
 	error,
 }) => {
+	const { width } = useWindowSize()
+	
 	const subContent =
 		typeForm === "Register"
 			? `Register now if you don't have an account!`
 			: `Login to access your account`;
 
 	return (
-		<div className="bg-gray-900 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-4 sm:mx-auto rounded-lg">
+		<div className={`bg-gray-900 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto rounded-lg ${width <= 350 && `mx-4`}`}>
 			<div className="flex justify-center lg:h-[40rem] rounded-lg">
 				<div className="hidden bg-cover lg:block lg:w-2/3 bg-[url('../public/Chan-Walrus.jpg')] rounded-l-lg">
 					<div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40 rounded-l-lg">
