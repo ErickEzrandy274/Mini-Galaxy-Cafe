@@ -45,11 +45,16 @@ const Login = () => {
 				setError(null);
 			}, 3500);
 		}
-	}, [user, error]);
+	}, [user, error, router, setError]);
 
 	return (
-        <BaseAuth typeForm="Login" error={error}>
-            <AuthForm typeForm="Login" handleChange={handleChange} handleLogin={handleLogin} {...data} />
+		<BaseAuth typeForm="Login" error={error}>
+			<AuthForm
+				typeForm="Login"
+				handleChange={handleChange}
+				handleLogin={handleLogin}
+				{...data}
+			/>
 
 			<HandlerAccount
 				href="/register"

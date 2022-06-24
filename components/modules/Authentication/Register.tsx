@@ -54,7 +54,7 @@ const Register = () => {
 				setError(null);
 			}, 3500);
 		}
-	}, [user, error]);
+	}, [user, error, router]);
 
 	return (
         <BaseAuth typeForm="Register" error={error}>
