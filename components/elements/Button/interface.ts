@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export interface ButtonProps {
 	buttonName: string;
 	buttonType: "button" | "submit";
@@ -6,5 +8,9 @@ export interface ButtonProps {
 }
 
 export interface ModifierButtonProps {
+	setIsModifierButtonOpen: React.Dispatch<SetStateAction<boolean>>
+}
+
+export interface IncrementDecrementProps {
 	onClick: () => void
 }
