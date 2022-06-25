@@ -10,12 +10,12 @@ type DataFetchType = {
 
 export const getData = async (item: DataFetchType) => {
 	const { type, setData, setIsLoading } = item;
-	setIsLoading(true)
+	setIsLoading(true);
 	const tempData: any[] = [];
 
 	const querySnapshot = await getDocs(collection(database, type));
 	querySnapshot.forEach(async (doc) => {
-		const { name, price, image, buyer } = doc.data();
+		const { name, price, image, buyer, favId } = doc.data();
 		const img = await imageRef(type, image._key.path.segments[8]);
 		const newData = {
 			dataId: doc.id,
@@ -23,6 +23,7 @@ export const getData = async (item: DataFetchType) => {
 			price,
 			image: img,
 			buyer,
+			favId,
 		};
 		tempData.push(newData);
 	});

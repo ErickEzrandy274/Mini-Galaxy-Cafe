@@ -8,4 +8,5 @@ export interface ButtonProps {
 export interface FavButtonProps {
 	name: string;
 	initialState?: boolean;
+	favId: string | undefined;
 }
