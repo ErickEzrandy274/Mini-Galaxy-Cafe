@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useAuth } from "../../../context/AuthContext";
 import { FavButtonProps } from "./interface";
 
-const FavButton: React.FC<FavButtonProps> = ({ name, favId }) => {
-	const [fav, setFav] = useState(favId !== undefined ? true : false);
+const FavButton: React.FC<FavButtonProps> = ({ name, listFavId }) => {
+	const {
+		user: { uid },
+	} = useAuth();
 
+	const [fav, setFav] = useState(listFavId.includes(uid) ? true : false);
 	return (
 		<button onClick={() => setFav(!fav)}>
 			<svg
