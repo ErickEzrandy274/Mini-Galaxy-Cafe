@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FavButtonProps } from "./interface";
 
-const FavButton: React.FC<FavButtonProps> = ({ name }) => {
-	const [fav, setFav] = useState(false);
+const FavButton: React.FC<FavButtonProps> = ({ name, initialState }) => {
+	const [fav, setFav] = useState(initialState);
 
 	return (
 		<button onClick={() => setFav(!fav)}>
