@@ -6,7 +6,7 @@ export interface ButtonProps {
 }
 
 export interface FavButtonProps {
-	name: string;
+	pathname: string;
 	initialState?: boolean;
 	listFavId: string[];
 	dataId: string;

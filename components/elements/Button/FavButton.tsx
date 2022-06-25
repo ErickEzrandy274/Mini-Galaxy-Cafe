@@ -4,7 +4,7 @@ import { FavButtonProps } from "./interface";
 import { updateDoc, doc } from "firebase/firestore";
 import { database } from "../../utils/firebase/firebase";
 
-const FavButton: React.FC<FavButtonProps> = ({ name, listFavId, dataId }) => {
+const FavButton: React.FC<FavButtonProps> = ({ pathname, listFavId, dataId }) => {
 	const {
 		user: { uid },
 	} = useAuth();
@@ -13,7 +13,13 @@ const FavButton: React.FC<FavButtonProps> = ({ name, listFavId, dataId }) => {
 	const [list, setList] = useState(listFavId);
 
 	const handleFav = async () => {
-		const favRef = doc(database, "Foods", dataId);
+		const path = {
+			"/food": "Foods",
+			"/beverage": "Beverages",
+			"/snack": "Snacks",
+		};
+
+		const favRef = doc(database, path[pathname as keyof typeof path], dataId);
 
 		let newList = Array.from(list);
 		if (fav) {
