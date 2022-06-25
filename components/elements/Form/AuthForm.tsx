@@ -34,6 +34,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
 			<Input name="password" handleChange={handleChange} error={dataError[0]} />
 
 			<Button
+				auth
 				error={disableButton}
 				buttonName={typeForm}
 				buttonType="submit"

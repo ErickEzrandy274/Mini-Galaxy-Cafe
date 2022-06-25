@@ -6,10 +6,11 @@ const Button: React.FC<ButtonProps> = ({
 	buttonType,
 	className,
 	error,
+	auth,
 }) => {
-	const disable = error.findIndex((item: boolean) => item === true);
+	const disable = auth && error.findIndex((item: boolean) => item === true);
 
-	const additionClass =
+	const additionClass = auth &&
 		disable === -1
 			? `text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none 
 			focus:bg-blue-400 focus:ring focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer`
@@ -19,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
 		<button
 			className={className + additionClass}
 			type={buttonType}
-			disabled={disable !== -1}
+			disabled={auth && disable !== -1}
 		>
 			{buttonName}
 		</button>
