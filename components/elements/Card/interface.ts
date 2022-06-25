@@ -13,4 +13,5 @@ export interface ProductCardProps extends CardProps {
 	index: string;
 	buyer: string[];
 	listFavId: string[];
+	dataId: string;
 }

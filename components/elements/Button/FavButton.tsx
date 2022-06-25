@@ -1,15 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { FavButtonProps } from "./interface";
+import { updateDoc, doc } from "firebase/firestore";
+import { database } from "../../utils/firebase/firebase";
 
-const FavButton: React.FC<FavButtonProps> = ({ name, listFavId }) => {
+const FavButton: React.FC<FavButtonProps> = ({ name, listFavId, dataId }) => {
 	const {
 		user: { uid },
 	} = useAuth();
 
 	const [fav, setFav] = useState(listFavId.includes(uid) ? true : false);
+	const [list, setList] = useState(listFavId);
+
+	const handleFav = async () => {
+		const favRef = doc(database, "Foods", dataId);
+
+		let newList = Array.from(list);
+		if (fav) {
+			newList = newList.filter((userId) => userId !== uid);
+		} else {
+			newList.push(uid);
+		}
+
+		await updateDoc(favRef, {
+			listFavId: newList,
+		});
+
+		setList(newList);
+		setFav(!fav);
+	};
 	return (
-		<button onClick={() => setFav(!fav)}>
+		<button onClick={handleFav}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				className="h-6 w-6 transition-all duration-500"
