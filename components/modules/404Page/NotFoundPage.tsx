@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
 
@@ -21,7 +22,7 @@ const NotFoundPage = () => {
 							<h1 className="font-black uppercase text-3xl lg:text-5xl text-yellow-500 mb-10">
 								You seem to be lost!
 							</h1>
-							<p>The page you're looking for isn't available.</p>
+							<p>The page you&apos;re looking for isn&apos;t available.</p>
 							<p>Try searching again or use the Go Back button below.</p>
 						</div>
                         <div className="mb-20 md:mb-0">
