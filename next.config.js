@@ -14,7 +14,7 @@ const nextConfig = {
       "vismaifood.com", "cdn0-production-images-kly.akamaized.net", "www.rukita.co", "kbu-cdn.com",
       "asset.kompas.com", "i0.wp.com", "cdn-cas.orami.co.id", "st.depositphotos.com","i0.wp.com",
       "www.chewoutloud.com", "www.blenderbabes.com", "decoratedtreats.com", "www.hersheyland.com",
-      "assets.digination.id","selerasa.com",
+      "assets.digination.id","selerasa.com","firebasestorage.googleapis.com"
 		],
 	},
 };
