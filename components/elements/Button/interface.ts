@@ -2,5 +2,9 @@ export interface ButtonProps {
 	buttonName: string;
 	buttonType: "button" | "submit";
 	className: string;
-	error: boolean[]
+	error: boolean[];
+}
+
+export interface FavButtonProps {
+	name: string;
 }
