@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Loader from "../components/elements/Loader/Loader";
 import ProductPage from "../components/modules/ProductPage/ProductPage";
-import { getData, setType } from "../components/utils/function/function";
-import { dataProps } from "./api/hello";
+import { getData } from "../components/utils/function/dataManipulation";
 
-setType("snack");
+const snack = () => {
+	const [data, setData] = useState<any[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-const snack: React.FC<dataProps> = ({ data }) => {
-	return <ProductPage data={data} type="Snacks" />;
+	useEffect(() => {
+		getData({ type: "Snacks", setData, setIsLoading });
+	}, []);
+
+	return isLoading ? <Loader /> : <ProductPage data={data} type="Snacks" />;
 };
 
-export const getServerSideProps = getData;
 
 export default snack;
