@@ -9,6 +9,7 @@ export interface WelcomingCardProps extends CardProps {
 }
 
 export interface ProductCardProps extends CardProps {
-    harga: string
+    price: string
     index: number
+    buyer: string[]
 }
