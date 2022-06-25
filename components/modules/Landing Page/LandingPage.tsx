@@ -13,10 +13,7 @@ const LandingPage = () => {
                         return (
                             <WelcomingCard
                                 key={"welcomingCard-" + index}
-                                index={index}
-                                name={item.name}
-                                image={item.image}
-                                href={item.href}
+                                {...item}
                             />
                         );
                     }
