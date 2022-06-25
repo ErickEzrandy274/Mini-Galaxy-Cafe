@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button/Button";
 import OptimizedImage from "../OptimizedImage/OptimizedImage";
 import { ProductCardProps } from "./interface";
 
@@ -15,7 +16,13 @@ const ProductCard: React.FC<ProductCardProps> = ({name, price, image, index}) =>
                     <h2 className="card-title font-semibold">{name}</h2>
                     <p className="text-lg">Rp {price}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary text-base sm:text-lg shadow-xl">Buy Now</button>
+                        <Button
+                            buttonType="button"
+                            auth={false}
+                            error={[]}
+                            buttonName="Buy Now"
+                            className="btn btn-primary text-base sm:text-lg shadow-xl"
+                        />
                     </div>
                 </div>
             </div>
