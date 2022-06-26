@@ -11,5 +11,4 @@ export interface WelcomingCardProps extends CardProps {
 export interface ProductCardProps extends CardProps {
     price: string
     index: string
-    buyer: string[]
 }
