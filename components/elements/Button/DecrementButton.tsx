@@ -7,7 +7,7 @@ const DecrementButton: React.FC<IncrementDecrementProps> = ({ onClick }) => {
 	return (
 		<FontAwesomeIcon
 			icon={faMinusCircle}
-			className="cursor-pointer w-6"
+			className="cursor-pointer w-5"
 			onClick={onClick}
 		/>
 	);
