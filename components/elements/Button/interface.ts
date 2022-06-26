@@ -14,3 +14,5 @@ export interface ModifierButtonProps {
 export interface IncrementDecrementProps {
 	onClick: () => void
 }
+
+export interface CheckOutModalButtonProps extends IncrementDecrementProps {}
