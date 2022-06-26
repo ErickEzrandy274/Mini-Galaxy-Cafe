@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { FavButtonProps } from "./interface";
-import { updateDoc, doc } from "firebase/firestore";
-import { database } from "../../utils/firebase/firebase";
+import { handleFav } from "../../utils/function/dataManipulation";
 
 const FavButton: React.FC<FavButtonProps> = ({ pathname, listFavId, dataId }) => {
 	const {
@@ -12,31 +11,18 @@ const FavButton: React.FC<FavButtonProps> = ({ pathname, listFavId, dataId }) =>
 	const [fav, setFav] = useState(listFavId.includes(uid) ? true : false);
 	const [list, setList] = useState(listFavId);
 
-	const handleFav = async () => {
-		const path = {
-			"/food": "Foods",
-			"/beverage": "Beverages",
-			"/snack": "Snacks",
-		};
-
-		const favRef = doc(database, path[pathname as keyof typeof path], dataId);
-
-		let newList = Array.from(list);
-		if (fav) {
-			newList = newList.filter((userId) => userId !== uid);
-		} else {
-			newList.push(uid);
-		}
-
-		await updateDoc(favRef, {
-			listFavId: newList,
-		});
-
-		setList(newList);
-		setFav(!fav);
+	const args = {
+		pathname,
+		dataId,
+		fav,
+		list,
+		uid,
+		setList,
+		setFav,
 	};
+
 	return (
-		<button onClick={handleFav}>
+		<button onClick={() => handleFav(args)}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				className="h-6 w-6 transition-all duration-500"

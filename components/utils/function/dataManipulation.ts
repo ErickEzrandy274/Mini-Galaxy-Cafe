@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import React, { SetStateAction } from "react";
 import { database, imageRef } from "../firebase/firebase";
 
@@ -32,4 +32,39 @@ export const getData = async (item: DataFetchType) => {
 	setTimeout(() => {
 		setIsLoading(false);
 	}, 2000);
+};
+
+type handleFavType = {
+	pathname: string;
+	dataId: string;
+	fav: boolean;
+	list: string[];
+	uid: string;
+	setList: React.Dispatch<SetStateAction<string[]>>;
+	setFav: React.Dispatch<SetStateAction<boolean>>;
+};
+
+export const handleFav = async (args: handleFavType) => {
+	const { pathname, dataId, fav, list, uid, setList, setFav } = args;
+	const path = {
+		"/food": "Foods",
+		"/beverage": "Beverages",
+		"/snack": "Snacks",
+	};
+
+	const favRef = doc(database, path[pathname as keyof typeof path], dataId);
+
+	let newList = Array.from(list);
+	if (fav) {
+		newList = newList.filter((userId) => userId !== uid);
+	} else {
+		newList.push(uid);
+	}
+
+	await updateDoc(favRef, {
+		listFavId: newList,
+	});
+
+	setList(newList);
+	setFav(!fav);
 };
