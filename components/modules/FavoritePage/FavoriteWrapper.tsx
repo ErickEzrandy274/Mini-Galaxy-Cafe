@@ -10,10 +10,18 @@ const FavoriteWrapper: React.FC<LandingPageProps> = ({ data, type }) => {
 
 	return (
 		<>
-			<div className="text-white text-center text-5xl lg:text-6xl tracking-wider font-semibold">Favorite {type}...</div>
+			<div className="text-white text-center text-5xl lg:text-6xl tracking-wider font-semibold">
+				Favorite {type}...
+			</div>
 			<div className="flex flex-wrap m-5">
 				{newData.map((item: any) => {
-					return <ProductCard key={type + "-" + item.dataId} {...item} type={type} />;
+					return (
+						<ProductCard
+							key={type + "-" + item.dataId}
+							{...item}
+							type={type}
+						/>
+					);
 				})}
 			</div>
 		</>
