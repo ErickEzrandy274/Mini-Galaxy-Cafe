@@ -12,9 +12,9 @@ const FavButton: React.FC<FavButtonProps> = ({ cardProps }) => {
 	const { favData } = useFavContext();
 	useEffect(() => {
 		favData?.length > 0 && setFav(favData?.includes(cardProps.name));
-	}, [favData]);
+	}, [cardProps.name, favData]);
 
-	const [fav, setFav] = useState(favData?.includes(cardProps.name));
+	const [fav, setFav] = useState<boolean>(favData?.includes(cardProps.name));
 
 	const args = {
 		fav,
