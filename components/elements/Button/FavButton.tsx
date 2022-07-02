@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { FavButtonProps } from "./interface";
 import { handleFav } from "../../utils/function/dataManipulation";
-import { useFavContext } from "../../modules/ProductPage/ProductPage";
+import { useFavContext } from "../../../context/FavContext";
 
 const FavButton: React.FC<FavButtonProps> = ({ cardProps }) => {
 	const {
