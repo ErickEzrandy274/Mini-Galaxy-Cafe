@@ -4,8 +4,15 @@ import ModifierButton from "../Button/ModifierButton";
 import OptimizedImage from "../OptimizedImage/OptimizedImage";
 import { ProductCardProps } from "./interface";
 
-const ProductCard: React.FC<ProductCardProps> = ({ name, price, image, index, type }) => {
-	const [isModifierButtonOpen, setIsModifierButtonOpen] = useState<boolean>(false);
+const ProductCard: React.FC<ProductCardProps> = ({
+	name,
+	price,
+	image,
+	index,
+	type,
+}) => {
+	const [isModifierButtonOpen, setIsModifierButtonOpen] =
+		useState<boolean>(false);
 
 	const cardProps = {
 		name,
@@ -27,7 +34,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, price, image, index, ty
 					</div>
 					<div className="card-actions items-center justify-end">
 						{isModifierButtonOpen ? (
-							<ModifierButton setIsModifierButtonOpen={setIsModifierButtonOpen} />
+							<ModifierButton
+								setIsModifierButtonOpen={
+									setIsModifierButtonOpen
+								}
+							/>
 						) : (
 							<button
 								onClick={() => setIsModifierButtonOpen(true)}
