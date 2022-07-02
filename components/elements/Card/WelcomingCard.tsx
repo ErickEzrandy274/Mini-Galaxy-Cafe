@@ -5,8 +5,8 @@ import { WelcomingCardProps } from "./interface";
 const WelcomingCard: React.FC<WelcomingCardProps> = ({ name, image, href, index }) => {
 
     return (
-        <div className="w-3/5 sm:w-2/5 lg:w-1/4 xl:w-1/5 text-center bg-white rounded-xl border sm:my-3 sm:mb-10
-            border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700 cursor-default">
+        <div className="w-3/5 sm:w-2/5 lg:w-1/4 xl:w-1/5 text-center rounded-xl border sm:my-3 sm:mb-10
+            shadow-lg bg-gray-800 border-gray-700 cursor-default">
             <OptimizedImage
                 image={image}
                 index={index}
@@ -20,9 +20,9 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({ name, image, href, index 
             
                 <a
                     href={href}
-                    className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white 
-                        bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 
-                        dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 shadow-lg"
+                    className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white shadow-lg
+                        bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-2 focus:ring-offset-2 focus:outline-none 
+                        focus:ring-blue-500 focus:ring-offset-blue-200 transition duration-200 ease-in"
                 >
                     See more
                     <svg
