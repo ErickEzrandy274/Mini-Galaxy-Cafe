@@ -14,7 +14,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen }) => {
 				className="modal-toggle"
 			/>
 
-			<div className="modal">
+			<div className="modal text-gray-300">
 				<div className="modal-box flex flex-col gap-4">
 					<h3 className="font-bold text-lg uppercase">
 						Checkout Confirmation
@@ -37,7 +37,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen }) => {
 						</div>
 						<div
 							onClick={handleOrder}
-							className="btn btn-outline btn-primary"
+							className="btn btn-outline btn-success"
 						>
 							Order
 						</div>

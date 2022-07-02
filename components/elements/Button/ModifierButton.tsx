@@ -18,8 +18,8 @@ const ModifierButton: React.FC<ModifierButtonProps> = ({
 
 	return (
 		<div
-			className="flex justify-center p-2.5 rounded-lg bg-violet-700 
-            text-base sm:text-lg shadow-xl gap-2 w-[90px] font-semibold"
+			className="flex justify-center p-2.5 px-4 rounded-lg bg-violet-700 
+            text-base sm:text-lg shadow-xl gap-3 font-semibold"
 		>
 			<DecrementButton onClick={handleDecrement} />
 			<span>{num}</span>

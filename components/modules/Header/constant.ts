@@ -9,6 +9,7 @@ export const navigation: navData[] = [
 	{ name: "Beverage", href: "/beverage" },
 	{ name: "Snack", href: "/snack" },
 	{ name: "Checkout", href: "/checkout" },
+	{ name: "Favorite", href: "/favorite" },
 ];
 
 export const authNavs: navData[] = [

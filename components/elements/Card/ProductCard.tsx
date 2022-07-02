@@ -7,18 +7,14 @@ import CheckOutModal from "../Modal/CheckOutModal";
 import OptimizedImage from "../OptimizedImage/OptimizedImage";
 import { ProductCardProps } from "./interface";
 
-const ProductCard: React.FC<ProductCardProps> = ({ name, price, image, index, type }) => {
-	const [isModifierButtonOpen, setIsModifierButtonOpen] = useState<boolean>(false);
-	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-	const { pathname } = usePathContext();
-
-	const cardProps = {
-		name,
-		price,
-		image,
-		type,
-	};
+const ProductCard: React.FC<ProductCardProps> = ({
+	name,
+	price,
+	image,
+	index,
+}) => {
+	const [isModifierButtonOpen, setIsModifierButtonOpen] =
+		useState<boolean>(false);
 
 	return (
 		<div className="cursor-default w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 py-3 sm:pb-5 sm:px-5 mx-auto">
@@ -33,11 +29,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, price, image, index, ty
 					</div>
 					<div className="card-actions items-center justify-end">
 						{isModifierButtonOpen ? (
+<<<<<<< HEAD
 							<>
 								<ModifierButton setIsModifierButtonOpen={setIsModifierButtonOpen} />
 								<CheckOutButton onClick={() => setIsModalOpen(true)} />
 								{isModalOpen && <CheckOutModal setIsModalOpen={setIsModalOpen} />}
 							</>
+=======
+							<ModifierButton
+								setIsModifierButtonOpen={
+									setIsModifierButtonOpen
+								}
+							/>
+>>>>>>> 5a4ad1130eb6633f0887be154833551a270995cb
 						) : (
 							<button
 								onClick={() => setIsModifierButtonOpen(true)}
