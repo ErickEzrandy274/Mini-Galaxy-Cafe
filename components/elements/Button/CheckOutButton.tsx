@@ -7,9 +7,9 @@ const CheckOutButton: React.FC<CheckOutModalButtonProps> = ({ onClick }) => {
         <label
             htmlFor="confirmationModal"
             onClick={onClick}
-            className="btn modal-button tracking-wider btn-primary shadow-xl w-20"
+            className="btn modal-button btn-primary shadow-xl w-[8rem]"
 		>
-			Check<br/> Out
+			Check Out
         </label>
 	);
 };
