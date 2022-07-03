@@ -42,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 						) : (
 							<button
 								onClick={() => setIsModifierButtonOpen(true)}
-								className="btn text-base sm:text-lg btn-primary shadow-xl"
+								className="btn text-base sm:text-lg btn-primary shadow-xl text-base-200"
 							>
 								Buy Now
 							</button>
