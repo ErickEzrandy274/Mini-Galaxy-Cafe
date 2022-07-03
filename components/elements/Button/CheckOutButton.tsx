@@ -6,7 +6,7 @@ const CheckOutButton: React.FC<CheckOutModalButtonProps> = ({ onClick }) => {
 		<label
 			htmlFor="confirmationModal"
 			onClick={onClick}
-			className="btn modal-button btn-primary text-lg shadow-xl w-36 text-base-200"
+			className="btn modal-button btn-primary text-lg shadow-xl w-36 text-base-200 hover:text-white"
 		>
 			Check Out
 		</label>
