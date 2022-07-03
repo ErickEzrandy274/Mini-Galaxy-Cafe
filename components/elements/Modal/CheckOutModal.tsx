@@ -31,7 +31,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen }) => {
 					<div className="modal-action">
 						<div
 							onClick={() => setIsModalOpen(false)}
-							className="btn btn-outline btn-secondary"
+							className="btn btn-outline btn-accent"
 						>
 							Cancel
 						</div>
