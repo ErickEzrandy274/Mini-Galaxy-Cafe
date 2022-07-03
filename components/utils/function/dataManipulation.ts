@@ -72,7 +72,8 @@ export const handleFav = async (args: handleFavType) => {
 
 export const getFavData = async (uid: string) => {
 	const favRef = doc(database, "Favorite", uid);
-	let data = await getDoc(favRef).then((res) => {
+	let data: any = [];
+	data = await getDoc(favRef).then((res) => {
 		return res.data() ? res.data() : [];
 	});
 	return data;

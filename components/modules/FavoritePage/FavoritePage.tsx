@@ -1,12 +1,11 @@
 import React from "react";
-import { LandingPageProps } from "../ProductPage/interface";
 import { FavContextProvider } from "../../../context/FavContext";
 import FavoriteWrapper from "./FavoriteWrapper";
 
-const FavoritePage: React.FC<LandingPageProps> = ({ data, type }) => {
+const FavoritePage: React.FC<{ data: any }> = ({ data }) => {
 	return (
 		<FavContextProvider>
-			<FavoriteWrapper data={data} type={type} />
+			<FavoriteWrapper data={data} />
 		</FavContextProvider>
 	);
 };
