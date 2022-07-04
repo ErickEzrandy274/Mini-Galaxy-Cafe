@@ -12,12 +12,16 @@ const favorite = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	useEffect(() => {
+		setIsLoading(true)
 		const fetchData = async () => {
 			const res = await getFavData(uid);
 			setData(res);
 		};
 
 		fetchData();
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 2000);
 	}, []);
 
 	return isLoading ? <Loader /> : <FavoritePage data={data} />;
