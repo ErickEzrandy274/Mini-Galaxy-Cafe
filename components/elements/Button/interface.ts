@@ -23,5 +23,6 @@ export interface FavButtonProps {
 		price: string;
 		image: string;
 		type: string;
+		id: string;
 	};
 }

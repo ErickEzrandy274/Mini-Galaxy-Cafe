@@ -12,4 +12,5 @@ export interface ProductCardProps extends CardProps {
 	price: string;
 	index: string;
 	type: string;
+	dataId: string;
 }

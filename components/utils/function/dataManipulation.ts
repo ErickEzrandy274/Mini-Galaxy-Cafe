@@ -41,6 +41,7 @@ type handleFavType = {
 		price: string;
 		image: string;
 		type: string;
+		id: string;
 	};
 };
 
@@ -57,6 +58,7 @@ export const handleFav = async (args: handleFavType) => {
 			});
 			return;
 		}
+
 		setDoc(doc(database, "Favorite", uid), {
 			listFavItem: [
 				...prev,
