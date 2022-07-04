@@ -45,21 +45,22 @@ type handleFavType = {
 	};
 };
 
-export const handleFav = async (args: handleFavType) => {
+export const handleFav = async (args: handleFavType, pathname: string) => {
 	const { fav, setFav, uid, cardProps } = args;
 	const favRef = doc(database, "Favorite", uid);
 
-	await getDoc(favRef).then((res) => {
+	await getDoc(favRef).then(async (res) => {
 		let prev = res.data() ? res.data()?.listFavItem : [];
 		if (fav) {
 			prev = prev.filter((data: any) => data?.name !== cardProps.name);
-			setDoc(doc(database, "Favorite", uid), {
+			await setDoc(doc(database, "Favorite", uid), {
 				listFavItem: [...prev],
 			});
+			window.location.reload();
 			return;
 		}
 
-		setDoc(doc(database, "Favorite", uid), {
+		await setDoc(doc(database, "Favorite", uid), {
 			listFavItem: [
 				...prev,
 				{

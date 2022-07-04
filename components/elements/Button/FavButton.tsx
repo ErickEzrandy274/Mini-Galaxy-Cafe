@@ -3,11 +3,14 @@ import { useAuth } from "../../../context/AuthContext";
 import { FavButtonProps } from "./interface";
 import { handleFav } from "../../utils/function/dataManipulation";
 import { useFavContext } from "../../../context/FavContext";
+import { useRouter } from "next/router";
 
 const FavButton: React.FC<FavButtonProps> = ({ cardProps }) => {
 	const {
 		user: { uid },
 	} = useAuth();
+
+	const { pathname } = useRouter()
 
 	const { favData } = useFavContext();
 	useEffect(() => {
@@ -24,7 +27,7 @@ const FavButton: React.FC<FavButtonProps> = ({ cardProps }) => {
 	};
 
 	return (
-		<button onClick={() => handleFav(args)}>
+		<button onClick={() => handleFav(args, pathname)}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				className="h-6 w-6 transition-all duration-500"
