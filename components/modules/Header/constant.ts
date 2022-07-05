@@ -8,6 +8,7 @@ export const navigation: navData[] = [
 	{ name: "Food", href: "/food" },
 	{ name: "Beverage", href: "/beverage" },
 	{ name: "Snack", href: "/snack" },
+	{ name: "Favorite", href: "/favorite" },
 	{ name: "Checkout", href: "/checkout" },
 ];
 

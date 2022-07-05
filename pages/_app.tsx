@@ -6,6 +6,8 @@ import MainLayout from "../components/modules/MainLayout/MainLayout";
 import { AuthContextProvider } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import ProtectedRoute from "../components/modules/ProtectedRoute/ProtectedRoute";
+import { PathContextProvider } from "../context/PathContext";
+import ScrollButton from "../components/elements/Button/ScrollButton";
 
 const noAuthRequired = ["/login", "/register"];
 
@@ -16,10 +18,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 		<AuthContextProvider>
 			<Head>
 				<title>Mini Galaxy Cafe</title>
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1.0"
-				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/gal-logo.svg" />
 			</Head>
 
@@ -29,8 +28,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 				</MainLayout>
 			) : (
 				<ProtectedRoute>
+					<ScrollButton />
 					<MainLayout>
-						<Component {...pageProps} />
+						<PathContextProvider>
+							<Component {...pageProps} />
+						</PathContextProvider>
 					</MainLayout>
 				</ProtectedRoute>
 			)}

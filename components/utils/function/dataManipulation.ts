@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import React, { SetStateAction } from "react";
 import { database, imageRef } from "../firebase/firebase";
 
@@ -10,7 +10,7 @@ type DataFetchType = {
 
 export const getData = async (item: DataFetchType) => {
 	const { type, setData, setIsLoading } = item;
-	setIsLoading(true)
+	setIsLoading(true);
 	const tempData: any[] = [];
 
 	const querySnapshot = await getDocs(collection(database, type));
@@ -30,4 +30,55 @@ export const getData = async (item: DataFetchType) => {
 	setTimeout(() => {
 		setIsLoading(false);
 	}, 2000);
+};
+
+type handleFavType = {
+	fav: boolean;
+	setFav: React.Dispatch<SetStateAction<boolean>>;
+	uid: string;
+	cardProps: {
+		name: string;
+		price: string;
+		image: string;
+		type: string;
+		dataId: string;
+	};
+};
+
+export const handleFav = async (args: handleFavType, pathname: string) => {
+	const { fav, setFav, uid, cardProps } = args;
+	const favRef = doc(database, "Favorite", uid);
+
+	await getDoc(favRef).then(async (res) => {
+		let prev = res.data() ? res.data()?.listFavItem : [];
+		if (fav) {
+			prev = prev.filter((data: any) => data?.name !== cardProps.name);
+			await setDoc(doc(database, "Favorite", uid), {
+				listFavItem: [...prev],
+			});
+
+			if (pathname === "/favorite") window.location.reload();
+			return;
+		}
+
+		await setDoc(doc(database, "Favorite", uid), {
+			listFavItem: [
+				...prev,
+				{
+					...cardProps,
+				},
+			],
+		});
+	});
+
+	setFav(!fav);
+};
+
+export const getFavData = async (uid: string) => {
+	const favRef = doc(database, "Favorite", uid);
+	let data: any = [];
+	data = await getDoc(favRef).then((res) => {
+		return res.data() ? res.data() : [];
+	});
+	return data;
 };

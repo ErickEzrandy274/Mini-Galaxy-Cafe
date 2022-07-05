@@ -10,7 +10,7 @@ const PreferredRoute: React.FC<RouteProps> = ({ user, navData, handleLogout }) =
 
 	return user ? (
 		<UserDetected
-			className="px-2"
+			className="px-3"
 			user={user}
 			handleLogout={handleLogout}
 		/>
