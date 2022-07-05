@@ -10,8 +10,8 @@ const NotFoundPage = () => {
 					__html: "@import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);",
 				}}
 			/>
-			<div className="min-w-screen min-h-screen bg-gray-600 flex items-center p-5 lg:py-18 lg:px-20 overflow-hidden relative">
-				<div className="flex-1 min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 text-gray-800 relative md:flex items-center text-center md:text-left">
+			<div className="min-w-screen min-h-screen bg-gray-600 flex items-center p-5 lg:px-20 overflow-hidden relative">
+				<div className="flex-1 min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 -top-5 text-gray-800 relative md:flex items-center text-center md:text-left">
 					<div className="w-full md:w-1/2">
 						<img
 							className="block h-20 w-auto mx-auto"
