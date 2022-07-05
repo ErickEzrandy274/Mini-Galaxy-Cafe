@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, getDocs, onSnapshot, setDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import React, { SetStateAction } from "react";
 import { database, imageRef } from "../firebase/firebase";
 
@@ -41,7 +41,7 @@ type handleFavType = {
 		price: string;
 		image: string;
 		type: string;
-		id: string;
+		dataId: string;
 	};
 };
 
@@ -56,7 +56,8 @@ export const handleFav = async (args: handleFavType, pathname: string) => {
 			await setDoc(doc(database, "Favorite", uid), {
 				listFavItem: [...prev],
 			});
-			window.location.reload();
+
+			if (pathname === "/favorite") window.location.reload();
 			return;
 		}
 
