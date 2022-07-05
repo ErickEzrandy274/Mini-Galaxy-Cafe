@@ -22,7 +22,7 @@ const favorite = () => {
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 2000);
-	}, []);
+	}, [uid]);
 
 	return isLoading ? <Loader /> : <FavoritePage data={data} />;
 };

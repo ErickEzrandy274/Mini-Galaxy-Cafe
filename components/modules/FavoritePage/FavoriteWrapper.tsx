@@ -19,14 +19,29 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 
 				<div className="flex flex-col justify-center items-center md:items-end md:w-1/3">
 					<CheckOutButton onClick={() => setIsModalOpen(true)} />
-					{isModalOpen && <CheckOutModal setIsModalOpen={setIsModalOpen} />}
+					{isModalOpen && (
+						<CheckOutModal setIsModalOpen={setIsModalOpen} />
+					)}
 				</div>
 			</div>
-			<div className="flex flex-wrap m-5">
-				{data?.listFavItem?.map((item: any) => {
-					return <ProductCard key={item.type + "-" + item.id} {...item} type={item.type} />;
-				})}
-			</div>
+			{data.length === 0 || data.listFavItem.length === 0 ? (
+				<div className="flex flex-col gap-5 text-center text-lg sm:text-6xl text-gray-300 my-10">
+					<h2>No favorites product</h2>
+					<p>Select it first!</p>
+				</div>
+			) : (
+				<div className="flex flex-wrap m-5">
+					{data?.listFavItem?.map((item: any) => {
+						return (
+							<ProductCard
+								key={item.type + "-" + item.id}
+								{...item}
+								type={item.type}
+							/>
+						);
+					})}
+				</div>
+			)}
 		</>
 	);
 };
