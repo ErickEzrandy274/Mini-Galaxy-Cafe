@@ -12,8 +12,8 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 
 	return (
 		<FavContextProvider>
-			<div className="flex flex-col md:flex-row mx-10 gap-5 md:gap-0">
-				<h2 className="text-white text-5xl lg:text-6xl mx-auto md:text-right tracking-wider font-semibold md:w-2/3">
+			<div className="flex flex-col md:flex-row mx-auto md:mx-10 gap-5 md:gap-0">
+				<h2 className="text-white text-4xl sm:text-5xl lg:text-6xl mx-auto md:text-right tracking-wider font-semibold md:w-2/3">
 					{width < 400 ? (
 						<div className="text-center">
 							<p>Our</p>
