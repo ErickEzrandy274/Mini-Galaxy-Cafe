@@ -1,4 +1,4 @@
-import { SetStateAction } from "react";
+import React, { SetStateAction } from "react";
 
 export interface ButtonProps {
 	buttonName: string;
@@ -25,4 +25,5 @@ export interface FavButtonProps {
 		type: string;
 		dataId: string;
 	};
+	setRemoved: React.Dispatch<SetStateAction<boolean>>;
 }
