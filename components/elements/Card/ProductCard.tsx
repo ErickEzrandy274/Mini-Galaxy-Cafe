@@ -12,7 +12,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, price, image, dataId, i
 		price,
 		image,
 		type,
-		id: dataId,
+		dataId,
 	};
 
 	return (
