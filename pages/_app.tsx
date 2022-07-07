@@ -6,7 +6,6 @@ import MainLayout from "../components/modules/MainLayout/MainLayout";
 import { AuthContextProvider } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import ProtectedRoute from "../components/modules/ProtectedRoute/ProtectedRoute";
-import { PathContextProvider } from "../context/PathContext";
 import ScrollButton from "../components/elements/Button/ScrollButton";
 
 const noAuthRequired = ["/login", "/register"];
@@ -30,9 +29,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 				<ProtectedRoute>
 					<ScrollButton />
 					<MainLayout>
-						<PathContextProvider>
-							<Component {...pageProps} />
-						</PathContextProvider>
+						<Component {...pageProps} />
 					</MainLayout>
 				</ProtectedRoute>
 			)}
