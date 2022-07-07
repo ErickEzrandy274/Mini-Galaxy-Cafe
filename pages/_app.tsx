@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import ProtectedRoute from "../components/modules/ProtectedRoute/ProtectedRoute";
 import { PathContextProvider } from "../context/PathContext";
 import ScrollButton from "../components/elements/Button/ScrollButton";
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 
 const noAuthRequired = ["/login", "/register"];
 
@@ -18,7 +20,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 		<AuthContextProvider>
 			<Head>
 				<title>Mini Galaxy Cafe</title>
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1.0"
+				/>
 				<link rel="icon" href="/gal-logo.svg" />
 			</Head>
 
@@ -27,14 +32,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 					<Component {...pageProps} />
 				</MainLayout>
 			) : (
-				<ProtectedRoute>
-					<ScrollButton />
-					<MainLayout>
-						<PathContextProvider>
-							<Component {...pageProps} />
-						</PathContextProvider>
-					</MainLayout>
-				</ProtectedRoute>
+				<Provider store={store}>
+					<ProtectedRoute>
+						<ScrollButton />
+						<MainLayout>
+							<PathContextProvider>
+								<Component {...pageProps} />
+							</PathContextProvider>
+						</MainLayout>
+					</ProtectedRoute>
+				</Provider>
 			)}
 		</AuthContextProvider>
 	);
