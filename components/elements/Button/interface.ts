@@ -1,4 +1,5 @@
 import React, { SetStateAction } from "react";
+import { ProductCardProps } from "../Card/interface";
 
 export interface ButtonProps {
 	buttonName: string;
@@ -7,7 +8,7 @@ export interface ButtonProps {
 	error: boolean[];
 }
 
-export interface ModifierButtonProps {
+export interface ModifierButtonProps extends ProductCardProps {
 	setIsModifierButtonOpen: React.Dispatch<SetStateAction<boolean>>;
 }
 
