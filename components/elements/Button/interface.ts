@@ -1,4 +1,5 @@
 import React, { SetStateAction } from "react";
+import { BuyerProduct } from "../Card/interface";
 
 export interface ButtonProps {
 	buttonName: string;
@@ -7,7 +8,7 @@ export interface ButtonProps {
 	error: boolean[];
 }
 
-export interface ModifierButtonProps {
+export interface ModifierButtonProps extends BuyerProduct {
 	setIsModifierButtonOpen: React.Dispatch<SetStateAction<boolean>>;
 }
 
@@ -15,7 +16,9 @@ export interface IncrementDecrementProps {
 	onClick: () => void;
 }
 
-export interface CheckOutModalButtonProps extends IncrementDecrementProps {}
+export interface CheckOutModalButtonProps extends IncrementDecrementProps {
+	productList: BuyerProduct[]
+}
 
 export interface FavButtonProps {
 	cardProps: {

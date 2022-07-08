@@ -14,3 +14,7 @@ export interface ProductCardProps extends CardProps {
 	type: string;
 	dataId: string;
 }
+
+export interface BuyerProduct extends ProductCardProps {
+	amount: number;
+}

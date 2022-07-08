@@ -1,12 +1,25 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { add_product } from "../../../store/actions/action";
+import { INITIAL_NUM } from "../Button/constants";
 import FavButton from "../Button/FavButton";
 import ModifierButton from "../Button/ModifierButton";
 import OptimizedImage from "../OptimizedImage/OptimizedImage";
-import { ProductCardProps } from "./interface";
+import { BuyerProduct, ProductCardProps } from "./interface";
 
-const ProductCard: React.FC<ProductCardProps> = ({ name, price, image, dataId, index, type }) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+	name,
+	price,
+	image,
+	dataId,
+	index,
+	type,
+}) => {
 	const [isModifierButtonOpen, setIsModifierButtonOpen] = useState<boolean>(false);
 	const [removed, setRemoved] = useState<boolean>(false);
+	const dispatch = useDispatch();
+	const productList: BuyerProduct[] = useSelector((state: any) => state.buyerProduct.productList)
+	const indexProduct = productList.findIndex((item: BuyerProduct) => item.dataId === dataId)
 
 	const cardProps = {
 		name,
@@ -14,6 +27,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, price, image, dataId, i
 		image,
 		type,
 		dataId,
+	};
+
+	const handleClick = () => {
+		const product: ProductCardProps = { ...cardProps, index };
+		dispatch(add_product(product, INITIAL_NUM));
+		setIsModifierButtonOpen(true);
 	};
 
 	return (
@@ -29,14 +48,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, price, image, dataId, i
 					<h2 className="card-title font-semibold">{name}</h2>
 					<div className="flex justify-between pb-2">
 						<p className="text-lg">Rp {price}</p>
-						<FavButton setRemoved={setRemoved} cardProps={cardProps} />
+						<FavButton
+							setRemoved={setRemoved}
+							cardProps={cardProps}
+						/>
 					</div>
 					<div className="card-actions items-center justify-end">
-						{isModifierButtonOpen ? (
-							<ModifierButton setIsModifierButtonOpen={setIsModifierButtonOpen} />
+						{isModifierButtonOpen || indexProduct !== -1 ? (
+							<ModifierButton
+								setIsModifierButtonOpen={
+									setIsModifierButtonOpen
+								}
+								{...cardProps}
+								index={index}
+								amount={productList[indexProduct].amount}
+							/>
 						) : (
 							<button
-								onClick={() => setIsModifierButtonOpen(true)}
+								onClick={handleClick}
 								className="btn text-base sm:text-lg btn-primary shadow-xl text-base-200 hover:text-white"
 							>
 								Buy Now
