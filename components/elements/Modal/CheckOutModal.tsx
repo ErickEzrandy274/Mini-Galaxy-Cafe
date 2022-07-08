@@ -3,7 +3,7 @@ import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { CheckoutModalProps } from "./interface";
 
-const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen }) => {
+const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen, productList }) => {
 	const handleOrder = () => {
 		// TODO: implement store to database
 	};

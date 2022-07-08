@@ -12,9 +12,9 @@ const middleware = [thunk];
 
 // creating store
 export const store = createStore(
-  rootReducer,
-  initalState,
-  composeWithDevTools(applyMiddleware(...middleware))
+	rootReducer,
+	initalState,
+	composeWithDevTools(applyMiddleware(...middleware))
 );
 
 // assigning store to next wrapper

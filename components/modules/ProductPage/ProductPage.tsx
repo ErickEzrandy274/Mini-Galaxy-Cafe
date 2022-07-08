@@ -4,9 +4,12 @@ import CheckOutModal from "../../elements/Modal/CheckOutModal";
 import { LandingPageProps } from "./interface";
 import { FavContextProvider } from "../../../context/FavContext";
 import CheckOutButton from "../../elements/Button/CheckOutButton";
+import { useSelector } from "react-redux";
+import { BuyerProduct } from "../../elements/Card/interface";
 
 const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const productList: BuyerProduct[] = useSelector((state: any) => state.buyerProduct.productList)
 
 	return (
 		<FavContextProvider>
@@ -20,10 +23,10 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 					<p>{type}...</p>
 				</h2>
 
-				<div className="flex flex-col justify-center items-center md:items-end md:w-1/3">
-					<CheckOutButton onClick={() => setIsModalOpen(true)} />
+				<div className="flex flex-col justify-center items-center md:items-center md:w-1/3">
+					<CheckOutButton onClick={() => setIsModalOpen(true)} productList={productList} />
 					{isModalOpen && (
-						<CheckOutModal setIsModalOpen={setIsModalOpen} />
+						<CheckOutModal setIsModalOpen={setIsModalOpen} productList={productList} />
 					)}
 				</div>
 			</div>

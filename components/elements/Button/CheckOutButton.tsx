@@ -1,15 +1,26 @@
 import React from "react";
+import InfoTooltip from "../Tooltip/InfoTooltip";
 import { CheckOutModalButtonProps } from "./interface";
 
-const CheckOutButton: React.FC<CheckOutModalButtonProps> = ({ onClick }) => {
+const CheckOutButton: React.FC<CheckOutModalButtonProps> = ({
+	onClick,
+	productList,
+}) => {
+	const isEmpty = productList.length === 0 ? true : false;
+
 	return (
-		<label
-			htmlFor="confirmationModal"
-			onClick={onClick}
-			className="btn modal-button btn-primary text-lg shadow-xl w-36 text-base-200 hover:text-white"
-		>
-			Check Out
-		</label>
+		<>
+			<label
+				htmlFor={isEmpty ? `` : `confirmationModal`}
+				onClick={onClick}
+				className={`btn modal-button text-lg shadow-xl w-36 text-base-200 text-center ${
+					isEmpty ? `cursor-not-allowed bg-gray-400 hover:bg-gray-400` : `btn-primary hover:text-white`
+				}`}
+			>
+				Check Out
+			</label>
+			{isEmpty && <InfoTooltip />}
+		</>
 	);
 };
 
