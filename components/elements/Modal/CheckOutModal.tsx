@@ -3,9 +3,10 @@ import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { CheckoutModalProps } from "./interface";
 
-const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen }) => {
+const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen, productList }) => {
 	const handleOrder = () => {
-		// TODO: implement store to database
+		console.log(productList)
+		// TODO: implement store to database using existing data in productList
 	};
 
 	return (
@@ -17,21 +18,19 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen }) => {
 			/>
 
 			<div className="modal text-gray-300">
-				<div className="modal-box flex flex-col gap-4 shadow-2xl shadow-gray-300/75">
-					<div className="flex gap-2 items-center">
+				<div className="modal-box flex flex-col gap-4 shadow-2xl shadow-gray-300/75 border-b-2 border-gray-300">
+					<div className="flex gap-2 items-center border-b-2 border-gray-300">
 						<FontAwesomeIcon icon={faWarning} className="w-7" />
 						<h3 className="font-bold text-lg uppercase">
 							Checkout Confirmation
 						</h3>
 					</div>
 					<p>
-						Please check again the number of products that you wanna
-						buy because it won&apos;t be able to change after you
-						click the Order button
+						Please check again the number of products that you want to order
 					</p>
 
 					<p>
-						Are you sure wanna order that product?
+						Are you sure want to order?
 					</p>
 					<div className="modal-action">
 						<div

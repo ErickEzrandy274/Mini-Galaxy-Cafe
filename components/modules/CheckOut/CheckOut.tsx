@@ -23,8 +23,8 @@ const products: Product[] = [
 
 const CheckOut = () => {
 	return (
-		<div className="mx-4 rounded-lg ">
-			<div className="bg-gray-100/10 flex-1 p-4">
+		<div className="mx-4">
+			<div className="bg-gray-100/10 flex-1 p-4 rounded-lg">
 				<h1 className="font-semibold text-xl">Your Cart</h1>
 
 				<div className="mt-4 rounded-md overflow-x-auto shadow-md">
@@ -34,19 +34,17 @@ const CheckOut = () => {
 				<div className="w-full flex flex-col items-end space-y-4 mt-4 p-2">
 					<div className="flex justify-between w-60">
 						<p>Subtotal</p>
-						<p>Rp50.000</p>
+						<p>Rp 50.000</p>
 					</div>
 					<div className="flex justify-between w-60">
 						<p>Fees and Taxes</p>
-						<p>Rp10.000</p>
+						<p>Rp 10.000</p>
 					</div>
 					<div className="flex justify-between w-60">
 						<p>Total</p>
-						<p>Rp60.000</p>
+						<p>Rp 60.000</p>
 					</div>
-					<button className="btn text-base sm:text-md btn-primary shadow-xl text-base-200 hover:text-white">
-						Pay Rp60.000
-					</button>
+					<button className="btn text-base sm:text-md btn-primary shadow-xl text-base-200 hover:text-white">Pay</button>
 				</div>
 			</div>
 		</div>

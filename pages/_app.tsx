@@ -7,6 +7,8 @@ import { AuthContextProvider } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import ProtectedRoute from "../components/modules/ProtectedRoute/ProtectedRoute";
 import ScrollButton from "../components/elements/Button/ScrollButton";
+import { Provider } from "react-redux";
+import { store } from "../store/store";
 
 const noAuthRequired = ["/login", "/register"];
 
@@ -26,12 +28,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 					<Component {...pageProps} />
 				</MainLayout>
 			) : (
-				<ProtectedRoute>
-					<ScrollButton />
-					<MainLayout>
-						<Component {...pageProps} />
-					</MainLayout>
-				</ProtectedRoute>
+				<Provider store={store}>
+					<ProtectedRoute>
+						<ScrollButton />
+						<MainLayout>
+							<Component {...pageProps} />
+						</MainLayout>
+					</ProtectedRoute>
+				</Provider>
 			)}
 		</AuthContextProvider>
 	);
