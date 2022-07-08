@@ -16,7 +16,9 @@ export interface IncrementDecrementProps {
 	onClick: () => void;
 }
 
-export interface CheckOutModalButtonProps extends IncrementDecrementProps {}
+export interface CheckOutModalButtonProps extends IncrementDecrementProps {
+	productList: BuyerProduct[]
+}
 
 export interface FavButtonProps {
 	cardProps: {
