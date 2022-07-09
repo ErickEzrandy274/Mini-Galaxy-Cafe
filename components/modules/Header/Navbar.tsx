@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
