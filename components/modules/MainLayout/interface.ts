@@ -5,7 +5,7 @@ export interface MainLayoutProps {
 }
 
 export const nav: string[] = [
-	"/",
+	"/menu",
 	"/food",
 	"/beverage",
 	"/snack",
