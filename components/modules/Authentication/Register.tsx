@@ -33,7 +33,7 @@ const Register = () => {
 
 		try {
 			await register(data.email, data.password, data.nickname);
-			router.push("/");
+			router.push("/menu");
 		} catch (err: any) {
 			setError(extractError(err));
 		}
@@ -41,7 +41,7 @@ const Register = () => {
 
 	useEffect(() => {
 		if (user) {
-			router.push("/");
+			router.push("/menu");
 		}
 
 		if (error) {

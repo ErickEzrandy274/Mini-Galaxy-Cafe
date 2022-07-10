@@ -1,46 +1,51 @@
+import { useRouter } from "next/router";
 import React from "react";
 import OptimizedImage from "../OptimizedImage/OptimizedImage";
 import { WelcomingCardProps } from "./interface";
 
-const WelcomingCard: React.FC<WelcomingCardProps> = ({ name, image, href, index }) => {
+const WelcomingCard: React.FC<WelcomingCardProps> = ({
+	name,
+	image,
+	href,
+	index,
+}) => {
+	const { push } = useRouter();
 
-    return (
-        <div className="w-3/5 sm:w-2/5 lg:w-1/4 xl:w-1/5 text-center rounded-xl border sm:my-3 sm:mb-10
-            shadow-lg bg-gray-800 border-gray-700 cursor-default">
-            <OptimizedImage
-                image={image}
-                index={index}
-                welcoming={true}
-            />
+	return (
+		<div
+			className="w-3/5 sm:w-2/5 lg:w-1/4 xl:w-1/5 text-center rounded-xl border sm:my-3 sm:mb-10
+            shadow-lg bg-gray-800 border-gray-700 cursor-default"
+		>
+			<OptimizedImage image={image} index={index} welcoming={true} />
 
-            <div className="p-5">
-                <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {name}
-                </h5>
-            
-                <a
-                    href={href}
-                    className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white shadow-lg
+			<div className="p-5">
+				<h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+					{name}
+				</h5>
+
+				<button
+					onClick={() => push(href)}
+					className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white shadow-lg
                         bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-2 focus:ring-offset-2 focus:outline-none 
                         focus:ring-blue-500 focus:ring-offset-blue-200 transition duration-200 ease-in"
-                >
-                    See more
-                    <svg
-                        className="ml-2 -mr-1 w-4 h-4"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                        ></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    );
+				>
+					See more
+					<svg
+						className="ml-2 -mr-1 w-4 h-4"
+						fill="currentColor"
+						viewBox="0 0 20 20"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							fillRule="evenodd"
+							d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+							clipRule="evenodd"
+						></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+	);
 };
 
 export default WelcomingCard;
