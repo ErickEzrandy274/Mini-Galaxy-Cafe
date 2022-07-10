@@ -1,7 +1,7 @@
 export interface TemplateLandingProps {
     title: string
     content: string
-    href: "/foods" | "/beverages" | "/snacks"
+    href: "/food" | "/beverage" | "/snack"
     linkName: string
     images: string[]
 }

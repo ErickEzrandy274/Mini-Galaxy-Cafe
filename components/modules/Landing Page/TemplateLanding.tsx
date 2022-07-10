@@ -19,7 +19,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 
 	return (
 		<div className="flex flex-col sm:flex-row gap-5 items-center">
-			{type !== "beverages" && (
+			{type !== "beverage" && (
 				<ImageWrapper
 					images={images}
 					version="desktop"
@@ -40,7 +40,8 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 				<span>{content}</span>
 				<div>
 					<button
-						className="btn btn-outline btn-info rounded-full"
+						className="btn btn-outline btn-info rounded-full focus:ring focus:ring-offset-2 focus:outline-none 
+                        focus:ring-[#3ABFF8] focus:ring-offset-gray-100 transition duration-200 ease-in"
 						onClick={() => push(href)}
 					>
 						{linkName}
@@ -48,7 +49,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 				</div>
 			</div>
 
-			{type === "beverages" && (
+			{type === "beverage" && (
 				<ImageWrapper
 					images={images}
 					version="desktop"
