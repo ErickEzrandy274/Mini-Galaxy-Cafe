@@ -1,12 +1,35 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import React, { useEffect, useState } from "react";
 import { ImageWrapperProps } from "./interface";
 
 const ImageWrapper: React.FC<ImageWrapperProps> = ({
+	type,
 	images,
 	version,
 	customClassDesktop,
 }) => {
+	const control = useAnimation();
+	const [ref, inView] = useInView();
+	const imageVariant = {
+		visible: (index: number) => ({
+			opacity: 1,
+			scale: 1,
+			transition: {
+				duration: .75,
+				stiffness: 120,
+				mass: 2,
+				delay: .2 * index,
+			},
+		}),
+		hidden: { opacity: 0, scale: 0 },
+	};
+
+	useEffect(() => {
+		control.start(inView ? "visible" : "hidden");
+	}, [control, inView]);
+
 	return (
 		<div
 			className={
@@ -16,6 +39,8 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 			}
 		>
 			{images.map((item: string, index: number) => {
+				const newDelay = index === 0 ? index + 1 : index - 1;
+
 				return (
 					<div
 						className={
@@ -27,7 +52,12 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 						}
 						key={"image-" + index}
 					>
-						<img
+						<motion.img
+							ref={ref}
+							variants={imageVariant}
+							initial="hidden"
+							custom={type === "beverage" ? newDelay : index + 1}
+							animate={control}
 							src={item}
 							alt={item.substring(1, item.length - 4)}
 							className={

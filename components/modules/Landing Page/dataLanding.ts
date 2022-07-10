@@ -25,8 +25,8 @@ export const dataLanding: TemplateLandingProps[] = [
 ];
 
 export const customClassDesktopBeverages: string[] = [
-	"h-[90%] relative top-1/10 w-[110%] -right-1/4",
-	"lg:h-[110%]",
+	"h-[70%] relative top-1/10 w-[110%] -right-1/4",
+	"lg:h-[90%]",
 ];
 
 export const customClassDesktopNotBeverages: string[] = [
