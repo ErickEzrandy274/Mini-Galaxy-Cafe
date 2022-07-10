@@ -18,16 +18,17 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 	const { push } = useRouter();
 
 	return (
-		<div className="flex flex-col sm:flex-row gap-5 items-center">
+		<div className="flex flex-col sm:flex-row gap-5 items-center sm:py-10">
 			{type !== "beverage" && (
 				<ImageWrapper
+					type="other"
 					images={images}
 					version="desktop"
 					customClassDesktop={customClassDesktopNotBeverages}
 				/>
 			)}
 
-			<ImageWrapper images={images} version="mobile" />
+			<ImageWrapper type="other" images={images} version="mobile" />
 
 			<div
 				className={`flex flex-col items-center sm:items-start font-semibold ${
@@ -51,6 +52,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 
 			{type === "beverage" && (
 				<ImageWrapper
+					type="beverage"
 					images={images}
 					version="desktop"
 					customClassDesktop={customClassDesktopBeverages}
