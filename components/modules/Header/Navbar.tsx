@@ -69,8 +69,8 @@ const Navbar = () => {
 									</Link>
 								</div>
 
-								<div className="hidden md:block md:ml-6">
-									<div className="flex space-x-4">
+								<div className="hidden md:block md:ml-3">
+									<div className="flex space-x-3">
 										{navigation.map(({ name, href }) => (
 											<Link
 												key={name}
