@@ -28,7 +28,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
 			{noAuthRequired.includes(pathname) ? (
 				pathname === "/" ? (
-					<Component {...pageProps} />
+					<>
+						<ScrollButton />
+						<Component {...pageProps} />
+					</>
 				) : (
 					<MainLayout>
 						<Component {...pageProps} />

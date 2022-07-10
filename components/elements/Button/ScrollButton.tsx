@@ -34,7 +34,7 @@ const ScrollButton = () => {
 			className={`bg-red-600 text-white font-bold leading-tight 
                 uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 
                 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg 
-				transition duration-500 ease-in-out fixed bottom-5 right-5 z-10 ${
+				transition duration-500 ease-in-out fixed bottom-5 right-5 z-20 ${
 					visible ? `block` : `hidden`} ${customClass} `}
 		>
 			<svg
