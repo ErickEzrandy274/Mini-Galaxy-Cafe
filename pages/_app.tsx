@@ -10,7 +10,7 @@ import ScrollButton from "../components/elements/Button/ScrollButton";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 
-const noAuthRequired = ["/login", "/register"];
+const noAuthRequired = ["/", "/login", "/register"];
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	const { pathname } = useRouter();
@@ -24,9 +24,16 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 			</Head>
 
 			{noAuthRequired.includes(pathname) ? (
-				<MainLayout>
-					<Component {...pageProps} />
-				</MainLayout>
+				pathname === "/" ? (
+					<>
+						<ScrollButton />
+						<Component {...pageProps} />
+					</>
+				) : (
+					<MainLayout>
+						<Component {...pageProps} />
+					</MainLayout>
+				)
 			) : (
 				<Provider store={store}>
 					<ProtectedRoute>

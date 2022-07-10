@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
@@ -68,8 +69,8 @@ const Navbar = () => {
 									</Link>
 								</div>
 
-								<div className="hidden md:block md:ml-6">
-									<div className="flex space-x-4">
+								<div className="hidden md:block md:ml-3">
+									<div className="flex space-x-3">
 										{navigation.map(({ name, href }) => (
 											<Link
 												key={name}

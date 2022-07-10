@@ -28,12 +28,12 @@ const Login = () => {
 	const handleLogin = async (e: any) => {
 		e.preventDefault();
 		await login(data.email, data.password);
-		router.push("/");
+		router.push("/menu");
 	};
 
 	useEffect(() => {
 		if (user) {
-			router.push("/");
+			router.push("/menu");
 		}
 
 		if (error) {
