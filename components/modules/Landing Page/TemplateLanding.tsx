@@ -31,7 +31,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 
 			<div
 				className={`flex flex-col items-center sm:items-start font-semibold ${
-					type !== "beverages" && `md:items-end md:text-right`
+					type !== "beverage" && `md:items-end md:text-right`
 				} gap-3 px-5 sm:px-3 sm:w-1/2 lg:w-2/5`}
 			>
 				<h2 className="font-bold text-4xl lg:text-5xl text-white leading-tight">
