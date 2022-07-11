@@ -21,15 +21,15 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 				</tr>
 			</thead>
 			<tbody>
-				{products.map((product) => {
+				{products.map(({dataId, name, type, amount, price}) => {
 					return (
-						<tr key={product.dataId} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+						<tr key={dataId} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 							<th scope="row" className="px-6 py-4 font-semibold text-gray-300 tracking-wide whitespace-nowrap">
-								{product.name}
+								{name}
 							</th>
-							<td className="px-6 py-4">{product.type}</td>
-							<td className="px-6 py-4">{product.amount}</td>
-							<td className="px-6 py-4">Rp {makeRupiahValue(product.price)}</td>
+							<td className="px-6 py-4">{type}</td>
+							<td className="px-6 py-4">{amount}</td>
+							<td className="px-6 py-4">Rp {makeRupiahValue(price*amount)}</td>
 						</tr>
 					);
 				})}

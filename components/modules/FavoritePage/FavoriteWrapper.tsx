@@ -39,6 +39,7 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 				</div>
 				)}
 			</div>
+			
 			{noData ? (
 				<div className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10">
 					<h2>No favorites product</h2>
