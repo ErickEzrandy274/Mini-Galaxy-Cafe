@@ -17,13 +17,15 @@ export interface IncrementDecrementProps {
 }
 
 export interface CheckOutModalButtonProps extends IncrementDecrementProps {
-	productList: BuyerProduct[]
+	productList?: BuyerProduct[]
+	type?: "Foods" | "Beverages" | "Snacks"
+	to: "Checkout" | "Payment"
 }
 
 export interface FavButtonProps {
 	cardProps: {
 		name: string;
-		price: string;
+		price: number;
 		image: string;
 		type: string;
 		dataId: string;

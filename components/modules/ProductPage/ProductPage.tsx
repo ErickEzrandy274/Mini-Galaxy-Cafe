@@ -3,13 +3,15 @@ import ProductCard from "../../elements/Card/ProductCard";
 import CheckOutModal from "../../elements/Modal/CheckOutModal";
 import { LandingPageProps } from "./interface";
 import { FavContextProvider } from "../../../context/FavContext";
-import CheckOutButton from "../../elements/Button/CheckOutButton";
 import { useSelector } from "react-redux";
 import { BuyerProduct } from "../../elements/Card/interface";
+import ModalButton from "../../elements/Button/CheckOutButton";
 
 const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-	const productList: BuyerProduct[] = useSelector((state: any) => state.buyerProduct.productList)
+	const productList: BuyerProduct[] = useSelector(
+		(state: any) => state.buyerProduct.productList
+	);
 
 	return (
 		<FavContextProvider>
@@ -24,18 +26,30 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 				</h2>
 
 				<div className="flex flex-col justify-center items-center md:items-center md:w-1/3">
-					<CheckOutButton onClick={() => setIsModalOpen(true)} productList={productList} />
+					<ModalButton
+						to="Checkout"
+						onClick={() => setIsModalOpen(true)}
+						productList={productList}
+						type={type}
+					/>
+
 					{isModalOpen && (
-						<CheckOutModal setIsModalOpen={setIsModalOpen} productList={productList} />
+						<CheckOutModal
+							type="Checkout"
+							setIsModalOpen={setIsModalOpen}
+							productList={productList}
+						/>
 					)}
 				</div>
 			</div>
+			
 			<div className="flex flex-wrap m-5">
-				{data.map((item: any) => {
+				{data.map((item: any, index: number) => {
 					return (
 						<ProductCard
 							key={type + "-" + item.dataId}
 							{...item}
+							index={index}
 							type={type}
 						/>
 					);
