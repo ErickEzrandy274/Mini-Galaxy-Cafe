@@ -39,14 +39,14 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 			<div className="bg-gray-100/10 flex-1 p-4 rounded-lg">
 				{newData !== undefined && newData.length > 0 && !isPayed ? (
 					<>
-						<h1 className="font-semibold text-4xl">Your Cart</h1>
+						<h1 className="font-semibold text-4xl text-center sm:text-left">Your Cart</h1>
 
 						<div className="mt-4 rounded-md overflow-x-auto shadow-md">
 							<CheckoutTable products={newData} />
 						</div>
 
-						<div className="w-full flex flex-col items-end space-y-4 mt-4 p-2 text-white font-semibold">
-							<div className="flex justify-between w-60">
+						<div className={`w-full flex flex-col items-center sm:items-end space-y-4 mt-4 p-2 text-white font-semibold`}>
+							<div className={`flex justify-between w-60`}>
 								<p>Subtotal</p>
 								<p>Rp {makeRupiahValue(subtotal)}</p>
 							</div>
