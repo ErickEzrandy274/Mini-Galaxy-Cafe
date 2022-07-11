@@ -18,6 +18,7 @@ export interface IncrementDecrementProps {
 
 export interface CheckOutModalButtonProps extends IncrementDecrementProps {
 	productList: BuyerProduct[]
+	type?: "Foods" | "Beverages" | "Snacks"
 }
 
 export interface FavButtonProps {
