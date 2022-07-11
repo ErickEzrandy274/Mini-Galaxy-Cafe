@@ -4,10 +4,17 @@ import WelcomingCard from "../../elements/Card/WelcomingCard";
 import { WelcomingCardData } from "./data";
 import { motion } from "framer-motion";
 import { pageTransition } from "../../utils/animation/PageTransition";
+import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 
 const MenuPage = () => {
-    const { initial, animate, transition } = pageTransition;
-    
+	const { initial, animate, transition } = pageTransition;
+	const {
+		initial: titleInitial,
+		animate: titleAnimate,
+		exit: titleExit,
+		transition: titleTransition,
+	} = menutitleAnimation;
+
 	return (
 		<motion.div
 			initial={initial}
@@ -16,9 +23,16 @@ const MenuPage = () => {
 			transition={transition}
 			className="flex flex-col gap-3"
 		>
-			<div className="text-white text-center text-4xl sm:text-5xl lg:text-6xl tracking-wider">
+			<motion.div
+				initial={titleInitial}
+				animate={titleAnimate}
+				exit={titleExit}
+				transition={titleTransition}
+				className="text-white text-center text-4xl sm:text-5xl lg:text-6xl tracking-wider"
+			>
 				Please Choose Our Menus...
-			</div>
+			</motion.div>
+
 			<div className="flex lg:flex-row flex-col gap-8 justify-center items-center">
 				{WelcomingCardData.map(
 					(item: WelcomingCardProps, index: number) => {
@@ -26,6 +40,7 @@ const MenuPage = () => {
 							<WelcomingCard
 								key={"welcomingCard-" + index}
 								{...item}
+								delay={index}
 							/>
 						);
 					}
