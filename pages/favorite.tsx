@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Loader from "../components/elements/Loader/Loader";
+import PrimaryLoader from "../components/elements/Loader/PrimaryLoader";
 import FavoritePage from "../components/modules/FavoritePage/FavoritePage";
 import { getFavData } from "../components/utils/function/dataManipulation";
 import { useAuth } from "../context/AuthContext";
@@ -24,7 +24,7 @@ const favorite = () => {
 		}, 2000);
 	}, [uid]);
 
-	return isLoading ? <Loader /> : <FavoritePage data={data} />;
+	return isLoading ? <PrimaryLoader /> : <FavoritePage data={data} />;
 };
 
 export default favorite;

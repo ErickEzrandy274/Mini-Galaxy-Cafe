@@ -19,10 +19,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 		<AuthContextProvider>
 			<Head>
 				<title>Mini Galaxy Cafe</title>
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1.0"
-				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/gal-logo.svg" />
 			</Head>
 

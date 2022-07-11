@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Loader from "../components/elements/Loader/Loader";
+import PrimaryLoader from "../components/elements/Loader/PrimaryLoader";
 import ProductPage from "../components/modules/ProductPage/ProductPage";
 import { getData } from "../components/utils/function/dataManipulation";
+import { reloadWarning } from "../components/utils/function/function";
 
 const snack = () => {
 	const [data, setData] = useState<any[]>([]);
@@ -9,9 +10,10 @@ const snack = () => {
 
 	useEffect(() => {
 		getData({ type: "Snacks", setData, setIsLoading });
+		reloadWarning()
 	}, []);
 
-	return isLoading ? <Loader /> : <ProductPage data={data} type="Snacks" />;
+	return isLoading ? <PrimaryLoader /> : <ProductPage data={data} type="Snacks" />;
 };
 
 
