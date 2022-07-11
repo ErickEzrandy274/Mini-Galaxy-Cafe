@@ -25,7 +25,9 @@ export const toCapitalize = (text: string) => {
 	return text.substring(0, 1).toUpperCase() + text.substring(1);
 };
 
-export const checkDisabilityButton = (item: DisabilityButtonParamType): FeedbackType[] => {
+export const checkDisabilityButton = (
+	item: DisabilityButtonParamType
+): FeedbackType[] => {
 	let feedback: FeedbackType[] = [];
 
 	const { email, password } = item;
@@ -90,7 +92,11 @@ const checkNickName = (item: DisabilityButtonParamType): FeedbackType => {
 	};
 
 	if (typeForm === "Register") {
-		if (item.nickname !== undefined && item.nickname.length > 0 && !nicknameRegex.test(item.nickname)) {
+		if (
+			item.nickname !== undefined &&
+			item.nickname.length > 0 &&
+			!nicknameRegex.test(item.nickname)
+		) {
 			newFeedback = {
 				type: "nickname",
 				disable: true,
@@ -99,4 +105,12 @@ const checkNickName = (item: DisabilityButtonParamType): FeedbackType => {
 		}
 	}
 	return newFeedback;
+};
+
+export const makeRupiahValue = (price: number) => {
+	let newPrice = price.toString();
+	for (let i = newPrice.length - 3; i > 0; i -= 3) {
+		newPrice = newPrice.substring(0, i) + "." + newPrice.substring(i);
+	}
+	return newPrice;
 };
