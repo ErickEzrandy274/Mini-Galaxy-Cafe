@@ -1,11 +1,4 @@
-import {
-	addDoc,
-	collection,
-	doc,
-	getDoc,
-	getDocs,
-	setDoc,
-} from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import React, { SetStateAction } from "react";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { database, imageRef } from "../firebase/firebase";
@@ -61,7 +54,7 @@ export const handleFav = async (args: handleFavType, pathname: string) => {
 		let prev = res.data() ? res.data()?.listFavItem : [];
 		if (fav) {
 			prev = prev.filter((data: any) => data?.name !== cardProps.name);
-			await setDoc(doc(database, "Favorite", uid), {
+			await setDoc(favRef, {
 				listFavItem: [...prev],
 			});
 
@@ -70,7 +63,7 @@ export const handleFav = async (args: handleFavType, pathname: string) => {
 			return;
 		}
 
-		await setDoc(doc(database, "Favorite", uid), {
+		await setDoc(favRef, {
 			listFavItem: [
 				...prev,
 				{
@@ -92,7 +85,16 @@ export const getFavData = async (uid: string) => {
 	return data;
 };
 
-export const addBuyerData = async (item: BuyerProduct[], uid: string) => {
+export const addBuyerProduct = async (item: BuyerProduct[], uid: string) => {
 	const buyerRef = doc(database, "Buyer", uid);
-	await setDoc(buyerRef, { buyerProduct: item })
+	await setDoc(buyerRef, { buyerProduct: item });
+};
+
+export const getBuyerProduct = async (uid: string) => {
+	const buyerRef = doc(database, "Buyer", uid);
+	let data: any = [];
+	data = await getDoc(buyerRef).then((res) => {
+		return res.data() ? res.data() : [];
+	});
+	return data;
 };
