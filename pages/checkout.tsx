@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Loader from "../components/elements/Loader/Loader";
+import PrimaryLoader from "../components/elements/Loader/PrimaryLoader";
 import CheckOut from "../components/modules/CheckOut/CheckOut";
 import { getBuyerProduct } from "../components/utils/function/dataManipulation";
-import { reloadWarning } from "../components/utils/function/function";
 import { useAuth } from "../context/AuthContext";
 
 const checkout = () => {
@@ -25,7 +24,7 @@ const checkout = () => {
 		}, 2000);
 	}, [uid]);
 
-	return isLoading ? <Loader /> : <CheckOut data={data} />;
+	return isLoading ? <PrimaryLoader /> : <CheckOut data={data} />;
 };
 
 export default checkout;
