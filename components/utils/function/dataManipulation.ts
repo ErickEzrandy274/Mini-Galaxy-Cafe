@@ -1,5 +1,13 @@
-import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import {
+	addDoc,
+	collection,
+	doc,
+	getDoc,
+	getDocs,
+	setDoc,
+} from "firebase/firestore";
 import React, { SetStateAction } from "react";
+import { BuyerProduct } from "../../elements/Card/interface";
 import { database, imageRef } from "../firebase/firebase";
 
 type DataFetchType = {
@@ -57,7 +65,8 @@ export const handleFav = async (args: handleFavType, pathname: string) => {
 				listFavItem: [...prev],
 			});
 
-			if (pathname === "/favorite") window.location.reload();
+			if (pathname === "/favorite" && prev.length === 0)
+				window.location.reload();
 			return;
 		}
 
