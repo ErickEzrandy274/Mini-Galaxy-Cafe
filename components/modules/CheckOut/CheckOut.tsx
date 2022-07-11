@@ -16,9 +16,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const dispatch = useDispatch();
-	const {
-		user: { uid },
-	} = useAuth();
+	const { user: { uid } } = useAuth()
 	const subtotal = data?.reduce((acc, item) => {
 		return acc + item.price * item.amount;
 	}, 0);
