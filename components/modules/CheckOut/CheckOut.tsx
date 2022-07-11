@@ -1,5 +1,6 @@
 import React from "react";
 import CheckoutTable from "../../elements/Table/CheckoutTable";
+import { makeRupiahValue } from "../../utils/function/function";
 import { CheckOutProps } from "./interface";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
@@ -17,18 +18,18 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 					<CheckoutTable products={data} />
 				</div>
 
-				<div className="w-full flex flex-col items-end space-y-4 mt-4 p-2">
+				<div className="w-full flex flex-col items-end space-y-4 mt-4 p-2 text-white font-semibold">
 					<div className="flex justify-between w-60">
 						<p>Subtotal</p>
-						<p>Rp {subtotal}</p>
+						<p>Rp {makeRupiahValue(subtotal)}</p>
 					</div>
 					<div className="flex justify-between w-60">
 						<p>Fees and Taxes</p>
-						<p>Rp {tax}</p>
+						<p>Rp {makeRupiahValue(tax)}</p>
 					</div>
 					<div className="flex justify-between w-60">
 						<p>Total</p>
-						<p>Rp {subtotal + tax}</p>
+						<p>Rp {makeRupiahValue(subtotal + tax)}</p>
 					</div>
 					<button className="btn text-base sm:text-md btn-primary shadow-xl text-base-200 w-20 hover:text-white">
 						Pay

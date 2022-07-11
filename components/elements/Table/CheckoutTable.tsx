@@ -1,3 +1,4 @@
+import { makeRupiahValue } from "../../utils/function/function";
 import { CheckoutTableProps } from "./interface";
 
 const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
@@ -28,7 +29,7 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 							</th>
 							<td className="px-6 py-4">{product.type}</td>
 							<td className="px-6 py-4">{product.amount}</td>
-							<td className="px-6 py-4">Rp {product.price}</td>
+							<td className="px-6 py-4">Rp {makeRupiahValue(product.price)}</td>
 						</tr>
 					);
 				})}

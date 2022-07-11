@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { add_product } from "../../../store/actions/action";
+import { makeRupiahValue } from "../../utils/function/function";
 import { INITIAL_NUM } from "../Button/constants";
 import FavButton from "../Button/FavButton";
 import ModifierButton from "../Button/ModifierButton";
@@ -47,7 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 				<div className="card-body text-white tracking-wide">
 					<h2 className="card-title font-semibold">{name}</h2>
 					<div className="flex justify-between pb-2">
-						<p className="text-lg">Rp {price}</p>
+						<p className="text-lg">Rp {makeRupiahValue(price)}</p>
 						<FavButton
 							setRemoved={setRemoved}
 							cardProps={cardProps}
