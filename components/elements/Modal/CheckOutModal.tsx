@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { CheckoutModalProps } from "./interface";
-import { addBuyerData } from "../../utils/function/dataManipulation";
+import { addBuyerProduct } from "../../utils/function/dataManipulation";
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/router";
 
@@ -13,7 +13,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 	const { user: { uid } } = useAuth();
 	const { push } = useRouter();
 	const handleOrder = async () => {
-		await addBuyerData(productList, uid)
+		await addBuyerProduct(productList, uid)
 		push('/checkout')
 	};
 
