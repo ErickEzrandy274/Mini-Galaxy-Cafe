@@ -1,7 +1,9 @@
 import { useAnimation, motion } from "framer-motion";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import {
+	buttonVariant,
 	contentVariant,
 	titleVariant,
 } from "../../utils/animation/LandingPageAnimation";
@@ -10,6 +12,7 @@ import { TemplateLandingProps } from "./interface";
 import TemplateLanding from "./TemplateLanding";
 
 const LandingPage = () => {
+	const { push } = useRouter();
 	const control = useAnimation();
 	const [ref, inView] = useInView();
 
@@ -45,6 +48,21 @@ const LandingPage = () => {
 						interesting and comfortable. Creative work processes can
 						also be born from the interior of a small cafe like this
 					</motion.span>
+
+					<motion.div
+					variants={buttonVariant}
+					custom={"beverage"}
+					initial="hidden"
+					animate={control}
+				>
+					<button
+						className="btn btn-outline btn-info rounded-full focus:ring focus:ring-offset-2 focus:outline-none 
+                        focus:ring-[#3ABFF8] focus:ring-offset-gray-100 transition duration-200 ease-in"
+						onClick={() => push('/menu')}
+					>
+						Go to Menu
+					</button>
+				</motion.div>
 				</div>
 
 				{dataLanding.map(
