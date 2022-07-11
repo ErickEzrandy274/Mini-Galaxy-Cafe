@@ -5,7 +5,7 @@ export const menutitleAnimation = {
 	transition: {
 		duration: 1,
 		stiffness: 100,
-		delay: 0.25,
+		delay: 0.5,
 	},
 };
 

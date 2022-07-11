@@ -34,7 +34,7 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 			exit={exit}
 			transition={{
 				...transition,
-				delay: 0.3 + 0.3 * delay,
+				delay: 0.2 + 0.2 * delay,
 			}}
 			className="w-3/5 sm:w-2/5 lg:w-1/4 xl:w-1/5 text-center rounded-xl border sm:my-3 sm:mb-10
             shadow-lg bg-gray-800 border-gray-700 cursor-default"
@@ -48,7 +48,7 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 					exit={menuExit}
 					transition={{
 						...btnTrans,
-						delay: 0.3 + 0.3 * delay,
+						delay: 0.2 + 0.2 * delay,
 					}}
 					className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
 				>
