@@ -1,16 +1,9 @@
-export interface Product {
-	image: string;
-	name: string;
-	price: number;
-	productId: string;
-	quantity: number;
-	type: "Foods" | "Beverages" | "Snacks";
-}
+import { CheckoutTableProps } from "./interface";
 
-const CheckoutTable = ({ products }: { products: Product[] }) => {
+const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 	return (
 		<table className="text-sm w-full text-left text-gray-500 dark:text-gray-400 ">
-			<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+			<thead className="text-sm uppercase bg-gray-700 text-gray-400">
 				<tr>
 					<th scope="col" className="px-6 py-3">
 						Product name
@@ -19,7 +12,7 @@ const CheckoutTable = ({ products }: { products: Product[] }) => {
 						Category
 					</th>
 					<th scope="col" className="px-6 py-3">
-						Quantity
+						Amount
 					</th>
 					<th scope="col" className="px-6 py-3">
 						Price
@@ -27,15 +20,15 @@ const CheckoutTable = ({ products }: { products: Product[] }) => {
 				</tr>
 			</thead>
 			<tbody>
-				{products?.map((product) => {
+				{products.map((product) => {
 					return (
-						<tr key={product.productId} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-							<th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+						<tr key={product.dataId} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+							<th scope="row" className="px-6 py-4 font-semibold text-gray-300 tracking-wide whitespace-nowrap">
 								{product.name}
 							</th>
 							<td className="px-6 py-4">{product.type}</td>
-							<td className="px-6 py-4">{product.quantity}</td>
-							<td className="px-6 py-4">Rp{product.price}</td>
+							<td className="px-6 py-4">{product.amount}</td>
+							<td className="px-6 py-4">Rp {product.price}</td>
 						</tr>
 					);
 				})}
