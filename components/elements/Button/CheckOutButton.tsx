@@ -5,6 +5,7 @@ import { CheckOutModalButtonProps } from "./interface";
 const CheckOutButton: React.FC<CheckOutModalButtonProps> = ({
 	onClick,
 	productList,
+	type,
 }) => {
 	const isEmpty = productList === undefined ? true : productList.length === 0;
 
@@ -21,7 +22,7 @@ const CheckOutButton: React.FC<CheckOutModalButtonProps> = ({
 			>
 				Check Out
 			</label>
-			{isEmpty && <InfoTooltip />}
+			<InfoTooltip type={type} productList={productList} />
 		</>
 	);
 };
