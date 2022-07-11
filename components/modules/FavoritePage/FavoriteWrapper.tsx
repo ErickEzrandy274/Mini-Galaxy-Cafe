@@ -46,11 +46,12 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 				</div>
 			) : (
 				<div className="flex flex-wrap m-5">
-					{data?.listFavItem?.map((item: any) => {
+					{data?.listFavItem?.map((item: any, index: number) => {
 						return (
 							<ProductCard
 								key={item.type + "-" + item.dataId}
 								{...item}
+								index={index}
 								type={item.type}
 							/>
 						);
