@@ -114,3 +114,15 @@ export const makeRupiahValue = (price: number) => {
 	}
 	return newPrice;
 };
+
+// reference link: https://stackoverflow.com/questions/68932621/put-a-warning-if-page-refresh-in-reactjs
+export const reloadWarning = () => {
+	const unloadCallback = (e: any) => {
+		e.preventDefault();
+		e.returnValue = "";
+		return "";
+	};
+
+	window.addEventListener("beforeunload", unloadCallback);
+	return () => window.removeEventListener("beforeunload", unloadCallback);
+};
