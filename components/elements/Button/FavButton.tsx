@@ -26,8 +26,13 @@ const FavButton: React.FC<FavButtonProps> = ({ cardProps, setRemoved }) => {
 		cardProps,
 	};
 
+	const handleClick = () => {
+		if (pathname === "/favorite") setRemoved(true);
+		handleFav(args, pathname);
+	};
+
 	return (
-		<button onClick={() => (pathname !== "/favorite" ? handleFav(args, pathname) : setRemoved(true))}>
+		<button onClick={handleClick}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				className="h-6 w-6 transition-all duration-500"
