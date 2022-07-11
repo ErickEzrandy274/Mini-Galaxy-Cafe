@@ -65,7 +65,7 @@ const LandingPage = () => {
 					>
 						<button
 							className="btn btn-outline btn-info rounded-full focus:ring focus:ring-offset-2 focus:outline-none 
-                        focus:ring-[#3ABFF8] focus:ring-offset-gray-100 transition duration-200 ease-in"
+                        focus:ring-[#3ABFF8] focus:ring-offset-gray-100 transition duration-200 ease-in hover:scale-110"
 							onClick={() => push("/menu")}
 						>
 							Go to Menu
