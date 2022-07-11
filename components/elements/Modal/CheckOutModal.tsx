@@ -23,7 +23,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 		await addBuyerProduct(productList!, uid);
 		setTimeout(() => {
 			push("/checkout");
-		}, 500);
+		}, 300);
 	};
 
 	return (

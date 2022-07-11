@@ -4,7 +4,7 @@ import { TooltipProps } from "./interface";
 const InfoTooltip: React.FC<TooltipProps> = ({ productList, type }) => {
 	const info: string =
 		productList.length > 0
-			? `Finish your order by clicking this button!`
+			? `Finish your order!`
 			: `Buy our ${
 					type
 						? type.substring(0, type.length - 1).toLowerCase()

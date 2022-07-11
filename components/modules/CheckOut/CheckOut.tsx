@@ -31,7 +31,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		dispatch(reset_product());
 		setTimeout(() => {
 			setIsLoading(false);
-		}, 1500);
+		}, 1000);
 	};
 
 	return (
