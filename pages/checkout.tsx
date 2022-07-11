@@ -23,7 +23,6 @@ const checkout = () => {
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 2000);
-		reloadWarning()
 	}, [uid]);
 
 	return isLoading ? <Loader /> : <CheckOut data={data} />;

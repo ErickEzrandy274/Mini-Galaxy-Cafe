@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import React, { SetStateAction } from "react";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { database, imageRef } from "../firebase/firebase";
@@ -98,3 +98,8 @@ export const getBuyerProduct = async (uid: string) => {
 	});
 	return data;
 };
+
+export const deleteBuyerProduct = async (uid: string) => {
+	const buyerRef = doc(database, "Buyer", uid);
+	await deleteDoc(buyerRef);
+}
