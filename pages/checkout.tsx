@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loader from "../components/elements/Loader/Loader";
 import CheckOut from "../components/modules/CheckOut/CheckOut";
 import { getBuyerProduct } from "../components/utils/function/dataManipulation";
+import { reloadWarning } from "../components/utils/function/function";
 import { useAuth } from "../context/AuthContext";
 
 const checkout = () => {
@@ -22,6 +23,7 @@ const checkout = () => {
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 2000);
+		reloadWarning()
 	}, [uid]);
 
 	return isLoading ? <Loader /> : <CheckOut data={data} />;
