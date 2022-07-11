@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import ProductCard from "../../elements/Card/ProductCard";
 import CheckOutModal from "../../elements/Modal/CheckOutModal";
-import CheckOutButton from "../../elements/Button/CheckOutButton";
 import { useAuth } from "../../../context/AuthContext";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { useSelector } from "react-redux";
+import ModalButton from "../../elements/Button/CheckOutButton";
 
 const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-	const productList: BuyerProduct[] = useSelector((state: any) => state.buyerProduct.productList)
+	const productList: BuyerProduct[] = useSelector(
+		(state: any) => state.buyerProduct.productList
+	);
 	const noData =
 		data.listFavItem === undefined || data.listFavItem.length === 0;
 
@@ -32,14 +34,23 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 
 				{!noData && (
 					<div className="flex flex-col justify-center items-center md:items-center md:w-1/3">
-					<CheckOutButton onClick={() => setIsModalOpen(true)} productList={productList} />
-					{isModalOpen && (
-						<CheckOutModal setIsModalOpen={setIsModalOpen} productList={productList} />
-					)}
-				</div>
+						<ModalButton
+							to="Checkout"
+							onClick={() => setIsModalOpen(true)}
+							productList={productList}
+						/>
+
+						{isModalOpen && (
+							<CheckOutModal
+								type="Checkout"
+								setIsModalOpen={setIsModalOpen}
+								productList={productList}
+							/>
+						)}
+					</div>
 				)}
 			</div>
-			
+
 			{noData ? (
 				<div className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10">
 					<h2>No favorites product</h2>
