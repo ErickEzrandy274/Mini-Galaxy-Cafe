@@ -1,5 +1,5 @@
 import { BuyerProduct } from "../../components/elements/Card/interface";
-import { ADD_PRODUCT, DELETE_PRODUCT } from "../types";
+import { ADD_PRODUCT, DELETE_PRODUCT, RESET_PRODUCT } from "../types";
 
 const initialState: { productList: BuyerProduct[] } = {
 	productList: [],
@@ -12,7 +12,7 @@ const dataBuyerReducer = (
 	const { type, payload } = action;
 	const { productList } = state;
 	const index = productList.findIndex(
-		({ dataId }) => dataId === payload.dataId
+		({ dataId }) => dataId === payload?.dataId
 	);
 
 	switch (type) {
@@ -47,6 +47,12 @@ const dataBuyerReducer = (
 					...state,
 				};
 			}
+		
+		case RESET_PRODUCT:
+			return {
+				...state,
+				productList: [],
+			};
 
 		default:
 			return state;

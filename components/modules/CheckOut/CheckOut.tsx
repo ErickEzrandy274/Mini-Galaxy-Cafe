@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useAuth } from "../../../context/AuthContext";
+import { reset_product } from "../../../store/actions/action";
 import ModalButton from "../../elements/Button/CheckOutButton";
 import CheckOutModal from "../../elements/Modal/CheckOutModal";
 import CheckoutTable from "../../elements/Table/CheckoutTable";
@@ -11,6 +13,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	let newData: any[] = data;
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const [isPayed, setIsPayed] = useState<boolean>(false);
+	const dispatch = useDispatch();
 	const {
 		user: { uid },
 	} = useAuth();
@@ -20,11 +23,11 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const tax: number = subtotal * 0.1;
 
 	const handlePayment = async () => {
-		console.log("PAY")
 		newData = [];
 		setIsPayed(true);
 		await deleteBuyerProduct(uid);
 		setIsModalOpen(false)
+		dispatch(reset_product())
 	};
 
 	return (
