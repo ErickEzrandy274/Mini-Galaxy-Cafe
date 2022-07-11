@@ -39,7 +39,7 @@ type handleFavType = {
 	uid: string;
 	cardProps: {
 		name: string;
-		price: string;
+		price: number;
 		image: string;
 		type: string;
 		dataId: string;

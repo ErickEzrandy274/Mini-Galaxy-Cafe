@@ -23,7 +23,7 @@ export interface CheckOutModalButtonProps extends IncrementDecrementProps {
 export interface FavButtonProps {
 	cardProps: {
 		name: string;
-		price: string;
+		price: number;
 		image: string;
 		type: string;
 		dataId: string;
