@@ -2,11 +2,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { CheckoutModalProps } from "./interface";
+import { addBuyerData } from "../../utils/function/dataManipulation";
+import { useAuth } from "../../../context/AuthContext";
+import { useRouter } from "next/router";
 
-const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen, productList }) => {
-	const handleOrder = () => {
-		console.log(productList)
-		// TODO: implement store to database using existing data in productList
+const CheckOutModal: React.FC<CheckoutModalProps> = ({
+	setIsModalOpen,
+	productList,
+}) => {
+	const { user: { uid } } = useAuth();
+	const { push } = useRouter();
+	const handleOrder = async () => {
+		await addBuyerData(productList, uid)
+		push('/checkout')
 	};
 
 	return (
@@ -26,12 +34,11 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({ setIsModalOpen, productLi
 						</h3>
 					</div>
 					<p>
-						Please check again the number of products that you want to order
+						Please check again the number of products that you want
+						to order
 					</p>
 
-					<p>
-						Are you sure want to order?
-					</p>
+					<p>Are you sure want to order?</p>
 					<div className="modal-action">
 						<div
 							onClick={() => setIsModalOpen(false)}

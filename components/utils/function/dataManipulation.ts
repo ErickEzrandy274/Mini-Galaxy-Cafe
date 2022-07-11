@@ -91,3 +91,8 @@ export const getFavData = async (uid: string) => {
 	});
 	return data;
 };
+
+export const addBuyerData = async (item: BuyerProduct[], uid: string) => {
+	const buyerRef = doc(database, "Buyer", uid);
+	await setDoc(buyerRef, { buyerProduct: item })
+};
