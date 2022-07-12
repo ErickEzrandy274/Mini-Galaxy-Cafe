@@ -13,6 +13,7 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	const isEmpty = to === "Checkout" && productList!.length === 0;
 	const htmlFor = to === "Payment" ? `confirmationModal` : isEmpty ? `` : `confirmationModal`
 	const { initial, animate, exit, transition } = buttonCheckOutAnimation;
+	const newTransition = to === "Payment" ? { ...transition, delay: 0.2 + 0.2 * (productList!.length) } : transition;
 
 	return (
 		<>
@@ -20,7 +21,7 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 				initial={initial}
 				animate={animate}
 				exit={exit}
-				transition={transition}
+				transition={newTransition}
 				htmlFor={htmlFor}
 				onClick={onClick}
 				className={`btn modal-button text-lg shadow-xl w-36 text-base-200 text-center ${
