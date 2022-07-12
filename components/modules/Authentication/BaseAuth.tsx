@@ -1,10 +1,13 @@
 import React from "react";
 import Alert from "../../elements/Alert/Alert";
+import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { useWindowSize } from "../../utils/function/useWindowSize";
 import { BaseAuthProps } from "./interface";
+import { motion } from "framer-motion";
 
 const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children, error }) => {
 	const { width } = useWindowSize();
+	const { initial, animate, exit, transition } = pageTransition;
 
 	const subContent =
 		typeForm === "Register"
@@ -12,7 +15,11 @@ const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children, error }) => {
 			: `Login to access your account`;
 
 	return (
-		<div
+		<motion.div
+			initial={initial}
+			animate={animate}
+			exit={exit}
+			transition={transition}
 			className={`bg-gray-900 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto rounded-lg ${
 				width <= 350 && `mx-4`
 			}`}
@@ -60,7 +67,7 @@ const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children, error }) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

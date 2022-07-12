@@ -1,5 +1,10 @@
 import { BuyerProduct } from "../Card/interface";
 
 export interface CheckoutTableProps {
-    products: BuyerProduct[]
+	products: BuyerProduct[];
+}
+
+export interface BodyTableContentProps extends BuyerProduct {
+	productsLength: number 
+	delay: number
 }

@@ -1,47 +1,82 @@
-import { makeRupiahValue } from "../../utils/function/function";
+import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { useWindowSize } from "../../utils/function/useWindowSize";
+import { BuyerProduct } from "../Card/interface";
+import BodyTableContent from "./BodyTableContent";
 import { CheckoutTableProps } from "./interface";
+import { motion } from "framer-motion";
 
 const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 	const { width } = useWindowSize();
+	const { initial, animate, exit, transition } = menutitleAnimation;
 
 	return (
-		<table className="text-sm w-full sm:text-left text-gray-400 text-center">
-			<thead className="text-sm uppercase bg-gray-700 text-gray-400">
-				<tr>
-					<th scope="col" className="p-3 sm:px-6">
+		<table className="text-sm sm:text-base w-full text-gray-400 text-center">
+			<thead className="text-sm sm:text-base uppercase bg-gray-700 text-gray-400">
+				<motion.tr
+					initial={initial}
+					animate={animate}
+					exit={exit}
+					transition={transition}
+				>
+					<motion.th
+						initial={initial}
+						animate={animate}
+						exit={exit}
+						transition={{ ...transition, delay: 0.25 }}
+						scope="col"
+						className="p-3 sm:px-6 rounded-tl-md"
+					>
 						Product name
-					</th>
-					{width >= 640 &&
+					</motion.th>
+
+					{width >= 640 && (
 						<>
-							<th scope="col" className="p-3 sm:px-6">
-							Category
-							</th>
-							<th scope="col" className="p-3 sm:px-6">
+							<motion.th
+								initial={initial}
+								animate={animate}
+								exit={exit}
+								transition={{ ...transition, delay: 0.45 }}
+								scope="col"
+								className="p-3 sm:px-6"
+							>
+								Category
+							</motion.th>
+
+							<motion.th
+								initial={initial}
+								animate={animate}
+								exit={exit}
+								transition={{ ...transition, delay: 0.65 }}
+								scope="col"
+								className="p-3 sm:px-6"
+							>
 								Amount
-							</th>
+							</motion.th>
 						</>
-					}
-					<th scope="col" className="p-3 sm:px-6">
+					)}
+
+					<motion.th
+						initial={initial}
+						animate={animate}
+						exit={exit}
+						transition={{ ...transition, delay: 0.85 }}
+						scope="col"
+						className="p-3 sm:px-6 rounded-tr-md"
+					>
 						Price
-					</th>
-				</tr>
+					</motion.th>
+				</motion.tr>
 			</thead>
+
 			<tbody>
-				{products.map(({dataId, name, type, amount, price}) => {
+				{products.map((item: BuyerProduct, idx: number) => {
 					return (
-						<tr key={dataId} className="border-b bg-gray-800 border-gray-700 font-semibold">
-							<th scope="row" className="p-3 break-words sm:px-6 sm:py-4 text-gray-300 tracking-wide">
-								{name}
-							</th>
-							{width >= 640 && 
-								<>
-									<td className="p-3 sm:px-6 sm:py-4">{type}</td>
-									<td className="p-3 sm:px-6 sm:py-4">{amount}</td>
-								</>
-							}
-							<td className="p-3 sm:px-6 sm:py-4">Rp {makeRupiahValue(price * amount)} {width < 640 && `(${amount}pcs)`}</td>
-						</tr>
+						<BodyTableContent
+							key={item.dataId}
+							{...item}
+							productsLength={products.length}
+							delay={idx}
+						/>
 					);
 				})}
 			</tbody>

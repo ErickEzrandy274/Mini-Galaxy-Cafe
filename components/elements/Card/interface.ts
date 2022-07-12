@@ -6,11 +6,12 @@ export interface CardProps {
 export interface WelcomingCardProps extends CardProps {
 	href: string;
 	index: string;
+	delay: number
 }
 
 export interface ProductCardProps extends CardProps {
 	price: number;
-	index: string;
+	index: number;
 	type: "Foods" | "Beverages" | "Snacks";
 	dataId: string;
 }

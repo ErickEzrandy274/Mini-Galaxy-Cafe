@@ -1,23 +1,76 @@
-import React from "react";
+import { useAnimation, motion } from "framer-motion";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import {
+	buttonVariant,
+	contentVariant,
+	titleVariant,
+} from "../../utils/animation/LandingPageAnimation";
+import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { dataLanding } from "./dataLanding";
 import { TemplateLandingProps } from "./interface";
 import TemplateLanding from "./TemplateLanding";
 
 const LandingPage = () => {
+	const { initial, animate, exit, transition } = pageTransition;
+	const { push } = useRouter();
+	const control = useAnimation();
+	const [ref, inView] = useInView();
+
+	useEffect(() => {
+		control.start(inView ? "visible" : "hidden");
+	}, [control, inView]);
+
 	return (
-		<div className="bg-[url('/rest-1.jpg')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen">
+		<motion.div
+			initial={initial}
+			animate={animate}
+			exit={exit}
+			transition={transition}
+			className="bg-[url('/rest-1.jpg')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen"
+		>
 			<div className="flex flex-col gap-14 sm:gap-24 px-5 sm:px-12 lg:px-20 relative z-10 py-32 xl:py-40">
 				<div className="lg:w-3/5 xl:w-2/5 flex flex-col gap-3 items-start relative z-10">
-					<h1 className="font-bold text-6xl lg:text-7xl text-white leading-tight sm:mt-4">
+					<motion.h1
+						ref={ref}
+						variants={titleVariant}
+						custom={"beverage"}
+						initial="hidden"
+						animate={control}
+						className="font-bold text-6xl lg:text-7xl text-white leading-tight sm:mt-4"
+					>
 						Mini Galaxy Cafe
 						<span className="text-sm">est. 2022</span>
-					</h1>
-					<span className="text-lg font-semibold">
+					</motion.h1>
+
+					<motion.span
+						variants={contentVariant}
+						custom={"beverage"}
+						initial="hidden"
+						animate={control}
+						className="text-lg font-semibold"
+					>
 						This cafe is not only designed as a hangout place, but
 						can also be a kind of co-working space that is quite
 						interesting and comfortable. Creative work processes can
 						also be born from the interior of a small cafe like this
-					</span>
+					</motion.span>
+
+					<motion.div
+						variants={buttonVariant}
+						custom={"beverage"}
+						initial="hidden"
+						animate={control}
+					>
+						<button
+							className="btn btn-outline btn-info rounded-full focus:ring focus:ring-offset-2 focus:outline-none 
+                        focus:ring-[#3ABFF8] focus:ring-offset-gray-100 transition duration-200 ease-in hover:scale-110"
+							onClick={() => push("/menu")}
+						>
+							Go to Menu
+						</button>
+					</motion.div>
 				</div>
 
 				{dataLanding.map(
@@ -31,7 +84,7 @@ const LandingPage = () => {
 					}
 				)}
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

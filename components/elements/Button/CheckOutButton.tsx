@@ -1,19 +1,27 @@
 import React from "react";
 import InfoTooltip from "../Tooltip/InfoTooltip";
 import { CheckOutModalButtonProps } from "./interface";
+import { motion } from "framer-motion";
+import { buttonCheckOutAnimation } from "../../utils/animation/ProductPageAnimation";
 
 const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	onClick,
 	productList,
-	type,
+	modalBtnType,
 	to,
 }) => {
 	const isEmpty = to === "Checkout" && productList!.length === 0;
 	const htmlFor = to === "Payment" ? `confirmationModal` : isEmpty ? `` : `confirmationModal`
+	const { initial, animate, exit, transition } = buttonCheckOutAnimation;
+	const newTransition = to === "Payment" ? { ...transition, delay: 0.2 + 0.2 * (productList!.length) } : transition;
 
 	return (
 		<>
-			<label
+			<motion.label
+				initial={initial}
+				animate={animate}
+				exit={exit}
+				transition={newTransition}
 				htmlFor={htmlFor}
 				onClick={onClick}
 				className={`btn modal-button text-lg shadow-xl w-36 text-base-200 text-center ${
@@ -23,8 +31,8 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 				}`}
 			>
 				{to === "Checkout" ? `Check Out` : `Pay`}
-			</label>
-			{to === "Checkout" && <InfoTooltip type={type} productList={productList!} />}
+			</motion.label>
+			{to === "Checkout" && <InfoTooltip type={modalBtnType} productList={productList!} />}
 		</>
 	);
 };
