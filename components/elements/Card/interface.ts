@@ -5,7 +5,6 @@ export interface CardProps {
 
 export interface WelcomingCardProps extends CardProps {
 	href: string;
-	index: string;
 	delay: number
 }
 

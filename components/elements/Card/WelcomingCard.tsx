@@ -13,10 +13,8 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 	name,
 	image,
 	href,
-	index,
 	delay,
 }) => {
-	console.log(delay);
 	const { push } = useRouter();
 	const { initial, animate, exit, transition } = menutitleAnimation;
 	const { initial: menuInit, exit: menuExit } = menuNameAnimation;
@@ -39,7 +37,7 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 			className="w-3/5 sm:w-2/5 lg:w-1/4 xl:w-1/5 text-center rounded-xl border sm:my-3 sm:mb-10
             shadow-lg bg-gray-800 border-gray-700 cursor-default"
 		>
-			<OptimizedImage image={image} index={index} welcoming={true} />
+			<OptimizedImage image={image} index={delay} welcoming={true} />
 
 			<div className="p-5">
 				<motion.h5

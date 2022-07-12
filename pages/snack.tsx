@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import PrimaryLoader from "../components/elements/Loader/PrimaryLoader";
 import ProductPage from "../components/modules/ProductPage/ProductPage";
