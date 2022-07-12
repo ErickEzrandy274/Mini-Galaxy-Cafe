@@ -35,7 +35,7 @@ const MenuPage = () => {
 
 			<div className="flex lg:flex-row flex-col gap-8 justify-center items-center">
 				{WelcomingCardData.map(
-					(item: WelcomingCardProps, index: number) => {
+					(item: any, index: number) => {
 						return (
 							<WelcomingCard
 								key={"welcomingCard-" + index}

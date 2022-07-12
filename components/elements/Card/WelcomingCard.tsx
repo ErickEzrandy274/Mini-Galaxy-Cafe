@@ -13,7 +13,6 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 	name,
 	image,
 	href,
-	index,
 	delay,
 }) => {
 	const { push } = useRouter();
