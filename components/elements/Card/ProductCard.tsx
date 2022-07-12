@@ -7,6 +7,8 @@ import FavButton from "../Button/FavButton";
 import ModifierButton from "../Button/ModifierButton";
 import OptimizedImage from "../OptimizedImage/OptimizedImage";
 import { BuyerProduct, ProductCardProps } from "./interface";
+import { motion } from "framer-motion";
+import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 
 const ProductCard: React.FC<ProductCardProps> = ({
 	name,
@@ -16,11 +18,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
 	index,
 	type,
 }) => {
-	const [isModifierButtonOpen, setIsModifierButtonOpen] = useState<boolean>(false);
+	const { initial, animate, exit, transition } = menutitleAnimation;
+	const [isModifierButtonOpen, setIsModifierButtonOpen] =
+		useState<boolean>(false);
 	const [removed, setRemoved] = useState<boolean>(false);
 	const dispatch = useDispatch();
-	const productList: BuyerProduct[] = useSelector((state: any) => state.buyerProduct.productList)
-	const indexProduct = productList.findIndex((item: BuyerProduct) => item.dataId === dataId)
+	const productList: BuyerProduct[] = useSelector(
+		(state: any) => state.buyerProduct.productList
+	);
+	const indexProduct = productList.findIndex(
+		(item: BuyerProduct) => item.dataId === dataId
+	);
 
 	const cardProps = {
 		name,
@@ -37,7 +45,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
 	};
 
 	return (
-		<div
+		<motion.div
+			initial={initial}
+			animate={animate}
+			exit={exit}
+			transition={{ ...transition, delay: 0.25 * (1 + index) }}
 			className={`cursor-default w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 py-3 sm:pb-5 sm:px-5 mx-auto ${
 				removed && "hidden"
 			}`}
@@ -75,7 +87,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

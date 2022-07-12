@@ -11,7 +11,7 @@ export interface WelcomingCardProps extends CardProps {
 
 export interface ProductCardProps extends CardProps {
 	price: number;
-	index: string;
+	index: number;
 	type: "Foods" | "Beverages" | "Snacks";
 	dataId: string;
 }
