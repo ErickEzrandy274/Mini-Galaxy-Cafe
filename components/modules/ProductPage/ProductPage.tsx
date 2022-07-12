@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
-import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 
 const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
@@ -14,7 +13,6 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 		(state: any) => state.buyerProduct.productList
 	);
 
-	const { initial, animate, exit, transition } = pageTransition;
 	const {
 		initial: titleInitial,
 		animate: titleAnimate,
@@ -24,11 +22,7 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 
 	return (
 		<FavContextProvider>
-			<motion.div
-				initial={initial}
-				animate={animate}
-				exit={exit}
-				transition={{ transition }}
+			<div
 				className="flex flex-col md:flex-row mx-auto md:mx-10 gap-5 md:gap-0 font-semibold"
 			>
 				<motion.h2
@@ -58,7 +52,7 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 					to="Checkout"
 					modalType="Checkout"
 				/>
-			</motion.div>
+			</div>
 
 			<div className="flex flex-wrap m-5">
 				{data.map((item: any, index: number) => {
