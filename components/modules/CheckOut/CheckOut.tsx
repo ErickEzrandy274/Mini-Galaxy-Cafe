@@ -6,13 +6,22 @@ import LoadingInfo from "../../elements/Loader/LoadingInfo";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 import CheckoutTable from "../../elements/Table/CheckoutTable";
 import { deleteBuyerProduct } from "../../utils/function/dataManipulation";
-import { makeRupiahValue } from "../../utils/function/function";
 import { CheckOutProps } from "./interface";
 import { motion } from "framer-motion";
 import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
+import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import { priceInfoConstant } from "../../elements/PriceInfo/constant";
+import PriceInfo from "../../elements/PriceInfo/PriceInfo";
+import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const { initial, animate, exit, transition } = pageTransition;
+	const {
+		initial: secInit,
+		animate: secAnim,
+		exit: secExit,
+		transition: secTrans,
+	} = menutitleAnimation;
 	let newData: any[] = data;
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -20,10 +29,6 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const {
 		user: { uid },
 	} = useAuth();
-	const subtotal = data?.reduce((acc, item) => {
-		return acc + item.price * item.amount;
-	}, 0);
-	const tax: number = subtotal * 0.1;
 
 	const handlePayment = async () => {
 		setIsLoading(true);
@@ -42,13 +47,20 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 			animate={animate}
 			exit={exit}
 			transition={transition}
-			className="mx-4 sm:mx-10">
+			className="mx-4 sm:mx-10"
+		>
 			<div className="bg-gray-100/10 flex flex-col gap-5 p-4 sm:p-10 rounded-lg">
 				{newData !== undefined && newData.length > 0 && !isPayed ? (
 					<>
-						<h1 className="font-semibold text-4xl text-center sm:text-left">
+						<motion.h1
+							initial={secInit}
+							animate={secAnim}
+							exit={secExit}
+							transition={{ ...secTrans, delay: 0.15 }}
+							className="font-semibold text-4xl text-center sm:text-left"
+						>
 							Your Cart
-						</h1>
+						</motion.h1>
 
 						<div className="rounded-md shadow-md">
 							<CheckoutTable products={newData} />
@@ -57,25 +69,24 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 						<div
 							className={`w-full flex flex-col items-center sm:items-end space-y-4 p-2 text-white font-semibold`}
 						>
-							<div className={`flex justify-between w-60`}>
-								<p>Subtotal</p>
-								<p>Rp {makeRupiahValue(subtotal)}</p>
-							</div>
-
-							<div className="flex justify-between w-60">
-								<p>Fees and Taxes</p>
-								<p>Rp {makeRupiahValue(tax)}</p>
-							</div>
-
-							<div className="flex justify-between w-60">
-								<p>Total</p>
-								<p>Rp {makeRupiahValue(subtotal + tax)}</p>
-							</div>
+							{priceInfoConstant.map(
+								(item: string, index: number) => {
+									return (
+										<PriceInfo
+											title={item}
+											data={data}
+											key={"PriceInfo-" + item}
+											index={index}
+										/>
+									);
+								}
+							)}
 
 							<ModalWrapper
 								to="Payment"
 								modalType="Payment"
 								modalBtnType="Others"
+								productList={data}
 								handlePayment={handlePayment}
 							/>
 						</div>
@@ -85,15 +96,15 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 						{isLoading ? (
 							<LoadingInfo info="Our system is serving payment for your order" />
 						) : isPayed ? (
-							<>
-								<h2>Thank you for buying our dish</h2>
-								<p>Enjoy your dish 😁😁😁</p>
-							</>
+							<BlankContentInfo
+								firstContent="Thank you for buying our dish"
+								secondContent="Enjoy your dish 😁😁😁"
+							/>
 						) : (
-							<>
-								<h2>No products in your cart</h2>
-								<p>Select it first!</p>
-							</>
+							<BlankContentInfo
+								firstContent="No products in your cart"
+								secondContent="Select it first!"
+							/>
 						)}
 					</div>
 				)}
