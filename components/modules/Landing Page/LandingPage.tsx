@@ -13,7 +13,7 @@ import { TemplateLandingProps } from "./interface";
 import TemplateLanding from "./TemplateLanding";
 
 const LandingPage = () => {
-	const { initial, animate, transition } = pageTransition;
+	const { initial, animate, exit, transition } = pageTransition;
 	const { push } = useRouter();
 	const control = useAnimation();
 	const [ref, inView] = useInView();
@@ -26,7 +26,7 @@ const LandingPage = () => {
 		<motion.div
 			initial={initial}
 			animate={animate}
-			exit={initial}
+			exit={exit}
 			transition={transition}
 			className="bg-[url('/rest-1.jpg')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen"
 		>

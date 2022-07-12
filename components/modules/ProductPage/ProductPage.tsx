@@ -14,7 +14,7 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 		(state: any) => state.buyerProduct.productList
 	);
 
-	const { initial, animate, transition } = pageTransition;
+	const { initial, animate, exit, transition } = pageTransition;
 	const {
 		initial: titleInitial,
 		animate: titleAnimate,
@@ -27,7 +27,7 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 			<motion.div
 				initial={initial}
 				animate={animate}
-				exit={initial}
+				exit={exit}
 				transition={{ transition }}
 				className="flex flex-col md:flex-row mx-auto md:mx-10 gap-5 md:gap-0 font-semibold"
 			>
