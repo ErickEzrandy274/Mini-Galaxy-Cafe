@@ -1,5 +1,3 @@
-import { WelcomingCardProps } from "../../elements/Card/interface";
-
 export const WelcomingCardData: {
 	name: string;
 	image: string;
