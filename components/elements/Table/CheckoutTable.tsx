@@ -22,7 +22,7 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 						initial={initial}
 						animate={animate}
 						exit={exit}
-						transition={{ ...transition, delay: 0.2 }}
+						transition={{ ...transition, delay: 0.25 }}
 						scope="col"
 						className="p-3 sm:px-6 rounded-tl-md"
 					>
@@ -35,17 +35,18 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 								initial={initial}
 								animate={animate}
 								exit={exit}
-								transition={{ ...transition, delay: 0.5 }}
+								transition={{ ...transition, delay: 0.45 }}
 								scope="col"
 								className="p-3 sm:px-6"
 							>
 								Category
 							</motion.th>
+
 							<motion.th
 								initial={initial}
 								animate={animate}
 								exit={exit}
-								transition={{ ...transition, delay: 0.8 }}
+								transition={{ ...transition, delay: 0.65 }}
 								scope="col"
 								className="p-3 sm:px-6"
 							>
@@ -58,7 +59,7 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 						initial={initial}
 						animate={animate}
 						exit={exit}
-						transition={{ ...transition, delay: 1.1 }}
+						transition={{ ...transition, delay: 0.85 }}
 						scope="col"
 						className="p-3 sm:px-6 rounded-tr-md"
 					>

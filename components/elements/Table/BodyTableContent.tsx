@@ -16,7 +16,7 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({ name, type, amount,
 			initial={initial}
 			animate={animate}
 			exit={exit}
-			transition={{ ...transition, delay: 0.3 + 0.3 * delay }}
+			transition={{ ...transition, delay: 0.2 + 0.2 * delay }}
 			className={`bg-gray-800 border-gray-700 font-semibold shadow-lg ${isLastIndex ? `rounded-b-md` : `border-b`}`} >
 			
 			<td
