@@ -14,9 +14,7 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 	const noData =
 		data.listFavItem === undefined || data.listFavItem.length === 0;
 
-	const {
-		user: { displayName },
-	} = useAuth();
+	const { user: { displayName } } = useAuth();
 	const { initial, animate, exit, transition } = menutitleAnimation;
 
 	return (
