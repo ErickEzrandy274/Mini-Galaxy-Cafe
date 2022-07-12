@@ -5,12 +5,12 @@ import { CheckoutModalProps } from "./interface";
 import { addBuyerProduct } from "../../utils/function/dataManipulation";
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/router";
-import SecondaryLoader from "../Loader/SecondaryLoader";
+import LoadingInfo from "../Loader/LoadingInfo";
 
 const CheckOutModal: React.FC<CheckoutModalProps> = ({
 	setIsModalOpen,
 	productList,
-	type,
+	modalType,
 	handlePayment,
 }) => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -18,6 +18,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 		user: { uid },
 	} = useAuth();
 	const { push } = useRouter();
+	
 	const handleOrder = async () => {
 		setIsLoading(true);
 		await addBuyerProduct(productList!, uid);
@@ -37,10 +38,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 			<div className="modal text-gray-300">
 				<div className="modal-box flex flex-col gap-4 shadow-2xl shadow-gray-300/75 border-b-2 border-gray-300">
 					{isLoading ? (
-						<div className="flex flex-col gap-20 relative">
-							<SecondaryLoader />
-							<h2 className="text-center text-lg sm:text-xl">Your order is being brought to cart</h2>
-						</div>
+						<LoadingInfo info="Your order is being brought to cart" />
 					) : (
 						<>
 							<div className="flex gap-2 items-center border-b-2 border-gray-300">
@@ -49,7 +47,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 									className="w-7"
 								/>
 								<h3 className="font-bold text-lg uppercase">
-									{type} Confirmation
+									{modalType} Confirmation
 								</h3>
 							</div>
 							<p>
@@ -58,7 +56,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 							</p>
 
 							<p>{`Are you sure want to ${
-								type === "Checkout" ? `order` : `pay`
+								modalType === "Checkout" ? `order` : `pay`
 							}?`}</p>
 							<div className="modal-action">
 								<div
@@ -69,13 +67,13 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 								</div>
 								<div
 									onClick={
-										type === "Checkout"
+										modalType === "Checkout"
 											? handleOrder
 											: handlePayment
 									}
 									className="btn btn-outline btn-success"
 								>
-									{type === "Checkout" ? `Order` : `Pay`}
+									{modalType === "Checkout" ? `Order` : `Pay`}
 								</div>
 							</div>
 						</>

@@ -5,18 +5,17 @@ import { useAuth } from "../../../context/AuthContext";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { useSelector } from "react-redux";
 import ModalButton from "../../elements/Button/CheckOutButton";
+import ModalWrapper from "../../elements/Modal/ModalWrapper";
 
 const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
-	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const productList: BuyerProduct[] = useSelector(
 		(state: any) => state.buyerProduct.productList
 	);
 	const noData =
 		data.listFavItem === undefined || data.listFavItem.length === 0;
 
-	const {
-		user: { displayName },
-	} = useAuth();
+	const { user: { displayName } } = useAuth();
+	
 	return (
 		<>
 			<div className="flex flex-col md:flex-row mx-10 gap-5 md:gap-0 font-semibold">
@@ -33,21 +32,12 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 				</h2>
 
 				{!noData && (
-					<div className="flex flex-col justify-center items-center md:items-center md:w-1/3">
-						<ModalButton
-							to="Checkout"
-							onClick={() => setIsModalOpen(true)}
-							productList={productList}
-						/>
-
-						{isModalOpen && (
-							<CheckOutModal
-								type="Checkout"
-								setIsModalOpen={setIsModalOpen}
-								productList={productList}
-							/>
-						)}
-					</div>
+					<ModalWrapper
+						to="Checkout"
+						productList={productList}
+						modalType="Checkout"
+						modalBtnType="Others"
+					/>
 				)}
 			</div>
 

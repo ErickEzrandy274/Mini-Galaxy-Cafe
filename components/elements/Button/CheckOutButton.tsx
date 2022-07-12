@@ -7,7 +7,7 @@ import { buttonCheckOutAnimation } from "../../utils/animation/ProductPageAnimat
 const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	onClick,
 	productList,
-	type,
+	modalBtnType,
 	to,
 }) => {
 	const isEmpty = to === "Checkout" && productList!.length === 0;
@@ -31,7 +31,7 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 			>
 				{to === "Checkout" ? `Check Out` : `Pay`}
 			</motion.label>
-			{to === "Checkout" && <InfoTooltip type={type} productList={productList!} />}
+			{to === "Checkout" && <InfoTooltip type={modalBtnType} productList={productList!} />}
 		</>
 	);
 };

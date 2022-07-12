@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAuth } from "../../../context/AuthContext";
 import { reset_product } from "../../../store/actions/action";
-import ModalButton from "../../elements/Button/CheckOutButton";
-import SecondaryLoader from "../../elements/Loader/SecondaryLoader";
-import CheckOutModal from "../../elements/Modal/CheckOutModal";
+import LoadingInfo from "../../elements/Loader/LoadingInfo";
+import ModalWrapper from "../../elements/Modal/ModalWrapper";
 import CheckoutTable from "../../elements/Table/CheckoutTable";
 import { deleteBuyerProduct } from "../../utils/function/dataManipulation";
 import { makeRupiahValue } from "../../utils/function/function";
@@ -12,7 +11,6 @@ import { CheckOutProps } from "./interface";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	let newData: any[] = data;
-	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const dispatch = useDispatch();
@@ -29,7 +27,6 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		newData = [];
 		setIsPayed(true);
 		await deleteBuyerProduct(uid);
-		setIsModalOpen(false);
 		dispatch(reset_product());
 		setTimeout(() => {
 			setIsLoading(false);
@@ -67,33 +64,18 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 								<p>Rp {makeRupiahValue(subtotal + tax)}</p>
 							</div>
 
-							<div className="flex flex-col justify-center items-center md:items-center">
-								<div>
-									<ModalButton
-										to="Payment"
-										onClick={() => setIsModalOpen(true)}
-									/>
-								</div>
-
-								{isModalOpen && (
-									<CheckOutModal
-										type="Payment"
-										setIsModalOpen={setIsModalOpen}
-										handlePayment={handlePayment}
-									/>
-								)}
-							</div>
+							<ModalWrapper
+								to="Payment"
+								modalType="Payment"
+								modalBtnType="Others"
+								handlePayment={handlePayment}
+							/>
 						</div>
 					</>
 				) : (
 					<div className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10 relative">
 						{isLoading ? (
-							<div className="flex flex-col gap-20 relative">
-								<SecondaryLoader />
-								<h2 className="text-center text-lg sm:text-xl">
-									Our system is serving payment for your order
-								</h2>
-							</div>
+							<LoadingInfo info="Our system is serving payment for your order" />
 						) : isPayed ? (
 							<>
 								<h2>Thank you for buying our dish</h2>
