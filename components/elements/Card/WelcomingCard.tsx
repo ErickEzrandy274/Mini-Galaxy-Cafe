@@ -48,7 +48,7 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 						...btnTrans,
 						delay: 0.2 + 0.2 * delay,
 					}}
-					className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+					className="mb-4 text-2xl font-bold tracking-tight text-white"
 				>
 					{name}
 				</motion.h5>
