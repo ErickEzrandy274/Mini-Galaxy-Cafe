@@ -7,7 +7,7 @@ import {
 	contentVariant,
 	titleVariant,
 } from "../../utils/animation/LandingPageAnimation";
-import { pageTransition } from "../../utils/animation/PageTransition";
+import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { dataLanding } from "./dataLanding";
 import { TemplateLandingProps } from "./interface";
 import TemplateLanding from "./TemplateLanding";
