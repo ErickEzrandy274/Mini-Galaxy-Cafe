@@ -3,21 +3,19 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<footer className="w-auto p-4 h-auto bg-gray-600 ">
-			<div className="lg:flex  lg:mt-3 md:mx-12 lg:mx-28 lg:justify-between">
-				<div className="mb-4 lg:columns-1 sm:w-96">
-					<p className="text-white font-bold mb-1 mt-3">About Us</p>
-					<p className="text-gray-200 text-sm">
-						Mini Galaxy Cafe didirikan oleh Erick Ezrandy pada tahun
-						2022. Cafe ini dibangun dengan menggunakan gaya modern
-						sehingga generasi muda dapat memanfaatkan cafe ini
-						sebagai tempat belajar, nongkrong, sekaligus refreshing.
-						Anda dapat mengetahui lebih lanjut mengenai cafe ini
-						dengan menghubungi social media owner kami!
+		<footer className="flex flex-col gap-3 w-auto p-4 h-auto bg-gray-600 ">
+			<div className="flex flex-col gap-3 lg:flex-row lg:mt-3 md:mx-12 lg:mx-28 lg:justify-between">
+				<div className="flex flex-col gap-1 sm:w-96">
+					<p className="text-white font-bold">About Us</p>
+					<p className="text-gray-300 text-sm">
+						Mini Galaxy Cafe was built using a modern style so that
+						the younger generation can use this cafe as a place to
+						study, hang out, and refresh. You can find out more
+						about this cafe by contacting our social media owner!
 					</p>
 				</div>
 
-				<div className="mb-4 lg:mt-3">
+				<div className="lg:mt-3">
 					<h3 className="text-white font-bold mb-2 lg:mb-4">
 						Social Media
 					</h3>
@@ -80,12 +78,8 @@ const Footer = () => {
 				</div>
 			</div>
 
-			<div>
-				<div className="flex justify-center mt-2">
-					<p className="text-gray-400">
-						Copyright © All rights reserved
-					</p>
-				</div>
+			<div className="text-center text-sm sm:text-base text-gray-400">
+				Erick Ezrandy - Computer Science University of Indonesia 2020
 			</div>
 		</footer>
 	);
