@@ -3,11 +3,7 @@ import React from "react";
 import OptimizedImage from "../OptimizedImage/OptimizedImage";
 import { WelcomingCardProps } from "./interface";
 import { motion } from "framer-motion";
-import {
-	buttonMenuAnimation,
-	menuNameAnimation,
-	menutitleAnimation,
-} from "../../utils/animation/MenuPageAnimation";
+import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 
 const WelcomingCard: React.FC<WelcomingCardProps> = ({
 	name,
@@ -17,13 +13,6 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 }) => {
 	const { push } = useRouter();
 	const { initial, animate, exit, transition } = menutitleAnimation;
-	const { initial: menuInit, exit: menuExit } = menuNameAnimation;
-	const {
-		initial: btnInit,
-		animate: btnAnim,
-		exit: btnExit,
-		transition: btnTrans,
-	} = buttonMenuAnimation;
 
 	return (
 		<motion.div
@@ -41,12 +30,12 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 
 			<div className="p-5">
 				<motion.h5
-					initial={menuInit}
-					animate={btnAnim}
-					exit={menuExit}
+					initial={initial}
+					animate={animate}
+					exit={exit}
 					transition={{
-						...btnTrans,
-						delay: 0.2 + 0.2 * delay,
+						...transition,
+						delay: 0.3 + 0.3 * delay,
 					}}
 					className="mb-4 text-2xl font-bold tracking-tight text-white"
 				>
@@ -54,12 +43,12 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 				</motion.h5>
 
 				<motion.div
-					initial={btnInit}
-					animate={btnAnim}
-					exit={btnExit}
+					initial={initial}
+					animate={animate}
+					exit={exit}
 					transition={{
-						...btnTrans,
-						delay: 0.3 + 0.3 * delay,
+						...transition,
+						delay: 0.4 + 0.3 * delay,
 					}}
 				>
 					<button
