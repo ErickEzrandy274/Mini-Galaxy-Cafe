@@ -6,4 +6,5 @@ export interface CheckoutTableProps {
 
 export interface BodyTableContentProps extends BuyerProduct {
 	productsLength: number 
+	delay: number
 }

@@ -8,8 +8,11 @@ import CheckoutTable from "../../elements/Table/CheckoutTable";
 import { deleteBuyerProduct } from "../../utils/function/dataManipulation";
 import { makeRupiahValue } from "../../utils/function/function";
 import { CheckOutProps } from "./interface";
+import { motion } from "framer-motion";
+import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
+	const { initial, animate, exit, transition } = pageTransition;
 	let newData: any[] = data;
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -34,8 +37,13 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	};
 
 	return (
-		<div className="mx-4">
-			<div className="bg-gray-100/10 flex flex-col gap-5 p-4 rounded-lg">
+		<motion.div
+			initial={initial}
+			animate={animate}
+			exit={exit}
+			transition={transition}
+			className="mx-4 sm:mx-10">
+			<div className="bg-gray-100/10 flex flex-col gap-5 p-4 sm:p-10 rounded-lg">
 				{newData !== undefined && newData.length > 0 && !isPayed ? (
 					<>
 						<h1 className="font-semibold text-4xl text-center sm:text-left">
@@ -90,7 +98,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 					</div>
 				)}
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 
