@@ -8,7 +8,7 @@ const Input: React.FC<InputProps> = ({ name, handleChange, error }) => {
 		<div className="flex flex-col gap-1">
 			<label
 				htmlFor={name}
-				className="block text-gray-600 dark:text-gray-200"
+				className="block text-gray-200"
 			>
 				{name.substring(0, 1).toUpperCase() + name.substring(1)}
 			</label>
