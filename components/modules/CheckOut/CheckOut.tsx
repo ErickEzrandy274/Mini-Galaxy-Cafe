@@ -104,7 +104,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 						) : (
 							<BlankContentInfo
 								firstContent="No products in your cart"
-								secondContent="Select it first!"
+								secondContent="Order it first!"
 								delay={0.75}
 							/>
 						)}

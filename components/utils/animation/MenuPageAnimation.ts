@@ -8,18 +8,3 @@ export const menutitleAnimation = {
 		delay: 0.5,
 	},
 };
-
-export const buttonMenuAnimation = {
-	initial: { y: "-100vw" },
-	animate: { y: 0 },
-    exit: { y: "-100vw" },
-    transition: {
-        duration: 1.5,
-        stiffness: 100,
-    }
-};
-
-export const menuNameAnimation = {
-	initial: { y: "100vw" },
-	exit: { y: "100vw" },
-};
