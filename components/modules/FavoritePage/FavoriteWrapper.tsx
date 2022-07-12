@@ -58,6 +58,7 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 					<BlankContentInfo
 						firstContent="No favorites product"
 						secondContent="Select it first!"
+						delay={0.75}
 					/>
 				</div>
 			) : (

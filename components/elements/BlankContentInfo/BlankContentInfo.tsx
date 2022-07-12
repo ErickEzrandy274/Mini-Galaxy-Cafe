@@ -6,6 +6,7 @@ import { BlankContentInfoProps } from "./interface";
 const BlankContentInfo: React.FC<BlankContentInfoProps> = ({
 	firstContent,
 	secondContent,
+	delay,
 }) => {
 	const { initial, animate, exit, transition } = menutitleAnimation;
 
@@ -15,16 +16,16 @@ const BlankContentInfo: React.FC<BlankContentInfoProps> = ({
 				initial={initial}
 				animate={animate}
 				exit={exit}
-				transition={{ ...transition, delay: 0.75 }}
+				transition={{ ...transition, delay }}
 			>
 				{firstContent}
-			</motion.h2>
-
+            </motion.h2>
+            
 			<motion.p
 				initial={initial}
 				animate={animate}
 				exit={exit}
-				transition={{ ...transition, delay: 1 }}
+				transition={{ ...transition, delay: delay + 0.25 }}
 			>
 				{secondContent}
 			</motion.p>

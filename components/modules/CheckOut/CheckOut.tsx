@@ -99,11 +99,13 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 							<BlankContentInfo
 								firstContent="Thank you for buying our dish"
 								secondContent="Enjoy your dish 😁😁😁"
+								delay={0.5}
 							/>
 						) : (
 							<BlankContentInfo
 								firstContent="No products in your cart"
 								secondContent="Select it first!"
+								delay={0.75}
 							/>
 						)}
 					</div>

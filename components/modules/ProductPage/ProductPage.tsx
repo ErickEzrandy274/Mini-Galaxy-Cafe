@@ -43,7 +43,7 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 					className="sm:hidden text-center text-white text-5xl mx-auto tracking-wider"
 				>
 					<p>Our</p>
-					<p>{type}...</p>
+					<p>{type}</p>
 				</motion.h2>
 
 				<ModalWrapper
