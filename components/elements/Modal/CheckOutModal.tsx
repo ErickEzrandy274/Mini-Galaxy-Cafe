@@ -14,11 +14,10 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 	handlePayment,
 }) => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const {
-		user: { uid },
-	} = useAuth();
+	const { user: { uid } } = useAuth();
+	const text: string = modalType === "Checkout" ? `order` : `pay`
 	const { push } = useRouter();
-	
+
 	const handleOrder = async () => {
 		setIsLoading(true);
 		await addBuyerProduct(productList!, uid);
@@ -50,14 +49,14 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 									{modalType} Confirmation
 								</h3>
 							</div>
+								
 							<p>
 								Please check again the number of products that
 								you want to order
 							</p>
 
-							<p>{`Are you sure want to ${
-								modalType === "Checkout" ? `order` : `pay`
-							}?`}</p>
+							<p>Are you sure want to {text}?</p>
+								
 							<div className="modal-action">
 								<div
 									onClick={() => setIsModalOpen(false)}
@@ -73,7 +72,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 									}
 									className="btn btn-outline btn-success"
 								>
-									{modalType === "Checkout" ? `Order` : `Pay`}
+									{text}
 								</div>
 							</div>
 						</>

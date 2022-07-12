@@ -18,7 +18,7 @@ export interface IncrementDecrementProps {
 
 export interface CheckOutModalButtonProps extends IncrementDecrementProps {
 	productList?: BuyerProduct[]
-	modalBtnType?: "Foods" | "Beverages" | "Snacks" | "Others"
+	modalBtnType: "Foods" | "Beverages" | "Snacks" | "Others"
 	to: "Checkout" | "Payment"
 }
 

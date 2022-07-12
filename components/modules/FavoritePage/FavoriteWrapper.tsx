@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import ProductCard from "../../elements/Card/ProductCard";
-import CheckOutModal from "../../elements/Modal/CheckOutModal";
 import { useAuth } from "../../../context/AuthContext";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { useSelector } from "react-redux";
-import ModalButton from "../../elements/Button/CheckOutButton";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 
 const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
