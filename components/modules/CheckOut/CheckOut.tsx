@@ -16,7 +16,9 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const dispatch = useDispatch();
-	const { user: { uid } } = useAuth()
+	const {
+		user: { uid },
+	} = useAuth();
 	const subtotal = data?.reduce((acc, item) => {
 		return acc + item.price * item.amount;
 	}, 0);
@@ -39,13 +41,17 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 			<div className="bg-gray-100/10 flex-1 p-4 rounded-lg">
 				{newData !== undefined && newData.length > 0 && !isPayed ? (
 					<>
-						<h1 className="font-semibold text-4xl text-center sm:text-left">Your Cart</h1>
+						<h1 className="font-semibold text-4xl text-center sm:text-left">
+							Your Cart
+						</h1>
 
 						<div className="mt-4 rounded-md overflow-x-auto shadow-md">
 							<CheckoutTable products={newData} />
 						</div>
 
-						<div className={`w-full flex flex-col items-center sm:items-end space-y-4 mt-4 p-2 text-white font-semibold`}>
+						<div
+							className={`w-full flex flex-col items-center sm:items-end space-y-4 mt-4 p-2 text-white font-semibold`}
+						>
 							<div className={`flex justify-between w-60`}>
 								<p>Subtotal</p>
 								<p>Rp {makeRupiahValue(subtotal)}</p>
@@ -81,7 +87,14 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 					</>
 				) : (
 					<div className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10 relative">
-						{isLoading ? <SecondaryLoader /> : isPayed ? (
+						{isLoading ? (
+							<div className="flex flex-col gap-20 relative">
+								<SecondaryLoader />
+								<h2 className="text-center text-lg sm:text-xl">
+									Our system is serving payment for your order
+								</h2>
+							</div>
+						) : isPayed ? (
 							<>
 								<h2>Thank you for buying our dish</h2>
 								<p>Enjoy your dish 😁😁😁</p>
