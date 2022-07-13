@@ -10,7 +10,7 @@ import ScrollButton from "../components/elements/Button/ScrollButton";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 
-const noAuthRequired = ["/", "/login", "/register"];
+export const noAuthRequired = ["/", "/login", "/register"];
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	const { pathname } = useRouter();
