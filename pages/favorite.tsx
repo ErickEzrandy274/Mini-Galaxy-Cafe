@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import PrimaryLoader from "../components/elements/Loader/PrimaryLoader";
 import FavoritePage from "../components/modules/FavoritePage/FavoritePage";
@@ -11,7 +12,7 @@ const favorite = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	useEffect(() => {
-		setIsLoading(true)
+		setIsLoading(true);
 		const fetchData = async () => {
 			const res = await getFavData(uid);
 			setData(res);
@@ -23,7 +24,16 @@ const favorite = () => {
 		}, 2000);
 	}, [uid]);
 
-	return isLoading ? <PrimaryLoader /> : <FavoritePage data={data} />;
+	return isLoading ? (
+		<PrimaryLoader />
+	) : (
+		<>
+			<Head>
+				<title>Mini Galaxy Cafe | Favorite</title>
+			</Head>
+			<FavoritePage data={data} />;
+		</>
+	);
 };
 
 export default favorite;

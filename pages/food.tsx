@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import PrimaryLoader from "../components/elements/Loader/PrimaryLoader";
 import ProductPage from "../components/modules/ProductPage/ProductPage";
@@ -12,7 +13,16 @@ const food = () => {
 		getData({ type: "Foods", setData, setIsLoading });
 	}, []);
 
-	return isLoading ? <PrimaryLoader /> : <ProductPage data={data} type="Foods" />;
+	return isLoading ? (
+		<PrimaryLoader />
+	) : (
+		<>
+			<Head>
+				<title>Mini Galaxy Cafe | Food</title>
+			</Head>
+			<ProductPage data={data} type="Foods" />;
+		</>
+	);
 };
 
 export default food;
