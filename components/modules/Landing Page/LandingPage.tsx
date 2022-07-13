@@ -31,9 +31,11 @@ const LandingPage = () => {
 			className="bg-[url('/rest-1.jpg')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen"
 		>
 			<div className="flex flex-col gap-14 sm:gap-24 px-5 sm:px-12 lg:px-20 relative z-10 py-32 xl:py-40">
-				<div className="lg:w-3/5 xl:w-2/5 flex flex-col gap-3 items-start relative z-10">
+				<motion.div
+					ref={ref}
+					className="lg:w-3/5 xl:w-2/5 flex flex-col gap-3 items-start relative z-10"
+				>
 					<motion.h1
-						ref={ref}
 						variants={titleVariant}
 						custom={"beverage"}
 						initial="hidden"
@@ -49,7 +51,7 @@ const LandingPage = () => {
 						custom={"beverage"}
 						initial="hidden"
 						animate={control}
-						className="text-lg font-semibold"
+						className="text-lg font-semibold text-gray-300/90"
 					>
 						This cafe is not only designed as a hangout place, but
 						can also be a kind of co-working space that is quite
@@ -71,7 +73,7 @@ const LandingPage = () => {
 							Go to Menu
 						</button>
 					</motion.div>
-				</div>
+				</motion.div>
 
 				{dataLanding.map(
 					(item: TemplateLandingProps, index: number) => {
