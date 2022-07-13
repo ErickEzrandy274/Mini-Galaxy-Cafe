@@ -26,6 +26,7 @@ const BlankContentInfo: React.FC<BlankContentInfoProps> = ({
 				animate={animate}
 				exit={exit}
 				transition={{ ...transition, delay: delay + 0.25 }}
+				className="text-3xl sm:text-4xl lg:text-5xl"
 			>
 				{secondContent}
 			</motion.p>
