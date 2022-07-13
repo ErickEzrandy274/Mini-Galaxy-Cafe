@@ -24,14 +24,12 @@ const favorite = () => {
 		}, 2000);
 	}, [uid]);
 
-	return isLoading ? (
-		<PrimaryLoader />
-	) : (
+	return (
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Favorite</title>
 			</Head>
-			<FavoritePage data={data} />;
+			{isLoading ? <PrimaryLoader /> : <FavoritePage data={data} />}
 		</>
 	);
 };

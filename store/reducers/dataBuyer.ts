@@ -25,7 +25,8 @@ const dataBuyerReducer = (
 					productList: newProductList,
 				};
 			} else {
-				productList[index] = { ...payload };
+				const { amount } = payload;
+				productList[index] = { ...productList[index], amount };
 				return {
 					...state,
 				};
@@ -42,12 +43,12 @@ const dataBuyerReducer = (
 					productList: newProductList,
 				};
 			} else {
-				productList[index] = { ...payload };
+				productList[index] = { ...productList[index], amount };
 				return {
 					...state,
 				};
 			}
-		
+
 		case RESET_PRODUCT:
 			return {
 				...state,

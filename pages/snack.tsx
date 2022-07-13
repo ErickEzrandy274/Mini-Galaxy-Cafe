@@ -13,14 +13,16 @@ const snack = () => {
 		getData({ type: "Snacks", setData, setIsLoading });
 	}, []);
 
-	return isLoading ? (
-		<PrimaryLoader />
-	) : (
+	return (
 		<>
 			<Head>
-				<title>Mini Galaxy Cafe | Snack</title>
+				<title>Mini Galaxy Cafe | Food</title>
 			</Head>
-			<ProductPage data={data} type="Snacks" />;
+			{isLoading ? (
+				<PrimaryLoader />
+			) : (
+				<ProductPage data={data} type="Snacks" />
+			)}
 		</>
 	);
 };

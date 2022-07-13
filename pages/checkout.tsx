@@ -24,14 +24,12 @@ const checkout = () => {
 		}, 2000);
 	}, [uid]);
 
-	return isLoading ? (
-		<PrimaryLoader />
-	) : (
+	return (
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Checkout</title>
 			</Head>
-			<CheckOut data={data} />;
+			{isLoading ? <PrimaryLoader /> : <CheckOut data={data} />}
 		</>
 	);
 };
