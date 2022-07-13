@@ -17,7 +17,3 @@ export const authNavs: navData[] = [
 	{ name: "Login", href: "/login" },
 	{ name: "Register", href: "/register" },
 ];
-
-export function classNames(...classes: any) {
-	return classes.filter(Boolean).join(" ");
-}

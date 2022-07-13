@@ -4,12 +4,13 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
-import { navigation, classNames, authNavs } from "./constant";
+import NewLink from "../../elements/NewLink/NewLink";
+import { navigation, authNavs, navData } from "./constant";
 import PreferredRoute from "./PreferredRoute";
 
 const Navbar = () => {
-	const { pathname, push } = useRouter();
 	const { user, logout } = useAuth();
+	const { pathname, push } = useRouter();
 
 	const handleLogout = () => {
 		logout();
@@ -17,7 +18,7 @@ const Navbar = () => {
 	};
 
 	return (
-		<Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10">
+		<Disclosure as="nav" className="bg-gray-800 sticky sm:p-2 top-0 z-10">
 			{({ open }) => (
 				<>
 					<div className="max-w-7xl mx-auto px-2 md:px-6 lg:px-8">
@@ -71,29 +72,14 @@ const Navbar = () => {
 
 								<div className="hidden md:block md:ml-3">
 									<div className="flex space-x-3">
-										{navigation.map(({ name, href }) => (
-											<Link
-												key={name}
-												href={href}
-												passHref
-											>
-												<a
-													className={classNames(
-														pathname === href
-															? "bg-gray-900 text-white"
-															: "text-gray-300 hover:bg-gray-700 hover:text-white",
-														"px-3 py-2 rounded-md tracking-wide font-medium"
-													)}
-													aria-current={
-														pathname === href
-															? "page"
-															: undefined
-													}
-												>
-													{name}
-												</a>
-											</Link>
-										))}
+										{navigation.map(
+											(item: navData, index: number) => (
+												<NewLink
+													{...item}
+													key={`NewLink-${index}`}
+												/>
+											)
+										)}
 									</div>
 								</div>
 							</div>
@@ -117,12 +103,11 @@ const Navbar = () => {
 									key={name}
 									as="a"
 									href={href}
-									className={classNames(
-										pathname === href
+									className={`block px-3 py-2 rounded-md text-base font-medium
+										${pathname === href}
 											? "bg-gray-900 text-white font-bold"
 											: "text-gray-300 hover:bg-gray-700 hover:text-white",
-										"block px-3 py-2 rounded-md text-base font-medium"
-									)}
+										`}
 									aria-current={
 										pathname === href ? "page" : undefined
 									}

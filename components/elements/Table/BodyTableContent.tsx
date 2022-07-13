@@ -3,11 +3,10 @@ import { makeRupiahValue } from "../../utils/function/function";
 import { useWindowSize } from "../../utils/function/useWindowSize";
 import { BodyTableContentProps } from "./interface";
 import { motion } from "framer-motion";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 
 const BodyTableContent: React.FC<BodyTableContentProps> = ({ name, type, amount, price, productsLength, index, delay }) => {
-	const isLastIndex = index === productsLength - 1;
+	const isLastIndex = delay === productsLength - 1;
 	const { width } = useWindowSize();
 	const { initial, animate, exit, transition } = pageTransition;
     
