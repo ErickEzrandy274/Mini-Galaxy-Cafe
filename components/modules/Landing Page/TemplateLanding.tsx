@@ -3,7 +3,11 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import ImageWrapper from "../../elements/ImageLanding/ImageWrapper";
-import { buttonVariant, contentVariant, titleVariant } from "../../utils/animation/LandingPageAnimation";
+import {
+	buttonVariant,
+	contentVariant,
+	titleVariant,
+} from "../../utils/animation/LandingPageAnimation";
 import {
 	customClassDesktopBeverages,
 	customClassDesktopNotBeverages,
@@ -50,7 +54,8 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 					custom={type}
 					initial="hidden"
 					animate={control}
-					className="font-bold text-4xl lg:text-5xl text-white leading-tight"
+					className={`font-bold text-4xl lg:text-5xl text-white text-center leading-tight 
+					${type === "beverage" ? `sm:text-left` : `sm:text-right`}`}
 				>
 					{title}
 				</motion.h2>
@@ -60,7 +65,9 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 					custom={type}
 					initial="hidden"
 					animate={control}
-					className="text-gray-300/90"
+					className={`text-gray-300/90 text-center ${
+						type === "beverage" ? `sm:text-left` : `sm:text-right`
+					}`}
 				>
 					{content}
 				</motion.span>
