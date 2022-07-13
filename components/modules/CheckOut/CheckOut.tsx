@@ -15,6 +15,7 @@ import PriceInfo from "../../elements/PriceInfo/PriceInfo";
 import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
+	const { user: { uid } } = useAuth();
 	const { initial, animate, exit, transition } = pageTransition;
 	const {
 		initial: secInit,
@@ -26,9 +27,6 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const dispatch = useDispatch();
-	const {
-		user: { uid },
-	} = useAuth();
 
 	const handlePayment = async () => {
 		setIsLoading(true);
