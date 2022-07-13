@@ -39,13 +39,13 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 
 			<ImageWrapper type="other" images={images} version="mobile" />
 
-			<div
+			<motion.div
+				ref={ref}
 				className={`flex flex-col items-center sm:items-start font-semibold ${
 					type !== "beverage" && `md:items-end md:text-right`
 				} gap-3 px-5 sm:px-3 sm:w-1/2 lg:w-2/5`}
 			>
 				<motion.h2
-					ref={ref}
 					variants={titleVariant}
 					custom={type}
 					initial="hidden"
@@ -60,6 +60,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 					custom={type}
 					initial="hidden"
 					animate={control}
+					className="text-gray-300/90"
 				>
 					{content}
 				</motion.span>
@@ -78,7 +79,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 						{linkName}
 					</button>
 				</motion.div>
-			</div>
+			</motion.div>
 
 			{type === "beverage" && (
 				<ImageWrapper
