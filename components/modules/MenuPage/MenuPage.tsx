@@ -1,5 +1,4 @@
 import React from "react";
-import { WelcomingCardProps } from "../../elements/Card/interface";
 import WelcomingCard from "../../elements/Card/WelcomingCard";
 import { WelcomingCardData } from "./data";
 import { motion } from "framer-motion";

@@ -10,7 +10,7 @@ export const WelcomingCardData: {
 	},
 	{
 		name: "Beverage",
-		image: "/Thai-Tea.jpg",
+		image: "/Eggnog.jpg",
 		href: "/beverage",
 	},
 	{
