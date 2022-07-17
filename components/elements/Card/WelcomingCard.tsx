@@ -37,7 +37,7 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 						...transition,
 						delay: 0.3 + 0.3 * delay,
 					}}
-					className="mb-4 text-2xl font-bold tracking-tight text-white"
+					className="mb-4 text-2xl font-bold text-white"
 				>
 					{name}
 				</motion.h5>
