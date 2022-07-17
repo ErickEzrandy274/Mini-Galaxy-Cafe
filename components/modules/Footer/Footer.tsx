@@ -10,7 +10,7 @@ const Footer = () => {
 					<p className="text-gray-300 text-sm">
 						Mini Galaxy Cafe was built using a modern style so that
 						the younger generation can use this cafe as a place to
-						study, hang out, and refresh. You can find out more
+						study, hang out, and refreshing. You can find out more
 						about this cafe by contacting our social media owner!
 					</p>
 				</div>
