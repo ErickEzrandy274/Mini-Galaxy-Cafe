@@ -25,6 +25,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 	const [ref, inView] = useInView();
 	const type: string = href.substring(1);
 	const { push } = useRouter();
+	const isBeverage: boolean = type === "beverage";
 
 	useEffect(() => {
 		control.start(inView ? "visible" : "hidden");
@@ -32,7 +33,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 
 	return (
 		<div className="flex flex-col sm:flex-row gap-5 items-center sm:py-10">
-			{type !== "beverage" && (
+			{!isBeverage && (
 				<ImageWrapper
 					type="other"
 					images={images}
@@ -46,7 +47,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 			<motion.div
 				ref={ref}
 				className={`flex flex-col items-center sm:items-start font-semibold ${
-					type !== "beverage" && `md:items-end md:text-right`
+					!isBeverage && `md:items-end md:text-right`
 				} gap-3 px-5 sm:px-3 sm:w-1/2 lg:w-2/5`}
 			>
 				<motion.h2
@@ -55,7 +56,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 					initial="hidden"
 					animate={control}
 					className={`font-bold text-4xl lg:text-5xl text-white text-center leading-tight 
-					${type === "beverage" ? `sm:text-left` : `sm:text-right`}`}
+					${isBeverage ? `sm:text-left` : `sm:text-right`}`}
 				>
 					{title}
 				</motion.h2>
@@ -66,7 +67,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 					initial="hidden"
 					animate={control}
 					className={`text-gray-300/90 text-center ${
-						type === "beverage" ? `sm:text-left` : `sm:text-right`
+						isBeverage ? `sm:text-left` : `sm:text-right`
 					}`}
 				>
 					{content}
@@ -88,7 +89,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 				</motion.div>
 			</motion.div>
 
-			{type === "beverage" && (
+			{isBeverage && (
 				<ImageWrapper
 					type="beverage"
 					images={images}

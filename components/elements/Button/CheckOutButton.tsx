@@ -10,7 +10,8 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	modalBtnType,
 	to,
 }) => {
-	const isEmpty = to === "Checkout" && productList!.length === 0;
+	const isCheckOut: boolean = to === "Checkout"
+	const isEmpty = isCheckOut && !productList!.length;
 	const htmlFor = to === "Payment" ? `confirmationModal` : isEmpty ? `` : `confirmationModal`
 	const { initial, animate, exit, transition } = buttonCheckOutAnimation;
 	const newTransition = to === "Payment" ? { ...transition, delay: 0.2 + 0.2 * (productList!.length) } : transition;
@@ -25,14 +26,15 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 				htmlFor={htmlFor}
 				onClick={onClick}
 				className={`btn modal-button text-lg shadow-xl w-36 text-base-200 text-center ${
-					to === "Checkout" && isEmpty
+					isCheckOut && isEmpty
 						? `cursor-not-allowed bg-gray-400 hover:bg-gray-400 border-none`
 						: `btn-primary hover:text-white`
 				}`}
 			>
-				{to === "Checkout" ? `Check Out` : `Pay`}
+				{isCheckOut ? `Check Out` : `Pay`}
 			</motion.label>
-			{to === "Checkout" && <InfoTooltip type={modalBtnType} productList={productList!} />}
+			
+			{isCheckOut && <InfoTooltip type={modalBtnType} productList={productList!} />}
 		</>
 	);
 };
