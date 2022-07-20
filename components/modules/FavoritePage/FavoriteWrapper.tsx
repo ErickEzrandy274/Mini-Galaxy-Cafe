@@ -12,9 +12,8 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 	const productList: BuyerProduct[] = useSelector(
 		(state: any) => state.buyerProduct.productList
 	);
-	const noData =
-		data.listFavItem === undefined || data.listFavItem.length === 0;
-
+	
+	const isThereData = !!data?.listFavItem?.length
 	const { user: { displayName } } = useAuth();
 	const { initial, animate, exit, transition } = menutitleAnimation;
 
@@ -27,7 +26,7 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 					exit={exit}
 					transition={transition}
 					className={`hidden sm:block text-white text-5xl lg:text-6xl mx-auto tracking-wider font-semibold 
-					${noData ? `w-full text-center` : `md:w-2/3 md:text-right`}`}
+					${!isThereData ? `w-full text-center` : `md:w-2/3 md:text-right`}`}
 				>
 					{displayName} Favorites...
 				</motion.h2>
@@ -43,7 +42,7 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 					<p>Favorites...</p>
 				</motion.h2>
 
-				{!noData && (
+				{isThereData && (
 					<ModalWrapper
 						to="Checkout"
 						productList={productList}
@@ -53,7 +52,7 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 				)}
 			</div>
 
-			{noData ? (
+			{!isThereData ? (
 				<div className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10">
 					<BlankContentInfo
 						firstContent="No favorites product"

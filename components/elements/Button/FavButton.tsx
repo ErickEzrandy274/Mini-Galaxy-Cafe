@@ -35,7 +35,7 @@ const FavButton: React.FC<FavButtonProps> = ({ cardProps, setRemoved }) => {
 		<button onClick={handleClick}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				className="h-6 w-6 transition-all duration-500"
+				className="h-6 w-6 transition-all duration-300 ease-in-out"
 				fill={fav ? "#FFD700" : "none"}
 				viewBox="0 0 24 24"
 				stroke={fav ? "#FFD700" : "currentColor"}
