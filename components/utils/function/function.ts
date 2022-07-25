@@ -53,9 +53,9 @@ const checkPassword = (password: string): FeedbackType => {
 		newFeedback = {
 			...newFeedback,
 			disable: true,
-			message: `Password minimal mengandung delapan karakter, 
-				setidaknya satu huruf besar, satu huruf kecil,
-					satu angka, dan satu karakter khusus!`,
+			message: `Password must contain at least eight characters, 
+				at least one uppercase letter, one lowercase letter,
+				one number, and one special character!`,
 		};
 	}
 	return newFeedback;
@@ -75,7 +75,7 @@ const checkEmail = (email: string): FeedbackType => {
 		newFeedback = {
 			type: "email",
 			disable: true,
-			message: `Email Anda tidak valid!`,
+			message: `Your email is invalid!`,
 		};
 	}
 	return newFeedback;
@@ -100,7 +100,7 @@ const checkNickName = (item: DisabilityButtonParamType): FeedbackType => {
 			newFeedback = {
 				type: "nickname",
 				disable: true,
-				message: `Nickname Anda tidak valid!`,
+				message: `Your nickname is invalid!`,
 			};
 		}
 	}
