@@ -9,10 +9,12 @@ const NewLink: React.FC<navData> = ({ name, href }) => {
 	return (
 		<Link href={href} passHref>
 			<a
-				className={`px-3 py-2 rounded-md tracking-wide font-medium
-					${pathname === href
-						? 'bg-gray-900 text-white'
-						: 'text-gray-300 hover:bg-gray-700 hover:text-white'}
+				className={`px-3 py-2 rounded-md tracking-wide
+					${
+						pathname === href
+							? "bg-gray-900 text-white font-semibold"
+							: "text-gray-300 hover:bg-gray-700 hover:text-white font-medium"
+					}
 					`}
 				aria-current={pathname === href ? "page" : undefined}
 			>
