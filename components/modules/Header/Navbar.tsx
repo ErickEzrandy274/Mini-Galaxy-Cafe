@@ -103,10 +103,12 @@ const Navbar = () => {
 									key={name}
 									as="a"
 									href={href}
-									className={`block px-3 py-2 rounded-md text-base font-medium
-										${pathname === href}
-											? "bg-gray-900 text-white font-bold"
-											: "text-gray-300 hover:bg-gray-700 hover:text-white",
+									className={`px-3 py-2 rounded-md text-base
+										${
+											pathname === href
+												? "bg-gray-900 text-white font-semibold"
+												: "text-gray-300 hover:bg-gray-700 hover:text-white font-medium"
+										}
 										`}
 									aria-current={
 										pathname === href ? "page" : undefined
