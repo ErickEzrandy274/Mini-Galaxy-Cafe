@@ -19,8 +19,8 @@ const BlankContentInfo: React.FC<BlankContentInfoProps> = ({
 				transition={{ ...transition, delay }}
 			>
 				{firstContent}
-            </motion.h2>
-            
+			</motion.h2>
+
 			<motion.p
 				initial={initial}
 				animate={animate}
