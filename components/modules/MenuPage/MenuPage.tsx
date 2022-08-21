@@ -33,17 +33,15 @@ const MenuPage = () => {
 			</motion.div>
 
 			<div className="flex lg:flex-row flex-col gap-8 justify-center items-center">
-				{WelcomingCardData.map(
-					(item: any, index: number) => {
-						return (
-							<WelcomingCard
-								key={"welcomingCard-" + index}
-								{...item}
-								delay={index}
-							/>
-						);
-					}
-				)}
+				{WelcomingCardData.map((item: any, index: number) => {
+					return (
+						<WelcomingCard
+							key={"welcomingCard-" + index}
+							{...item}
+							delay={index}
+						/>
+					);
+				})}
 			</div>
 		</motion.div>
 	);

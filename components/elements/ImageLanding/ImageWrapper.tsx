@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { ImageWrapperProps } from "./interface";
 
 const ImageWrapper: React.FC<ImageWrapperProps> = ({
@@ -17,10 +17,10 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 			opacity: 1,
 			scale: 1,
 			transition: {
-				duration: .75,
+				duration: 0.75,
 				stiffness: 120,
 				mass: 2,
-				delay: .2 * index,
+				delay: 0.2 * index,
 			},
 		}),
 		hidden: { opacity: 0, scale: 0 },
@@ -46,9 +46,7 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 						className={
 							version === "mobile"
 								? `w-1/2`
-								: `hidden ${
-										index === 0 ? `lg:block` : `sm:block`
-								  }`
+								: `hidden ${index === 0 ? `lg:block` : `sm:block`}`
 						}
 						key={"image-" + index}
 					>
@@ -59,11 +57,9 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 							custom={type === "beverage" ? newDelay : index + 1}
 							animate={control}
 							src={item}
-							alt={item.substring(1, item.length - 4)}
+							alt={item.slice(1, -4)}
 							className={
-								version === "mobile"
-									? `h-[100%]`
-									: customClassDesktop![index]
+								version === "mobile" ? `h-[100%]` : customClassDesktop![index]
 							}
 						/>
 					</div>

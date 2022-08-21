@@ -1,5 +1,8 @@
 import React from "react";
-import { checkDisabilityButton, FeedbackType } from "../../utils/function/function";
+import {
+	checkDisabilityButton,
+	FeedbackType,
+} from "../../utils/function/function";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { AuthFormProps } from "./interface";
@@ -13,14 +16,14 @@ const AuthForm: React.FC<AuthFormProps> = ({
 	password,
 	nickname,
 }) => {
-    const dataError: FeedbackType[] = checkDisabilityButton({
+	const dataError: FeedbackType[] = checkDisabilityButton({
 		typeForm,
 		email,
 		password,
 		nickname,
-    });
+	});
 
-    const disableButton = dataError.map((item: FeedbackType) => item.disable)
+	const disableButton = dataError.map((item: FeedbackType) => item.disable);
 
 	return (
 		<form
@@ -28,8 +31,13 @@ const AuthForm: React.FC<AuthFormProps> = ({
 			className="flex flex-col gap-4"
 		>
 			{typeForm === "Register" && (
-				<Input name="nickname" handleChange={handleChange} error={dataError[2]} />
+				<Input
+					name="nickname"
+					handleChange={handleChange}
+					error={dataError[2]}
+				/>
 			)}
+
 			<Input name="email" handleChange={handleChange} error={dataError[1]} />
 			<Input name="password" handleChange={handleChange} error={dataError[0]} />
 
