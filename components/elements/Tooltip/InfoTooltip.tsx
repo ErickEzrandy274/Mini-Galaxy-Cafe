@@ -9,9 +9,7 @@ const InfoTooltip: React.FC<TooltipProps> = ({ productList, type }) => {
 		productList.length > 0
 			? `Finish your order!`
 			: `Buy our ${
-					type !== "Others"
-						? type.substring(0, type.length - 1).toLowerCase()
-						: `dish`
+					type !== "Others" ? type.slice(0, -1).toLowerCase() : `dish`
 			  } to enable this button!`;
 
 	return (
@@ -19,7 +17,7 @@ const InfoTooltip: React.FC<TooltipProps> = ({ productList, type }) => {
 			initial={initial}
 			animate={animate}
 			exit={exit}
-			transition={{...transition, delay: 1.25}}
+			transition={{ ...transition, delay: 1.25 }}
 			className="tooltip tooltip-bottom tooltip-open tooltip-info"
 			data-tip={info}
 		></motion.div>
