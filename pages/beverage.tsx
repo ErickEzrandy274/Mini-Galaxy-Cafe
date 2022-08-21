@@ -16,7 +16,7 @@ const beverage = () => {
 	return (
 		<>
 			<Head>
-				<title>Mini Galaxy Cafe | Food</title>
+				<title>Mini Galaxy Cafe | Beverage</title>
 			</Head>
 			{isLoading ? (
 				<PrimaryLoader />
