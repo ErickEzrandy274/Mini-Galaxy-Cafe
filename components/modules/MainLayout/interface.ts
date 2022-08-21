@@ -1,7 +1,7 @@
-import React from "react";
+import { ReactNode } from "react";
 
 export interface MainLayoutProps {
-	children: React.ReactNode
+	children: ReactNode;
 }
 
 export const nav: string[] = [
