@@ -11,10 +11,7 @@ const ScrollButton = () => {
 	useEffect(() => {
 		window.onscroll = () => {
 			setVisible(
-				document.body.scrollTop > 50 ||
-					document.documentElement.scrollTop > 50
-					? true
-					: false
+				document.body.scrollTop > 50 || document.documentElement.scrollTop > 50
 			);
 		};
 	}, []);

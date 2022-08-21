@@ -2,9 +2,10 @@ import React from "react";
 import { AlertProps } from "./interface";
 
 const Alert: React.FC<AlertProps> = ({ error, bgColor }) => {
-    
 	return (
-		<div className={`alert alert-error shadow-lg font-bold mx-auto text-white text-lg justify-center ${bgColor}`}>
+		<div
+			className={`alert alert-error shadow-lg font-bold mx-auto text-white text-lg justify-center ${bgColor}`}
+		>
 			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

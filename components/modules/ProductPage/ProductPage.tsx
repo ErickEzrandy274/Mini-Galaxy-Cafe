@@ -22,9 +22,7 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 
 	return (
 		<FavContextProvider>
-			<div
-				className="flex flex-col md:flex-row mx-auto md:mx-10 gap-5 md:gap-0 font-semibold"
-			>
+			<div className="flex flex-col md:flex-row mx-auto md:mx-10 gap-5 md:gap-0 font-semibold">
 				<motion.h2
 					initial={titleInitial}
 					animate={titleAnimate}

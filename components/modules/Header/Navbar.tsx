@@ -30,19 +30,11 @@ const Navbar = () => {
 									text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
 										focus:ring-2 focus:ring-inset focus:ring-white"
 								>
-									<span className="sr-only">
-										Open main menu
-									</span>
+									<span className="sr-only">Open main menu</span>
 									{open ? (
-										<XIcon
-											className="block h-6 w-6"
-											aria-hidden="true"
-										/>
+										<XIcon className="block h-6 w-6" aria-hidden="true" />
 									) : (
-										<MenuIcon
-											className="block h-6 w-6"
-											aria-hidden="true"
-										/>
+										<MenuIcon className="block h-6 w-6" aria-hidden="true" />
 									)}
 								</Disclosure.Button>
 							</div>
@@ -72,14 +64,9 @@ const Navbar = () => {
 
 								<div className="hidden md:block md:ml-3">
 									<div className="flex space-x-3">
-										{navigation.map(
-											(item: navData, index: number) => (
-												<NewLink
-													{...item}
-													key={`NewLink-${index}`}
-												/>
-											)
-										)}
+										{navigation.map((item: navData, index: number) => (
+											<NewLink {...item} key={`NewLink-${index}`} />
+										))}
 									</div>
 								</div>
 							</div>
@@ -110,9 +97,7 @@ const Navbar = () => {
 												: "text-gray-300 hover:bg-gray-700 hover:text-white font-medium"
 										}
 										`}
-									aria-current={
-										pathname === href ? "page" : undefined
-									}
+									aria-current={pathname === href ? "page" : undefined}
 								>
 									{name}
 								</Disclosure.Button>

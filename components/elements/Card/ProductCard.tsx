@@ -59,19 +59,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
 				<div className="card-body text-white tracking-wide">
 					<h2 className="card-title font-semibold">{name}</h2>
+
 					<div className="flex justify-between pb-2">
 						<p className="text-lg">Rp {makeRupiahValue(price)}</p>
-						<FavButton
-							setRemoved={setRemoved}
-							cardProps={cardProps}
-						/>
+						<FavButton setRemoved={setRemoved} cardProps={cardProps} />
 					</div>
+
 					<div className="card-actions items-center justify-end">
 						{isModifierButtonOpen || indexProduct !== -1 ? (
 							<ModifierButton
-								setIsModifierButtonOpen={
-									setIsModifierButtonOpen
-								}
+								setIsModifierButtonOpen={setIsModifierButtonOpen}
 								{...cardProps}
 								index={index}
 								amount={productList[indexProduct].amount}

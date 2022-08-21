@@ -10,10 +10,20 @@ export interface RegisterInputType extends LoginInputType {
 }
 
 export interface TypeForm {
-    typeForm: "Login" | "Register";
+	typeForm: "Login" | "Register";
 }
 
 export interface BaseAuthProps extends TypeForm {
-    children: React.ReactNode
-    error: string
+	children: React.ReactNode;
+	error: string;
 }
+
+export const loginObj = {
+	email: "",
+	password: "",
+};
+
+export const registerObj = {
+	...loginObj,
+	nickname: "",
+};

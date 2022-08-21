@@ -4,20 +4,15 @@ import { useAuth } from "../../../context/AuthContext";
 import AuthForm from "../../elements/Form/AuthForm";
 import HandlerAccount from "../../elements/HandlerAccount/HandlerAccount";
 import BaseAuth from "./BaseAuth";
-import { LoginInputType } from "./interface";
+import { LoginInputType, loginObj } from "./interface";
 
 const Login = () => {
-	const router = useRouter();
+	const { push } = useRouter();
 	const { user, login, error, setError } = useAuth();
-	const [data, setData] = useState<LoginInputType>({
-		email: "",
-		password: "",
-	});
+	const [data, setData] = useState<LoginInputType>(loginObj);
 
 	const handleChange = (e: any) => {
-		const target = e.target;
-		const name = target.name;
-		const value = target.value;
+		const { name, value } = e.target;
 
 		setData({
 			...data,
@@ -28,28 +23,28 @@ const Login = () => {
 	const handleLogin = async (e: any) => {
 		e.preventDefault();
 		await login(data.email, data.password);
-		router.push("/menu");
+		push("/menu");
 	};
 
 	useEffect(() => {
-		if (user) {
-			router.push("/menu");
-		}
+		user && push("/menu");
 
 		if (error) {
 			setTimeout(() => {
-				setData({
-					email: "",
-					password: "",
-				});
+				setData(loginObj);
 				setError(null);
 			}, 3500);
 		}
-	}, [user, error, router, setError]);
+	}, [user, error, push, setError]);
 
 	return (
-        <BaseAuth typeForm="Login" error={error}>
-            <AuthForm typeForm="Login" handleChange={handleChange} handleLogin={handleLogin} {...data} />
+		<BaseAuth typeForm="Login" error={error}>
+			<AuthForm
+				typeForm="Login"
+				handleChange={handleChange}
+				handleLogin={handleLogin}
+				{...data}
+			/>
 
 			<HandlerAccount
 				href="/register"

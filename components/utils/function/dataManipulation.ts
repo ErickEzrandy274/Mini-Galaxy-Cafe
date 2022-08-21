@@ -1,4 +1,11 @@
-import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import {
+	collection,
+	deleteDoc,
+	doc,
+	getDoc,
+	getDocs,
+	setDoc,
+} from "firebase/firestore";
 import React, { SetStateAction } from "react";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { database, imageRef } from "../firebase/firebase";
@@ -58,8 +65,7 @@ export const handleFav = async (args: handleFavType, pathname: string) => {
 				listFavItem: [...prev],
 			});
 
-			if (pathname === "/favorite" && prev.length === 0)
-				window.location.reload();
+			pathname === "/favorite" && prev.length === 0 && window.location.reload();
 			return;
 		}
 
@@ -102,4 +108,4 @@ export const getBuyerProduct = async (uid: string) => {
 export const deleteBuyerProduct = async (uid: string) => {
 	const buyerRef = doc(database, "Buyer", uid);
 	await deleteDoc(buyerRef);
-}
+};

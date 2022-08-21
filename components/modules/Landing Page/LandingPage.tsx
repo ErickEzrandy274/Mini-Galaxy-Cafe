@@ -53,10 +53,10 @@ const LandingPage = () => {
 						animate={control}
 						className="text-lg font-semibold text-gray-300/90"
 					>
-						This cafe is not only designed as a hangout place, but
-						can also be a kind of co-working space that is quite
-						interesting and comfortable. Creative work processes can
-						also be born from the interior of a small cafe like this
+						This cafe is not only designed as a hangout place, but can also be a
+						kind of co-working space that is quite interesting and comfortable.
+						Creative work processes can also be born from the interior of a
+						small cafe like this
 					</motion.span>
 
 					<motion.div
@@ -75,16 +75,9 @@ const LandingPage = () => {
 					</motion.div>
 				</motion.div>
 
-				{dataLanding.map(
-					(item: TemplateLandingProps, index: number) => {
-						return (
-							<TemplateLanding
-								{...item}
-								key={"TemplateLanding-" + index}
-							/>
-						);
-					}
-				)}
+				{dataLanding.map((item: TemplateLandingProps, index: number) => {
+					return <TemplateLanding {...item} key={"TemplateLanding-" + index} />;
+				})}
 			</div>
 		</motion.div>
 	);
