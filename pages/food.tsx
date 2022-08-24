@@ -1,28 +1,37 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
-import PrimaryLoader from "../components/elements/Loader/PrimaryLoader";
+import React from "react";
 import ProductPage from "../components/modules/ProductPage/ProductPage";
-import { getData } from "../components/utils/function/dataManipulation";
+import { BASE_URL, getHeaders } from "../components/utils/api";
 
-const food = () => {
-	const [data, setData] = useState<any[]>([]);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
+export async function getServerSideProps() {
+	try {
+		const response = await fetch(`${BASE_URL}Foods`, getHeaders);
 
-	useEffect(() => {
-		getData({ type: "Foods", setData, setIsLoading });
-	}, []);
+		const json = await response.json();
+		const data = json.map(({ _fieldsProto }: any) => {
+			const { dataId, name, price, image } = _fieldsProto;
+			return {
+				dataId: dataId.stringValue,
+				name: name.stringValue,
+				price: price.integerValue,
+				image: image.stringValue,
+			};
+		});
 
+		return { props: { data } };
+	} catch (error) {
+		console.error("Error:", error);
+	}
+}
+
+const food = ({ data }: any) => {
 	return (
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Food</title>
 			</Head>
-			{isLoading ? (
-				<PrimaryLoader />
-			) : (
-				<ProductPage data={data} type="Foods" />
-			)}
+			<ProductPage data={data} type="Foods" />
 		</>
 	);
 };
