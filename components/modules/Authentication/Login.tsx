@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import AuthForm from "../../elements/Form/AuthForm";
 import HandlerAccount from "../../elements/HandlerAccount/HandlerAccount";
+import { getBuyerProduct } from "../../utils/function/dataManipulation";
 import BaseAuth from "./BaseAuth";
 import { LoginInputType, loginObj } from "./interface";
 
 const Login = () => {
 	const { push } = useRouter();
-	const { user, login, error, setError } = useAuth();
+	const { user, login, error, setError, setUserStuff } = useAuth();
 	const [data, setData] = useState<LoginInputType>(loginObj);
 
 	const handleChange = (e: any) => {
@@ -27,7 +28,14 @@ const Login = () => {
 	};
 
 	useEffect(() => {
-		user && push("/menu");
+		if (user) {
+			const fetchData = async () => {
+				const { buyerProduct } = await getBuyerProduct(user.uid);
+				setUserStuff(buyerProduct);
+			};
+			fetchData();
+			push("/menu");
+		}
 
 		if (error) {
 			setTimeout(() => {
@@ -35,7 +43,7 @@ const Login = () => {
 				setError(null);
 			}, 3500);
 		}
-	}, [user, error, push, setError]);
+	}, [user, error, push, setError, setUserStuff]);
 
 	return (
 		<BaseAuth typeForm="Login" error={error}>

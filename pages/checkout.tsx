@@ -7,7 +7,10 @@ import { getBuyerProduct } from "../components/utils/function/dataManipulation";
 import { useAuth } from "../context/AuthContext";
 
 const checkout = () => {
-	const { user: { uid } } = useAuth();
+	const {
+		user: { uid },
+		setUserStuff,
+	} = useAuth();
 	const [data, setData] = useState<any[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -16,13 +19,14 @@ const checkout = () => {
 		const fetchData = async () => {
 			const { buyerProduct } = await getBuyerProduct(uid);
 			setData(buyerProduct);
+			setUserStuff(buyerProduct);
 		};
 
 		fetchData();
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 1000);
-	}, [uid]);
+	}, [uid, setUserStuff]);
 
 	return (
 		<>
