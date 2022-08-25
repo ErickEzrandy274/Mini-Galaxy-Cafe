@@ -20,10 +20,6 @@ export async function getServerSideProps() {
 }
 
 const snack = ({ data }: any) => {
-	useEffect(() => {
-		reloadWarning();
-	}, []);
-
 	return (
 		<>
 			<Head>
