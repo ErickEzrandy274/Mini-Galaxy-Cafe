@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React from "react";
 import MenuPage from "../components/modules/MenuPage/MenuPage";
-import { reloadWarning } from "../components/utils/function/function";
 
 const menu = () => {
 	return (
