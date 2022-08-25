@@ -15,7 +15,10 @@ import PriceInfo from "../../elements/PriceInfo/PriceInfo";
 import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
-	const { user: { uid } } = useAuth();
+	const {
+		user: { uid },
+		setUserStuff,
+	} = useAuth();
 	const { initial, animate, exit, transition } = pageTransition;
 	const {
 		initial: secInit,
@@ -34,6 +37,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		setIsPayed(true);
 		await deleteBuyerProduct(uid);
 		dispatch(reset_product());
+		setUserStuff([]);
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 500);
