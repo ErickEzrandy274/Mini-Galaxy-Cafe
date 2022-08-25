@@ -22,6 +22,7 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 	const [user, setUser] = useState<any>(null);
 	const [error, setError] = useState<any>(null);
 	const [loading, setLoading] = useState(true);
+	const [userStuff, setUserStuff] = useState<any[]>([]);
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -67,7 +68,16 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 
 	return (
 		<AuthContext.Provider
-			value={{ user, login, register, logout, error, setError }}
+			value={{
+				user,
+				login,
+				register,
+				logout,
+				error,
+				setError,
+				userStuff,
+				setUserStuff,
+			}}
 		>
 			{loading ? null : children}
 		</AuthContext.Provider>

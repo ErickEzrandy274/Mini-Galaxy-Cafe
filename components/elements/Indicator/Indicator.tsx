@@ -9,7 +9,7 @@ const Indicator: React.FC<IndicatorProps> = ({
 	return (
 		<div className="indicator">
 			<span
-				className={`indicator-item badge ${className} font-semibold tracking-wide`}
+				className={`indicator-item badge ${className} font-semibold text-sm tracking-wide`}
 			>
 				{infoIndicator}
 			</span>

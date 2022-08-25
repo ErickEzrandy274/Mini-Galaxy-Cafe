@@ -21,7 +21,7 @@ const Navbar = () => {
 		<Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10">
 			{({ open }) => (
 				<>
-					<div className="max-w-7xl mx-auto px-2 md:px-6 lg:px-8">
+					<div className="max-w-7xl mx-auto p-1.5 md:px-6 lg:px-8">
 						<div className="relative flex items-center justify-between h-24 md:h-14">
 							<div className="absolute inset-y-0 right-0 flex items-center md:hidden">
 								{/* Mobile menu button*/}

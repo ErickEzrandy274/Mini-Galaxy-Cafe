@@ -3,6 +3,22 @@ import React, { SetStateAction } from "react";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { database } from "../firebase/firebase";
 
+export const setData = (documents: any[]) => {
+	const data = documents.map(({ name: productName, fields }: any) => {
+		const { name, price, image } = fields;
+		const dataId = productName.split("/").at(-1);
+
+		return {
+			dataId,
+			name: name.stringValue,
+			price: price.integerValue,
+			image: image.stringValue,
+		};
+	});
+
+	return data;
+};
+
 type handleFavType = {
 	fav: boolean;
 	setFav: React.Dispatch<SetStateAction<boolean>>;

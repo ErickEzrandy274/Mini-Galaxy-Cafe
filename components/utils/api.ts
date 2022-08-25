@@ -1,5 +1,5 @@
 export const BASE_URL =
-	"https://v1.nocodeapi.com/erickezrandy274/fbsdk/XZLzexRbXCsyMSBQ/firestore/allDocuments?collectionName=";
+	"https://firestore.googleapis.com/v1/projects/mini-galaxy-cafe/databases/(default)/documents/";
 
 export const getHeaders = {
 	method: "get",
