@@ -20,10 +20,6 @@ export async function getServerSideProps() {
 }
 
 const beverage = ({ data }: any) => {
-	useEffect(() => {
-		reloadWarning();
-	}, []);
-
 	return (
 		<>
 			<Head>

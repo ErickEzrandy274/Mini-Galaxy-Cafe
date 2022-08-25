@@ -5,10 +5,6 @@ import MenuPage from "../components/modules/MenuPage/MenuPage";
 import { reloadWarning } from "../components/utils/function/function";
 
 const menu = () => {
-	useEffect(() => {
-		reloadWarning();
-	}, []);
-
 	return (
 		<>
 			<Head>
