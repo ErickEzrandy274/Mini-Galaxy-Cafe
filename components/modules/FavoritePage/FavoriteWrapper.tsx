@@ -13,7 +13,7 @@ const FavoriteWrapper = ({ data }: any) => {
 		(state: any) => state.buyerProduct.productList
 	);
 
-	const isThereData = !!data?.length;
+	const isThereData = !!data?.listFavItem?.length;
 	const {
 		user: { displayName },
 	} = useAuth();
@@ -64,7 +64,7 @@ const FavoriteWrapper = ({ data }: any) => {
 				</div>
 			) : (
 				<div className="flex flex-wrap m-5">
-					{data?.map((item: any, index: number) => {
+					{data?.listFavItem?.map((item: any, index: number) => {
 						return (
 							<ProductCard
 								key={item.type + "-" + item.dataId}

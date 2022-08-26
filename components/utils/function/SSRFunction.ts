@@ -6,7 +6,7 @@ export async function getFavoriteData(ctx: GetServerSidePropsContext) {
 	const uid = nookies.get(ctx)?.userId;
 
 	try {
-		const { listFavItem: data } = await getFavData(uid);
+		const data = await getFavData(uid);
 
 		return { props: { data } };
 	} catch (error) {
