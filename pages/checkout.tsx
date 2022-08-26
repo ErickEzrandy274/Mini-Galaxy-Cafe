@@ -1,41 +1,20 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
-import PrimaryLoader from "../components/elements/Loader/PrimaryLoader";
+import React from "react";
 import CheckOut from "../components/modules/CheckOut/CheckOut";
-import { getBuyerProduct } from "../components/utils/function/dataManipulation";
-import { useAuth } from "../context/AuthContext";
+import { getBuyerData } from "../components/utils/function/SSRFunction";
 
-const checkout = () => {
-	const {
-		user: { uid },
-		setUserStuff,
-	} = useAuth();
-	const [data, setData] = useState<any[]>([]);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
-
-	useEffect(() => {
-		setIsLoading(true);
-		const fetchData = async () => {
-			const { buyerProduct } = await getBuyerProduct(uid);
-			setData(buyerProduct);
-			setUserStuff(buyerProduct);
-		};
-
-		fetchData();
-		setTimeout(() => {
-			setIsLoading(false);
-		}, 1000);
-	}, [uid, setUserStuff]);
-
+const checkout = ({ data }: any) => {
 	return (
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Checkout</title>
 			</Head>
-			{isLoading ? <PrimaryLoader /> : <CheckOut data={data} />}
+			<CheckOut data={data} />
 		</>
 	);
 };
 
 export default checkout;
+
+export const getServerSideProps = getBuyerData;
