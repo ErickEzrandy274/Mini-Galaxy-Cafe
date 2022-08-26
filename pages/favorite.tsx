@@ -2,7 +2,7 @@
 import Head from "next/head";
 import React from "react";
 import FavoritePage from "../components/modules/FavoritePage/FavoritePage";
-import { getFavoriteData } from "../components/utils/function/function";
+import { getFavoriteData } from "../components/utils/function/SSRFunction";
 
 const favorite = ({ data }: any) => {
 	return (

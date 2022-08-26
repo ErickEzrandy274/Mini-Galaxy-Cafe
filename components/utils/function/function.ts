@@ -2,10 +2,6 @@ import {
 	LoginInputType,
 	TypeForm,
 } from "../../modules/Authentication/interface";
-import { getFavData } from "./dataManipulation";
-import { GetServerSidePropsContext } from "next";
-import nookies from "nookies";
-
 export interface DisabilityButtonParamType extends TypeForm, LoginInputType {
 	nickname?: string;
 }
@@ -129,15 +125,3 @@ export const reloadWarning = () => {
 	window.addEventListener("beforeunload", unloadCallback);
 	return () => window.removeEventListener("beforeunload", unloadCallback);
 };
-
-export async function getFavoriteData(ctx: GetServerSidePropsContext) {
-	const uid = nookies.get(ctx)?.userId;
-
-	try {
-		const { listFavItem: data } = await getFavData(uid);
-
-		return { props: { data } };
-	} catch (error) {
-		console.error("Error:", error);
-	}
-}
