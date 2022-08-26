@@ -7,10 +7,12 @@ import {
 	updateProfile,
 	setPersistence,
 	browserSessionPersistence,
+	onIdTokenChanged,
 } from "firebase/auth";
 import { MainLayoutProps } from "../components/modules/MainLayout/interface";
 import { auth } from "../components/utils/firebase/firebase";
 import { extractError } from "../components/utils/function/function";
+import nookies from "nookies";
 
 const AuthContext = createContext<any>({});
 
@@ -25,17 +27,23 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 	const [userStuff, setUserStuff] = useState<any[]>([]);
 
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
+		const unsubscribe = onIdTokenChanged(auth, async (user) => {
 			if (user) {
+				const { uid, email, displayName, refreshToken: token } = user;
+
 				setUser({
-					uid: user.uid,
-					email: user.email,
-					displayName: user.displayName,
-					token: user.refreshToken,
+					uid,
+					email,
+					displayName,
+					token,
 				});
+
+				nookies.set(null, "userId", uid);
 			} else {
 				setUser(null);
+				nookies.destroy(null, "userId");
 			}
+
 			setLoading(false);
 		});
 
@@ -65,6 +73,13 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 		setUser(null);
 		await signOut(auth);
 	};
+
+	// const setToken = (token = "") => {
+	// 	nookies.destroy(null, "token");
+	// 	nookies.set(null, "token", token, {
+	// 		path: "/",
+	// 	});
+	// };
 
 	return (
 		<AuthContext.Provider

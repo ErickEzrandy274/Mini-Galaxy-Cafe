@@ -52,7 +52,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 			className="mx-4 sm:mx-10"
 		>
 			<div className="bg-gray-100/10 flex flex-col gap-5 p-4 sm:p-10 rounded-lg">
-				{newData !== undefined && newData.length > 0 && !isPayed ? (
+				{newData?.length > 0 && !isPayed ? (
 					<>
 						<motion.h1
 							initial={secInit}
@@ -71,18 +71,16 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 						<div
 							className={`w-full flex flex-col items-center sm:items-end space-y-4 p-2 text-white font-semibold`}
 						>
-							{priceInfoConstant.map(
-								(item: string, index: number) => {
-									return (
-										<PriceInfo
-											title={item}
-											data={data}
-											key={"PriceInfo-" + item}
-											index={index}
-										/>
-									);
-								}
-							)}
+							{priceInfoConstant.map((item: string, index: number) => {
+								return (
+									<PriceInfo
+										title={item}
+										data={data}
+										key={"PriceInfo-" + item}
+										index={index}
+									/>
+								);
+							})}
 
 							<ModalWrapper
 								to="Payment"

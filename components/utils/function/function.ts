@@ -2,7 +2,6 @@ import {
 	LoginInputType,
 	TypeForm,
 } from "../../modules/Authentication/interface";
-
 export interface DisabilityButtonParamType extends TypeForm, LoginInputType {
 	nickname?: string;
 }

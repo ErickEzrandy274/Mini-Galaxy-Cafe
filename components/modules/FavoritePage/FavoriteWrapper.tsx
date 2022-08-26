@@ -8,13 +8,15 @@ import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
 
-const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
+const FavoriteWrapper = ({ data }: any) => {
 	const productList: BuyerProduct[] = useSelector(
 		(state: any) => state.buyerProduct.productList
 	);
-	
-	const isThereData = !!data?.listFavItem?.length
-	const { user: { displayName } } = useAuth();
+
+	const isThereData = !!data?.listFavItem?.length;
+	const {
+		user: { displayName },
+	} = useAuth();
 	const { initial, animate, exit, transition } = menutitleAnimation;
 
 	return (
