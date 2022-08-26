@@ -5,12 +5,14 @@ import CheckOut from "../components/modules/CheckOut/CheckOut";
 import { getBuyerData } from "../components/utils/function/SSRFunction";
 
 const checkout = ({ data }: any) => {
+	const newData = data ? data.buyerProduct : [];
+
 	return (
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Checkout</title>
 			</Head>
-			<CheckOut data={data} />
+			<CheckOut data={newData} />
 		</>
 	);
 };

@@ -18,7 +18,7 @@ export async function getBuyerData(ctx: GetServerSidePropsContext) {
 	const uid = nookies.get(ctx)?.userId;
 
 	try {
-		const { buyerProduct: data } = await getBuyerProduct(uid);
+		const data = await getBuyerProduct(uid);
 
 		return { props: { data } };
 	} catch (error) {
