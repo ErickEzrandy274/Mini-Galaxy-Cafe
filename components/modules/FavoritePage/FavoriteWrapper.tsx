@@ -8,13 +8,15 @@ import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
 
-const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
+const FavoriteWrapper = ({ data }: any) => {
 	const productList: BuyerProduct[] = useSelector(
 		(state: any) => state.buyerProduct.productList
 	);
-	
-	const isThereData = !!data?.listFavItem?.length
-	const { user: { displayName } } = useAuth();
+
+	const isThereData = !!data?.length;
+	const {
+		user: { displayName },
+	} = useAuth();
 	const { initial, animate, exit, transition } = menutitleAnimation;
 
 	return (
@@ -62,7 +64,7 @@ const FavoriteWrapper: React.FC<{ data: any }> = ({ data }) => {
 				</div>
 			) : (
 				<div className="flex flex-wrap m-5">
-					{data?.listFavItem?.map((item: any, index: number) => {
+					{data?.map((item: any, index: number) => {
 						return (
 							<ProductCard
 								key={item.type + "-" + item.dataId}
