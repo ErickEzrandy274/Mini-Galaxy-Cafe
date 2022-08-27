@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
-	onAuthStateChanged,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signOut,
@@ -73,13 +72,6 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 		setUser(null);
 		await signOut(auth);
 	};
-
-	// const setToken = (token = "") => {
-	// 	nookies.destroy(null, "token");
-	// 	nookies.set(null, "token", token, {
-	// 		path: "/",
-	// 	});
-	// };
 
 	return (
 		<AuthContext.Provider
