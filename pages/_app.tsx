@@ -19,6 +19,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 		<AuthContextProvider>
 			<Head>
 				<title>Mini Galaxy Cafe</title>
+				<meta name="keywords" content="Mini Galaxy Cafe" />
+				<meta name="author" content="Erick Ezrandy" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/gal-logo.svg" />
 			</Head>
