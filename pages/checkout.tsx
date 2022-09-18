@@ -10,6 +10,7 @@ const checkout = ({ data }: any) => {
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Checkout</title>
+				<meta name="description" content="Mini Galaxy Cafe Product Checkout" />
 			</Head>
 			<CheckOut data={newData} />
 		</>
