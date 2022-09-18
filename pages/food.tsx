@@ -22,6 +22,7 @@ const food = ({ data }: any) => {
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Food</title>
+				<meta name="description" content="Mini Galaxy Cafe Foods Product" />
 			</Head>
 			<ProductPage data={data} type="Foods" />
 		</>

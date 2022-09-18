@@ -8,6 +8,10 @@ const favorite = ({ data }: any) => {
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Favorite</title>
+				<meta
+					name="description"
+					content="Mini Galaxy Cafe User Favorite Product"
+				/>
 			</Head>
 			<FavoritePage data={data} />
 		</>

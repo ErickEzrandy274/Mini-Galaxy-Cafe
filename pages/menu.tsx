@@ -7,6 +7,7 @@ const menu = () => {
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Menu</title>
+				<meta name="description" content="Mini Galaxy Cafe Product Menu" />
 			</Head>
 
 			<MenuPage />

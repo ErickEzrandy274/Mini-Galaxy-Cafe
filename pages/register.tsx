@@ -7,6 +7,7 @@ const register = () => {
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Register</title>
+				<meta name="description" content="Mini Galaxy Cafe User Registration" />
 			</Head>
 			<Register />
 		</>
