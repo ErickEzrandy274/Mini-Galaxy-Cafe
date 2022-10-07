@@ -64,7 +64,7 @@ const Navbar = () => {
 
 								<div className="hidden md:block md:ml-3">
 									<div className="flex space-x-3">
-										{navigation.map((item: navData, index: number) => (
+										{navigation?.map((item: navData, index: number) => (
 											<NewLink {...item} key={`NewLink-${index}`} />
 										))}
 									</div>
@@ -85,7 +85,7 @@ const Navbar = () => {
 
 					<Disclosure.Panel className="md:hidden">
 						<div className="flex flex-col px-3 pt-2 pb-3 space-y-1">
-							{navigation.map(({ name, href }) => (
+							{navigation?.map(({ name, href }) => (
 								<Disclosure.Button
 									key={name}
 									as="a"

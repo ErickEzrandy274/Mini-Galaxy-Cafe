@@ -38,7 +38,7 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 					: `hidden sm:flex w-1/2 lg:w-3/5 relative`
 			}
 		>
-			{images.map((item: string, index: number) => {
+			{images?.map((item: string, index: number) => {
 				const newDelay = index === 0 ? index + 1 : index - 1;
 
 				return (
