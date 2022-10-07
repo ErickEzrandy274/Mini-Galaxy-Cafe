@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { add_product } from "../../../store/actions/action";
 import { makeRupiahValue } from "../../utils/function/function";
 import { INITIAL_NUM } from "../Button/constants";
-import FavButton from "../Button/FavButton";
-import ModifierButton from "../Button/ModifierButton";
-import OptimizedImage from "../OptimizedImage/OptimizedImage";
 import { BuyerProduct, ProductCardProps } from "./interface";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import FavButton from "../Button/FavButton";
+import ModifierButton from "../Button/ModifierButton";
+import OptimizedImage from "../OptimizedImage/OptimizedImage";
 
 const ProductCard: React.FC<ProductCardProps> = ({
 	name,
@@ -26,7 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 	const productList: BuyerProduct[] = useSelector(
 		(state: any) => state.buyerProduct.productList
 	);
-	const indexProduct = productList.findIndex(
+	const indexProduct = productList?.findIndex(
 		(item: BuyerProduct) => item.dataId === dataId
 	);
 
