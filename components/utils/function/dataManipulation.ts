@@ -4,7 +4,7 @@ import { BuyerProduct } from "../../elements/Card/interface";
 import { database } from "../firebase/firebase";
 
 export const setData = (documents: any[]) => {
-	const data = documents.map(({ name: productName, fields }: any) => {
+	const data = documents?.map(({ name: productName, fields }: any) => {
 		const { name, price, image } = fields;
 		const dataId = productName.split("/").at(-1);
 

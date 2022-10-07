@@ -71,7 +71,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 						<div
 							className={`w-full flex flex-col items-center sm:items-end space-y-4 p-2 text-white font-semibold`}
 						>
-							{priceInfoConstant.map((item: string, index: number) => {
+							{priceInfoConstant?.map((item: string, index: number) => {
 								return (
 									<PriceInfo
 										title={item}

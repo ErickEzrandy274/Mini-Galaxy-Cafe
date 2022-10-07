@@ -53,7 +53,7 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 			</div>
 
 			<div className="flex flex-wrap m-5">
-				{data.map((item: any, index: number) => {
+				{data?.map((item: any, index: number) => {
 					return (
 						<ProductCard
 							key={type + "-" + item.dataId}

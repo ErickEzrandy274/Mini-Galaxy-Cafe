@@ -23,7 +23,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
 		nickname,
 	});
 
-	const disableButton = dataError.map((item: FeedbackType) => item.disable);
+	const disableButton = dataError?.map((item: FeedbackType) => item.disable);
 
 	return (
 		<form

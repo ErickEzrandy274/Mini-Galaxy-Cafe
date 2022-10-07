@@ -11,14 +11,10 @@ const PreferredRoute: React.FC<RouteProps> = ({
 }) => {
 
 	return user ? (
-		<UserDetected
-			className="px-3"
-			user={user}
-			handleLogout={handleLogout}
-		/>
+		<UserDetected className="px-3" user={user} handleLogout={handleLogout} />
 	) : (
 		<>
-			{navData.map((item: navData, index: number) => (
+			{navData?.map((item: navData, index: number) => (
 				<NewLink {...item} key={`NewLink-${index}`} />
 			))}
 		</>
