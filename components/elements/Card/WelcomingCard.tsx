@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
 import React from "react";
-import OptimizedImage from "../OptimizedImage/OptimizedImage";
+import { useRouter } from "next/router";
 import { WelcomingCardProps } from "./interface";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import OptimizedImage from "../OptimizedImage/OptimizedImage";
 
 const WelcomingCard: React.FC<WelcomingCardProps> = ({
 	name,

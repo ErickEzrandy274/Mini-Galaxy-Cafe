@@ -1,8 +1,8 @@
 import React from "react";
-import InfoTooltip from "../Tooltip/InfoTooltip";
 import { CheckOutModalButtonProps } from "./interface";
 import { motion } from "framer-motion";
 import { buttonCheckOutAnimation } from "../../utils/animation/ProductPageAnimation";
+import InfoTooltip from "../Tooltip/InfoTooltip";
 
 const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	onClick,
@@ -10,11 +10,15 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	modalBtnType,
 	to,
 }) => {
-	const isCheckOut: boolean = to === "Checkout"
+	const isCheckOut: boolean = to === "Checkout";
 	const isEmpty = isCheckOut && !productList!.length;
-	const htmlFor = to === "Payment" ? `confirmationModal` : isEmpty ? `` : `confirmationModal`
+	const htmlFor =
+		to === "Payment" ? `confirmationModal` : isEmpty ? `` : `confirmationModal`;
 	const { initial, animate, exit, transition } = buttonCheckOutAnimation;
-	const newTransition = to === "Payment" ? { ...transition, delay: 0.2 + 0.2 * (productList!.length) } : transition;
+	const newTransition =
+		to === "Payment"
+			? { ...transition, delay: 0.2 + 0.2 * productList!.length }
+			: transition;
 
 	return (
 		<>
@@ -33,8 +37,10 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 			>
 				{isCheckOut ? `Check Out` : `Pay`}
 			</motion.label>
-			
-			{isCheckOut && <InfoTooltip type={modalBtnType} productList={productList!} />}
+
+			{isCheckOut && (
+				<InfoTooltip type={modalBtnType} productList={productList!} />
+			)}
 		</>
 	);
 };

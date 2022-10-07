@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { add_product, delete_product } from "../../../store/actions/action";
 import { ProductCardProps } from "../Card/interface";
 import { INITIAL_NUM, RESET_NUM } from "./constants";
+import { ModifierButtonProps } from "./interface";
 import DecrementButton from "./DecrementButton";
 import IncrementButton from "./IncrementButton";
-import { ModifierButtonProps } from "./interface";
 
 const ModifierButton: React.FC<ModifierButtonProps> = ({
 	setIsModifierButtonOpen,

@@ -1,11 +1,11 @@
 import React from "react";
-import ProductCard from "../../elements/Card/ProductCard";
 import { LandingPageProps } from "./interface";
 import { FavContextProvider } from "../../../context/FavContext";
 import { useSelector } from "react-redux";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import ProductCard from "../../elements/Card/ProductCard";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 
 const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {

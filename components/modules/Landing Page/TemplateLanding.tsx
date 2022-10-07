@@ -1,8 +1,7 @@
+import React, { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import ImageWrapper from "../../elements/ImageLanding/ImageWrapper";
 import {
 	buttonVariant,
 	contentVariant,
@@ -13,6 +12,7 @@ import {
 	customClassDesktopNotBeverages,
 } from "./dataLanding";
 import { TemplateLandingProps } from "./interface";
+import ImageWrapper from "../../elements/ImageLanding/ImageWrapper";
 
 const TemplateLanding: React.FC<TemplateLandingProps> = ({
 	title,

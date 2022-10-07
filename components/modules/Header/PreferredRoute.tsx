@@ -1,7 +1,7 @@
 import React from "react";
-import NewLink from "../../elements/NewLink/NewLink";
 import { navData } from "./constant";
 import { RouteProps } from "./interface";
+import NewLink from "../../elements/NewLink/NewLink";
 import UserDetected from "./UserDetected";
 
 const PreferredRoute: React.FC<RouteProps> = ({
@@ -9,7 +9,6 @@ const PreferredRoute: React.FC<RouteProps> = ({
 	navData,
 	handleLogout,
 }) => {
-
 	return user ? (
 		<UserDetected className="px-3" user={user} handleLogout={handleLogout} />
 	) : (
