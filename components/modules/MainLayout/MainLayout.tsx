@@ -1,9 +1,9 @@
+import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
-import React from "react";
+import { MainLayoutProps, nav } from "./interface";
 import Footer from "../Footer/Footer";
 import Navbar from "../Header/Navbar";
-import { MainLayoutProps, nav } from "./interface";
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 	const { pathname } = useRouter();

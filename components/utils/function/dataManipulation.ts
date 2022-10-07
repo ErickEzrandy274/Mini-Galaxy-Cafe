@@ -1,5 +1,5 @@
-import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import React, { SetStateAction } from "react";
+import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { database } from "../firebase/firebase";
 

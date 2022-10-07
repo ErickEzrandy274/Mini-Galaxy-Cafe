@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
+import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
 import { navData } from "../../modules/Header/constant";
+import Link from "next/link";
 import Indicator from "../Indicator/Indicator";
 
 const NewLink: React.FC<navData> = ({ name, href }) => {

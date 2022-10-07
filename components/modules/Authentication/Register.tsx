@@ -1,11 +1,11 @@
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
+import { extractError } from "../../utils/function/function";
+import { RegisterInputType, registerObj } from "./interface";
 import AuthForm from "../../elements/Form/AuthForm";
 import HandlerAccount from "../../elements/HandlerAccount/HandlerAccount";
-import { extractError } from "../../utils/function/function";
 import BaseAuth from "./BaseAuth";
-import { RegisterInputType, registerObj } from "./interface";
 
 const Register = () => {
 	const { user, register } = useAuth();

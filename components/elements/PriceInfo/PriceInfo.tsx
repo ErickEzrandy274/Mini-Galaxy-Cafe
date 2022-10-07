@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import React from "react";
+import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { makeRupiahValue } from "../../utils/function/function";
 import { PriceInfoProps } from "./interface";

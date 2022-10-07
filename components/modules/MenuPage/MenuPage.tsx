@@ -1,9 +1,9 @@
 import React from "react";
-import WelcomingCard from "../../elements/Card/WelcomingCard";
 import { WelcomingCardData } from "./data";
 import { motion } from "framer-motion";
 import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import WelcomingCard from "../../elements/Card/WelcomingCard";
 
 const MenuPage = () => {
 	const { initial, animate, transition } = pageTransition;

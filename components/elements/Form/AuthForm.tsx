@@ -3,9 +3,9 @@ import {
 	checkDisabilityButton,
 	FeedbackType,
 } from "../../utils/function/function";
+import { AuthFormProps } from "./interface";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import { AuthFormProps } from "./interface";
 
 const AuthForm: React.FC<AuthFormProps> = ({
 	typeForm,

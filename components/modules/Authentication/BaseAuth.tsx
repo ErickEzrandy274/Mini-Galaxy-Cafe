@@ -1,9 +1,9 @@
 import React from "react";
-import Alert from "../../elements/Alert/Alert";
 import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { useWindowSize } from "../../utils/function/useWindowSize";
 import { BaseAuthProps } from "./interface";
 import { motion } from "framer-motion";
+import Alert from "../../elements/Alert/Alert";
 
 const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children, error }) => {
 	const { width } = useWindowSize();
@@ -33,19 +33,15 @@ const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children, error }) => {
 							</h2>
 
 							<p className="max-w-xl mt-3 text-gray-300">
-								The combination of modern and contemporary
-								interior styles gives birth to a minimalist feel
-								that is so strong. This eclectic interior style
-								also looks simple with an elegant appearance.
-								This cafe is not only designed as a hangout
-								place, but can also be a kind of co-working
-								space that is quite interesting and comfortable.
-								Creative work processes can also be born from
-								the interior of a small cafe like this. In
-								addition, this cafe also provides a variety of
-								delicious food, drinks, and snacks. Want to
-								order our dishes? Immediately login to your
-								account!
+								The combination of modern and contemporary interior styles gives
+								birth to a minimalist feel that is so strong. This eclectic
+								interior style also looks simple with an elegant appearance.
+								This cafe is not only designed as a hangout place, but can also
+								be a kind of co-working space that is quite interesting and
+								comfortable. Creative work processes can also be born from the
+								interior of a small cafe like this. In addition, this cafe also
+								provides a variety of delicious food, drinks, and snacks. Want
+								to order our dishes? Immediately login to your account!
 							</p>
 						</div>
 					</div>

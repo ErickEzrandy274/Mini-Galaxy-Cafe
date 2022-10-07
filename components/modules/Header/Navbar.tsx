@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
-import NewLink from "../../elements/NewLink/NewLink";
 import { navigation, authNavs, navData } from "./constant";
+import NewLink from "../../elements/NewLink/NewLink";
+import Link from "next/link";
 import PreferredRoute from "./PreferredRoute";
 
 const Navbar = () => {

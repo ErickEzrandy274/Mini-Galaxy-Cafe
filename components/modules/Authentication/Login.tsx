@@ -1,11 +1,11 @@
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
+import { getBuyerProduct } from "../../utils/function/dataManipulation";
+import { LoginInputType, loginObj } from "./interface";
 import AuthForm from "../../elements/Form/AuthForm";
 import HandlerAccount from "../../elements/HandlerAccount/HandlerAccount";
-import { getBuyerProduct } from "../../utils/function/dataManipulation";
 import BaseAuth from "./BaseAuth";
-import { LoginInputType, loginObj } from "./interface";
 
 const Login = () => {
 	const { push } = useRouter();

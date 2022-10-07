@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import React, { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import React, { useEffect } from "react";
 import { ImageWrapperProps } from "./interface";
 
 const ImageWrapper: React.FC<ImageWrapperProps> = ({
