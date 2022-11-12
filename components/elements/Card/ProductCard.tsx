@@ -61,7 +61,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 					<h2 className="card-title font-semibold">{name}</h2>
 
 					<div className="flex justify-between pb-2">
-						<p className="text-lg">Rp {makeRupiahValue(price)}</p>
+						<p className="text-lg">{makeRupiahValue(price)}</p>
 						<FavButton setRemoved={setRemoved} cardProps={cardProps} />
 					</div>
 

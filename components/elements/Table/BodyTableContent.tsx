@@ -16,11 +16,15 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({ name, type, amount,
 			animate={animate}
 			exit={exit}
 			transition={{ ...transition, delay: 0.2 + 0.2 * delay }}
-			className={`bg-gray-800 border-gray-700 font-semibold shadow-lg ${isLastIndex ? `rounded-b-md` : `border-b`}`} >
-			
+			className={`bg-gray-800 border-gray-700 font-semibold shadow-lg ${
+				isLastIndex ? `rounded-b-md` : `border-b`
+			}`}
+		>
 			<td
 				scope="row"
-				className={`p-3 break-words sm:px-6 sm:py-4 text-gray-300 tracking-wide ${isLastIndex && `rounded-bl-md`}`}
+				className={`p-3 break-words sm:px-6 sm:py-4 text-gray-300 tracking-wide ${
+					isLastIndex && `rounded-bl-md`
+				}`}
 			>
 				{name}
 			</td>
@@ -33,10 +37,8 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({ name, type, amount,
 			)}
 
 			<td className={`p-3 sm:px-6 sm:py-4 ${isLastIndex && `rounded-br-md`}`}>
-				Rp {makeRupiahValue(price * amount)}{" "}
-				{width < 640 && `(${amount}pcs)`}
+				{makeRupiahValue(price * amount)} {width < 640 && `(${amount}pcs)`}
 			</td>
-			
 		</motion.tr>
 	);
 };
