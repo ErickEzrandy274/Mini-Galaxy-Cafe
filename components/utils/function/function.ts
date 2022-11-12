@@ -106,12 +106,12 @@ const checkNickName = (item: DisabilityButtonParamType): FeedbackType => {
 	return newFeedback;
 };
 
+// reference link: https://medium.com/codelabs-unikom/membuat-format-rupiah-dengan-javascript-9a3334f42bad
 export const makeRupiahValue = (price: number) => {
-	let newPrice = price.toString();
-	for (let i = newPrice.length - 3; i > 0; i -= 3) {
-		newPrice = newPrice.substring(0, i) + "." + newPrice.substring(i);
-	}
-	return newPrice;
+	return new Intl.NumberFormat("id-ID", {
+		style: "currency",
+		currency: "IDR",
+	}).format(price);
 };
 
 // reference link: https://stackoverflow.com/questions/68932621/put-a-warning-if-page-refresh-in-reactjs
