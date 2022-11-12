@@ -26,7 +26,7 @@ const PriceInfo: React.FC<PriceInfoProps> = ({ title, data, index }) => {
 			className={`flex justify-between w-60`}
 		>
 			<p>{title}</p>
-			<p>Rp {makeRupiahValue(content)}</p>
+			<p>{makeRupiahValue(content)}</p>
 		</motion.div>
 	);
 };
