@@ -10,7 +10,6 @@ const NewLink: React.FC<navData> = ({ name, href }) => {
 	const { pathname } = useRouter();
 	const { user } = useAuth();
 	const { userStuff } = useUserStuff();
-	console.log(`userStuff in NewLink.tsx = ${userStuff}`);
 
 	return href === "/checkout" && user && userStuff?.length ? (
 		<Indicator
