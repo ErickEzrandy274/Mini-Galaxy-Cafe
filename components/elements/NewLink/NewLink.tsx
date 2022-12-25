@@ -14,7 +14,7 @@ const NewLink: React.FC<navData> = ({ name, href }) => {
 	return href === "/checkout" && user && userStuff?.length ? (
 		<Indicator
 			className="badge-primary rounded-full"
-			infoIndicator={`${userStuff.length > 5 ? `5+` : userStuff.length}`}
+			infoIndicator={`${userStuff.length > 10 ? `10+` : userStuff.length}`}
 		>
 			<Link href={href} passHref>
 				<a
