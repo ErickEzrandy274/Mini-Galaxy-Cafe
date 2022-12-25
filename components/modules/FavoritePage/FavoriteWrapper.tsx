@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import { useFavContext } from "../../../context/FavContext";
 import ProductCard from "../../elements/Card/ProductCard";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
@@ -12,6 +13,14 @@ const FavoriteWrapper = ({ data }: any) => {
 	const productList: BuyerProduct[] = useSelector(
 		(state: any) => state.buyerProduct.productList
 	);
+
+	const { favDataSize } = useFavContext();
+	const [isEmpty, setIsEmpty] = useState(!!favDataSize);
+
+	useEffect(() => {
+		setIsEmpty(favDataSize > 0 ? false : true);
+		console.log(favDataSize);
+	}, [favDataSize]);
 
 	const isThereData = !!data?.listFavItem?.length;
 	const {
@@ -54,7 +63,7 @@ const FavoriteWrapper = ({ data }: any) => {
 				)}
 			</div>
 
-			{!isThereData ? (
+			{isEmpty ? (
 				<div className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10">
 					<BlankContentInfo
 						firstContent="No favorites product"

@@ -11,6 +11,7 @@ export const FavContextProvider: React.FC<any> = ({ children }) => {
 	} = useAuth();
 
 	const [favData, setFavData] = useState<DocumentData | undefined>([]);
+	const [favDataSize, setFavDataSize] = useState<any>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -19,13 +20,18 @@ export const FavContextProvider: React.FC<any> = ({ children }) => {
 					return item.name;
 				});
 				setFavData(data ? data : []);
+				setFavDataSize(data?.length);
 			});
 		};
 
-		fetchData();
-	}, []);
+		uid && fetchData();
+	}, [uid]);
 
-	return <FavContext.Provider value={{ favData }}>{children}</FavContext.Provider>;
+	return (
+		<FavContext.Provider value={{ favData, favDataSize, setFavDataSize }}>
+			{children}
+		</FavContext.Provider>
+	);
 };
 
 export const useFavContext = () => useContext(FavContext);
