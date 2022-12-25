@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { CheckoutModalProps } from "./interface";
-import {
-	addBuyerProduct,
-	getBuyerProduct,
-} from "../../utils/function/dataManipulation";
+import { addBuyerProduct } from "../../utils/function/dataManipulation";
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/router";
 import LoadingInfo from "../Loader/LoadingInfo";
@@ -28,10 +25,9 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 
 	const handleOrder = async () => {
 		setIsLoading(true);
-		const { buyerProduct } = await getBuyerProduct(uid);
-		setUserStuff(buyerProduct);
 		await addBuyerProduct(productList!, uid);
 		setTimeout(() => {
+			setUserStuff(productList);
 			push("/checkout");
 		}, 175);
 	};
