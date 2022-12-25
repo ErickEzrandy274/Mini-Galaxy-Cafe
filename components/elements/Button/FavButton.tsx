@@ -12,7 +12,7 @@ const FavButton: React.FC<FavButtonProps> = ({ cardProps, setRemoved }) => {
 
 	const { pathname } = useRouter();
 
-	const { favData } = useFavContext();
+	const { favData, setFavDataSize } = useFavContext();
 	useEffect(() => {
 		favData?.length > 0 && setFav(favData?.includes(cardProps.name));
 	}, [cardProps.name, favData]);
@@ -24,6 +24,7 @@ const FavButton: React.FC<FavButtonProps> = ({ cardProps, setRemoved }) => {
 		setFav,
 		uid,
 		cardProps,
+		setFavDataSize,
 	};
 
 	const handleClick = () => {

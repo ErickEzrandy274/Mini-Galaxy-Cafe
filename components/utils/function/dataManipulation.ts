@@ -30,10 +30,11 @@ type handleFavType = {
 		type: string;
 		dataId: string;
 	};
+	setFavDataSize: React.Dispatch<SetStateAction<any>>;
 };
 
 export const handleFav = async (args: handleFavType, pathname: string) => {
-	const { fav, setFav, uid, cardProps } = args;
+	const { fav, setFav, uid, cardProps, setFavDataSize } = args;
 	const favRef = doc(database, "Favorite", uid);
 
 	await getDoc(favRef).then(async (res) => {
@@ -43,19 +44,22 @@ export const handleFav = async (args: handleFavType, pathname: string) => {
 			await setDoc(favRef, {
 				listFavItem: [...prev],
 			});
-
-			pathname === "/favorite" && prev.length === 0 && window.location.reload();
+			setFavDataSize(prev.length);
 			return;
 		}
 
+		const newListItem = [
+			...prev,
+			{
+				...cardProps,
+			},
+		];
+
 		await setDoc(favRef, {
-			listFavItem: [
-				...prev,
-				{
-					...cardProps,
-				},
-			],
+			listFavItem: newListItem,
 		});
+
+		setFavDataSize(newListItem.length);
 	});
 
 	setFav(!fav);
