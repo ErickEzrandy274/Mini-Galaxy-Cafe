@@ -85,23 +85,16 @@ const Navbar = () => {
 
 					<Disclosure.Panel className="md:hidden">
 						<div className="flex flex-col px-3 pt-2 pb-3 space-y-1">
-							{navigation?.map(({ name, href }) => (
-								<Disclosure.Button
-									key={name}
-									as="a"
-									href={href}
-									className={`px-3 py-2 rounded-md text-base
-										${
-											pathname === href
-												? "bg-gray-900 text-white font-semibold"
-												: "text-gray-300 hover:bg-gray-700 hover:text-white font-medium"
-										}
-										`}
-									aria-current={pathname === href ? "page" : undefined}
-								>
-									{name}
-								</Disclosure.Button>
-							))}
+							{navigation?.map((item: navData) => {
+								return (
+									<Disclosure.Button
+										key={item.name}
+										className="flex flex-col flex-start"
+									>
+										<NewLink {...item} />
+									</Disclosure.Button>
+								);
+							})}
 
 							<PreferredRoute
 								navData={authNavs}
