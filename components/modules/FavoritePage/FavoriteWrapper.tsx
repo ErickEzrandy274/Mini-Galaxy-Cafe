@@ -18,8 +18,7 @@ const FavoriteWrapper = ({ data }: any) => {
 	const [isEmpty, setIsEmpty] = useState(!!favDataSize);
 
 	useEffect(() => {
-		setIsEmpty(favDataSize > 0 ? false : true);
-		console.log(favDataSize);
+		setIsEmpty(!(favDataSize > 0));
 	}, [favDataSize]);
 
 	const isThereData = !!data?.listFavItem?.length;

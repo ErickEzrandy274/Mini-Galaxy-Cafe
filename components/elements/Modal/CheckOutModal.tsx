@@ -9,6 +9,7 @@ import {
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/router";
 import LoadingInfo from "../Loader/LoadingInfo";
+import { useUserStuff } from "../../../context/UserStuffContext";
 
 const CheckOutModal: React.FC<CheckoutModalProps> = ({
 	setIsModalOpen,
@@ -19,8 +20,9 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const {
 		user: { uid },
-		setUserStuff,
 	} = useAuth();
+
+	const { setUserStuff } = useUserStuff();
 	const text: string = modalType === "Checkout" ? `order` : `pay`;
 	const { push } = useRouter();
 

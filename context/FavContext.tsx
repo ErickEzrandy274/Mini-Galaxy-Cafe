@@ -2,10 +2,11 @@ import { DocumentData } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
 import { getFavData } from "../components/utils/function/dataManipulation";
 import { useAuth } from "./AuthContext";
+import { MainLayoutProps } from "../components/modules/MainLayout/interface";
 
 const FavContext = createContext({} as any);
 
-export const FavContextProvider: React.FC<any> = ({ children }) => {
+export const FavContextProvider: React.FC<MainLayoutProps> = ({ children }) => {
 	const {
 		user: { uid },
 	} = useAuth();

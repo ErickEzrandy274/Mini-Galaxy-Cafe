@@ -3,13 +3,15 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
 import { getBuyerProduct } from "../../utils/function/dataManipulation";
 import { LoginInputType, loginObj } from "./interface";
+import { useUserStuff } from "../../../context/UserStuffContext";
 import AuthForm from "../../elements/Form/AuthForm";
 import HandlerAccount from "../../elements/HandlerAccount/HandlerAccount";
 import BaseAuth from "./BaseAuth";
 
 const Login = () => {
 	const { push } = useRouter();
-	const { user, login, error, setError, setUserStuff } = useAuth();
+	const { user, login, error, setError } = useAuth();
+	const { setUserStuff } = useUserStuff();
 	const [data, setData] = useState<LoginInputType>(loginObj);
 
 	const handleChange = (e: any) => {
