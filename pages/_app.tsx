@@ -9,6 +9,7 @@ import ProtectedRoute from "../components/modules/ProtectedRoute/ProtectedRoute"
 import ScrollButton from "../components/elements/Button/ScrollButton";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
+import { UserStuffContextProvider } from "../context/UserStuffContext";
 
 export const noAuthRequired = ["/", "/login", "/register"];
 
@@ -28,27 +29,29 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 				<link rel="icon" href="/gal-logo.svg" />
 			</Head>
 
-			{noAuthRequired.includes(pathname) ? (
-				pathname === "/" ? (
-					<>
-						<ScrollButton />
-						<Component {...pageProps} />
-					</>
-				) : (
-					<MainLayout>
-						<Component {...pageProps} />
-					</MainLayout>
-				)
-			) : (
-				<Provider store={store}>
-					<ProtectedRoute>
-						<ScrollButton />
+			<UserStuffContextProvider>
+				{noAuthRequired.includes(pathname) ? (
+					pathname === "/" ? (
+						<>
+							<ScrollButton />
+							<Component {...pageProps} />
+						</>
+					) : (
 						<MainLayout>
 							<Component {...pageProps} />
 						</MainLayout>
-					</ProtectedRoute>
-				</Provider>
-			)}
+					)
+				) : (
+					<Provider store={store}>
+						<ProtectedRoute>
+							<ScrollButton />
+							<MainLayout>
+								<Component {...pageProps} />
+							</MainLayout>
+						</ProtectedRoute>
+					</Provider>
+				)}
+			</UserStuffContextProvider>
 		</AuthContextProvider>
 	);
 };
