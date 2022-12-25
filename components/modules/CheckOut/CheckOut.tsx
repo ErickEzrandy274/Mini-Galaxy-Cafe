@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { priceInfoConstant } from "../../elements/PriceInfo/constant";
+import { useUserStuff } from "../../../context/UserStuffContext";
 import LoadingInfo from "../../elements/Loader/LoadingInfo";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 import CheckoutTable from "../../elements/Table/CheckoutTable";
@@ -17,8 +18,8 @@ import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const {
 		user: { uid },
-		setUserStuff,
 	} = useAuth();
+	const { setUserStuff } = useUserStuff();
 	const { initial, animate, exit, transition } = pageTransition;
 	const {
 		initial: secInit,

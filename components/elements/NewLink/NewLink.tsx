@@ -4,10 +4,13 @@ import { useAuth } from "../../../context/AuthContext";
 import { navData } from "../../modules/Header/constant";
 import Link from "next/link";
 import Indicator from "../Indicator/Indicator";
+import { useUserStuff } from "../../../context/UserStuffContext";
 
 const NewLink: React.FC<navData> = ({ name, href }) => {
 	const { pathname } = useRouter();
-	const { user, userStuff } = useAuth();
+	const { user } = useAuth();
+	const { userStuff } = useUserStuff();
+	console.log(`userStuff in NewLink.tsx = ${userStuff}`);
 
 	return href === "/checkout" && user && userStuff?.length ? (
 		<Indicator
