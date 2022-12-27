@@ -1,15 +1,17 @@
 import "../styles/globals.css";
 import "../styles/loader.css";
 import type { AppProps } from "next/app";
-import Head from "next/head";
-import MainLayout from "../components/modules/MainLayout/MainLayout";
 import { AuthContextProvider } from "../context/AuthContext";
 import { useRouter } from "next/router";
+import { Provider } from "react-redux";
+import { UserStuffContextProvider } from "../context/UserStuffContext";
+import { persistor, store } from "../redux/store/store";
+import { PersistGate } from "redux-persist/integration/react";
+import Head from "next/head";
+import MainLayout from "../components/modules/MainLayout/MainLayout";
+import withRedux from "next-redux-wrapper";
 import ProtectedRoute from "../components/modules/ProtectedRoute/ProtectedRoute";
 import ScrollButton from "../components/elements/Button/ScrollButton";
-import { Provider } from "react-redux";
-import { store } from "../store/store";
-import { UserStuffContextProvider } from "../context/UserStuffContext";
 
 export const noAuthRequired = ["/", "/login", "/register"];
 
@@ -46,7 +48,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 						<ProtectedRoute>
 							<ScrollButton />
 							<MainLayout>
-								<Component {...pageProps} />
+								<PersistGate loading={null} persistor={persistor}>
+									<Component {...pageProps} />
+								</PersistGate>
 							</MainLayout>
 						</ProtectedRoute>
 					</Provider>
@@ -56,4 +60,5 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 	);
 };
 
-export default MyApp;
+const makeStore = () => store;
+export default withRedux(makeStore)(MyApp);
