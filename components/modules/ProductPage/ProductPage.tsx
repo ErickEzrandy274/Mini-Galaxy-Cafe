@@ -5,13 +5,12 @@ import { useSelector } from "react-redux";
 import { BuyerProduct } from "../../elements/Card/interface";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
 import ProductCard from "../../elements/Card/ProductCard";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 
 const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
-	const productList: BuyerProduct[] = useSelector(
-		(state: any) => state.buyerProduct.productList
-	);
+	const productList: BuyerProduct[] = useSelector(selectProductList);
 
 	const {
 		initial: titleInitial,

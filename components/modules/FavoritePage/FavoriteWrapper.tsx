@@ -8,11 +8,10 @@ import { useFavContext } from "../../../context/FavContext";
 import ProductCard from "../../elements/Card/ProductCard";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
+import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
 
 const FavoriteWrapper = ({ data }: any) => {
-	const productList: BuyerProduct[] = useSelector(
-		(state: any) => state.buyerProduct.productList
-	);
+	const productList: BuyerProduct[] = useSelector(selectProductList);
 
 	const { favDataSize } = useFavContext();
 	const [isEmpty, setIsEmpty] = useState(!!favDataSize);

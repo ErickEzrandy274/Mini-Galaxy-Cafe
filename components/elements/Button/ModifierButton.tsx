@@ -1,37 +1,41 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { add_product, delete_product } from "../../../store/actions/action";
-import { ProductCardProps } from "../Card/interface";
+import { BuyerProduct, ProductCardProps } from "../Card/interface";
 import { INITIAL_NUM, RESET_NUM } from "./constants";
 import { ModifierButtonProps } from "./interface";
 import DecrementButton from "./DecrementButton";
 import IncrementButton from "./IncrementButton";
+import { handleDataBuyer } from "../../../redux/dataBuyer/dataBuyerSlice";
+import { ADD_PRODUCT, DELETE_PRODUCT } from "../../../redux/store/types";
 
 const ModifierButton: React.FC<ModifierButtonProps> = ({
 	setIsModifierButtonOpen,
 	type,
 	name,
-	image, 
+	image,
 	index,
 	price,
 	dataId,
 	amount,
 }) => {
-	const product: ProductCardProps = { name, type, image, price, dataId, index }
+	const product: ProductCardProps = { name, type, image, price, dataId, index };
 	let [num, setNum] = useState<number>(amount ? amount : INITIAL_NUM);
 	const dispatch = useDispatch();
 
 	const handleNum = (btnType: "increment" | "decrement") => {
 		if (btnType === "increment") {
-			setNum(++num)
-			dispatch(add_product(product, num))
+			setNum(++num);
+			const obj: BuyerProduct = { ...product, amount: num };
+			dispatch(handleDataBuyer({ obj, type: ADD_PRODUCT }));
 		} else {
 			if (num > 1) {
 				setNum(--num);
-				dispatch(delete_product(product, num))
+				const obj: BuyerProduct = { ...product, amount: num };
+				dispatch(handleDataBuyer({ obj, type: DELETE_PRODUCT }));
 			} else {
-				dispatch(delete_product(product, RESET_NUM))
+				const newObj = { ...product, amount: RESET_NUM };
+				dispatch(handleDataBuyer({ obj: newObj, type: DELETE_PRODUCT }));
 				setIsModifierButtonOpen(false);
 			}
 		}

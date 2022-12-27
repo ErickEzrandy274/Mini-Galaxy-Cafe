@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { add_product } from "../../../store/actions/action";
 import { makeRupiahValue } from "../../utils/function/function";
 import { INITIAL_NUM } from "../Button/constants";
 import { BuyerProduct, ProductCardProps } from "./interface";
@@ -9,6 +8,11 @@ import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import FavButton from "../Button/FavButton";
 import ModifierButton from "../Button/ModifierButton";
 import OptimizedImage from "../OptimizedImage/OptimizedImage";
+import {
+	handleDataBuyer,
+	selectProductList,
+} from "../../../redux/dataBuyer/dataBuyerSlice";
+import { ADD_PRODUCT } from "../../../redux/store/types";
 
 const ProductCard: React.FC<ProductCardProps> = ({
 	name,
@@ -23,9 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 		useState<boolean>(false);
 	const [removed, setRemoved] = useState<boolean>(false);
 	const dispatch = useDispatch();
-	const productList: BuyerProduct[] = useSelector(
-		(state: any) => state.buyerProduct.productList
-	);
+	const productList: BuyerProduct[] = useSelector(selectProductList);
 	const indexProduct = productList?.findIndex(
 		(item: BuyerProduct) => item.dataId === dataId
 	);
@@ -39,8 +41,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
 	};
 
 	const handleClick = () => {
-		const product: ProductCardProps = { ...cardProps, index };
-		dispatch(add_product(product, INITIAL_NUM));
+		const obj: BuyerProduct = { ...cardProps, index, amount: INITIAL_NUM };
+		dispatch(handleDataBuyer({ obj, type: ADD_PRODUCT }));
 		setIsModifierButtonOpen(true);
 	};
 
