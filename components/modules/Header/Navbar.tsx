@@ -7,14 +7,18 @@ import { navigation, authNavs, navData } from "./constant";
 import NewLink from "../../elements/NewLink/NewLink";
 import Link from "next/link";
 import PreferredRoute from "./PreferredRoute";
+import { useDispatch } from "react-redux";
+import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
 
 const Navbar = () => {
 	const { user, logout } = useAuth();
-	const { pathname, push } = useRouter();
+	const { push } = useRouter();
+	const dispatch = useDispatch();
 
 	const handleLogout = () => {
 		logout();
 		push("/login");
+		dispatch(reset_product());
 	};
 
 	return (
