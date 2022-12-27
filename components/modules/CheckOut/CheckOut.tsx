@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAuth } from "../../../context/AuthContext";
-import { reset_product } from "../../../store/actions/action";
 import { deleteBuyerProduct } from "../../utils/function/dataManipulation";
 import { CheckOutProps } from "./interface";
 import { motion } from "framer-motion";
@@ -9,6 +8,7 @@ import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { priceInfoConstant } from "../../elements/PriceInfo/constant";
 import { useUserStuff } from "../../../context/UserStuffContext";
+import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
 import LoadingInfo from "../../elements/Loader/LoadingInfo";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 import CheckoutTable from "../../elements/Table/CheckoutTable";
