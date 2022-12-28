@@ -1,3 +1,5 @@
+import { MutableRefObject } from "react";
+
 export type navData = {
 	name: string;
 	href: string;
@@ -17,3 +19,13 @@ export const authNavs: navData[] = [
 	{ name: "Login", href: "/login" },
 	{ name: "Register", href: "/register" },
 ];
+
+export interface NavProps extends navData {
+	isMobileVersion?: boolean;
+	close?: (
+		focusableElement?:
+			| HTMLElement
+			| MutableRefObject<HTMLElement | null>
+			| undefined
+	) => void;
+}
