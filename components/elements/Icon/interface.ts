@@ -1,6 +1,9 @@
 export interface IconProps {
-	handler: (e: any, isGoogle: boolean) => Promise<void>;
+	handler: (
+		e: any,
+		provider: "Google" | "Facebook" | "Github"
+	) => Promise<void>;
 	width?: number;
 	height?: number;
-	isGoogle?: boolean;
+	provider: "Google" | "Facebook" | "Github";
 }
