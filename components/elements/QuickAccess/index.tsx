@@ -1,8 +1,9 @@
 // reference google icon: https://iconscout.com/icons/google
-import Image from "next/image";
 import React from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/router";
+import IconGoogle from "../Icon/IconGoogle";
+import IconFacebook from "../Icon/IconFacebook";
 
 const QuickAccess = () => {
 	const { push } = useRouter();
@@ -25,23 +26,8 @@ const QuickAccess = () => {
 			</div>
 
 			<div className="flex justify-evenly items-center px-6 md:px-12">
-				<Image
-					onClick={(e) => handleLoginWithOtherProviders(e, true)}
-					src="/google-icon.svg"
-					alt="google-icon"
-					width={45}
-					height={45}
-					className="cursor-pointer hover:opacity-75"
-				/>
-
-				<Image
-					onClick={handleLoginWithOtherProviders}
-					src="/facebook-icon.svg"
-					alt="facebook-icon"
-					width={45}
-					height={45}
-					className="cursor-pointer hover:opacity-75"
-				/>
+				<IconGoogle handler={handleLoginWithOtherProviders} isGoogle />
+				<IconFacebook handler={handleLoginWithOtherProviders} />
 			</div>
 		</React.Fragment>
 	);
