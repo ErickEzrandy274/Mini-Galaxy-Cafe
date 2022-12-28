@@ -6,6 +6,7 @@ import {
 import { AuthFormProps } from "./interface";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import QuickAccess from "../QuickAccess/QuickAccess";
 
 const AuthForm: React.FC<AuthFormProps> = ({
 	typeForm,
@@ -48,6 +49,8 @@ const AuthForm: React.FC<AuthFormProps> = ({
 				className="font-semibold w-full px-4 py-2 tracking-wide uppercase
                         transition-colors duration-200 transform rounded-lg "
 			/>
+
+			{typeForm === "Login" && <QuickAccess />}
 		</form>
 	);
 };
