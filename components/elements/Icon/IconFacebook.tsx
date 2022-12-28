@@ -1,9 +1,10 @@
+// reference google icon: https://iconscout.com/icons/google
 import React from "react";
 import { IconProps } from "./interface";
 
 const IconFacebook: React.FC<IconProps> = ({
 	handler,
-	isGoogle = false,
+	provider,
 	width = 45,
 	height = 45,
 }) => {
@@ -15,7 +16,7 @@ const IconFacebook: React.FC<IconProps> = ({
 			className="cursor-pointer hover:opacity-75"
 			width={width}
 			height={height}
-			onClick={(e) => handler(e, isGoogle)}
+			onClick={(e) => handler(e, provider)}
 		>
 			<path
 				fill="#1877f2"

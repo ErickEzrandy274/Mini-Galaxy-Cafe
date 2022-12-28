@@ -1,9 +1,10 @@
+// reference google icon: https://iconscout.com/icons/google
 import React from "react";
 import { IconProps } from "./interface";
 
 const IconGoogle: React.FC<IconProps> = ({
 	handler,
-	isGoogle = false,
+	provider,
 	width = 45,
 	height = 45,
 }) => {
@@ -15,7 +16,7 @@ const IconGoogle: React.FC<IconProps> = ({
 			className="cursor-pointer hover:opacity-75"
 			width={width}
 			height={height}
-			onClick={(e) => handler(e, isGoogle)}
+			onClick={(e) => handler(e, provider)}
 		>
 			<circle cx="-347.3" cy="307.6" r="32.9" fill="#e0e0e0"></circle>
 			<circle cx="-347.3" cy="307.1" r="32.4" fill="#fff"></circle>
