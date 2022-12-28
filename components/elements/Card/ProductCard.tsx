@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import FavButton from "../Button/FavButton";
 import ModifierButton from "../Button/ModifierButton";
-import OptimizedImage from "../OptimizedImage/OptimizedImage";
+import OptimizedImage from "../OptimizedImage";
 import {
 	handleDataBuyer,
 	selectProductList,

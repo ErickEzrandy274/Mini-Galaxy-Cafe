@@ -5,8 +5,8 @@ import {
 } from "../../utils/function/function";
 import { AuthFormProps } from "./interface";
 import Button from "../Button/Button";
-import Input from "../Input/Input";
-import QuickAccess from "../QuickAccess/QuickAccess";
+import Input from "../Input";
+import QuickAccess from "../QuickAccess";
 
 const AuthForm: React.FC<AuthFormProps> = ({
 	typeForm,

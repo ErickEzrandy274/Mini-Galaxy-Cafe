@@ -3,7 +3,7 @@ import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { useWindowSize } from "../../utils/function/useWindowSize";
 import { BaseAuthProps } from "./interface";
 import { motion } from "framer-motion";
-import Alert from "../../elements/Alert/Alert";
+import Alert from "../../elements/Alert";
 
 const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children, error }) => {
 	const { width } = useWindowSize();

@@ -4,8 +4,8 @@ import { useAuth } from "../../../context/AuthContext";
 import { getBuyerProduct } from "../../utils/function/dataManipulation";
 import { LoginInputType, loginObj } from "./interface";
 import { useUserStuff } from "../../../context/UserStuffContext";
-import AuthForm from "../../elements/Form/AuthForm";
-import HandlerAccount from "../../elements/HandlerAccount/HandlerAccount";
+import AuthForm from "../../elements/Form";
+import HandlerAccount from "../../elements/HandlerAccount";
 import BaseAuth from "./BaseAuth";
 
 const Login = () => {

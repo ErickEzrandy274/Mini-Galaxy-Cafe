@@ -2,7 +2,7 @@ import React from "react";
 import { CheckOutModalButtonProps } from "./interface";
 import { motion } from "framer-motion";
 import { buttonCheckOutAnimation } from "../../utils/animation/ProductPageAnimation";
-import InfoTooltip from "../Tooltip/InfoTooltip";
+import InfoTooltip from "../Tooltip";
 
 const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	onClick,

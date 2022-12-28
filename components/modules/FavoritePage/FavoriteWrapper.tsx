@@ -7,7 +7,7 @@ import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { useFavContext } from "../../../context/FavContext";
 import ProductCard from "../../elements/Card/ProductCard";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
-import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
+import BlankContentInfo from "../../elements/BlankContentInfo";
 import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
 
 const FavoriteWrapper = ({ data }: any) => {

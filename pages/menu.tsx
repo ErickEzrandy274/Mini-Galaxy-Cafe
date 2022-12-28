@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import MenuPage from "../components/modules/MenuPage/MenuPage";
+import MenuPage from "../components/modules/MenuPage";
 
 const menu = () => {
 	return (

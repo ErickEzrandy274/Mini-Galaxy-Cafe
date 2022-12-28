@@ -1,7 +1,7 @@
 import React from "react";
 import { navData } from "./constant";
 import { RouteProps } from "./interface";
-import NewLink from "../../elements/NewLink/NewLink";
+import NewLink from "../../elements/NewLink";
 import UserDetected from "./UserDetected";
 
 const PreferredRoute: React.FC<RouteProps> = ({

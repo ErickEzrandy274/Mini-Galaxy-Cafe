@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
 import { extractError } from "../../utils/function/function";
 import { RegisterInputType, registerObj } from "./interface";
-import AuthForm from "../../elements/Form/AuthForm";
-import HandlerAccount from "../../elements/HandlerAccount/HandlerAccount";
+import AuthForm from "../../elements/Form";
+import HandlerAccount from "../../elements/HandlerAccount";
 import BaseAuth from "./BaseAuth";
 
 const Register = () => {
