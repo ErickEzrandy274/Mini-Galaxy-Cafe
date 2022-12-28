@@ -10,7 +10,7 @@ import BaseAuth from "./BaseAuth";
 
 const Login = () => {
 	const { push } = useRouter();
-	const { user, login, error, setError } = useAuth();
+	const { user, loginWithEmailAndPassword, error, setError } = useAuth();
 	const { setUserStuff } = useUserStuff();
 	const [data, setData] = useState<LoginInputType>(loginObj);
 
@@ -23,21 +23,14 @@ const Login = () => {
 		});
 	};
 
-	const handleLogin = async (e: any) => {
+	const handleLoginWithEmailAndPassword = async (e: any) => {
 		e.preventDefault();
-		await login(data.email, data.password);
+		await loginWithEmailAndPassword(data.email, data.password);
 		push("/menu");
 	};
 
 	useEffect(() => {
-		if (user) {
-			const fetchData = async () => {
-				const { buyerProduct } = await getBuyerProduct(user.uid);
-				setUserStuff(buyerProduct);
-			};
-			fetchData();
-			push("/menu");
-		}
+		user && push("/menu");
 
 		if (error) {
 			setTimeout(() => {
@@ -52,7 +45,7 @@ const Login = () => {
 			<AuthForm
 				typeForm="Login"
 				handleChange={handleChange}
-				handleLogin={handleLogin}
+				handleLogin={handleLoginWithEmailAndPassword}
 				{...data}
 			/>
 

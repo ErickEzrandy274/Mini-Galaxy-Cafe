@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 import dataBuyerReducer from "../dataBuyer/dataBuyerSlice";
 import storage from "redux-persist/lib/storage";
+import { createWrapper } from "next-redux-wrapper";
 
 const persistConfig = {
 	key: "root",
@@ -22,17 +23,22 @@ const rootReducer = combineReducers({
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-const store = configureStore({
-	reducer: persistedReducer,
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware({
-			serializableCheck: {
-				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-			},
-		}),
-});
 
+const makeStore = () =>
+	configureStore({
+		reducer: persistedReducer,
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware({
+				serializableCheck: {
+					ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+				},
+			}),
+		devTools: true,
+	});
+
+export type AppStore = ReturnType<typeof makeStore>;
 export type RootState = ReturnType<typeof rootReducer>;
+export const wrapper = createWrapper<AppStore>(makeStore);
 
-const persistor = persistStore(store);
-export { store, persistor };
+const persistor = persistStore(makeStore());
+export { makeStore, persistor };

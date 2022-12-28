@@ -4,16 +4,19 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
 import { navigation, authNavs, navData } from "./constant";
+import { useDispatch } from "react-redux";
+import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
+import { useUserStuff } from "../../../context/UserStuffContext";
 import NewLink from "../../elements/NewLink/NewLink";
 import Link from "next/link";
 import PreferredRoute from "./PreferredRoute";
-import { useDispatch } from "react-redux";
-import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
+import Indicator from "../../elements/Indicator/Indicator";
 
 const Navbar = () => {
 	const { user, logout } = useAuth();
 	const { push } = useRouter();
 	const dispatch = useDispatch();
+	const { userStuff } = useUserStuff();
 
 	const handleLogout = () => {
 		logout();
@@ -21,13 +24,15 @@ const Navbar = () => {
 		dispatch(reset_product());
 	};
 
+	const isMoreThanTen = userStuff.length > 10;
+
 	return (
 		<Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10">
-			{({ open }) => (
+			{({ open, close }) => (
 				<>
 					<div className="max-w-7xl mx-auto p-1.5 md:px-6 lg:px-8">
 						<div className="relative flex items-center justify-between h-24 md:h-14">
-							<div className="absolute inset-y-0 right-0 flex items-center md:hidden">
+							<div className="absolute inset-y-0 right-2 flex items-center md:hidden">
 								{/* Mobile menu button*/}
 								<Disclosure.Button
 									className="inline-flex items-center justify-center p-2 rounded-md 
@@ -37,6 +42,17 @@ const Navbar = () => {
 									<span className="sr-only">Open main menu</span>
 									{open ? (
 										<XIcon className="block h-6 w-6" aria-hidden="true" />
+									) : userStuff.length > 0 ? (
+										<Indicator
+											className={`badge-primary rounded-full tracking-tight mx-auto ${
+												isMoreThanTen ? "w-8" : "w-5"
+											}`}
+											infoIndicator={`${
+												isMoreThanTen ? `10+` : userStuff.length
+											}`}
+										>
+											<MenuIcon className="block h-6 w-6" aria-hidden="true" />
+										</Indicator>
 									) : (
 										<MenuIcon className="block h-6 w-6" aria-hidden="true" />
 									)}
@@ -95,7 +111,7 @@ const Navbar = () => {
 										key={item.name}
 										className="flex flex-col flex-start"
 									>
-										<NewLink {...item} />
+										<NewLink {...item} close={close} isMobileVersion />
 									</Disclosure.Button>
 								);
 							})}

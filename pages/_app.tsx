@@ -5,18 +5,23 @@ import { AuthContextProvider } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import { Provider } from "react-redux";
 import { UserStuffContextProvider } from "../context/UserStuffContext";
-import { persistor, store } from "../redux/store/store";
+import { persistor, wrapper } from "../redux/store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import Head from "next/head";
 import MainLayout from "../components/modules/MainLayout/MainLayout";
 import withRedux from "next-redux-wrapper";
 import ProtectedRoute from "../components/modules/ProtectedRoute/ProtectedRoute";
 import ScrollButton from "../components/elements/Button/ScrollButton";
+import React from "react";
 
 export const noAuthRequired = ["/", "/login", "/register"];
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp: React.FC<AppProps> = ({ Component, ...rest }) => {
 	const { pathname } = useRouter();
+	const {
+		store,
+		props: { pageProps },
+	} = wrapper.useWrappedStore(rest);
 
 	return (
 		<AuthContextProvider>
@@ -31,20 +36,20 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 				<link rel="icon" href="/gal-logo.svg" />
 			</Head>
 
-			<UserStuffContextProvider>
-				{noAuthRequired.includes(pathname) ? (
-					pathname === "/" ? (
-						<>
-							<ScrollButton />
-							<Component {...pageProps} />
-						</>
+			<Provider store={store}>
+				<UserStuffContextProvider>
+					{noAuthRequired.includes(pathname) ? (
+						pathname === "/" ? (
+							<>
+								<ScrollButton />
+								<Component {...pageProps} />
+							</>
+						) : (
+							<MainLayout>
+								<Component {...pageProps} />
+							</MainLayout>
+						)
 					) : (
-						<MainLayout>
-							<Component {...pageProps} />
-						</MainLayout>
-					)
-				) : (
-					<Provider store={store}>
 						<ProtectedRoute>
 							<ScrollButton />
 							<MainLayout>
@@ -53,12 +58,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 								</PersistGate>
 							</MainLayout>
 						</ProtectedRoute>
-					</Provider>
-				)}
-			</UserStuffContextProvider>
+					)}
+				</UserStuffContextProvider>
+			</Provider>
 		</AuthContextProvider>
 	);
 };
 
-const makeStore = () => store;
-export default withRedux(makeStore)(MyApp);
+export default MyApp;

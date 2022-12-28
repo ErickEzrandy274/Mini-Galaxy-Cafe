@@ -1,12 +1,17 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
-import { navData } from "../../modules/Header/constant";
+import { NavProps, navData } from "../../modules/Header/constant";
 import Link from "next/link";
 import Indicator from "../Indicator/Indicator";
 import { useUserStuff } from "../../../context/UserStuffContext";
 
-const NewLink: React.FC<navData> = ({ name, href }) => {
+const NewLink: React.FC<NavProps> = ({
+	name,
+	href,
+	close,
+	isMobileVersion = false,
+}) => {
 	const { pathname } = useRouter();
 	const { user } = useAuth();
 	const { userStuff } = useUserStuff();
@@ -18,6 +23,9 @@ const NewLink: React.FC<navData> = ({ name, href }) => {
 		>
 			<Link href={href} passHref>
 				<a
+					onClick={() => {
+						isMobileVersion && close && close();
+					}}
 					className={`px-3 py-2 rounded-md tracking-wide
 					${
 						pathname === href
@@ -34,6 +42,9 @@ const NewLink: React.FC<navData> = ({ name, href }) => {
 	) : (
 		<Link href={href} passHref>
 			<a
+				onClick={() => {
+					isMobileVersion && close && close();
+				}}
 				className={`px-3 py-2 rounded-md tracking-wide
 					${
 						pathname === href

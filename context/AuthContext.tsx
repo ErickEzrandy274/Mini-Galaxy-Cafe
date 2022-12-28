@@ -2,11 +2,14 @@ import { createContext, useContext, useEffect, useState } from "react";
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
+	signInWithPopup,
 	signOut,
 	updateProfile,
 	setPersistence,
 	browserSessionPersistence,
 	onIdTokenChanged,
+	GoogleAuthProvider,
+	FacebookAuthProvider,
 } from "firebase/auth";
 import { MainLayoutProps } from "../components/modules/MainLayout/interface";
 import { auth } from "../components/utils/firebase/firebase";
@@ -57,10 +60,25 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 		return await updateProfile(res.user, { displayName });
 	};
 
-	const login = async (email: string, password: string) => {
+	const loginWithEmailAndPassword = async (email: string, password: string) => {
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
 				return signInWithEmailAndPassword(auth, email, password);
+			})
+			.catch((err: any) => {
+				setError(extractError(err));
+			});
+	};
+
+	const loginWithOtherProviders = async (isGoogle = false) => {
+		// reference OAuth using facebook: https://www.youtube.com/watch?v=kEfe9u5F_L0
+		const provider = isGoogle
+			? new GoogleAuthProvider()
+			: new FacebookAuthProvider();
+
+		setPersistence(auth, browserSessionPersistence)
+			.then(() => {
+				return signInWithPopup(auth, provider);
 			})
 			.catch((err: any) => {
 				setError(extractError(err));
@@ -76,7 +94,8 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 		<AuthContext.Provider
 			value={{
 				user,
-				login,
+				loginWithEmailAndPassword,
+				loginWithOtherProviders,
 				register,
 				logout,
 				error,
