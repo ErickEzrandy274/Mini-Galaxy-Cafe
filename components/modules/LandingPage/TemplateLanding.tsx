@@ -12,7 +12,7 @@ import {
 	customClassDesktopNotBeverages,
 } from "./dataLanding";
 import { TemplateLandingProps } from "./interface";
-import ImageWrapper from "../../elements/ImageLanding/ImageWrapper";
+import ImageWrapper from "../../elements/ImageLanding";
 
 const TemplateLanding: React.FC<TemplateLandingProps> = ({
 	title,

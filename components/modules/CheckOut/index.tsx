@@ -12,8 +12,8 @@ import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
 import LoadingInfo from "../../elements/Loader/LoadingInfo";
 import ModalWrapper from "../../elements/Modal/ModalWrapper";
 import CheckoutTable from "../../elements/Table/CheckoutTable";
-import PriceInfo from "../../elements/PriceInfo/PriceInfo";
-import BlankContentInfo from "../../elements/BlankContentInfo/BlankContentInfo";
+import PriceInfo from "../../elements/PriceInfo";
+import BlankContentInfo from "../../elements/BlankContentInfo";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const {

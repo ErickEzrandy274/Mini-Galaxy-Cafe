@@ -10,6 +10,7 @@ import {
 	onIdTokenChanged,
 	GoogleAuthProvider,
 	FacebookAuthProvider,
+	GithubAuthProvider,
 } from "firebase/auth";
 import { MainLayoutProps } from "../components/modules/MainLayout/interface";
 import { auth } from "../components/utils/firebase/firebase";
@@ -26,6 +27,11 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 	const [user, setUser] = useState<any>(null);
 	const [error, setError] = useState<any>(null);
 	const [loading, setLoading] = useState(true);
+	const provider = {
+		Google: new GoogleAuthProvider(),
+		Facebook: new FacebookAuthProvider(),
+		Github: new GithubAuthProvider(),
+	};
 
 	useEffect(() => {
 		const unsubscribe = onIdTokenChanged(auth, async (user) => {
@@ -70,15 +76,14 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 			});
 	};
 
-	const loginWithOtherProviders = async (isGoogle = false) => {
+	const loginWithOtherProviders = async (
+		userProvider: "Google" | "Facebook" | "Github"
+	) => {
 		// reference OAuth using facebook: https://www.youtube.com/watch?v=kEfe9u5F_L0
-		const provider = isGoogle
-			? new GoogleAuthProvider()
-			: new FacebookAuthProvider();
 
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
-				return signInWithPopup(auth, provider);
+				return signInWithPopup(auth, provider[userProvider]);
 			})
 			.catch((err: any) => {
 				setError(extractError(err));

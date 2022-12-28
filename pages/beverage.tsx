@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import ProductPage from "../components/modules/ProductPage/ProductPage";
+import ProductPage from "../components/modules/ProductPage";
 import { BASE_URL, getHeaders } from "../components/utils/api";
 import { setData } from "../components/utils/function/dataManipulation";
 

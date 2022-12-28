@@ -2,7 +2,7 @@ import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import { MainLayoutProps, nav } from "./interface";
-import Footer from "../Footer/Footer";
+import Footer from "../Footer";
 import Navbar from "../Header/Navbar";
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {

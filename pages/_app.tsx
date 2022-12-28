@@ -9,8 +9,7 @@ import { persistor, wrapper } from "../redux/store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import Head from "next/head";
 import MainLayout from "../components/modules/MainLayout/MainLayout";
-import withRedux from "next-redux-wrapper";
-import ProtectedRoute from "../components/modules/ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "../components/modules/ProtectedRoute";
 import ScrollButton from "../components/elements/Button/ScrollButton";
 import React from "react";
 
