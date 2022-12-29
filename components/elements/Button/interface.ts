@@ -1,5 +1,7 @@
 import React, { SetStateAction } from "react";
-import { BuyerProduct } from "../Card/interface";
+import { BuyerProduct, ExtendsProductCardTypes } from "../Card/interface";
+
+export type DestinationType = "Checkout" | "Payment";
 
 export interface ButtonProps {
 	buttonName: string;
@@ -17,9 +19,9 @@ export interface IncrementDecrementProps {
 }
 
 export interface CheckOutModalButtonProps extends IncrementDecrementProps {
-	productList?: BuyerProduct[]
-	modalBtnType: "Foods" | "Beverages" | "Snacks" | "Others"
-	to: "Checkout" | "Payment"
+	productList?: BuyerProduct[];
+	modalBtnType: ExtendsProductCardTypes;
+	to: DestinationType;
 }
 
 export interface FavButtonProps {
