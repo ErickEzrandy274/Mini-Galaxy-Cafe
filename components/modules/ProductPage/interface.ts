@@ -1,4 +1,6 @@
+import { ExtendsProductCardTypes } from "../../elements/Card/interface";
+
 export interface LandingPageProps {
 	data: any;
-	type: "Foods" | "Beverages" | "Snacks" | "Others";
+	type: ExtendsProductCardTypes;
 }
