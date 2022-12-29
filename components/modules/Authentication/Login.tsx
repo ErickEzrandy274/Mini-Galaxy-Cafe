@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { BaseSyntheticEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
-import { getBuyerProduct } from "../../utils/function/dataManipulation";
 import { LoginInputType, loginObj } from "./interface";
 import { useUserStuff } from "../../../context/UserStuffContext";
 import AuthForm from "../../elements/Form";
@@ -14,7 +13,7 @@ const Login = () => {
 	const { setUserStuff } = useUserStuff();
 	const [data, setData] = useState<LoginInputType>(loginObj);
 
-	const handleChange = (e: any) => {
+	const handleChange = (e: BaseSyntheticEvent) => {
 		const { name, value } = e.target;
 
 		setData({
@@ -23,7 +22,7 @@ const Login = () => {
 		});
 	};
 
-	const handleLoginWithEmailAndPassword = async (e: any) => {
+	const handleLoginWithEmailAndPassword = async (e: BaseSyntheticEvent) => {
 		e.preventDefault();
 		await loginWithEmailAndPassword(data.email, data.password);
 		push("/menu");

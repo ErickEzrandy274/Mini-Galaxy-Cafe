@@ -1,6 +1,6 @@
-import { BuyerProduct } from "../Card/interface";
+import { BuyerProduct, ExtendsProductCardTypes } from "../Card/interface";
 
 export interface TooltipProps {
-	productList: BuyerProduct[]
-    type: "Foods" | "Beverages" | "Snacks" | "Others"
+	productList: BuyerProduct[];
+	type: ExtendsProductCardTypes;
 }

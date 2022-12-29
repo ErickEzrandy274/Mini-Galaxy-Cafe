@@ -20,7 +20,7 @@ const FavoriteWrapper = ({ data }: any) => {
 		setIsEmpty(!(favDataSize > 0));
 	}, [favDataSize]);
 
-	const isThereData = !!data?.listFavItem?.length;
+	const isThereData = !!data?.length;
 	const {
 		user: { displayName },
 	} = useAuth();
@@ -71,7 +71,7 @@ const FavoriteWrapper = ({ data }: any) => {
 				</div>
 			) : (
 				<div className="flex flex-wrap m-5">
-					{data?.listFavItem?.map((item: any, index: number) => {
+					{data?.map((item: any, index: number) => {
 						return (
 							<ProductCard
 								key={item.type + "-" + item.dataId}

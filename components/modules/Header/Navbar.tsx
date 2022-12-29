@@ -15,8 +15,8 @@ import Indicator from "../../elements/Indicator";
 const Navbar = () => {
 	const { user, logout } = useAuth();
 	const { push } = useRouter();
-	const dispatch = useDispatch();
 	const { userStuff } = useUserStuff();
+	const dispatch = useDispatch();
 
 	const handleLogout = () => {
 		logout();

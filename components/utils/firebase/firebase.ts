@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { ProductCardTypes } from "../../elements/Card/interface";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyArAh2Ivvtpgg1ztMqa8mDZZG2Z6QCV1NA",
@@ -17,10 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-export const imageRef = async (
-	type: "Foods" | "Beverages" | "Snacks",
-	img: string
-) => {
+export const imageRef = async (type: ProductCardTypes, img: string) => {
 	try {
 		return await getDownloadURL(ref(storage, `${type}/${img}`));
 	} catch (err) {

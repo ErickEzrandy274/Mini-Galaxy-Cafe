@@ -15,6 +15,7 @@ import {
 import { MainLayoutProps } from "../components/modules/MainLayout/interface";
 import { auth } from "../components/utils/firebase/firebase";
 import { extractError } from "../components/utils/function/function";
+import { ProviderType } from "../components/elements/Icon/interface";
 import nookies from "nookies";
 
 const AuthContext = createContext<any>({});
@@ -76,9 +77,7 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 			});
 	};
 
-	const loginWithOtherProviders = async (
-		userProvider: "Google" | "Facebook" | "Github"
-	) => {
+	const loginWithOtherProviders = async (userProvider: ProviderType) => {
 		// reference OAuth using facebook: https://www.youtube.com/watch?v=kEfe9u5F_L0
 
 		setPersistence(auth, browserSessionPersistence)
