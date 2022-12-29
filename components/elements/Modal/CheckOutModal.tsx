@@ -5,8 +5,8 @@ import { CheckoutModalProps } from "./interface";
 import { addBuyerProduct } from "../../utils/function/dataManipulation";
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/router";
-import LoadingInfo from "../Loader/LoadingInfo";
 import { useUserStuff } from "../../../context/UserStuffContext";
+import LoadingInfo from "../Loader/LoadingInfo";
 
 const CheckOutModal: React.FC<CheckoutModalProps> = ({
 	setIsModalOpen,

@@ -2,7 +2,7 @@ import React, { SetStateAction } from "react";
 import {
 	BuyerProduct,
 	ExtendsProductCardTypes,
-	ProductCardProps,
+	ProductCardTypes,
 } from "../Card/interface";
 
 export type DestinationType = "Checkout" | "Payment";
@@ -33,7 +33,7 @@ export interface FavCardProps {
 		name: string;
 		price: number;
 		image: string;
-		type: ProductCardProps;
+		type: ProductCardTypes;
 		dataId: string;
 	};
 }

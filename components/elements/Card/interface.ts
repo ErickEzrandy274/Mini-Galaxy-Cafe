@@ -18,7 +18,7 @@ export interface WelcomingCardProps extends CardProps {
 export interface ProductCardProps extends CardProps {
 	price: number;
 	index: number;
-	type: ProductCardProps;
+	type: ProductCardTypes;
 	dataId: string;
 }
 

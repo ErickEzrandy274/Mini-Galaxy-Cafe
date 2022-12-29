@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
-import { BuyerProduct, ProductCardProps } from "../../elements/Card/interface";
+import { BuyerProduct, ProductCardTypes } from "../../elements/Card/interface";
 import { database } from "../firebase/firebase";
 
 export const setData = (documents: any[]) => {
@@ -27,7 +27,7 @@ type handleFavType = {
 		name: string;
 		price: number;
 		image: string;
-		type: ProductCardProps;
+		type: ProductCardTypes;
 		dataId: string;
 	};
 	setFavDataSize: React.Dispatch<SetStateAction<any>>;
