@@ -2,12 +2,14 @@ import { getBuyerProduct, getFavData } from "./dataManipulation";
 import { GetServerSidePropsContext } from "next";
 import { CheckOutProps } from "../../modules/CheckOut/interface";
 import nookies from "nookies";
+import { FavCardProps } from "../../elements/Button/interface";
 
 export async function getFavoriteData(ctx: GetServerSidePropsContext) {
 	const uid = nookies.get(ctx)?.userId;
 
 	try {
-		const data = await getFavData(uid);
+		const res = await getFavData(uid);
+		const data: FavCardProps = res?.listFavItem ?? [];
 
 		return { props: { data } };
 	} catch (error) {
