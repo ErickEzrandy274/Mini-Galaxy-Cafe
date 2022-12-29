@@ -1,5 +1,9 @@
 export type ProductCardTypes = "Foods" | "Beverages" | "Snacks";
-export type ExtendsProductCardTypes = ProductCardProps | "Others";
+export type ExtendsProductCardTypes =
+	| "Foods"
+	| "Beverages"
+	| "Snacks"
+	| "Others";
 
 export interface CardProps {
 	name: string;
@@ -14,7 +18,7 @@ export interface WelcomingCardProps extends CardProps {
 export interface ProductCardProps extends CardProps {
 	price: number;
 	index: number;
-	type: "Foods" | "Beverages" | "Snacks";
+	type: ProductCardProps;
 	dataId: string;
 }
 

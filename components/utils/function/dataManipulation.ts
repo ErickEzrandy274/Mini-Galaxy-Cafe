@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
-import { BuyerProduct } from "../../elements/Card/interface";
+import { BuyerProduct, ProductCardProps } from "../../elements/Card/interface";
 import { database } from "../firebase/firebase";
 
 export const setData = (documents: any[]) => {
@@ -23,24 +23,24 @@ type handleFavType = {
 	fav: boolean;
 	setFav: React.Dispatch<SetStateAction<boolean>>;
 	uid: string;
-	cardProps: {
+	data: {
 		name: string;
 		price: number;
 		image: string;
-		type: string;
+		type: ProductCardProps;
 		dataId: string;
 	};
 	setFavDataSize: React.Dispatch<SetStateAction<any>>;
 };
 
-export const handleFav = async (args: handleFavType, pathname: string) => {
-	const { fav, setFav, uid, cardProps, setFavDataSize } = args;
+export const handleFav = async (args: handleFavType) => {
+	const { fav, setFav, uid, data, setFavDataSize } = args;
 	const favRef = doc(database, "Favorite", uid);
 
 	await getDoc(favRef).then(async (res) => {
-		let prev = res.data() ? res.data()?.listFavItem : [];
+		let prev = res.data()?.listFavItem ?? [];
 		if (fav) {
-			prev = prev.filter((data: any) => data?.name !== cardProps.name);
+			prev = prev.filter((item: any) => item?.name !== data.name);
 			await setDoc(favRef, {
 				listFavItem: [...prev],
 			});
@@ -51,7 +51,7 @@ export const handleFav = async (args: handleFavType, pathname: string) => {
 		const newListItem = [
 			...prev,
 			{
-				...cardProps,
+				...data,
 			},
 		];
 
