@@ -1,5 +1,1 @@
-export const priceInfoConstant: string[] = [
-	`Subtotal`,
-	"Fees and Taxes",
-	"Total",
-];
+export const priceInfoConstant: string[] = ["Subtotal", "Fees and Taxes", "Total"];

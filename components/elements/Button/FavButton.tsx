@@ -5,7 +5,7 @@ import { handleFav } from "../../utils/function/dataManipulation";
 import { useFavContext } from "../../../context/FavContext";
 import { useRouter } from "next/router";
 
-const FavButton: React.FC<FavButtonProps> = ({ cardProps, setRemoved }) => {
+const FavButton: React.FC<FavButtonProps> = ({ data, setRemoved }) => {
 	const {
 		user: { uid },
 	} = useAuth();
@@ -14,22 +14,22 @@ const FavButton: React.FC<FavButtonProps> = ({ cardProps, setRemoved }) => {
 
 	const { favData, setFavDataSize } = useFavContext();
 	useEffect(() => {
-		favData?.length > 0 && setFav(favData?.includes(cardProps.name));
-	}, [cardProps.name, favData]);
+		favData?.length > 0 && setFav(favData?.includes(data.name));
+	}, [data.name, favData]);
 
-	const [fav, setFav] = useState<boolean>(favData?.includes(cardProps.name));
+	const [fav, setFav] = useState<boolean>(favData?.includes(data.name));
 
 	const args = {
 		fav,
 		setFav,
 		uid,
-		cardProps,
+		data,
 		setFavDataSize,
 	};
 
 	const handleClick = () => {
 		if (pathname === "/favorite") setRemoved(true);
-		handleFav(args, pathname);
+		handleFav(args);
 	};
 
 	return (

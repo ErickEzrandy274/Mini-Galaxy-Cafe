@@ -5,14 +5,14 @@ import { INITIAL_NUM } from "../Button/constants";
 import { BuyerProduct, ProductCardProps } from "./interface";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
-import FavButton from "../Button/FavButton";
-import ModifierButton from "../Button/ModifierButton";
-import OptimizedImage from "../OptimizedImage";
 import {
 	handleDataBuyer,
 	selectProductList,
 } from "../../../redux/dataBuyer/dataBuyerSlice";
 import { ADD_PRODUCT } from "../../../redux/store/types";
+import FavButton from "../Button/FavButton";
+import ModifierButton from "../Button/ModifierButton";
+import OptimizedImage from "../OptimizedImage";
 
 const ProductCard: React.FC<ProductCardProps> = ({
 	name,
@@ -64,7 +64,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
 					<div className="flex justify-between pb-2">
 						<p className="text-lg">{makeRupiahValue(price)}</p>
-						<FavButton setRemoved={setRemoved} cardProps={cardProps} />
+						<FavButton setRemoved={setRemoved} data={cardProps} />
 					</div>
 
 					<div className="card-actions items-center justify-end">
