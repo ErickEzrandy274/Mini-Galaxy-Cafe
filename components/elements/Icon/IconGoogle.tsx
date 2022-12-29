@@ -5,8 +5,8 @@ import { IconProps } from "./interface";
 const IconGoogle: React.FC<IconProps> = ({
 	handler,
 	provider,
-	width = 45,
-	height = 45,
+	width = 42,
+	height = 42,
 }) => {
 	return (
 		<svg
