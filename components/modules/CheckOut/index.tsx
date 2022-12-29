@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAuth } from "../../../context/AuthContext";
 import { deleteBuyerProduct } from "../../utils/function/dataManipulation";
-import { CheckOutProps } from "./interface";
+import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
 import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
@@ -27,7 +27,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		exit: secExit,
 		transition: secTrans,
 	} = menutitleAnimation;
-	let newData: any[] = data;
+	let newData: DataType = data;
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const dispatch = useDispatch();
