@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { BaseSyntheticEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
 import { extractError } from "../../utils/function/function";
@@ -13,7 +13,7 @@ const Register = () => {
 	const [error, setError] = useState<any>(null);
 	const [data, setData] = useState<RegisterInputType>(registerObj);
 
-	const handleChange = (e: any) => {
+	const handleChange = (e: BaseSyntheticEvent) => {
 		const { name, value } = e.target;
 
 		setData({
@@ -22,7 +22,7 @@ const Register = () => {
 		});
 	};
 
-	const handleRegister = async (e: any) => {
+	const handleRegister = async (e: BaseSyntheticEvent) => {
 		e.preventDefault();
 
 		try {

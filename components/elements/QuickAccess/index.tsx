@@ -1,6 +1,7 @@
-import React from "react";
+import React, { BaseSyntheticEvent } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/router";
+import { ProviderType } from "../Icon/interface";
 import IconGoogle from "../Icon/IconGoogle";
 import IconFacebook from "../Icon/IconFacebook";
 import IconGithub from "../Icon/IconGithub";
@@ -10,8 +11,8 @@ const QuickAccess = () => {
 	const { loginWithOtherProviders } = useAuth();
 
 	const handleLoginWithOtherProviders = async (
-		e: any,
-		provider: "Google" | "Facebook" | "Github"
+		e: BaseSyntheticEvent,
+		provider: ProviderType
 	) => {
 		e.preventDefault();
 		await loginWithOtherProviders(provider);
