@@ -32,15 +32,17 @@ const Login = () => {
 		user && push("/menu");
 
 		if (error) {
-			setTimeout(() => {
+			const errorTimeOut = setTimeout(() => {
 				setData(loginObj);
-				setError(null);
+				setError("");
 			}, 3500);
+
+			return clearTimeout(errorTimeOut);
 		}
 	}, [user, error, push, setError, setUserStuff]);
 
 	return (
-		<BaseAuth typeForm="Login" error={error}>
+		<BaseAuth typeForm="Login">
 			<AuthForm
 				typeForm="Login"
 				handleChange={handleChange}

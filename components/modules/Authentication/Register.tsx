@@ -37,15 +37,17 @@ const Register = () => {
 		user && push("/menu");
 
 		if (error) {
-			setTimeout(() => {
+			const errorTimeOut = setTimeout(() => {
 				setData(registerObj);
-				setError(null);
+				setError("");
 			}, 3500);
+
+			return clearTimeout(errorTimeOut);
 		}
 	}, [user, error, push]);
 
 	return (
-		<BaseAuth typeForm="Register" error={error}>
+		<BaseAuth typeForm="Register">
 			<AuthForm
 				typeForm="Register"
 				handleChange={handleChange}
