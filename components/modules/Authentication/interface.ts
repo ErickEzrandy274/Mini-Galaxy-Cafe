@@ -15,7 +15,6 @@ export interface TypeForm {
 
 export interface BaseAuthProps extends TypeForm {
 	children: React.ReactNode;
-	error: string;
 }
 
 export const loginObj = {
