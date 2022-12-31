@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { MainLayoutProps, nav } from "./interface";
 import Footer from "../Footer";
 import Navbar from "../Header/Navbar";
+import Toaster from "../../elements/Toaster";
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 	const { pathname } = useRouter();
@@ -19,6 +20,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 				<Navbar />
 				{children}
 				<Footer />
+				<Toaster />
 			</div>
 		</AnimatePresence>
 	);
