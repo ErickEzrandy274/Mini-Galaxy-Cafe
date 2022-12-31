@@ -17,6 +17,7 @@ import { auth } from "../components/utils/firebase/firebase";
 import { extractError } from "../components/utils/function/function";
 import { ProviderType } from "../components/elements/Icon/interface";
 import nookies from "nookies";
+import toast from "react-hot-toast";
 
 const AuthContext = createContext<any>({});
 
@@ -26,7 +27,7 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 	children,
 }) => {
 	const [user, setUser] = useState<any>(null);
-	const [error, setError] = useState<any>(null);
+	const [error, setError] = useState<string>("");
 	const [loading, setLoading] = useState(true);
 	const provider = {
 		Google: new GoogleAuthProvider(),
@@ -63,30 +64,39 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 		password: string,
 		displayName: string
 	) => {
-		const res = await createUserWithEmailAndPassword(auth, email, password);
-		return await updateProfile(res.user, { displayName });
-	};
-
-	const loginWithEmailAndPassword = async (email: string, password: string) => {
-		setPersistence(auth, browserSessionPersistence)
-			.then(() => {
-				return signInWithEmailAndPassword(auth, email, password);
+		createUserWithEmailAndPassword(auth, email, password)
+			.then(async (res) => {
+				await updateProfile(res.user, { displayName });
+				toast.success("Successfully created a new account!");
 			})
 			.catch((err: any) => {
 				setError(extractError(err));
+				toast.error(extractError(err));
 			});
+	};
+
+	const loginWithEmailAndPassword = async (email: string, password: string) => {
+		setPersistence(auth, browserSessionPersistence).then(() => {
+			signInWithEmailAndPassword(auth, email, password)
+				.then(() => toast.success("Successfully logged in!"))
+				.catch((err: any) => {
+					setError(extractError(err));
+					toast.error(extractError(err));
+				});
+		});
 	};
 
 	const loginWithOtherProviders = async (userProvider: ProviderType) => {
 		// reference OAuth using facebook: https://www.youtube.com/watch?v=kEfe9u5F_L0
 
-		setPersistence(auth, browserSessionPersistence)
-			.then(() => {
-				return signInWithPopup(auth, provider[userProvider]);
-			})
-			.catch((err: any) => {
-				setError(extractError(err));
-			});
+		setPersistence(auth, browserSessionPersistence).then(() => {
+			signInWithPopup(auth, provider[userProvider])
+				.then(() => toast.success("Successfully login!"))
+				.catch((err: any) => {
+					setError(extractError(err));
+					toast.error(extractError(err));
+				});
+		});
 	};
 
 	const logout = async () => {
