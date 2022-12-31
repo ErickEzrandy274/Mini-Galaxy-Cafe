@@ -8,8 +8,8 @@ const index = () => {
 	return (
 		<Toaster
 			toastOptions={{
-				success: { icon: <IconCheckmark /> },
-				error: { icon: <IconClose /> },
+				success: { icon: <IconCheckmark />, duration: 2500 },
+				error: { icon: <IconClose />, duration: 3000 },
 			}}
 		>
 			{(t) => (
