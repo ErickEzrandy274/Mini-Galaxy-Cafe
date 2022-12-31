@@ -3,9 +3,8 @@ import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { useWindowSize } from "../../utils/function/useWindowSize";
 import { BaseAuthProps } from "./interface";
 import { motion } from "framer-motion";
-import Alert from "../../elements/Alert";
 
-const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children, error }) => {
+const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children }) => {
 	const { width } = useWindowSize();
 	const { initial, animate, exit, transition } = pageTransition;
 
@@ -58,8 +57,6 @@ const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children, error }) => {
 						</div>
 
 						{children}
-
-						{error && <Alert error={error} bgColor="bg-red-600" />}
 					</div>
 				</div>
 			</div>
