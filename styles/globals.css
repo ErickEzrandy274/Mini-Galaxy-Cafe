@@ -2,21 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&display=swap");
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Josefin Sans', sans-serif;
-  overflow-x: hidden;
+	padding: 0;
+	margin: 0;
+	font-family: "Josefin Sans", sans-serif;
+	overflow-x: hidden;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* reference link: https://stackoverflow.com/questions/17758578/how-to-remove-the-arrows-in-a-scroll-bar-through-css */
+::-webkit-scrollbar {
+	width: 0.35rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	background: linear-gradient(
+		-75deg,
+		#ffffff,
+		#f7f7f7,
+		#f0f2eb,
+		#f5b553,
+		#f09027,
+		#c36a2d,
+		#854836,
+		#393e46,
+		#000000,
+		#393e46,
+		#854836,
+		#c36a2d,
+		#f09027,
+		#f5b553,
+		#f0f2eb,
+		#f7f7f7,
+		#ffffff
+	);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
