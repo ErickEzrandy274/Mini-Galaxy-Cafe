@@ -1,8 +1,7 @@
 import Head from "next/head";
 import React from "react";
-import CheckOut from "../components/modules/CheckOut";
 import { getBuyerData } from "../components/utils/function/SSRFunction";
-import { CheckOutProps } from "../components/modules/CheckOut/interface";
+import { CheckOut, CheckOutProps } from "../components/modules";
 
 const checkout = ({ data }: CheckOutProps) => {
 	return (

@@ -7,10 +7,9 @@ import { Provider } from "react-redux";
 import { UserStuffContextProvider } from "../context/UserStuffContext";
 import { persistor, wrapper } from "../redux/store/store";
 import { PersistGate } from "redux-persist/integration/react";
+import { ScrollButton } from "../components/elements";
+import { MainLayout, ProtectedRoute } from "../components/modules";
 import Head from "next/head";
-import MainLayout from "../components/modules/MainLayout/MainLayout";
-import ProtectedRoute from "../components/modules/ProtectedRoute";
-import ScrollButton from "../components/elements/Button/ScrollButton";
 import React from "react";
 
 export const noAuthRequired = ["/", "/login", "/register"];
