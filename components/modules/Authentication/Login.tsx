@@ -3,8 +3,7 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../../context/AuthContext";
 import { LoginInputType, loginObj } from "./interface";
 import { useUserStuff } from "../../../context/UserStuffContext";
-import AuthForm from "../../elements/Form";
-import HandlerAccount from "../../elements/HandlerAccount";
+import { AuthForm, HandlerAccount } from "../../elements";
 import BaseAuth from "./BaseAuth";
 
 const Login = () => {

@@ -6,14 +6,16 @@ import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
 import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
-import { priceInfoConstant } from "../../elements/PriceInfo/constant";
 import { useUserStuff } from "../../../context/UserStuffContext";
 import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
-import { CheckoutTable } from "../../elements/Table";
-import { ModalWrapper } from "../../elements/Modal";
-import { LoadingInfo } from "../../elements/Loader";
-import PriceInfo from "../../elements/PriceInfo";
-import BlankContentInfo from "../../elements/BlankContentInfo";
+import {
+	BlankContentInfo,
+	CheckoutTable,
+	LoadingInfo,
+	ModalWrapper,
+	PriceInfo,
+	PriceInfoConstant,
+} from "../../elements";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const {
@@ -72,7 +74,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 						<div
 							className={`w-full flex flex-col items-center sm:items-end space-y-4 p-2 text-white font-semibold`}
 						>
-							{priceInfoConstant?.map((item: string, index: number) => {
+							{PriceInfoConstant?.map((item: string, index: number) => {
 								return (
 									<PriceInfo
 										title={item}
