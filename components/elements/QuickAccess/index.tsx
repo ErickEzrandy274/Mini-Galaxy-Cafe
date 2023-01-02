@@ -1,10 +1,7 @@
 import React, { BaseSyntheticEvent } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { useRouter } from "next/router";
-import { ProviderType } from "../Icon/interface";
-import IconGoogle from "../Icon/IconGoogle";
-import IconFacebook from "../Icon/IconFacebook";
-import IconGithub from "../Icon/IconGithub";
+import { IconFacebook, IconGithub, IconGoogle, ProviderType } from "../Icon";
 
 const QuickAccess = () => {
 	const { push } = useRouter();

@@ -1,8 +1,7 @@
 import React from "react";
 import { Transition } from "@headlessui/react";
 import { ToastIcon, Toaster } from "react-hot-toast";
-import IconCheckmark from "../Icon/IconCheckmark";
-import IconClose from "../Icon/IconClose";
+import { IconCheckmark, IconClose } from "../Icon";
 
 const index = () => {
 	return (

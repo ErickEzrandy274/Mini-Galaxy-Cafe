@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import FavoritePage from "../components/modules/FavoritePage/FavoritePage";
+import FavoritePage from "../components/modules/FavoritePage";
 import { getFavoriteData } from "../components/utils/function/SSRFunction";
 import { FavCardProps } from "../components/elements/Button/interface";
 

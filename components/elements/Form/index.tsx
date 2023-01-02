@@ -4,7 +4,7 @@ import {
 	FeedbackType,
 } from "../../utils/function/function";
 import { AuthFormProps } from "./interface";
-import Button from "../Button/Button";
+import { Button } from "../Button";
 import Input from "../Input";
 import QuickAccess from "../QuickAccess";
 
