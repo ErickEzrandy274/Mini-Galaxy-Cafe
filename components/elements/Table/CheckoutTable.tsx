@@ -10,8 +10,8 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 	const { initial, animate, exit, transition } = menutitleAnimation;
 
 	return (
-		<table className="text-sm sm:text-base w-full text-gray-400 text-center">
-			<thead className="text-sm sm:text-base uppercase bg-gray-700 text-gray-400">
+		<table className="text-sm sm:text-base w-full text-gray-400 text-center table-fixed">
+			<thead className="text-sm sm:text-base uppercase bg-gray-700 text-gray-400 block">
 				<motion.tr
 					initial={initial}
 					animate={animate}
@@ -24,7 +24,7 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 						exit={exit}
 						transition={{ ...transition, delay: 0.25 }}
 						scope="col"
-						className="p-3 sm:px-6 rounded-tl-md"
+						className="p-3 sm:px-6 w-1/2 sm:w-[30rem]"
 					>
 						Product name
 					</motion.th>
@@ -37,7 +37,7 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 								exit={exit}
 								transition={{ ...transition, delay: 0.45 }}
 								scope="col"
-								className="p-3 sm:px-6"
+								className="p-3 sm:px-6 w-1/4"
 							>
 								Category
 							</motion.th>
@@ -48,7 +48,7 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 								exit={exit}
 								transition={{ ...transition, delay: 0.65 }}
 								scope="col"
-								className="p-3 sm:px-6"
+								className="p-3 sm:px-6 w-1/4"
 							>
 								Amount
 							</motion.th>
@@ -61,23 +61,16 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 						exit={exit}
 						transition={{ ...transition, delay: 0.85 }}
 						scope="col"
-						className="p-3 sm:px-6 rounded-tr-md"
+						className="p-3 sm:px-6 w-1/2 sm:w-1/4 rounded-tr-md"
 					>
 						Price
 					</motion.th>
 				</motion.tr>
 			</thead>
 
-			<tbody>
+			<tbody className="h-[20rem] overflow-y-scroll block">
 				{products.map((item: BuyerProduct, idx: number) => {
-					return (
-						<BodyTableContent
-							key={item.dataId}
-							{...item}
-							productsLength={products.length}
-							delay={idx}
-						/>
-					);
+					return <BodyTableContent key={item.dataId} {...item} delay={idx} />;
 				})}
 			</tbody>
 		</table>
