@@ -9,9 +9,9 @@ import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { priceInfoConstant } from "../../elements/PriceInfo/constant";
 import { useUserStuff } from "../../../context/UserStuffContext";
 import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
-import LoadingInfo from "../../elements/Loader/LoadingInfo";
-import ModalWrapper from "../../elements/Modal/ModalWrapper";
-import CheckoutTable from "../../elements/Table/CheckoutTable";
+import { CheckoutTable } from "../../elements/Table";
+import { ModalWrapper } from "../../elements/Modal";
+import { LoadingInfo } from "../../elements/Loader";
 import PriceInfo from "../../elements/PriceInfo";
 import BlankContentInfo from "../../elements/BlankContentInfo";
 
