@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { makeRupiahValue } from "../../utils/function/function";
-import { INITIAL_NUM } from "../Button/constants";
 import { BuyerProduct, ProductCardProps } from "./interface";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
@@ -10,8 +9,7 @@ import {
 	selectProductList,
 } from "../../../redux/dataBuyer/dataBuyerSlice";
 import { ADD_PRODUCT } from "../../../redux/store/types";
-import FavButton from "../Button/FavButton";
-import ModifierButton from "../Button/ModifierButton";
+import { FavButton, INITIAL_NUM, ModifierButton } from "../Button";
 import OptimizedImage from "../OptimizedImage";
 
 const ProductCard: React.FC<ProductCardProps> = ({
