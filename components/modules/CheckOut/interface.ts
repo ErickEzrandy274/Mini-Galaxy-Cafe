@@ -1,4 +1,4 @@
-import { BuyerProduct } from "../../elements/Card/interface";
+import { BuyerProduct } from "../../elements";
 
 export type DataType = BuyerProduct[] | [];
 

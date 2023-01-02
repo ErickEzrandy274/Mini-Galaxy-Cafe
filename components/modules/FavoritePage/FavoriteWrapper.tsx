@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
-import { BuyerProduct } from "../../elements/Card/interface";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { useFavContext } from "../../../context/FavContext";
-import ProductCard from "../../elements/Card/ProductCard";
-import ModalWrapper from "../../elements/Modal/ModalWrapper";
-import BlankContentInfo from "../../elements/BlankContentInfo";
 import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
+import {
+	BlankContentInfo,
+	BuyerProduct,
+	ModalWrapper,
+	ProductCard,
+} from "../../elements";
 
 const FavoriteWrapper = ({ data }: any) => {
 	const productList: BuyerProduct[] = useSelector(selectProductList);

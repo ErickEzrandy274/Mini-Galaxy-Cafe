@@ -1,5 +1,5 @@
 import React from "react";
-import NotFoundPage from "../components/modules/404Page";
+import { NotFoundPage } from "../components/modules";
 
 const notfound = () => {
 	return <NotFoundPage />;

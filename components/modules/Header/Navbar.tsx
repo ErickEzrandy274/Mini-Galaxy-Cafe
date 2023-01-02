@@ -7,10 +7,9 @@ import { navigation, authNavs, navData } from "./constant";
 import { useDispatch } from "react-redux";
 import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
 import { useUserStuff } from "../../../context/UserStuffContext";
-import NewLink from "../../elements/NewLink";
+import { Indicator, NewLink } from "../../elements";
 import Link from "next/link";
 import PreferredRoute from "./PreferredRoute";
-import Indicator from "../../elements/Indicator";
 
 const Navbar = () => {
 	const { user, logout } = useAuth();

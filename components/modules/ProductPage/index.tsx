@@ -2,12 +2,10 @@ import React from "react";
 import { LandingPageProps } from "./interface";
 import { FavContextProvider } from "../../../context/FavContext";
 import { useSelector } from "react-redux";
-import { BuyerProduct } from "../../elements/Card/interface";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
-import ProductCard from "../../elements/Card/ProductCard";
-import ModalWrapper from "../../elements/Modal/ModalWrapper";
+import { BuyerProduct, ModalWrapper, ProductCard } from "../../elements";
 
 const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 	const productList: BuyerProduct[] = useSelector(selectProductList);
