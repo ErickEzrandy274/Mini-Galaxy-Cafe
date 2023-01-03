@@ -3,8 +3,6 @@ export * from "./Authentication";
 export { default as CheckOut } from "./CheckOut";
 export * from "./CheckOut/interface";
 export { default as FavoritePage } from "./FavoritePage";
-export { default as Footer } from "./Footer";
-export * from "./Header";
 export { default as LandingPage } from "./LandingPage";
 export { default as MainLayout } from "./MainLayout";
 export * from "./MainLayout/interface";
