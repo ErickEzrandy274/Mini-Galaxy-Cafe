@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { makeRupiahValue } from "../../utils/function/function";
 import { PriceInfoProps } from "./interface";
+import { menutitleAnimation } from "../../utils/animation";
 
 const PriceInfo: React.FC<PriceInfoProps> = ({ title, data, index }) => {
 	const { initial, animate, exit, transition } = menutitleAnimation;

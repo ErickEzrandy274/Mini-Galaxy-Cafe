@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeRupiahValue } from "../../utils/function/function";
 import { BuyerProduct, ProductCardProps } from "./interface";
 import { motion } from "framer-motion";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import {
 	handleDataBuyer,
 	selectProductList,
 } from "../../../redux/dataBuyer/dataBuyerSlice";
 import { ADD_PRODUCT } from "../../../redux/store/types";
 import { FavButton, INITIAL_NUM, ModifierButton } from "../Button";
+import { menutitleAnimation } from "../../utils/animation";
 import OptimizedImage from "../OptimizedImage";
 
 const ProductCard: React.FC<ProductCardProps> = ({

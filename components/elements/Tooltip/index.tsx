@@ -1,7 +1,7 @@
 import React from "react";
 import { TooltipProps } from "./interface";
 import { motion } from "framer-motion";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import { menutitleAnimation } from "../../utils/animation";
 
 const InfoTooltip: React.FC<TooltipProps> = ({ productList, type }) => {
 	const { initial, animate, exit, transition } = menutitleAnimation;

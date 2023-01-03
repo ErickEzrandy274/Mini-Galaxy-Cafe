@@ -3,7 +3,7 @@ import { LandingPageProps } from "./interface";
 import { FavContextProvider } from "../../../context/FavContext";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import { menutitleAnimation } from "../../utils/animation";
 import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
 import { BuyerProduct, ModalWrapper, ProductCard } from "../../elements";
 

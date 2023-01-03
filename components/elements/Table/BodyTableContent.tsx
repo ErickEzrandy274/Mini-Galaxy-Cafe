@@ -3,7 +3,7 @@ import { makeRupiahValue } from "../../utils/function/function";
 import { useWindowSize } from "../../utils/function/useWindowSize";
 import { BodyTableContentProps } from "./interface";
 import { motion } from "framer-motion";
-import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
+import { pageTransition } from "../../utils/animation";
 
 const BodyTableContent: React.FC<BodyTableContentProps> = ({
 	name,

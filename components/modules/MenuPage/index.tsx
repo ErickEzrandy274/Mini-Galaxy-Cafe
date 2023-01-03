@@ -1,8 +1,7 @@
 import React from "react";
 import { WelcomingCardData } from "./data";
 import { motion } from "framer-motion";
-import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
+import { pageTransition, menutitleAnimation } from "../../utils/animation";
 import { WelcomingCard } from "../../elements";
 
 const MenuPage = () => {

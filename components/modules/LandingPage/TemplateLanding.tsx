@@ -6,7 +6,7 @@ import {
 	buttonVariant,
 	contentVariant,
 	titleVariant,
-} from "../../utils/animation/LandingPageAnimation";
+} from "../../utils/animation";
 import {
 	customClassDesktopBeverages,
 	customClassDesktopNotBeverages,

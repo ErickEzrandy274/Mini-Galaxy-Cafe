@@ -4,8 +4,6 @@ import { useAuth } from "../../../context/AuthContext";
 import { deleteBuyerProduct } from "../../utils/function/dataManipulation";
 import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
-import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { useUserStuff } from "../../../context/UserStuffContext";
 import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
 import {
@@ -16,6 +14,7 @@ import {
 	PriceInfo,
 	PriceInfoConstant,
 } from "../../elements";
+import { menutitleAnimation, pageTransition } from "../../utils/animation";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const {

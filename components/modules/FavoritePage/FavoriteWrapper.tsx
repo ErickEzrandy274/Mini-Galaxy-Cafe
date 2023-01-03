@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
 import { useFavContext } from "../../../context/FavContext";
 import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
 import {
@@ -11,6 +10,7 @@ import {
 	ModalWrapper,
 	ProductCard,
 } from "../../elements";
+import { menutitleAnimation } from "../../utils/animation";
 
 const FavoriteWrapper = ({ data }: any) => {
 	const productList: BuyerProduct[] = useSelector(selectProductList);
