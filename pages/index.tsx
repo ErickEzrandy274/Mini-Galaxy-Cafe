@@ -1,5 +1,5 @@
+import { LandingPage } from "@modules";
 import type { NextPage } from "next";
-import { LandingPage } from "../components/modules";
 
 const landing: NextPage = () => {
 	return <LandingPage />;

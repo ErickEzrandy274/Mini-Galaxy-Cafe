@@ -1,4 +1,4 @@
-import { ExtendsProductCardTypes } from "../../elements/Card/interface";
+import { ExtendsProductCardTypes } from "@elements";
 
 export interface LandingPageProps {
 	data: any;

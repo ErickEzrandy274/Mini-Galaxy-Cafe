@@ -1,5 +1,5 @@
 import { BaseSyntheticEvent } from "react";
-import { FeedbackType } from "../../utils/function/function";
+import { FeedbackType } from "../../utils";
 
 export interface InputProps {
 	name: string;

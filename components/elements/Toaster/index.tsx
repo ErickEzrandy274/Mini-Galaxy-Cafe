@@ -16,7 +16,7 @@ const index = () => {
 				<Transition
 					appear
 					show={t.visible}
-					className={`transform mt-4 p-3 px-5 flex items-center gap-3 rounded-lg shadow-lg md:text-lg text-white font-semibold ${
+					className={`transform -mt-2.5 p-3 px-5 flex items-center gap-3 rounded-lg shadow-lg md:text-lg text-white font-semibold ${
 						t.type === "error" ? `bg-red-500` : `bg-green-500`
 					} tracking-wide`}
 					enter="transition-all duration-700"

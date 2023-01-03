@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useAuth } from "../../../context/AuthContext";
-import { deleteBuyerProduct } from "../../utils/function/dataManipulation";
+import { useAuth, useUserStuff } from "@context";
 import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
-import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
-import { useUserStuff } from "../../../context/UserStuffContext";
-import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
+import { reset_product } from "@reduxs";
 import {
 	BlankContentInfo,
 	CheckoutTable,
@@ -15,7 +11,8 @@ import {
 	ModalWrapper,
 	PriceInfo,
 	PriceInfoConstant,
-} from "../../elements";
+} from "@elements";
+import { deleteBuyerProduct, menutitleAnimation, pageTransition } from "@utils";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const {

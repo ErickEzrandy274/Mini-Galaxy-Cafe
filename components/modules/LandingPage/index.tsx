@@ -2,15 +2,15 @@ import React, { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useInView } from "react-intersection-observer";
-import {
-	buttonVariant,
-	contentVariant,
-	titleVariant,
-} from "../../utils/animation/LandingPageAnimation";
-import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
 import { dataLanding } from "./dataLanding";
 import { TemplateLandingProps } from "./interface";
 import TemplateLanding from "./TemplateLanding";
+import {
+	buttonVariant,
+	contentVariant,
+	pageTransition,
+	titleVariant,
+} from "../../utils";
 
 const LandingPage = () => {
 	const { initial, animate, exit, transition } = pageTransition;

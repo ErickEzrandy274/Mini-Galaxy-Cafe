@@ -1,6 +1,5 @@
 import React from "react";
-import { pageTransition } from "../../utils/animation/PageTransitionAnimation";
-import { useWindowSize } from "../../utils/function/useWindowSize";
+import { useWindowSize, pageTransition } from "@utils";
 import { BaseAuthProps } from "./interface";
 import { motion } from "framer-motion";
 

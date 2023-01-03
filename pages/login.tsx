@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { Login } from "../components/modules";
+import { Login } from "@modules";
 
 const login = () => {
 	return (

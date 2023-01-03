@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../../context/AuthContext";
+import { useAuth, useFavContext } from "@context";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
-import { useFavContext } from "../../../context/FavContext";
-import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
+import { selectProductList } from "@reduxs";
 import {
 	BlankContentInfo,
 	BuyerProduct,
 	ModalWrapper,
 	ProductCard,
-} from "../../elements";
+} from "@elements";
+import { menutitleAnimation } from "@utils";
 
 const FavoriteWrapper = ({ data }: any) => {
 	const productList: BuyerProduct[] = useSelector(selectProductList);

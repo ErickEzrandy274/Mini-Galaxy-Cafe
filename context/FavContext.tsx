@@ -1,8 +1,8 @@
 import { DocumentData } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getFavData } from "../components/utils/function/dataManipulation";
+import { getFavData } from "@utils";
 import { useAuth } from "./AuthContext";
-import { MainLayoutProps } from "../components/modules/MainLayout/interface";
+import { MainLayoutProps } from "@modules";
 
 const FavContext = createContext({} as any);
 

@@ -1,8 +1,7 @@
-import { menutitleAnimation } from "../../utils/animation/MenuPageAnimation";
-import { useWindowSize } from "../../utils/function/useWindowSize";
-import { BuyerProduct } from "../Card/interface";
+import { useWindowSize, menutitleAnimation } from "@utils";
 import { CheckoutTableProps } from "./interface";
 import { motion } from "framer-motion";
+import { BuyerProduct } from "../Card";
 import BodyTableContent from "./BodyTableContent";
 
 const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {

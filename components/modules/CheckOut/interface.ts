@@ -1,4 +1,4 @@
-import { BuyerProduct } from "../../elements";
+import { BuyerProduct } from "@elements";
 
 export type DataType = BuyerProduct[] | [];
 
