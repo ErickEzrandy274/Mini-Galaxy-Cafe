@@ -1,5 +1,5 @@
 import React from "react";
-import { toCapitalize } from "../../utils";
+import { toCapitalize } from "@utils";
 import { InputProps } from "./interface";
 
 const Input: React.FC<InputProps> = ({ name, handleChange, error }) => {

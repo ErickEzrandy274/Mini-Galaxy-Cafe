@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { useAuth, useUserStuff } from "../../../context";
-import { NavProps } from "../../modules/Header";
+import { useAuth, useUserStuff } from "@context";
+import { NavProps } from "@modules";
 import Link from "next/link";
 import Indicator from "../Indicator";
 

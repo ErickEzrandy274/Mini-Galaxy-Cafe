@@ -1,5 +1,5 @@
 import React, { BaseSyntheticEvent } from "react";
-import { useAuth } from "../../../context";
+import { useAuth } from "@context";
 import { useRouter } from "next/router";
 import { IconFacebook, IconGithub, IconGoogle, ProviderType } from "../Icon";
 

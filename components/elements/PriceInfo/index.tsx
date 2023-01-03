@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { makeRupiahValue, menutitleAnimation } from "../../utils";
+import { makeRupiahValue, menutitleAnimation } from "@utils";
 import { PriceInfoProps } from "./interface";
 
 const PriceInfo: React.FC<PriceInfoProps> = ({ title, data, index }) => {

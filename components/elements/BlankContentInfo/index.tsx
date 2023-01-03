@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { BlankContentInfoProps } from "./interface";
-import { menutitleAnimation } from "../../utils";
+import { menutitleAnimation } from "@utils";
 
 const BlankContentInfo: React.FC<BlankContentInfoProps> = ({
 	firstContent,

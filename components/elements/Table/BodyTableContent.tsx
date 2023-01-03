@@ -1,5 +1,5 @@
 import React from "react";
-import { makeRupiahValue, useWindowSize, pageTransition } from "../../utils";
+import { makeRupiahValue, useWindowSize, pageTransition } from "@utils";
 import { BodyTableContentProps } from "./interface";
 import { motion } from "framer-motion";
 

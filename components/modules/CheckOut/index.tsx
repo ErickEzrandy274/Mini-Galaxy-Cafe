@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useAuth, useUserStuff } from "../../../context";
+import { useAuth, useUserStuff } from "@context";
 import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
-import { reset_product } from "../../../redux";
+import { reset_product } from "@redux";
 import {
 	BlankContentInfo,
 	CheckoutTable,

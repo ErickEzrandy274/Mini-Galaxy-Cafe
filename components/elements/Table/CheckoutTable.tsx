@@ -1,4 +1,4 @@
-import { useWindowSize, menutitleAnimation } from "../../utils";
+import { useWindowSize, menutitleAnimation } from "@utils";
 import { CheckoutTableProps } from "./interface";
 import { motion } from "framer-motion";
 import { BuyerProduct } from "../Card";

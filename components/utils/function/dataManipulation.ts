@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
-import { BuyerProduct, ProductCardTypes } from "../../elements/Card/interface";
+import { BuyerProduct, ProductCardTypes } from "@elements";
 import { database } from "../firebase";
 
 export const setData = (documents: any[]) => {
