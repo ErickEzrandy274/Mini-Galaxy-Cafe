@@ -1,5 +1,5 @@
 import React from "react";
-import { UserDetectedProps } from "./interface";
+import { UserDetectedProps } from "@elements";
 
 const UserDetected: React.FC<UserDetectedProps> = ({
 	className,

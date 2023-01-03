@@ -3,12 +3,17 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { useAuth, useUserStuff } from "@context";
-import { navigation, authNavs, navData } from "./constant";
 import { useDispatch } from "react-redux";
 import { reset_product } from "@reduxs";
-import { Indicator, NewLink } from "@elements";
+import {
+	Indicator,
+	NewLink,
+	PreferredRoute,
+	navigation,
+	authNavs,
+	navData,
+} from "@elements";
 import Link from "next/link";
-import PreferredRoute from "./PreferredRoute";
 
 const Navbar = () => {
 	const { user, logout } = useAuth();

@@ -10,7 +10,7 @@ import {
 	contentVariant,
 	pageTransition,
 	titleVariant,
-} from "../../utils";
+} from "@utils";
 
 const LandingPage = () => {
 	const { initial, animate, exit, transition } = pageTransition;

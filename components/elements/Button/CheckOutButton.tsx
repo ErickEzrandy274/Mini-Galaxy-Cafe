@@ -2,7 +2,7 @@ import React from "react";
 import { CheckOutModalButtonProps } from "./interface";
 import { motion } from "framer-motion";
 import { buttonCheckOutAnimation } from "@utils";
-import InfoTooltip from "../Tooltip";
+import { Tooltip } from "@elements";
 
 const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	onClick,
@@ -38,9 +38,7 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 				{isCheckOut ? `Check Out` : `Pay`}
 			</motion.label>
 
-			{isCheckOut && (
-				<InfoTooltip type={modalBtnType} productList={productList!} />
-			)}
+			{isCheckOut && <Tooltip type={modalBtnType} productList={productList!} />}
 		</>
 	);
 };

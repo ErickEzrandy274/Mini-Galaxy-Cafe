@@ -1,12 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { INITIAL_NUM, RESET_NUM } from "./constants";
+import {
+	INITIAL_NUM,
+	RESET_NUM,
+	DecrementButton,
+	IncrementButton,
+	BuyerProduct,
+	ProductCardProps,
+} from "@elements";
 import { ModifierButtonProps } from "./interface";
 import { handleDataBuyer, ADD_PRODUCT, DELETE_PRODUCT } from "@reduxs";
-import { BuyerProduct, ProductCardProps } from "../Card";
-import DecrementButton from "./DecrementButton";
-import IncrementButton from "./IncrementButton";
 
 const ModifierButton: React.FC<ModifierButtonProps> = ({
 	setIsModifierButtonOpen,

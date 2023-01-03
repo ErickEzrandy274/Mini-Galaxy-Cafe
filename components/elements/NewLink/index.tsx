@@ -1,9 +1,8 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { useAuth, useUserStuff } from "@context";
-import { NavProps } from "../Header";
+import { NavProps, Indicator } from "@elements";
 import Link from "next/link";
-import Indicator from "../Indicator";
 
 const NewLink: React.FC<NavProps> = ({
 	name,
