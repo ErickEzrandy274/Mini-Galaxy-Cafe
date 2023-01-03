@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ScrollButton } from "@elements";
-import { persistor, wrapper } from "@redux";
+import { persistor, wrapper } from "@reduxs";
 import { MainLayout, ProtectedRoute } from "@modules";
 import Head from "next/head";
 import React from "react";

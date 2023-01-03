@@ -1,6 +1,6 @@
 // reference https://medium.com/@firmnardians/pakai-redux-toolkit-dan-redux-persist-di-next-js-4579b1182096
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ADD_PRODUCT, DELETE_PRODUCT, RootState } from "@redux";
+import { ADD_PRODUCT, DELETE_PRODUCT, RootState } from "@reduxs";
 import { BuyerProduct } from "@elements";
 
 export const initialState: { productList: BuyerProduct[] } = {

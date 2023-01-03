@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { INITIAL_NUM, RESET_NUM } from "./constants";
 import { ModifierButtonProps } from "./interface";
-import { handleDataBuyer, ADD_PRODUCT, DELETE_PRODUCT } from "@redux";
+import { handleDataBuyer, ADD_PRODUCT, DELETE_PRODUCT } from "@reduxs";
 import { BuyerProduct, ProductCardProps } from "../Card";
 import DecrementButton from "./DecrementButton";
 import IncrementButton from "./IncrementButton";
