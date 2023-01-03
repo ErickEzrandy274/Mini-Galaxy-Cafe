@@ -1,8 +1,10 @@
 export { default as BlankContentInfo } from "./BlankContentInfo";
 export * from "./Button";
 export * from "./Card";
+export { default as Footer } from "./Footer";
 export { default as AuthForm } from "./Form";
 export { default as HandlerAccount } from "./HandlerAccount";
+export * from "./Header";
 export * from "./Icon";
 export { default as ImageWrapper } from "./ImageLanding";
 export { default as Indicator } from "./Indicator";
