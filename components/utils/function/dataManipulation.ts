@@ -1,7 +1,7 @@
 import React, { SetStateAction } from "react";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { BuyerProduct, ProductCardTypes } from "../../elements/Card/interface";
-import { database } from "../firebase/firebase";
+import { database } from "../firebase";
 
 export const setData = (documents: any[]) => {
 	const data = documents?.map(({ name: productName, fields }: any) => {

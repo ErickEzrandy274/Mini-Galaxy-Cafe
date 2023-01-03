@@ -13,7 +13,7 @@ import {
 	GithubAuthProvider,
 } from "firebase/auth";
 import { MainLayoutProps } from "../components/modules/MainLayout/interface";
-import { auth } from "../components/utils/firebase/firebase";
+import { auth } from "../components/utils/firebase";
 import { extractError } from "../components/utils/function";
 import { ProviderType } from "../components/elements";
 import nookies from "nookies";
