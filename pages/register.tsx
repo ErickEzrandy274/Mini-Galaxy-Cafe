@@ -1,6 +1,6 @@
+import { Register } from "@modules";
 import Head from "next/head";
 import React from "react";
-import { Register } from "../components/modules";
 
 const register = () => {
 	return (
