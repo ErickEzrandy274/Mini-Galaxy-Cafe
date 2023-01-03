@@ -1,4 +1,4 @@
-import { useWindowSize } from "../../utils/function/useWindowSize";
+import { useWindowSize } from "../../utils/function";
 import { BuyerProduct } from "../Card/interface";
 import { CheckoutTableProps } from "./interface";
 import { motion } from "framer-motion";

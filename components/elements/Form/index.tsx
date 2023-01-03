@@ -1,8 +1,5 @@
 import React from "react";
-import {
-	checkDisabilityButton,
-	FeedbackType,
-} from "../../utils/function/function";
+import { checkDisabilityButton, FeedbackType } from "../../utils/function";
 import { AuthFormProps } from "./interface";
 import { Button } from "../Button";
 import Input from "../Input";

@@ -1,5 +1,5 @@
 import React from "react";
-import { useWindowSize } from "../../utils/function/useWindowSize";
+import { useWindowSize } from "../../utils/function";
 import { BaseAuthProps } from "./interface";
 import { motion } from "framer-motion";
 import { pageTransition } from "../../utils/animation";

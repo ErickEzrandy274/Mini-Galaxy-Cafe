@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import { BASE_URL, getHeaders } from "../components/utils/api";
-import { setData } from "../components/utils/function/dataManipulation";
+import { setData } from "../components/utils/function";
 import { ProductPage } from "../components/modules";
 
 export async function getServerSideProps() {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAuth, useUserStuff } from "../../../context";
-import { deleteBuyerProduct } from "../../utils/function/dataManipulation";
+import { deleteBuyerProduct } from "../../utils/function";
 import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
 import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";

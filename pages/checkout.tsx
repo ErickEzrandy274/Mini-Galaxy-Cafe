@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { getBuyerData } from "../components/utils/function/SSRFunction";
+import { getBuyerData } from "../components/utils/function";
 import { CheckOut, CheckOutProps } from "../components/modules";
 
 const checkout = ({ data }: CheckOutProps) => {

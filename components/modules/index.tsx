@@ -7,6 +7,7 @@ export { default as Footer } from "./Footer";
 export * from "./Header";
 export { default as LandingPage } from "./LandingPage";
 export { default as MainLayout } from "./MainLayout";
+export * from "./MainLayout/interface";
 export { default as MenuPage } from "./MenuPage";
 export { default as ProductPage } from "./ProductPage";
 export { default as ProtectedRoute } from "./ProtectedRoute";

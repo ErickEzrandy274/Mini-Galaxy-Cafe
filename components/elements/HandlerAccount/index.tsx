@@ -1,5 +1,5 @@
 import React from "react";
-import { toCapitalize } from "../../utils/function/function";
+import { toCapitalize } from "../../utils/function";
 import { HandlerAccountProps } from "./interface";
 
 const HandlerAccount: React.FC<HandlerAccountProps> = ({ content, href, className }) => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { CheckoutModalProps } from "./interface";
-import { addBuyerProduct } from "../../utils/function/dataManipulation";
+import { addBuyerProduct } from "../../utils/function";
 import { useAuth, useUserStuff } from "../../../context";
 import { useRouter } from "next/router";
 import { LoadingInfo } from "../Loader";
