@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
-import { getFavoriteData } from "../components/utils";
-import { FavCardProps } from "../components/elements";
+import { getFavoriteData } from "@utils";
+import { FavCardProps } from "@elements";
 import { FavoritePage } from "@modules";
 
 const favorite = ({ data }: FavCardProps) => {

@@ -11,12 +11,8 @@ import {
 	ModalWrapper,
 	PriceInfo,
 	PriceInfoConstant,
-} from "../../elements";
-import {
-	deleteBuyerProduct,
-	menutitleAnimation,
-	pageTransition,
-} from "../../utils";
+} from "@elements";
+import { deleteBuyerProduct, menutitleAnimation, pageTransition } from "@utils";
 
 const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 	const {

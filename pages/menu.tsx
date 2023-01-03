@@ -1,6 +1,6 @@
-import { MenuPage } from "@modules";
 import Head from "next/head";
 import React from "react";
+import { MenuPage } from "@modules";
 
 const menu = () => {
 	return (

@@ -2,7 +2,7 @@ import React, { BaseSyntheticEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth, useUserStuff } from "../../../context";
 import { LoginInputType, loginObj } from "./interface";
-import { AuthForm, HandlerAccount } from "../../elements";
+import { AuthForm, HandlerAccount } from "@elements";
 import BaseAuth from "./BaseAuth";
 
 const Login = () => {

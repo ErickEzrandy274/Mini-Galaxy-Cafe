@@ -8,8 +8,8 @@ import {
 	BuyerProduct,
 	ModalWrapper,
 	ProductCard,
-} from "../../elements";
-import { menutitleAnimation } from "../../utils";
+} from "@elements";
+import { menutitleAnimation } from "@utils";
 
 const FavoriteWrapper = ({ data }: any) => {
 	const productList: BuyerProduct[] = useSelector(selectProductList);
