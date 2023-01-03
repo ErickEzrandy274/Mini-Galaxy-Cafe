@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import {
 	handleDataBuyer,
 	selectProductList,
-} from "../../../redux/dataBuyer/dataBuyerSlice";
-import { ADD_PRODUCT } from "../../../redux/store/types";
+	ADD_PRODUCT,
+} from "../../../redux";
 import { FavButton, INITIAL_NUM, ModifierButton } from "../Button";
 import { menutitleAnimation } from "../../utils/animation";
 import { makeRupiahValue } from "../../utils/function";

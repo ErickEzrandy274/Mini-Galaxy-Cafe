@@ -4,7 +4,7 @@ import { FavContextProvider } from "../../../context";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation";
-import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
+import { selectProductList } from "../../../redux";
 import { BuyerProduct, ModalWrapper, ProductCard } from "../../elements";
 
 const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useAuth, useUserStuff } from "../../../context";
 import { navigation, authNavs, navData } from "./constant";
 import { useDispatch } from "react-redux";
-import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
+import { reset_product } from "../../../redux";
 import { Indicator, NewLink } from "../../elements";
 import Link from "next/link";
 import PreferredRoute from "./PreferredRoute";

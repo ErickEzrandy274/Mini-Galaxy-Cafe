@@ -4,10 +4,10 @@ import type { AppProps } from "next/app";
 import { AuthContextProvider, UserStuffContextProvider } from "../context";
 import { useRouter } from "next/router";
 import { Provider } from "react-redux";
-import { persistor, wrapper } from "../redux/store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { ScrollButton } from "../components/elements";
 import { MainLayout, ProtectedRoute } from "../components/modules";
+import { persistor, wrapper } from "../redux";
 import Head from "next/head";
 import React from "react";
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth, useFavContext } from "../../../context";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
+import { selectProductList } from "../../../redux";
 import {
 	BlankContentInfo,
 	BuyerProduct,

@@ -4,7 +4,7 @@ import { useAuth, useUserStuff } from "../../../context";
 import { deleteBuyerProduct } from "../../utils/function";
 import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
-import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
+import { reset_product } from "../../../redux";
 import {
 	BlankContentInfo,
 	CheckoutTable,
