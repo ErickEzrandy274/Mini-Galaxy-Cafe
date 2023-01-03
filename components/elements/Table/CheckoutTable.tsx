@@ -66,7 +66,11 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 				</motion.tr>
 			</thead>
 
-			<tbody className="h-[20rem] overflow-y-scroll block">
+			<tbody
+				className={
+					products.length > 5 ? "h-[20rem] overflow-y-scroll block" : "h-auto"
+				}
+			>
 				{products.map((item: BuyerProduct, idx: number) => {
 					return <BodyTableContent key={item.dataId} {...item} delay={idx} />;
 				})}
