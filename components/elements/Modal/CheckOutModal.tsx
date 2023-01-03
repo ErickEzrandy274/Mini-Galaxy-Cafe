@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { CheckoutModalProps } from "./interface";
 import { addBuyerProduct } from "../../utils/function/dataManipulation";
-import { useAuth } from "../../../context/AuthContext";
+import { useAuth, useUserStuff } from "../../../context";
 import { useRouter } from "next/router";
-import { useUserStuff } from "../../../context/UserStuffContext";
 import { LoadingInfo } from "../Loader";
 
 const CheckOutModal: React.FC<CheckoutModalProps> = ({

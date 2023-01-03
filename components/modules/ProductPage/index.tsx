@@ -1,6 +1,6 @@
 import React from "react";
 import { LandingPageProps } from "./interface";
-import { FavContextProvider } from "../../../context/FavContext";
+import { FavContextProvider } from "../../../context";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "../../utils/animation";

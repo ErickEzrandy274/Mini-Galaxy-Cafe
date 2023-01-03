@@ -1,10 +1,9 @@
 import "../styles/globals.css";
 import "../styles/loader.css";
 import type { AppProps } from "next/app";
-import { AuthContextProvider } from "../context/AuthContext";
+import { AuthContextProvider, UserStuffContextProvider } from "../context";
 import { useRouter } from "next/router";
 import { Provider } from "react-redux";
-import { UserStuffContextProvider } from "../context/UserStuffContext";
 import { persistor, wrapper } from "../redux/store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { ScrollButton } from "../components/elements";

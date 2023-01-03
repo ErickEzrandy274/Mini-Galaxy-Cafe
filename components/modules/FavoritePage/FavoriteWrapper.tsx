@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../../context/AuthContext";
+import { useAuth, useFavContext } from "../../../context";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { useFavContext } from "../../../context/FavContext";
 import { selectProductList } from "../../../redux/dataBuyer/dataBuyerSlice";
 import {
 	BlankContentInfo,

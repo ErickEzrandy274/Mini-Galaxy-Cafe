@@ -2,11 +2,10 @@
 import { Disclosure, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
-import { useAuth } from "../../../context/AuthContext";
+import { useAuth, useUserStuff } from "../../../context";
 import { navigation, authNavs, navData } from "./constant";
 import { useDispatch } from "react-redux";
 import { reset_product } from "../../../redux/dataBuyer/dataBuyerSlice";
-import { useUserStuff } from "../../../context/UserStuffContext";
 import { Indicator, NewLink } from "../../elements";
 import Link from "next/link";
 import PreferredRoute from "./PreferredRoute";
