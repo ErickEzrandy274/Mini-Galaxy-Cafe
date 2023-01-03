@@ -1,6 +1,6 @@
 // reference google icon: https://iconscout.com/icons/google
 import React from "react";
-import { IconProps } from "./interface";
+import { IconProps } from "@elements";
 
 const IconFacebook: React.FC<IconProps> = ({
 	handler,

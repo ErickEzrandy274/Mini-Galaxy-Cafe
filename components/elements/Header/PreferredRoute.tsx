@@ -1,8 +1,5 @@
 import React from "react";
-import { navData } from "./constant";
-import { NewLink } from "@elements";
-import { RouteProps } from "./interface";
-import UserDetected from "./UserDetected";
+import { NewLink, UserDetected, RouteProps, navData } from "@elements";
 
 const PreferredRoute: React.FC<RouteProps> = ({
 	user,

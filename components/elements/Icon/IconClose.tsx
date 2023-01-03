@@ -1,5 +1,5 @@
 import React from "react";
-import { BaseIconProps } from "./interface";
+import { BaseIconProps } from "@elements";
 
 const IconClose: React.FC<BaseIconProps> = ({ width = 30, height = 30 }) => {
 	return (

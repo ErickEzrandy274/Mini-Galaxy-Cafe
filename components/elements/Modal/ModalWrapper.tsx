@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ModalWrapperProps } from "./interface";
-import ModalButton from "../Button/CheckOutButton";
-import CheckOutModal from "./CheckOutModal";
+import { CheckOutButton as ModalButton, CheckOutModal } from "@elements";
 
 const ModalWrapper: React.FC<ModalWrapperProps> = ({
 	modalBtnType,
