@@ -1,7 +1,7 @@
 import React, { BaseSyntheticEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../../../context";
-import { extractError } from "../../utils/function";
+import { extractError } from "../../utils";
 import { RegisterInputType, registerObj } from "./interface";
 import { AuthForm, HandlerAccount } from "../../elements";
 import BaseAuth from "./BaseAuth";

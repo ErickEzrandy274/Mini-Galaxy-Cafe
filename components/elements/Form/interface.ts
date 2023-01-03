@@ -1,5 +1,5 @@
 import { BaseSyntheticEvent } from "react";
-import { DisabilityButtonParamType } from "../../utils/function";
+import { DisabilityButtonParamType } from "../../utils";
 
 export interface AuthFormProps extends DisabilityButtonParamType {
 	nickname?: string;

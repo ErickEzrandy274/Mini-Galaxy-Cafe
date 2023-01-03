@@ -12,10 +12,9 @@ import {
 	FacebookAuthProvider,
 	GithubAuthProvider,
 } from "firebase/auth";
-import { MainLayoutProps } from "../components/modules/MainLayout/interface";
-import { auth } from "../components/utils/firebase";
-import { extractError } from "../components/utils/function";
+import { auth, extractError } from "../components/utils";
 import { ProviderType } from "../components/elements";
+import { MainLayoutProps } from "../components/modules";
 import nookies from "nookies";
 import toast from "react-hot-toast";
 

@@ -1,8 +1,7 @@
 import React from "react";
-import { makeRupiahValue, useWindowSize } from "../../utils/function";
+import { makeRupiahValue, useWindowSize, pageTransition } from "../../utils";
 import { BodyTableContentProps } from "./interface";
 import { motion } from "framer-motion";
-import { pageTransition } from "../../utils/animation";
 
 const BodyTableContent: React.FC<BodyTableContentProps> = ({
 	name,

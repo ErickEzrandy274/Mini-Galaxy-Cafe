@@ -4,7 +4,7 @@ export * from "./Card";
 export { default as AuthForm } from "./Form";
 export { default as HandlerAccount } from "./HandlerAccount";
 export * from "./Icon";
-export { default as ImageLanding } from "./ImageLanding";
+export { default as ImageWrapper } from "./ImageLanding";
 export { default as Indicator } from "./Indicator";
 export { default as Input } from "./Input";
 export * from "./Loader";

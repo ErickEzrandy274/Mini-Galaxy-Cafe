@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
-import { getBuyerProduct } from "../components/utils/function";
+import { getBuyerProduct } from "../components/utils";
 import { useDispatch } from "react-redux";
 import { set_productlist } from "../redux";
 import { MainLayoutProps } from "../components/modules";

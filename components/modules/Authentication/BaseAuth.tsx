@@ -1,8 +1,7 @@
 import React from "react";
-import { useWindowSize } from "../../utils/function";
+import { useWindowSize, pageTransition } from "../../utils";
 import { BaseAuthProps } from "./interface";
 import { motion } from "framer-motion";
-import { pageTransition } from "../../utils/animation";
 
 const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children }) => {
 	const { width } = useWindowSize();

@@ -1,6 +1,6 @@
 import { DocumentData } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getFavData } from "../components/utils/function";
+import { getFavData } from "../components/utils";
 import { useAuth } from "./AuthContext";
 import { MainLayoutProps } from "../components/modules";
 

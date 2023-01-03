@@ -8,8 +8,7 @@ import {
 	ADD_PRODUCT,
 } from "../../../redux";
 import { FavButton, INITIAL_NUM, ModifierButton } from "../Button";
-import { menutitleAnimation } from "../../utils/animation";
-import { makeRupiahValue } from "../../utils/function";
+import { makeRupiahValue, menutitleAnimation } from "../../utils";
 import OptimizedImage from "../OptimizedImage";
 
 const ProductCard: React.FC<ProductCardProps> = ({

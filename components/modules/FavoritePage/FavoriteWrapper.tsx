@@ -9,7 +9,7 @@ import {
 	ModalWrapper,
 	ProductCard,
 } from "../../elements";
-import { menutitleAnimation } from "../../utils/animation";
+import { menutitleAnimation } from "../../utils";
 
 const FavoriteWrapper = ({ data }: any) => {
 	const productList: BuyerProduct[] = useSelector(selectProductList);
