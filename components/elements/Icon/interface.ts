@@ -11,3 +11,7 @@ export interface IconProps extends BaseIconProps {
 	handler: (e: BaseSyntheticEvent, provider: ProviderType) => Promise<void>;
 	provider: ProviderType;
 }
+
+export interface IconTrashProps extends BaseIconProps {
+	onClick: () => void;
+}
