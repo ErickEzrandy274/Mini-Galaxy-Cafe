@@ -7,4 +7,8 @@ export { default as IconTrash } from "./IconTrash";
 export { default as IconPlus } from "./IconPlus";
 export { default as IconMinus } from "./IconMinus";
 export { default as IconStar } from "./IconStar";
+export { default as IconPayment } from "./IconPayment";
+export { default as IconCheckout } from "./IconCheckout";
+export { default as IconWarning } from "./IconWarning";
+export { default as IconArrow } from "./IconArrow";
 export * from "./interface";
