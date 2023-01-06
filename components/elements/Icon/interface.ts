@@ -15,3 +15,7 @@ export interface IconProps extends BaseIconProps {
 export interface IconTrashProps extends BaseIconProps {
 	onClick: () => void;
 }
+
+export interface IconFavoriteProps extends BaseIconProps {
+	fav: boolean;
+}
