@@ -3,7 +3,7 @@ import {
 	BuyerProduct,
 	ExtendsProductCardTypes,
 	ProductCardTypes,
-} from "../Card";
+} from "@elements";
 
 export type DestinationType = "Checkout" | "Payment";
 

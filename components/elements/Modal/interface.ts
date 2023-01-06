@@ -1,6 +1,9 @@
 import { SetStateAction } from "react";
-import { BuyerProduct, ExtendsProductCardTypes } from "../Card/interface";
-import { DestinationType } from "../Button/interface";
+import {
+	BuyerProduct,
+	ExtendsProductCardTypes,
+	DestinationType,
+} from "@elements";
 
 export interface CheckoutModalProps {
 	modalType: DestinationType;

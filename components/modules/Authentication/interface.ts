@@ -1,4 +1,4 @@
-import { MainLayoutProps } from "../MainLayout/interface";
+import { MainLayoutProps } from "@modules";
 
 export interface LoginInputType {
 	email: string;
