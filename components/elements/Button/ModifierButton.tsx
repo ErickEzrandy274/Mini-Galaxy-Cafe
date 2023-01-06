@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import {
 	INITIAL_NUM,
 	RESET_NUM,
-	DecrementButton,
-	IncrementButton,
 	BuyerProduct,
 	ProductCardProps,
+	IconMinus,
+	IconPlus,
 } from "@elements";
 import { ModifierButtonProps } from "./interface";
 import { handleDataBuyer, ADD_PRODUCT, DELETE_PRODUCT } from "@reduxs";
@@ -46,12 +46,12 @@ const ModifierButton: React.FC<ModifierButtonProps> = ({
 
 	return (
 		<div
-			className="flex justify-center p-2.5 px-4 rounded-lg bg-violet-700 
+			className="flex justify-center items-center p-2.5 px-4 rounded-lg bg-violet-700 
             text-base sm:text-lg shadow-xl gap-3 font-semibold"
 		>
-			<DecrementButton onClick={() => handleNum("decrement")} />
+			<IconMinus onClick={() => handleNum("decrement")} />
 			<span>{num}</span>
-			<IncrementButton onClick={() => handleNum("increment")} />
+			<IconPlus onClick={() => handleNum("increment")} />
 		</div>
 	);
 };
