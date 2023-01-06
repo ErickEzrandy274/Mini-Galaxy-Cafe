@@ -54,7 +54,7 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 						onClick={() => push(href)}
 						className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white shadow-lg
                         bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-2 focus:ring-offset-2 focus:outline-none 
-                        focus:ring-blue-500 focus:ring-offset-blue-200 transition duration-200 ease-in hover:scale-110"
+                        focus:ring-blue-500 focus:ring-offset-blue-200 transition-all duration-200 ease-in hover:scale-110"
 					>
 						See more
 						<svg
