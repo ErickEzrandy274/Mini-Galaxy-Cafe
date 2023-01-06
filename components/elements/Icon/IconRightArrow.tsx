@@ -1,7 +1,10 @@
 import React from "react";
 import { BaseIconProps } from "./interface";
 
-const IconArrow: React.FC<BaseIconProps> = ({ width = 15, height = 15 }) => {
+const IconRightArrow: React.FC<BaseIconProps> = ({
+	width = 15,
+	height = 15,
+}) => {
 	return (
 		<svg
 			fill="currentColor"
@@ -19,4 +22,4 @@ const IconArrow: React.FC<BaseIconProps> = ({ width = 15, height = 15 }) => {
 	);
 };
 
-export default IconArrow;
+export default IconRightArrow;
