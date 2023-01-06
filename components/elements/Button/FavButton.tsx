@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { FavButtonProps } from "./interface";
 import { useRouter } from "next/router";
 import { useAuth, useFavContext } from "@context";
 import { handleFav } from "@utils";
-import { IconStar } from "../Icon";
+import { IconStar, FavButtonProps } from "@elements";
 
 const FavButton: React.FC<FavButtonProps> = ({ data, setRemoved }) => {
 	const {
