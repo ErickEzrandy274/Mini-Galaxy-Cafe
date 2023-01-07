@@ -27,15 +27,16 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		exit: secExit,
 		transition: secTrans,
 	} = menutitleAnimation;
-	let newData: DataType = data;
+	// let newData: DataType = data;
 	const productList: BuyerProduct[] = useSelector(selectProductList);
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [newData, setNewData] = useState<DataType>(data);
 	const dispatch = useDispatch();
 
 	const handlePayment = async () => {
 		setIsLoading(true);
-		newData = [];
+		setNewData([]);
 		setIsPayed(true);
 		await deleteBuyerProduct(uid);
 		dispatch(reset_product());
@@ -83,7 +84,11 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 						</div>
 
 						<div className="rounded-md shadow-md">
-							<CheckoutTable products={newData} />
+							<CheckoutTable
+								products={newData}
+								newData={newData}
+								setNewData={setNewData}
+							/>
 						</div>
 
 						<div
