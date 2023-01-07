@@ -3,7 +3,11 @@ import { CheckoutTableProps } from "./interface";
 import { motion } from "framer-motion";
 import { BuyerProduct, BodyTableContent } from "@elements";
 
-const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
+const CheckoutTable: React.FC<CheckoutTableProps> = ({
+	products,
+	newData,
+	setNewData,
+}) => {
 	const { width } = useWindowSize();
 	const { initial, animate, exit, transition } = menutitleAnimation;
 
@@ -68,11 +72,19 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 
 			<tbody
 				className={
-					products.length > 5 ? "h-[20rem] overflow-y-scroll block" : "h-auto"
+					products.length > 5 ? "h-[20rem] overflow-y-scroll block" : ""
 				}
 			>
 				{products?.map((item: BuyerProduct, idx: number) => {
-					return <BodyTableContent key={item.dataId} {...item} delay={idx} />;
+					return (
+						<BodyTableContent
+							key={item.dataId}
+							{...item}
+							delay={idx}
+							newData={newData}
+							setNewData={setNewData}
+						/>
+					);
 				})}
 			</tbody>
 		</table>
