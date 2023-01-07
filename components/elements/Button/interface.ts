@@ -5,7 +5,7 @@ import {
 	ProductCardTypes,
 } from "@elements";
 
-export type DestinationType = "Checkout" | "Payment";
+export type DestinationType = "Checkout" | "Payment" | "Cancel Order";
 
 export interface ButtonProps {
 	buttonName: string;
