@@ -76,7 +76,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 						) : (
 							<button
 								onClick={handleClick}
-								className="btn text-base sm:text-lg btn-primary shadow-xl text-base-200 hover:text-white transition-all duration-500 ease-in-out"
+								className="btn text-base sm:text-lg btn-primary shadow-xl text-gray-200 hover:text-white transition-all duration-500 ease-in-out"
 							>
 								Buy Now
 							</button>
