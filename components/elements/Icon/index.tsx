@@ -10,5 +10,6 @@ export { default as IconStar } from "./IconStar";
 export { default as IconPayment } from "./IconPayment";
 export { default as IconCheckout } from "./IconCheckout";
 export { default as IconWarning } from "./IconWarning";
-export { default as IconArrow } from "./IconArrow";
+export { default as IconRightArrow } from "./IconRightArrow";
+export { default as IconUpArrow } from "./IconUpArrow";
 export * from "./interface";
