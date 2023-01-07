@@ -9,13 +9,13 @@ export interface CheckoutModalProps {
 	modalType: DestinationType;
 	setIsModalOpen: React.Dispatch<SetStateAction<boolean>>;
 	productList?: BuyerProduct[];
-	handlePayment?: () => void;
+	handleAction?: () => void;
 }
 
 export interface ModalWrapperProps {
 	modalBtnType: ExtendsProductCardTypes;
 	to: DestinationType;
 	productList?: BuyerProduct[];
-	handlePayment?: () => void;
+	handleAction?: () => void;
 	modalType: DestinationType;
 }
