@@ -1,5 +1,12 @@
 import React, { SetStateAction } from "react";
-import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+	arrayRemove,
+	deleteDoc,
+	doc,
+	getDoc,
+	setDoc,
+	updateDoc,
+} from "firebase/firestore";
 import { BuyerProduct, ProductCardTypes } from "@elements";
 import { database } from "../firebase";
 
@@ -91,4 +98,23 @@ export const getBuyerProduct = async (uid: string) => {
 export const deleteBuyerProduct = async (uid: string) => {
 	const buyerRef = doc(database, "Buyer", uid);
 	await deleteDoc(buyerRef);
+};
+
+export const removeBuyerProduct = async (
+	uid: string,
+	objDataId: string,
+	setUserStuff: React.Dispatch<SetStateAction<any[]>>
+) => {
+	const buyerRef = doc(database, "Buyer", uid);
+	await getDoc(buyerRef).then(async (res) => {
+		let buyerProduct = res.data()?.buyerProduct ?? [];
+		buyerProduct = buyerProduct.filter(
+			(item: any) => item?.dataId !== objDataId
+		);
+		setUserStuff(buyerProduct);
+
+		await setDoc(buyerRef, {
+			buyerProduct,
+		});
+	});
 };
