@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { addBuyerProduct } from "@utils";
 import { useAuth, useUserStuff } from "@context";
-import { LoadingInfo } from "@elements";
+import { IconWarning, LoadingInfo } from "@elements";
 import { useRouter } from "next/router";
 import { CheckoutModalProps } from "./interface";
 
@@ -11,15 +9,21 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 	setIsModalOpen,
 	productList,
 	modalType,
-	handlePayment,
+	handleAction,
 }) => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const {
 		user: { uid },
 	} = useAuth();
 
+	const isCancelOrder: boolean = modalType === "Cancel Order";
+
 	const { setUserStuff } = useUserStuff();
-	const text: string = modalType === "Checkout" ? `order` : `pay`;
+	const text: string = isCancelOrder
+		? "cancel order"
+		: modalType === "Checkout"
+		? "order"
+		: "pay";
 	const { push } = useRouter();
 
 	const handleOrder = async () => {
@@ -42,33 +46,39 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 					) : (
 						<>
 							<div className="flex gap-2 items-center border-b-2 border-gray-300">
-								<FontAwesomeIcon icon={faWarning} className="w-7" />
+								<IconWarning />
 								<h3 className="font-bold text-lg uppercase">
 									{modalType} Confirmation
 								</h3>
 							</div>
 
 							<p>
-								Please check again the number of products that you want to order
+								{isCancelOrder
+									? `You have ordered ${productList?.length} items!`
+									: "Please check again the number of products that you want to order!"}
 							</p>
 
-							<p>Are you sure want to {text}?</p>
+							<p>
+								Are you sure want to {isCancelOrder ? "cancel the order" : text}
+								?
+							</p>
 
 							<div className="modal-action">
-								<div
+								<button
 									onClick={() => setIsModalOpen(false)}
 									className="btn btn-outline btn-accent"
 								>
-									Cancel
-								</div>
-								<div
+									{isCancelOrder ? "No" : "Cancel"}
+								</button>
+
+								<button
 									onClick={
-										modalType === "Checkout" ? handleOrder : handlePayment
+										modalType === "Checkout" ? handleOrder : handleAction
 									}
 									className="btn btn-outline btn-success"
 								>
-									{text}
-								</div>
+									{isCancelOrder ? "Yes" : text}
+								</button>
 							</div>
 						</>
 					)}
