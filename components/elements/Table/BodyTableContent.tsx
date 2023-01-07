@@ -21,6 +21,8 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({
 	price,
 	index,
 	delay,
+	newData,
+	setNewData,
 }) => {
 	const { width } = useWindowSize();
 	const { initial, animate, exit, transition } = pageTransition;
@@ -47,6 +49,7 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({
 				type: DELETE_PRODUCT,
 			})
 		);
+		setNewData(newData.filter((item) => item.dataId !== dataId));
 		await removeBuyerProduct(uid, dataId, setUserStuff);
 	};
 
