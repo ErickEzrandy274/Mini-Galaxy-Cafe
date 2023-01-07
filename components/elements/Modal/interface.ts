@@ -1,18 +1,21 @@
 import { SetStateAction } from "react";
-import { BuyerProduct, ExtendsProductCardTypes } from "../Card/interface";
-import { DestinationType } from "../Button/interface";
+import {
+	BuyerProduct,
+	ExtendsProductCardTypes,
+	DestinationType,
+} from "@elements";
 
 export interface CheckoutModalProps {
 	modalType: DestinationType;
 	setIsModalOpen: React.Dispatch<SetStateAction<boolean>>;
 	productList?: BuyerProduct[];
-	handlePayment?: () => void;
+	handleAction?: () => void;
 }
 
 export interface ModalWrapperProps {
 	modalBtnType: ExtendsProductCardTypes;
 	to: DestinationType;
 	productList?: BuyerProduct[];
-	handlePayment?: () => void;
+	handleAction?: () => void;
 	modalType: DestinationType;
 }

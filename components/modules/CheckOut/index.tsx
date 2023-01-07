@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth, useUserStuff } from "@context";
 import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
-import { reset_product } from "@reduxs";
+import { reset_product, selectProductList } from "@reduxs";
 import {
 	BlankContentInfo,
+	BuyerProduct,
 	CheckoutTable,
 	LoadingInfo,
 	ModalWrapper,
@@ -26,14 +27,16 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		exit: secExit,
 		transition: secTrans,
 	} = menutitleAnimation;
-	let newData: DataType = data;
+	// let newData: DataType = data;
+	const productList: BuyerProduct[] = useSelector(selectProductList);
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [newData, setNewData] = useState<DataType>(data);
 	const dispatch = useDispatch();
 
 	const handlePayment = async () => {
 		setIsLoading(true);
-		newData = [];
+		setNewData([]);
 		setIsPayed(true);
 		await deleteBuyerProduct(uid);
 		dispatch(reset_product());
@@ -41,6 +44,12 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 500);
+	};
+
+	const handleCancelOrder = async () => {
+		await deleteBuyerProduct(uid);
+		dispatch(reset_product());
+		setUserStuff([]);
 	};
 
 	return (
@@ -52,20 +61,34 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 			className="mx-4 sm:mx-10"
 		>
 			<div className="bg-gray-100/10 flex flex-col gap-5 p-4 sm:p-10 rounded-lg">
-				{newData?.length > 0 && !isPayed ? (
+				{productList?.length > 0 && !isPayed ? (
 					<>
-						<motion.h1
-							initial={secInit}
-							animate={secAnim}
-							exit={secExit}
-							transition={{ ...secTrans, delay: 0.15 }}
-							className="font-semibold text-4xl text-center sm:text-left"
-						>
-							Your Cart
-						</motion.h1>
+						<div className="flex justify-between">
+							<motion.h1
+								initial={secInit}
+								animate={secAnim}
+								exit={secExit}
+								transition={{ ...secTrans, delay: 0.15 }}
+								className="font-semibold text-4xl text-center sm:text-left"
+							>
+								Your Cart
+							</motion.h1>
+
+							<ModalWrapper
+								to="Cancel Order"
+								modalType="Cancel Order"
+								modalBtnType="Others"
+								productList={productList}
+								handleAction={handleCancelOrder}
+							/>
+						</div>
 
 						<div className="rounded-md shadow-md">
-							<CheckoutTable products={newData} />
+							<CheckoutTable
+								products={newData}
+								newData={newData}
+								setNewData={setNewData}
+							/>
 						</div>
 
 						<div
@@ -75,7 +98,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 								return (
 									<PriceInfo
 										title={item}
-										data={data}
+										data={productList}
 										key={"PriceInfo-" + item}
 										index={index}
 									/>
@@ -86,8 +109,8 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 								to="Payment"
 								modalType="Payment"
 								modalBtnType="Others"
-								productList={data}
-								handlePayment={handlePayment}
+								productList={productList}
+								handleAction={handlePayment}
 							/>
 						</div>
 					</>

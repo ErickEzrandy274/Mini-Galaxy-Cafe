@@ -1,18 +1,57 @@
-import React from "react";
-import { makeRupiahValue, useWindowSize, pageTransition } from "@utils";
+import React, { useState } from "react";
+import {
+	makeRupiahValue,
+	useWindowSize,
+	pageTransition,
+	removeBuyerProduct,
+} from "@utils";
+import { IconTrash, ProductCardProps, RESET_NUM } from "@elements";
 import { BodyTableContentProps } from "./interface";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { DELETE_PRODUCT, handleDataBuyer } from "@reduxs";
+import { useAuth, useUserStuff } from "@context";
 
 const BodyTableContent: React.FC<BodyTableContentProps> = ({
 	name,
+	dataId,
 	type,
+	image,
 	amount,
 	price,
 	index,
 	delay,
+	newData,
+	setNewData,
 }) => {
 	const { width } = useWindowSize();
 	const { initial, animate, exit, transition } = pageTransition;
+	const { setUserStuff } = useUserStuff();
+	const dispatch = useDispatch();
+	const {
+		user: { uid },
+	} = useAuth();
+	const [isRemoved, setIsRemoved] = useState<boolean>(false);
+
+	const handleDelete = async () => {
+		setIsRemoved(true);
+		const product: ProductCardProps = {
+			name,
+			type,
+			image,
+			price,
+			dataId,
+			index,
+		};
+		dispatch(
+			handleDataBuyer({
+				obj: { ...product, amount: RESET_NUM },
+				type: DELETE_PRODUCT,
+			})
+		);
+		setNewData(newData.filter((item) => item.dataId !== dataId));
+		await removeBuyerProduct(uid, dataId, setUserStuff);
+	};
 
 	return (
 		<motion.tr
@@ -20,7 +59,9 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({
 			animate={animate}
 			exit={exit}
 			transition={{ ...transition, delay: 0.2 + 0.2 * delay }}
-			className="bg-gray-800 border-gray-700 font-semibold shadow-lg block border-b"
+			className={`bg-gray-800 border-gray-700 font-semibold shadow-lg block border-b ${
+				isRemoved && `hidden`
+			}`}
 		>
 			<td
 				scope="row"
@@ -37,7 +78,10 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({
 			)}
 
 			<td className="p-3 sm:px-6 sm:py-4 w-1/4">
-				{makeRupiahValue(price * amount)} {width < 640 && `(${amount}pcs)`}
+				<div className="flex justify-around sm:justify-center gap-3 items-center">
+					{makeRupiahValue(price * amount)} {width < 640 && `(${amount}pcs)`}
+					<IconTrash onClick={handleDelete} />
+				</div>
 			</td>
 		</motion.tr>
 	);

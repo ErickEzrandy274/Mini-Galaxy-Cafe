@@ -1,4 +1,4 @@
-import { BuyerProduct } from "../Card/interface";
+import { BuyerProduct } from "@elements";
 
 export interface PriceInfoProps {
 	title: string;

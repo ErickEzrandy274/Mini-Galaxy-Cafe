@@ -3,7 +3,11 @@ import { CheckoutTableProps } from "./interface";
 import { motion } from "framer-motion";
 import { BuyerProduct, BodyTableContent } from "@elements";
 
-const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
+const CheckoutTable: React.FC<CheckoutTableProps> = ({
+	products,
+	newData,
+	setNewData,
+}) => {
 	const { width } = useWindowSize();
 	const { initial, animate, exit, transition } = menutitleAnimation;
 
@@ -22,7 +26,7 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 						exit={exit}
 						transition={{ ...transition, delay: 0.25 }}
 						scope="col"
-						className="p-3 sm:px-6 w-1/2 sm:w-[30rem]"
+						className="p-3 sm:px-6 w-1/3 sm:w-[30rem]"
 					>
 						Product name
 					</motion.th>
@@ -59,7 +63,7 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 						exit={exit}
 						transition={{ ...transition, delay: 0.85 }}
 						scope="col"
-						className="p-3 sm:px-6 w-1/2 sm:w-1/4 rounded-tr-md"
+						className="p-3 sm:px-6 sm:w-1/4 rounded-tr-md"
 					>
 						Price
 					</motion.th>
@@ -68,11 +72,19 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({ products }) => {
 
 			<tbody
 				className={
-					products.length > 5 ? "h-[20rem] overflow-y-scroll block" : "h-auto"
+					products.length > 5 ? "h-[20rem] overflow-y-scroll block" : ""
 				}
 			>
-				{products.map((item: BuyerProduct, idx: number) => {
-					return <BodyTableContent key={item.dataId} {...item} delay={idx} />;
+				{products?.map((item: BuyerProduct, idx: number) => {
+					return (
+						<BodyTableContent
+							key={item.dataId}
+							{...item}
+							delay={idx}
+							newData={newData}
+							setNewData={setNewData}
+						/>
+					);
 				})}
 			</tbody>
 		</table>

@@ -7,7 +7,7 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({
 	modalType,
 	productList,
 	to,
-	handlePayment,
+	handleAction,
 }) => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -29,7 +29,7 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({
 					modalType={modalType}
 					setIsModalOpen={setIsModalOpen}
 					productList={productList}
-					handlePayment={handlePayment}
+					handleAction={handleAction}
 				/>
 			)}
 		</div>
