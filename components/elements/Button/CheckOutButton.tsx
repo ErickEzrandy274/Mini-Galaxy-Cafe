@@ -1,8 +1,12 @@
 import React from "react";
-import { CheckOutModalButtonProps } from "./interface";
 import { motion } from "framer-motion";
 import { buttonCheckOutAnimation } from "@utils";
-import { IconCheckout, IconPayment, Tooltip } from "@elements";
+import {
+	IconCheckout,
+	IconPayment,
+	Tooltip,
+	CheckOutModalButtonProps,
+} from "@elements";
 
 const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	onClick,
