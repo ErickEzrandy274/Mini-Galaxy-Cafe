@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { checkDisabilityButton, FeedbackType } from "@utils";
 import { Button, Input, QuickAccess } from "@elements";
 import { AuthFormProps } from "./interface";
@@ -19,7 +19,10 @@ const AuthForm: React.FC<AuthFormProps> = ({
 		nickname,
 	});
 
-	const disableButton = dataError?.map((item: FeedbackType) => item.disable);
+	const disableButton = useMemo(
+		() => dataError?.map((item: FeedbackType) => item.disable),
+		[dataError]
+	);
 
 	return (
 		<form

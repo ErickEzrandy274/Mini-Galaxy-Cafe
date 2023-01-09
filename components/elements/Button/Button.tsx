@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ButtonProps } from "./interface";
 
 const Button: React.FC<ButtonProps> = ({
@@ -7,7 +7,10 @@ const Button: React.FC<ButtonProps> = ({
 	className,
 	error,
 }) => {
-	const disable = error.findIndex((item: boolean) => item === true);
+	const disable = useMemo(
+		() => error.findIndex((item: boolean) => item === true),
+		[error]
+	);
 
 	const additionClass =
 		disable === -1

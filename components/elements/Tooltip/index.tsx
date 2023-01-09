@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { TooltipProps } from "./interface";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "@utils";
 
-const InfoTooltip: React.FC<TooltipProps> = ({ productList, type }) => {
+const InfoTooltip: React.FC<TooltipProps> = ({
+	productList: { length },
+	type,
+}) => {
 	const { initial, animate, exit, transition } = menutitleAnimation;
-	const info: string =
-		productList.length > 0
+	const info: string = useMemo(() => {
+		return length > 0
 			? `Finish your order!`
 			: `Buy our ${
 					type !== "Others" ? type.slice(0, -1).toLowerCase() : `dish`
 			  } to enable this button!`;
+	}, [length, type]);
 
 	return (
 		<motion.div
