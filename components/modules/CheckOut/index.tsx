@@ -27,7 +27,6 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		exit: secExit,
 		transition: secTrans,
 	} = menutitleAnimation;
-	// let newData: DataType = data;
 	const productList: BuyerProduct[] = useSelector(selectProductList);
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
