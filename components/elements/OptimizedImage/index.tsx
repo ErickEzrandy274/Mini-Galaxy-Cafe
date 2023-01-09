@@ -14,7 +14,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
 			width={500}
 			height={400}
 			objectFit="cover"
-			loading="eager"
+			loading="lazy"
 			className={welcoming ? `rounded-t-xl` : `rounded-lg`}
 		/>
 	);
