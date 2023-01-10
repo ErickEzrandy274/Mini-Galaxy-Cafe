@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { ProductCardTypes } from "../../elements";
+import { ProductCardTypes } from "@elements";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyArAh2Ivvtpgg1ztMqa8mDZZG2Z6QCV1NA",
