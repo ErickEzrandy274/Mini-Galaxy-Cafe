@@ -1,12 +1,5 @@
 import React, { SetStateAction } from "react";
-import {
-	arrayRemove,
-	deleteDoc,
-	doc,
-	getDoc,
-	setDoc,
-	updateDoc,
-} from "firebase/firestore";
+import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { BuyerProduct, ProductCardTypes } from "@elements";
 import { database } from "../firebase";
 
