@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { makeRupiahValue, menutitleAnimation } from "@utils";
 import { PriceInfoProps } from "./interface";
 
 const PriceInfo: React.FC<PriceInfoProps> = ({ title, data, index }) => {
 	const { initial, animate, exit, transition } = menutitleAnimation;
-	const subtotal: number = data?.reduce((acc, item) => {
-		return acc + item.price * item.amount;
-	}, 0);
+	const subtotal: number = useMemo(() => {
+		return data?.reduce((acc, item) => {
+			return acc + item.price * item.amount;
+		}, 0);
+	}, [data]);
 	const tax: number = subtotal * 0.1;
 
 	const content: number =
