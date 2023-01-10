@@ -55,7 +55,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 			}`}
 		>
 			<div className="card card-compact bg-base-100 shadow-xl">
-				<OptimizedImage image={image} index={index} />
+				<OptimizedImage name={name} image={image} />
 
 				<div className="card-body text-white tracking-wide">
 					<h2 className="card-title font-semibold">{name}</h2>
