@@ -5,17 +5,17 @@ export const WelcomingCardData: {
 }[] = [
 	{
 		name: "Food",
-		image: "/Nasi-Goreng.jpg",
+		image: "/Nasi-Goreng.webp",
 		href: "/food",
 	},
 	{
 		name: "Beverage",
-		image: "/Eggnog.jpg",
+		image: "/Eggnog.webp",
 		href: "/beverage",
 	},
 	{
 		name: "Snack",
-		image: "/Spicy-Macaroni.jpg",
+		image: "/Spicy-Macaroni.webp",
 		href: "/snack",
 	},
 ];

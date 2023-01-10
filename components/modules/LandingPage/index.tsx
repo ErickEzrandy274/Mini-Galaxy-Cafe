@@ -28,7 +28,7 @@ const LandingPage = () => {
 			animate={animate}
 			exit={exit}
 			transition={transition}
-			className="bg-[url('/rest-1.jpg')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen"
+			className="bg-[url('/rest-1.webp')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen"
 		>
 			<div className="flex flex-col gap-14 sm:gap-24 px-5 sm:px-12 lg:px-20 relative z-10 py-32 xl:py-40">
 				<motion.div
