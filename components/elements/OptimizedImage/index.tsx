@@ -3,19 +3,19 @@ import { OptimizedImageProps } from "./interface";
 import Image from "next/image";
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
+	name,
 	image,
-	index,
-	welcoming,
+	welcoming = false,
 }) => {
 	return (
 		<Image
 			src={image}
-			alt={"Foods-" + index}
+			alt={name}
 			width={500}
 			height={400}
 			objectFit="cover"
 			loading="lazy"
-			className={welcoming ? `rounded-t-xl` : `rounded-lg`}
+			className={welcoming ? "rounded-t-xl" : "rounded-lg"}
 		/>
 	);
 };
