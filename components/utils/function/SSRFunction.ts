@@ -36,22 +36,10 @@ export async function getBuyerData(ctx: GetServerSidePropsContext) {
 	}
 }
 
-export const fetchBeverages = async () => {
-	const response = await fetch(`${BASE_URL}Beverages`, getHeaders);
-	const { documents } = await response.json();
-
-	return setData(documents);
-};
-
-export const fetchFoods = async () => {
-	const response = await fetch(`${BASE_URL}Foods`, getHeaders);
-	const { documents } = await response.json();
-
-	return setData(documents);
-};
-
-export const fetchSnacks = async () => {
-	const response = await fetch(`${BASE_URL}Snacks`, getHeaders);
+export const fetchProducts = async (
+	indicator: "Beverages" | "Foods" | "Snacks"
+) => {
+	const response = await fetch(`${BASE_URL}${indicator}`, getHeaders);
 	const { documents } = await response.json();
 
 	return setData(documents);
