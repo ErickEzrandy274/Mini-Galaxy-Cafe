@@ -1,9 +1,13 @@
-import { getBuyerProduct, getFavData, setData } from "./dataManipulation";
+import {
+	getBuyerProduct,
+	getFavData,
+	setData,
+	BASE_URL,
+	getHeaders,
+} from "@utils";
 import { GetServerSidePropsContext } from "next";
 import { CheckOutProps } from "@modules";
 import { FavCardProps } from "@elements";
-import { QueryClient, dehydrate, useQuery } from "react-query";
-import { BASE_URL, getHeaders } from "@utils";
 import nookies from "nookies";
 
 export async function getFavoriteData(ctx: GetServerSidePropsContext) {
