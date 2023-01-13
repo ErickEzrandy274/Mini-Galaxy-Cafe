@@ -1,7 +1,9 @@
-import { getBuyerProduct, getFavData } from "./dataManipulation";
+import { getBuyerProduct, getFavData, setData } from "./dataManipulation";
 import { GetServerSidePropsContext } from "next";
 import { CheckOutProps } from "@modules";
 import { FavCardProps } from "@elements";
+import { QueryClient, dehydrate, useQuery } from "react-query";
+import { BASE_URL, getHeaders } from "@utils";
 import nookies from "nookies";
 
 export async function getFavoriteData(ctx: GetServerSidePropsContext) {
@@ -29,3 +31,24 @@ export async function getBuyerData(ctx: GetServerSidePropsContext) {
 		console.error("Error:", error);
 	}
 }
+
+export const fetchBeverages = async () => {
+	const response = await fetch(`${BASE_URL}Beverages`, getHeaders);
+	const { documents } = await response.json();
+
+	return setData(documents);
+};
+
+export const fetchFoods = async () => {
+	const response = await fetch(`${BASE_URL}Foods`, getHeaders);
+	const { documents } = await response.json();
+
+	return setData(documents);
+};
+
+export const fetchSnacks = async () => {
+	const response = await fetch(`${BASE_URL}Snacks`, getHeaders);
+	const { documents } = await response.json();
+
+	return setData(documents);
+};
