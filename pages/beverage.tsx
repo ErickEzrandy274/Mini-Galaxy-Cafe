@@ -1,22 +1,31 @@
 import Head from "next/head";
 import React from "react";
-import { BASE_URL, getHeaders, setData } from "@utils";
+import { fetchProducts } from "@utils";
 import { ProductPage } from "@modules";
+import { QueryClient, dehydrate, useQuery } from "react-query";
 
 export async function getServerSideProps() {
 	try {
-		const response = await fetch(`${BASE_URL}Beverages`, getHeaders);
+		const queryClient = new QueryClient();
+		await queryClient.prefetchQuery(["Beverages"], () =>
+			fetchProducts("Beverages")
+		);
 
-		const { documents } = await response.json();
-		const data = setData(documents);
-
-		return { props: { data } };
+		return {
+			props: {
+				dehydratedState: dehydrate(queryClient),
+			},
+		};
 	} catch (error) {
 		console.error("Error:", error);
 	}
 }
 
-const beverage = ({ data }: any) => {
+const beverage = () => {
+	const { data } = useQuery("Beverages", () => fetchProducts("Beverages"), {
+		staleTime: Infinity,
+	});
+
 	return (
 		<>
 			<Head>
