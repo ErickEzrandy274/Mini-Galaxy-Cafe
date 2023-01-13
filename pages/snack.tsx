@@ -22,6 +22,7 @@ export async function getServerSideProps() {
 const snack = () => {
 	const { data } = useQuery("Snacks", () => fetchProducts("Snacks"), {
 		staleTime: Infinity,
+		cacheTime: Infinity,
 	});
 
 	return (
