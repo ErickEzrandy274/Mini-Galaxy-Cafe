@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { ButtonProps } from "./interface";
+import { checkingDisabledButton } from "./constants";
 
 const Button: React.FC<ButtonProps> = ({
 	buttonName,
@@ -7,22 +8,15 @@ const Button: React.FC<ButtonProps> = ({
 	className,
 	error,
 }) => {
-	const disable = useMemo(
-		() => error.findIndex((item: boolean) => item === true),
-		[error]
-	);
-
-	const additionClass =
-		disable === -1
-			? `text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none 
-			focus:bg-blue-400 focus:ring focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer`
-			: `text-gray-400 bg-gray-500 cursor-not-allowed`;
+	const { additionClass, disable } = useMemo(() => {
+		return checkingDisabledButton(error);
+	}, [error]);
 
 	return (
 		<button
 			className={className + additionClass}
 			type={buttonType}
-			disabled={disable !== -1}
+			disabled={disable}
 		>
 			{buttonName}
 		</button>
