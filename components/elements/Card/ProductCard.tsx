@@ -45,7 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 	};
 
 	return (
-		<motion.div
+		<motion.section
 			initial={initial}
 			animate={animate}
 			exit={exit}
@@ -54,18 +54,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
 				removed && "hidden"
 			}`}
 		>
-			<div className="card card-compact bg-base-100 shadow-xl">
+			<section className="card card-compact bg-base-100 shadow-xl">
 				<OptimizedImage name={name} image={image} />
 
-				<div className="card-body text-white tracking-wide">
+				<article className="card-body text-white tracking-wide">
 					<h2 className="card-title font-semibold">{name}</h2>
 
-					<div className="flex justify-between pb-2">
+					<section className="flex justify-between pb-2">
 						<p className="text-lg">{makeRupiahValue(price)}</p>
 						<FavButton setRemoved={setRemoved} data={cardProps} />
-					</div>
+					</section>
 
-					<div className="card-actions items-center justify-end">
+					<section className="card-actions items-center justify-end">
 						{isModifierButtonOpen || indexProduct !== -1 ? (
 							<ModifierButton
 								setIsModifierButtonOpen={setIsModifierButtonOpen}
@@ -75,16 +75,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
 							/>
 						) : (
 							<button
+								aria-label="buy now"
+								aria-labelledby="buy now"
 								onClick={handleClick}
 								className="btn text-base sm:text-lg btn-primary shadow-xl text-gray-200 hover:text-white transition-all duration-500 ease-in-out"
 							>
 								Buy Now
 							</button>
 						)}
-					</div>
-				</div>
-			</div>
-		</motion.div>
+					</section>
+				</article>
+			</section>
+		</motion.section>
 	);
 };
 
