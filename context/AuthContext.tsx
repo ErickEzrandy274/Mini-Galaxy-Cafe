@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+	createContext,
+	useCallback,
+	useContext,
+	useEffect,
+	useMemo,
+	useState,
+} from "react";
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
@@ -15,6 +22,7 @@ import {
 import { auth, extractError } from "@utils";
 import { ProviderType } from "@elements";
 import { MainLayoutProps } from "@modules";
+import { LoginProps, RegisterProps } from "./interface";
 import nookies from "nookies";
 import toast from "react-hot-toast";
 
@@ -26,13 +34,15 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 	children,
 }) => {
 	const [user, setUser] = useState<any>(null);
-	const [error, setError] = useState<string>("");
+	const [errorAuth, setErrorAuth] = useState<string>("");
 	const [loading, setLoading] = useState(true);
-	const provider = {
-		Google: new GoogleAuthProvider(),
-		Facebook: new FacebookAuthProvider(),
-		Github: new GithubAuthProvider(),
-	};
+	const provider = useMemo(() => {
+		return {
+			Google: new GoogleAuthProvider(),
+			Facebook: new FacebookAuthProvider(),
+			Github: new GithubAuthProvider(),
+		};
+	}, []);
 
 	useEffect(() => {
 		const unsubscribe = onIdTokenChanged(auth, async (user) => {
@@ -58,50 +68,68 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 		return () => unsubscribe();
 	}, []);
 
-	const register = async (
-		email: string,
-		password: string,
-		displayName: string
-	) => {
-		createUserWithEmailAndPassword(auth, email, password)
-			.then(async (res) => {
-				await updateProfile(res.user, { displayName });
-				toast.success("Successfully created a new account!");
-			})
-			.catch((err: any) => {
-				setError(extractError(err));
-				toast.error(extractError(err));
+	const register = useCallback(
+		async ({ email, password, nickname: displayName }: RegisterProps) => {
+			toast.loading("Processing your register...");
+			createUserWithEmailAndPassword(auth, email, password)
+				.then(async (res) => {
+					await updateProfile(res.user, { displayName });
+					toast.dismiss();
+					toast.success("Successfully created a new account!");
+				})
+				.catch((err: any) => {
+					toast.dismiss();
+					setErrorAuth(extractError(err));
+					toast.error(extractError(err));
+				});
+		},
+		[]
+	);
+
+	const loginWithEmailAndPassword = useCallback(
+		async ({ email, password }: LoginProps) => {
+			toast.loading("Processing your login...");
+			setPersistence(auth, browserSessionPersistence).then(() => {
+				signInWithEmailAndPassword(auth, email, password)
+					.then(() => {
+						toast.dismiss();
+						toast.success("Successfully logged in!");
+					})
+					.catch((err: any) => {
+						toast.dismiss();
+						setErrorAuth(extractError(err));
+						toast.error(extractError(err));
+					});
 			});
-	};
+		},
+		[]
+	);
 
-	const loginWithEmailAndPassword = async (email: string, password: string) => {
-		setPersistence(auth, browserSessionPersistence).then(() => {
-			signInWithEmailAndPassword(auth, email, password)
-				.then(() => toast.success("Successfully logged in!"))
-				.catch((err: any) => {
-					setError(extractError(err));
-					toast.error(extractError(err));
-				});
-		});
-	};
+	const loginWithOtherProviders = useCallback(
+		async (userProvider: ProviderType) => {
+			// reference OAuth using facebook: https://www.youtube.com/watch?v=kEfe9u5F_L0
 
-	const loginWithOtherProviders = async (userProvider: ProviderType) => {
-		// reference OAuth using facebook: https://www.youtube.com/watch?v=kEfe9u5F_L0
+			setPersistence(auth, browserSessionPersistence).then(() => {
+				toast.loading("Processing your login...");
+				signInWithPopup(auth, provider[userProvider])
+					.then(() => {
+						toast.dismiss();
+						toast.success("Successfully login!");
+					})
+					.catch((err: any) => {
+						toast.dismiss();
+						setErrorAuth(extractError(err));
+						toast.error(extractError(err));
+					});
+			});
+		},
+		[provider]
+	);
 
-		setPersistence(auth, browserSessionPersistence).then(() => {
-			signInWithPopup(auth, provider[userProvider])
-				.then(() => toast.success("Successfully login!"))
-				.catch((err: any) => {
-					setError(extractError(err));
-					toast.error(extractError(err));
-				});
-		});
-	};
-
-	const logout = async () => {
+	const logout = useCallback(async () => {
 		setUser(null);
 		await signOut(auth);
-	};
+	}, []);
 
 	return (
 		<AuthContext.Provider
@@ -111,8 +139,8 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 				loginWithOtherProviders,
 				register,
 				logout,
-				error,
-				setError,
+				errorAuth,
+				setErrorAuth,
 			}}
 		>
 			{loading ? null : children}

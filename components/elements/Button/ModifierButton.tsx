@@ -45,14 +45,14 @@ const ModifierButton: React.FC<ModifierButtonProps> = ({
 	};
 
 	return (
-		<div
+		<section
 			className="flex justify-center items-center p-2.5 px-4 rounded-lg bg-violet-700 
             text-base sm:text-lg shadow-xl gap-3 font-semibold"
 		>
 			<IconMinus onClick={() => handleNum("decrement")} />
 			<span>{num}</span>
 			<IconPlus onClick={() => handleNum("increment")} />
-		</div>
+		</section>
 	);
 };
 

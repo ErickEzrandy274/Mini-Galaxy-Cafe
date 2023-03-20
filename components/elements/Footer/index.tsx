@@ -4,32 +4,31 @@ import React from "react";
 const Footer = () => {
 	return (
 		<footer className="flex flex-col gap-3 w-auto p-4 h-auto bg-gray-500/80 sm:bg-gray-600">
-			<div className="flex flex-col gap-3 lg:flex-row lg:mt-3 md:mx-12 lg:mx-28 lg:justify-between">
-				<div className="flex flex-col gap-1 sm:w-96">
+			<section className="flex flex-col gap-3 lg:flex-row lg:mt-3 md:mx-12 lg:mx-28 lg:justify-between">
+				<article className="flex flex-col gap-1 sm:w-96">
 					<p className="text-white font-bold">About Us</p>
 					<p className="text-gray-300 text-sm">
-						Mini Galaxy Cafe was built using a modern style so that
-						the younger generation can use this cafe as a place to
-						study, hang out, and refreshing. You can find out more
-						about this cafe by contacting our social media owner!
+						Mini Galaxy Cafe was built using a modern style so that the younger
+						generation can use this cafe as a place to study, hang out, and
+						refreshing. You can find out more about this cafe by contacting our
+						social media owner!
 					</p>
-				</div>
+				</article>
 
-				<div className="lg:mt-3">
-					<h3 className="text-white font-bold mb-2 lg:mb-4">
-						Social Media
-					</h3>
+				<article className="lg:mt-3">
+					<h3 className="text-white font-bold mb-2 lg:mb-4">Social Media</h3>
 
-					<div className="flex lg:items-center">
-						<div className="lg:container lg:max-w-screen-lg ">
-							<div>
-								<div className="flex flex-wrap gap-2">
-									<Link
-										href="https://github.com/ErickEzrandy274"
-										passHref
-									>
+					<section className="flex lg:items-center">
+						<section className="lg:container lg:max-w-screen-lg ">
+							<section>
+								<section className="flex flex-wrap gap-2">
+									<Link href="https://github.com/ErickEzrandy274" passHref>
 										<a>
-											<button className="bg-gray-700 hover:bg-white hover:text-black  p-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
+											<button
+												aria-label="github button"
+												aria-labelledby="github button"
+												className="bg-gray-700 hover:bg-white hover:text-black  p-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
+											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -56,8 +55,12 @@ const Footer = () => {
 										href="https://www.linkedin.com/in/erick-ezrandy/"
 										passHref
 									>
-										<a href="">
-											<button className="bg-blue-600 p-2 hover:bg-white hover:text-black font-semibold text-white inline-flex items-center space-x-2 rounded">
+										<a>
+											<button
+												aria-label="linkedin button"
+												aria-labelledby="linkedin button"
+												className="bg-blue-600 p-2 hover:bg-white hover:text-black font-semibold text-white inline-flex items-center space-x-2 rounded"
+											>
 												<svg
 													className="w-5 h-5 fill-current"
 													role="img"
@@ -71,16 +74,16 @@ const Footer = () => {
 											</button>
 										</a>
 									</Link>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+								</section>
+							</section>
+						</section>
+					</section>
+				</article>
+			</section>
 
-			<div className="text-center text-sm sm:text-base text-gray-300">
+			<section className="text-center text-sm sm:text-base text-gray-300">
 				Erick Ezrandy - Computer Science University of Indonesia 2020
-			</div>
+			</section>
 		</footer>
 	);
 };

@@ -3,6 +3,7 @@ import { FeedbackType } from "@utils";
 
 export interface InputProps {
 	name: string;
-	handleChange: (e: BaseSyntheticEvent) => void;
+	value: string;
 	error: FeedbackType;
+	handleChange: (e: BaseSyntheticEvent) => void;
 }

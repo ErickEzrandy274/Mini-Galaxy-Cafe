@@ -20,7 +20,8 @@
 			"@elements": ["components/elements"],
 			"@utils": ["components/utils"],
 			"@context": ["context"],
-			"@reduxs": ["reduxs"]
+			"@reduxs": ["reduxs"],
+			"@styles/*": ["styles/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

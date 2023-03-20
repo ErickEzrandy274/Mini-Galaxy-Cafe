@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { addBuyerProduct } from "@utils";
 import { useAuth, useUserStuff } from "@context";
 import { IconWarning, LoadingInfo } from "@elements";
-import { useRouter } from "next/router";
 import { CheckoutModalProps } from "./interface";
+import Router from "next/router";
 
 const CheckOutModal: React.FC<CheckoutModalProps> = ({
 	setIsModalOpen,
@@ -16,7 +16,10 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 		user: { uid },
 	} = useAuth();
 
-	const isCancelOrder: boolean = modalType === "Cancel Order";
+	const isCancelOrder: boolean = useMemo(
+		() => modalType === "Cancel Order",
+		[modalType]
+	);
 
 	const { setUserStuff } = useUserStuff();
 	const text: string = isCancelOrder
@@ -24,33 +27,32 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 		: modalType === "Checkout"
 		? "order"
 		: "pay";
-	const { push } = useRouter();
 
-	const handleOrder = async () => {
+	const handleOrder = useCallback(async () => {
 		setIsLoading(true);
 		await addBuyerProduct(productList!, uid);
 		setTimeout(() => {
 			setUserStuff(productList);
-			push("/checkout");
+			Router.push("/checkout");
 		}, 175);
-	};
+	}, [productList, uid, setUserStuff]);
 
 	return (
 		<>
 			<input type="checkbox" id="confirmationModal" className="modal-toggle" />
 
-			<div className="modal text-gray-300">
-				<div className="modal-box flex flex-col gap-4 shadow-2xl shadow-gray-300/75 border-b-2 border-gray-300">
+			<section className="modal text-gray-300">
+				<section className="modal-box flex flex-col gap-4 shadow-2xl shadow-gray-300/75 border-b-2 border-gray-300">
 					{isLoading ? (
 						<LoadingInfo info="Your order is being brought to cart" />
 					) : (
 						<>
-							<div className="flex gap-2 items-center border-b-2 border-gray-300">
+							<article className="flex gap-2 items-center border-b-2 border-gray-300">
 								<IconWarning />
 								<h3 className="font-bold text-lg uppercase">
 									{modalType} Confirmation
 								</h3>
-							</div>
+							</article>
 
 							<p>
 								{isCancelOrder
@@ -63,7 +65,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 								?
 							</p>
 
-							<div className="modal-action">
+							<section className="modal-action">
 								<button
 									onClick={() => setIsModalOpen(false)}
 									className="btn btn-outline btn-accent"
@@ -79,11 +81,11 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 								>
 									{isCancelOrder ? "Yes" : text}
 								</button>
-							</div>
+							</section>
 						</>
 					)}
-				</div>
-			</div>
+				</section>
+			</section>
 		</>
 	);
 };

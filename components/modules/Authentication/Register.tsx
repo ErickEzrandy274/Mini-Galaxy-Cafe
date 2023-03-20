@@ -1,49 +1,42 @@
-import React, { BaseSyntheticEvent, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, {
+	BaseSyntheticEvent,
+	useCallback,
+	useEffect,
+	useState,
+} from "react";
 import { useAuth } from "@context";
-import { extractError } from "@utils";
 import { RegisterInputType, registerObj } from "./interface";
 import { AuthForm, HandlerAccount } from "@elements";
+import Router from "next/router";
 import BaseAuth from "./BaseAuth";
 
 const Register = () => {
-	const { user, register } = useAuth();
-	const { push } = useRouter();
-	const [error, setError] = useState<any>(null);
+	const { user, register, errorAuth, setErrorAuth } = useAuth();
 	const [data, setData] = useState<RegisterInputType>(registerObj);
 
-	const handleChange = (e: BaseSyntheticEvent) => {
+	const handleChange = useCallback((e: BaseSyntheticEvent) => {
 		const { name, value } = e.target;
-
-		setData({
-			...data,
-			[name]: value,
+		setData((prevData) => {
+			return {
+				...prevData,
+				[name]: value,
+			};
 		});
-	};
+	}, []);
 
 	const handleRegister = async (e: BaseSyntheticEvent) => {
 		e.preventDefault();
-
-		try {
-			await register(data.email, data.password, data.nickname);
-			push("/menu");
-		} catch (err: any) {
-			setError(extractError(err));
-		}
+		await register(data);
 	};
 
 	useEffect(() => {
-		user && push("/menu");
+		user && Router.push("/menu");
 
-		if (error) {
-			const errorTimeOut = setTimeout(() => {
-				setData(registerObj);
-				setError("");
-			}, 3500);
-
-			return clearTimeout(errorTimeOut);
+		if (errorAuth) {
+			setData(registerObj);
+			setErrorAuth("");
 		}
-	}, [user, error, push]);
+	}, [user, errorAuth, setErrorAuth]);
 
 	return (
 		<BaseAuth typeForm="Register">

@@ -10,19 +10,19 @@ const UserDetected: React.FC<UserDetectedProps> = ({
 		hover:bg-red-700 text-gray-200 hover:text-gray-100 md:mx-2`;
 
 	return (
-		<div
+		<section
 			className={`flex flex-col md:flex-row text-center gap-3 md:items-center ${className}`}
 		>
-			<div className="flex gap-2 md:gap-0 md:flex-col items-start md:items-center font-semibold text-white">
+			<article className="flex gap-2 md:gap-0 md:flex-col items-start md:items-center font-semibold text-white">
 				<p>Hello</p>
 				<p>{user.displayName ? user.displayName : user.email}</p>
 				<p className="md:hidden">👋👋👋</p>
-			</div>
+			</article>
 
 			<button onClick={handleLogout} className={customClassLogOut}>
 				Logout
 			</button>
-		</div>
+		</section>
 	);
 };
 

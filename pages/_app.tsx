@@ -1,5 +1,3 @@
-import "../styles/globals.css";
-import "../styles/loader.css";
 import type { AppProps } from "next/app";
 import { AuthContextProvider, UserStuffContextProvider } from "@context";
 import { useRouter } from "next/router";
@@ -10,6 +8,8 @@ import { persistor, wrapper } from "@reduxs";
 import { MainLayout, ProtectedRoute } from "@modules";
 import Head from "next/head";
 import React from "react";
+import "@styles/globals.css";
+import "@styles/loader.css";
 
 export const noAuthRequired = ["/", "/login", "/register"];
 
@@ -30,6 +30,10 @@ const MyApp: React.FC<AppProps> = ({ Component, ...rest }) => {
 				/>
 				<meta name="author" content="Erick Ezrandy" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<meta
+					name="description"
+					content="Mini Galaxy Cafe is a modern cafe that has been built by Erick Ezrandy from University of Indonesia in 2022"
+				></meta>
 				<link rel="preconnect" href="https://mini-galaxy-cafe.vercel.app/" />
 				<link rel="icon" href="/gal-logo.svg" />
 			</Head>
