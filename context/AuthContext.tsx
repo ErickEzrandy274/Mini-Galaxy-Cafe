@@ -22,6 +22,7 @@ import {
 import { auth, extractError } from "@utils";
 import { ProviderType } from "@elements";
 import { MainLayoutProps } from "@modules";
+import { LoginProps, RegisterProps } from "./interface";
 import nookies from "nookies";
 import toast from "react-hot-toast";
 
@@ -33,7 +34,7 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 	children,
 }) => {
 	const [user, setUser] = useState<any>(null);
-	const [error, setError] = useState<string>("");
+	const [errorAuth, setErrorAuth] = useState<string>("");
 	const [loading, setLoading] = useState(true);
 	const provider = useMemo(() => {
 		return {
@@ -68,14 +69,17 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 	}, []);
 
 	const register = useCallback(
-		async (email: string, password: string, displayName: string) => {
+		async ({ email, password, nickname: displayName }: RegisterProps) => {
+			toast.loading("Processing your register...");
 			createUserWithEmailAndPassword(auth, email, password)
 				.then(async (res) => {
 					await updateProfile(res.user, { displayName });
+					toast.dismiss();
 					toast.success("Successfully created a new account!");
 				})
 				.catch((err: any) => {
-					setError(extractError(err));
+					toast.dismiss();
+					setErrorAuth(extractError(err));
 					toast.error(extractError(err));
 				});
 		},
@@ -83,12 +87,17 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 	);
 
 	const loginWithEmailAndPassword = useCallback(
-		async (email: string, password: string) => {
+		async ({ email, password }: LoginProps) => {
+			toast.loading("Processing your login...");
 			setPersistence(auth, browserSessionPersistence).then(() => {
 				signInWithEmailAndPassword(auth, email, password)
-					.then(() => toast.success("Successfully logged in!"))
+					.then(() => {
+						toast.dismiss();
+						toast.success("Successfully logged in!");
+					})
 					.catch((err: any) => {
-						setError(extractError(err));
+						toast.dismiss();
+						setErrorAuth(extractError(err));
 						toast.error(extractError(err));
 					});
 			});
@@ -101,10 +110,15 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 			// reference OAuth using facebook: https://www.youtube.com/watch?v=kEfe9u5F_L0
 
 			setPersistence(auth, browserSessionPersistence).then(() => {
+				toast.loading("Processing your login...");
 				signInWithPopup(auth, provider[userProvider])
-					.then(() => toast.success("Successfully login!"))
+					.then(() => {
+						toast.dismiss();
+						toast.success("Successfully login!");
+					})
 					.catch((err: any) => {
-						setError(extractError(err));
+						toast.dismiss();
+						setErrorAuth(extractError(err));
 						toast.error(extractError(err));
 					});
 			});
@@ -125,8 +139,8 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 				loginWithOtherProviders,
 				register,
 				logout,
-				error,
-				setError,
+				errorAuth,
+				setErrorAuth,
 			}}
 		>
 			{loading ? null : children}
