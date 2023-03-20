@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+	createContext,
+	useCallback,
+	useContext,
+	useEffect,
+	useMemo,
+	useState,
+} from "react";
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
@@ -28,11 +35,13 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 	const [user, setUser] = useState<any>(null);
 	const [error, setError] = useState<string>("");
 	const [loading, setLoading] = useState(true);
-	const provider = {
-		Google: new GoogleAuthProvider(),
-		Facebook: new FacebookAuthProvider(),
-		Github: new GithubAuthProvider(),
-	};
+	const provider = useMemo(() => {
+		return {
+			Google: new GoogleAuthProvider(),
+			Facebook: new FacebookAuthProvider(),
+			Github: new GithubAuthProvider(),
+		};
+	}, []);
 
 	useEffect(() => {
 		const unsubscribe = onIdTokenChanged(auth, async (user) => {
@@ -58,50 +67,55 @@ export const AuthContextProvider: React.FC<MainLayoutProps> = ({
 		return () => unsubscribe();
 	}, []);
 
-	const register = async (
-		email: string,
-		password: string,
-		displayName: string
-	) => {
-		createUserWithEmailAndPassword(auth, email, password)
-			.then(async (res) => {
-				await updateProfile(res.user, { displayName });
-				toast.success("Successfully created a new account!");
-			})
-			.catch((err: any) => {
-				setError(extractError(err));
-				toast.error(extractError(err));
+	const register = useCallback(
+		async (email: string, password: string, displayName: string) => {
+			createUserWithEmailAndPassword(auth, email, password)
+				.then(async (res) => {
+					await updateProfile(res.user, { displayName });
+					toast.success("Successfully created a new account!");
+				})
+				.catch((err: any) => {
+					setError(extractError(err));
+					toast.error(extractError(err));
+				});
+		},
+		[]
+	);
+
+	const loginWithEmailAndPassword = useCallback(
+		async (email: string, password: string) => {
+			setPersistence(auth, browserSessionPersistence).then(() => {
+				signInWithEmailAndPassword(auth, email, password)
+					.then(() => toast.success("Successfully logged in!"))
+					.catch((err: any) => {
+						setError(extractError(err));
+						toast.error(extractError(err));
+					});
 			});
-	};
+		},
+		[]
+	);
 
-	const loginWithEmailAndPassword = async (email: string, password: string) => {
-		setPersistence(auth, browserSessionPersistence).then(() => {
-			signInWithEmailAndPassword(auth, email, password)
-				.then(() => toast.success("Successfully logged in!"))
-				.catch((err: any) => {
-					setError(extractError(err));
-					toast.error(extractError(err));
-				});
-		});
-	};
+	const loginWithOtherProviders = useCallback(
+		async (userProvider: ProviderType) => {
+			// reference OAuth using facebook: https://www.youtube.com/watch?v=kEfe9u5F_L0
 
-	const loginWithOtherProviders = async (userProvider: ProviderType) => {
-		// reference OAuth using facebook: https://www.youtube.com/watch?v=kEfe9u5F_L0
+			setPersistence(auth, browserSessionPersistence).then(() => {
+				signInWithPopup(auth, provider[userProvider])
+					.then(() => toast.success("Successfully login!"))
+					.catch((err: any) => {
+						setError(extractError(err));
+						toast.error(extractError(err));
+					});
+			});
+		},
+		[provider]
+	);
 
-		setPersistence(auth, browserSessionPersistence).then(() => {
-			signInWithPopup(auth, provider[userProvider])
-				.then(() => toast.success("Successfully login!"))
-				.catch((err: any) => {
-					setError(extractError(err));
-					toast.error(extractError(err));
-				});
-		});
-	};
-
-	const logout = async () => {
+	const logout = useCallback(async () => {
 		setUser(null);
 		await signOut(auth);
-	};
+	}, []);
 
 	return (
 		<AuthContext.Provider
