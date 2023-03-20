@@ -31,14 +31,26 @@ const AuthForm: React.FC<AuthFormProps> = ({
 		>
 			{typeForm === "Register" && (
 				<Input
+					value={nickname!}
 					name="nickname"
 					handleChange={handleChange}
 					error={dataError[2]}
 				/>
 			)}
 
-			<Input name="email" handleChange={handleChange} error={dataError[1]} />
-			<Input name="password" handleChange={handleChange} error={dataError[0]} />
+			<Input
+				value={email}
+				name="email"
+				handleChange={handleChange}
+				error={dataError[1]}
+			/>
+
+			<Input
+				value={password}
+				name="password"
+				handleChange={handleChange}
+				error={dataError[0]}
+			/>
 
 			<Button
 				error={disableButton}
