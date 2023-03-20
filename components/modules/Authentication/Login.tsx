@@ -1,43 +1,46 @@
-import React, { BaseSyntheticEvent, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, {
+	BaseSyntheticEvent,
+	useCallback,
+	useEffect,
+	useState,
+} from "react";
 import { useAuth, useUserStuff } from "@context";
 import { LoginInputType, loginObj } from "./interface";
 import { AuthForm, HandlerAccount } from "@elements";
+import Router from "next/router";
 import BaseAuth from "./BaseAuth";
 
 const Login = () => {
-	const { push } = useRouter();
-	const { user, loginWithEmailAndPassword, error, setError } = useAuth();
+	const { user, loginWithEmailAndPassword, errorAuth, setErrorAuth } =
+		useAuth();
 	const { setUserStuff } = useUserStuff();
 	const [data, setData] = useState<LoginInputType>(loginObj);
 
-	const handleChange = (e: BaseSyntheticEvent) => {
+	const handleChange = useCallback((e: BaseSyntheticEvent) => {
 		const { name, value } = e.target;
 
-		setData({
-			...data,
-			[name]: value,
+		setData((prevData) => {
+			return {
+				...prevData,
+				[name]: value,
+			};
 		});
-	};
+	}, []);
 
 	const handleLoginWithEmailAndPassword = async (e: BaseSyntheticEvent) => {
 		e.preventDefault();
-		await loginWithEmailAndPassword(data.email, data.password);
-		push("/menu");
+		await loginWithEmailAndPassword(data);
+		// Router.push("/menu");
 	};
 
 	useEffect(() => {
-		user && push("/menu");
+		user && Router.push("/menu");
 
-		if (error) {
-			const errorTimeOut = setTimeout(() => {
-				setData(loginObj);
-				setError("");
-			}, 3500);
-
-			return clearTimeout(errorTimeOut);
+		if (errorAuth) {
+			setData(loginObj);
+			setErrorAuth("");
 		}
-	}, [user, error, push, setError, setUserStuff]);
+	}, [user, errorAuth, setErrorAuth, setUserStuff]);
 
 	return (
 		<BaseAuth typeForm="Login">
