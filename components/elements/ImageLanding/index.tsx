@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ImageWrapperProps } from "./interface";
@@ -12,19 +12,21 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 }) => {
 	const control = useAnimation();
 	const [ref, inView] = useInView();
-	const imageVariant = {
-		visible: (index: number) => ({
-			opacity: 1,
-			scale: 1,
-			transition: {
-				duration: 0.75,
-				stiffness: 120,
-				mass: 2,
-				delay: 0.2 * index,
-			},
-		}),
-		hidden: { opacity: 0, scale: 0 },
-	};
+	const imageVariant = useMemo(() => {
+		return {
+			visible: (index: number) => ({
+				opacity: 1,
+				scale: 1,
+				transition: {
+					duration: 0.75,
+					stiffness: 120,
+					mass: 2,
+					delay: 0.2 * index,
+				},
+			}),
+			hidden: { opacity: 0, scale: 0 },
+		};
+	}, []);
 
 	useEffect(() => {
 		control.start(inView ? "visible" : "hidden");

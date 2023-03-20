@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useInView } from "react-intersection-observer";
@@ -17,11 +17,17 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 	linkName,
 	images,
 }) => {
-	const control = useAnimation();
 	const [ref, inView] = useInView();
-	const type: string = href.substring(1);
 	const { push } = useRouter();
-	const isBeverage: boolean = type === "beverage";
+	const control = useAnimation();
+	const type: string = href.substring(1);
+	const isBeverage: boolean = useMemo(() => type === "beverage", [type]);
+	const { styleBeverages, styleNotBeverages } = useMemo(() => {
+		return {
+			styleBeverages: customClassDesktopBeverages,
+			styleNotBeverages: customClassDesktopNotBeverages,
+		};
+	}, []);
 
 	useEffect(() => {
 		control.start(inView ? "visible" : "hidden");
@@ -34,7 +40,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 					type="other"
 					images={images}
 					version="desktop"
-					customClassDesktop={customClassDesktopNotBeverages}
+					customClassDesktop={styleNotBeverages}
 				/>
 			)}
 
@@ -57,7 +63,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 					{title}
 				</motion.h2>
 
-				<motion.span
+				<motion.p
 					variants={contentVariant}
 					custom={type}
 					initial="hidden"
@@ -67,7 +73,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 					}`}
 				>
 					{content}
-				</motion.span>
+				</motion.p>
 
 				<motion.div
 					variants={buttonVariant}
@@ -90,7 +96,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
 					type="beverage"
 					images={images}
 					version="desktop"
-					customClassDesktop={customClassDesktopBeverages}
+					customClassDesktop={styleBeverages}
 				/>
 			)}
 		</div>

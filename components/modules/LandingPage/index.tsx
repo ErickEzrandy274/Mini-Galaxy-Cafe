@@ -1,22 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useInView } from "react-intersection-observer";
 import { dataLanding } from "./dataLanding";
 import { TemplateLandingProps } from "./interface";
-import TemplateLanding from "./TemplateLanding";
 import {
 	buttonVariant,
 	contentVariant,
 	pageTransition,
 	titleVariant,
 } from "@utils";
+import TemplateLanding from "./TemplateLanding";
 
 const LandingPage = () => {
-	const { initial, animate, exit, transition } = pageTransition;
-	const { push } = useRouter();
-	const control = useAnimation();
 	const [ref, inView] = useInView();
+	const { push } = useRouter();
+	const { initial, animate, exit, transition } = useMemo(
+		() => pageTransition,
+		[]
+	);
+	const memoizedDataLanding = useMemo(() => dataLanding, []);
+	const { memobuttonVariant, memocontentVariant, memotitleVariant } =
+		useMemo(() => {
+			return {
+				memobuttonVariant: buttonVariant,
+				memocontentVariant: contentVariant,
+				memotitleVariant: titleVariant,
+			};
+		}, []);
+	const control = useAnimation();
 
 	useEffect(() => {
 		control.start(inView ? "visible" : "hidden");
@@ -36,7 +48,7 @@ const LandingPage = () => {
 					className="lg:w-3/5 xl:w-2/5 flex flex-col gap-3 items-start relative z-10"
 				>
 					<motion.h1
-						variants={titleVariant}
+						variants={memotitleVariant}
 						custom={"beverage"}
 						initial="hidden"
 						animate={control}
@@ -46,8 +58,8 @@ const LandingPage = () => {
 						<span className="text-sm">est. 2022</span>
 					</motion.h1>
 
-					<motion.span
-						variants={contentVariant}
+					<motion.p
+						variants={memocontentVariant}
 						custom={"beverage"}
 						initial="hidden"
 						animate={control}
@@ -57,10 +69,10 @@ const LandingPage = () => {
 						kind of co-working space that is quite interesting and comfortable.
 						Creative work processes can also be born from the interior of a
 						small cafe like this
-					</motion.span>
+					</motion.p>
 
 					<motion.div
-						variants={buttonVariant}
+						variants={memobuttonVariant}
 						custom={"beverage"}
 						initial="hidden"
 						animate={control}
@@ -75,9 +87,13 @@ const LandingPage = () => {
 					</motion.div>
 				</motion.div>
 
-				{dataLanding.map((item: TemplateLandingProps, index: number) => {
-					return <TemplateLanding {...item} key={"TemplateLanding-" + index} />;
-				})}
+				{memoizedDataLanding.map(
+					(item: TemplateLandingProps, index: number) => {
+						return (
+							<TemplateLanding {...item} key={"TemplateLanding-" + index} />
+						);
+					}
+				)}
 			</div>
 		</motion.div>
 	);
