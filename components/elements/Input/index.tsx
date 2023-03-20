@@ -2,7 +2,7 @@ import React from "react";
 import { toCapitalize } from "@utils";
 import { InputProps } from "./interface";
 
-const Input: React.FC<InputProps> = ({ name, handleChange, error }) => {
+const Input: React.FC<InputProps> = ({ name, value, handleChange, error }) => {
 	const { type, message } = error;
 
 	return (
@@ -17,6 +17,7 @@ const Input: React.FC<InputProps> = ({ name, handleChange, error }) => {
 				type={name}
 				name={name}
 				id={name}
+				value={value}
 				placeholder={`Write your ${name}`}
 				className="block w-full px-4 py-2 border-2 border-gray-400 rounded-md 
 					placeholder-gray-600 bg-gray-900 text-gray-300 focus:border-blue-500
