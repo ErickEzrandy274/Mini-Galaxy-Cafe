@@ -13,4 +13,5 @@
 
 ## Here Link of Application:
 
-## [Mini Galaxy Cafe](https://mini-galaxy-cafe.vercel.app/)
+> - ## [Production](https://mini-galaxy-cafe.vercel.app/)
+> - ## [Preview](https://mini-galaxy-cafe-erickezrandy274.vercel.app/)
