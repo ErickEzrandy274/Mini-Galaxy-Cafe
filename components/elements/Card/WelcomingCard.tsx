@@ -14,7 +14,7 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 	const { initial, animate, exit, transition } = menutitleAnimation;
 
 	return (
-		<motion.div
+		<motion.section
 			initial={initial}
 			animate={animate}
 			exit={exit}
@@ -27,7 +27,7 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 		>
 			<OptimizedImage name={name} image={image} welcoming />
 
-			<div className="p-5">
+			<section className="p-5">
 				<motion.h5
 					initial={initial}
 					animate={animate}
@@ -41,7 +41,7 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 					{name}
 				</motion.h5>
 
-				<motion.div
+				<motion.section
 					initial={initial}
 					animate={animate}
 					exit={exit}
@@ -51,6 +51,8 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 					}}
 				>
 					<button
+						aria-label="see more"
+						aria-labelledby="see more"
 						onClick={() => push(href)}
 						className="inline-flex items-center gap-1 py-2 px-3 text-sm font-medium text-center text-white shadow-lg
                         bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-2 focus:ring-offset-2 focus:outline-none 
@@ -59,9 +61,9 @@ const WelcomingCard: React.FC<WelcomingCardProps> = ({
 						See more
 						<IconRightArrow />
 					</button>
-				</motion.div>
-			</div>
-		</motion.div>
+				</motion.section>
+			</section>
+		</motion.section>
 	);
 };
 

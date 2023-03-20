@@ -14,6 +14,8 @@ const Button: React.FC<ButtonProps> = ({
 
 	return (
 		<button
+			aria-label={buttonName}
+			aria-labelledby={buttonName}
 			className={className + additionClass}
 			type={buttonType}
 			disabled={disable}
