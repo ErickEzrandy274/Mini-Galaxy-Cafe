@@ -31,7 +31,7 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 	}, [control, inView]);
 
 	return (
-		<div
+		<section
 			className={
 				version === "mobile"
 					? `flex sm:hidden`
@@ -42,7 +42,7 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 				const newDelay = index === 0 ? index + 1 : index - 1;
 
 				return (
-					<div
+					<section
 						className={
 							version === "mobile"
 								? `w-1/2`
@@ -62,10 +62,10 @@ const ImageWrapper: React.FC<ImageWrapperProps> = ({
 								version === "mobile" ? `h-[100%]` : customClassDesktop![index]
 							}
 						/>
-					</div>
+					</section>
 				);
 			})}
-		</div>
+		</section>
 	);
 };
 

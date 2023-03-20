@@ -7,7 +7,7 @@ const Indicator: React.FC<IndicatorProps> = ({
 	infoIndicator,
 }) => {
 	return (
-		<div className="indicator">
+		<section className="indicator">
 			<span
 				className={`indicator-item badge ${className} font-semibold text-sm tracking-wide text-white`}
 			>
@@ -15,7 +15,7 @@ const Indicator: React.FC<IndicatorProps> = ({
 			</span>
 
 			{children}
-		</div>
+		</section>
 	);
 };
 

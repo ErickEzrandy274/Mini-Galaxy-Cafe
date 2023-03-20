@@ -6,7 +6,7 @@ const Input: React.FC<InputProps> = ({ name, handleChange, error }) => {
 	const { type, message } = error;
 
 	return (
-		<div className="flex flex-col gap-1">
+		<section className="flex flex-col gap-1">
 			<label htmlFor={name} className="block text-gray-200">
 				{toCapitalize(name)}
 			</label>
@@ -26,7 +26,7 @@ const Input: React.FC<InputProps> = ({ name, handleChange, error }) => {
 			{type === name && !!message.length && (
 				<p className="text-red-600 text-sm px-2">{message}</p>
 			)}
-		</div>
+		</section>
 	);
 };
 

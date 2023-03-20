@@ -16,7 +16,7 @@ const PriceInfo: React.FC<PriceInfoProps> = ({ title, data, index }) => {
 		index === 0 ? subtotal : index === 1 ? tax : subtotal + tax;
 
 	return (
-		<motion.div
+		<motion.section
 			initial={initial}
 			animate={animate}
 			exit={exit}
@@ -28,7 +28,7 @@ const PriceInfo: React.FC<PriceInfoProps> = ({ title, data, index }) => {
 		>
 			<p>{title}</p>
 			<p>{makeRupiahValue(content)}</p>
-		</motion.div>
+		</motion.section>
 	);
 };
 

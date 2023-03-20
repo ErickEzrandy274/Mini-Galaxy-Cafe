@@ -12,7 +12,7 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
 	return (
-		<div
+		<section
 			className={`flex flex-col justify-center items-center ${
 				to === "Checkout" && `md:w-1/3`
 			}`}
@@ -32,7 +32,7 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({
 					handleAction={handleAction}
 				/>
 			)}
-		</div>
+		</section>
 	);
 };
 
