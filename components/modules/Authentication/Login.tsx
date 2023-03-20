@@ -1,37 +1,16 @@
-import React, {
-	BaseSyntheticEvent,
-	useCallback,
-	useEffect,
-	useState,
-} from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth, useUserStuff } from "@context";
 import { LoginInputType, loginObj } from "./interface";
 import { AuthForm, HandlerAccount } from "@elements";
+import { useHandleAuth } from "@utils";
 import Router from "next/router";
 import BaseAuth from "./BaseAuth";
 
 const Login = () => {
-	const { user, loginWithEmailAndPassword, errorAuth, setErrorAuth } =
-		useAuth();
+	const { user, errorAuth, setErrorAuth } = useAuth();
+	const { handleChange, handleLoginWithEmailAndPassword } = useHandleAuth();
 	const { setUserStuff } = useUserStuff();
 	const [data, setData] = useState<LoginInputType>(loginObj);
-
-	const handleChange = useCallback((e: BaseSyntheticEvent) => {
-		const { name, value } = e.target;
-
-		setData((prevData) => {
-			return {
-				...prevData,
-				[name]: value,
-			};
-		});
-	}, []);
-
-	const handleLoginWithEmailAndPassword = async (e: BaseSyntheticEvent) => {
-		e.preventDefault();
-		await loginWithEmailAndPassword(data);
-		// Router.push("/menu");
-	};
 
 	useEffect(() => {
 		user && Router.push("/menu");
@@ -46,8 +25,8 @@ const Login = () => {
 		<BaseAuth typeForm="Login">
 			<AuthForm
 				typeForm="Login"
-				handleChange={handleChange}
-				handleLogin={handleLoginWithEmailAndPassword}
+				handleChange={(e) => handleChange(e, setData)}
+				handleLogin={(e) => handleLoginWithEmailAndPassword(e, data)}
 				{...data}
 			/>
 
