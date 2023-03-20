@@ -1,33 +1,15 @@
-import React, {
-	BaseSyntheticEvent,
-	useCallback,
-	useEffect,
-	useState,
-} from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "@context";
 import { RegisterInputType, registerObj } from "./interface";
 import { AuthForm, HandlerAccount } from "@elements";
+import { useHandleAuth } from "@utils";
 import Router from "next/router";
 import BaseAuth from "./BaseAuth";
 
 const Register = () => {
-	const { user, register, errorAuth, setErrorAuth } = useAuth();
+	const { user, errorAuth, setErrorAuth } = useAuth();
+	const { handleChange, handleRegister } = useHandleAuth();
 	const [data, setData] = useState<RegisterInputType>(registerObj);
-
-	const handleChange = useCallback((e: BaseSyntheticEvent) => {
-		const { name, value } = e.target;
-		setData((prevData) => {
-			return {
-				...prevData,
-				[name]: value,
-			};
-		});
-	}, []);
-
-	const handleRegister = async (e: BaseSyntheticEvent) => {
-		e.preventDefault();
-		await register(data);
-	};
 
 	useEffect(() => {
 		user && Router.push("/menu");
@@ -42,8 +24,8 @@ const Register = () => {
 		<BaseAuth typeForm="Register">
 			<AuthForm
 				typeForm="Register"
-				handleChange={handleChange}
-				handleRegister={handleRegister}
+				handleChange={(e) => handleChange(e, setData)}
+				handleRegister={(e) => handleRegister(e, data)}
 				{...data}
 			/>
 
