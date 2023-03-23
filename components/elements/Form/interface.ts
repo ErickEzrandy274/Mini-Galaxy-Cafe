@@ -1,9 +1,5 @@
-import { BaseSyntheticEvent } from "react";
-import { DisabilityButtonParamType } from "@utils";
+import { TypeForm } from "@modules";
 
-export interface AuthFormProps extends DisabilityButtonParamType {
-	nickname?: string;
-	handleChange: (e: BaseSyntheticEvent) => void;
-	handleRegister?: (e: BaseSyntheticEvent) => void;
-	handleLogin?: (e: BaseSyntheticEvent) => void;
+export interface AuthFormProps extends TypeForm {
+	formik: any;
 }
