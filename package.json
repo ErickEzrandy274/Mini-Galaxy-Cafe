@@ -15,6 +15,7 @@
     "babel-plugin-macros": "^3.1.0",
     "daisyui": "^2.13.6",
     "firebase": "^9.8.3",
+    "formik": "^2.2.9",
     "framer-motion": "^6.4.3",
     "next": "12.1.4",
     "next-redux-wrapper": "^8.0.0",
@@ -28,7 +29,8 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "17.0.23",
