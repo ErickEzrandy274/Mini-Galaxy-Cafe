@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useWindowSize, pageTransition } from "@utils";
 import { BaseAuthProps } from "./interface";
 import { motion } from "framer-motion";
 
 const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children }) => {
 	const { width } = useWindowSize();
-	const { initial, animate, exit, transition } = pageTransition;
+	const { initial, animate, exit, transition } = useMemo(
+		() => pageTransition,
+		[]
+	);
 
-	const subContent =
-		typeForm === "Register"
+	const subContent = useMemo(() => {
+		return typeForm === "Register"
 			? `Register now if you don't have an account!`
 			: `Login to access your account`;
+	}, [typeForm]);
 
 	return (
-		<motion.div
+		<motion.section
 			initial={initial}
 			animate={animate}
 			exit={exit}
@@ -22,10 +26,10 @@ const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children }) => {
 				width <= 350 && `mx-4`
 			}`}
 		>
-			<div className="flex justify-center lg:h-[40rem] rounded-lg">
-				<div className="hidden bg-cover lg:block lg:w-2/3 bg-[url('../public/Chan-Walrus.webp')] rounded-l-lg">
-					<div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40 rounded-l-lg">
-						<div>
+			<section className="flex justify-center lg:h-[40rem] rounded-lg">
+				<article className="hidden bg-cover lg:block lg:w-2/3 bg-[url('../public/Chan-Walrus.webp')] rounded-l-lg">
+					<section className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40 rounded-l-lg">
+						<section>
 							<h2 className="text-4xl font-bold text-white">
 								Mini Galaxy Cafe
 							</h2>
@@ -41,25 +45,25 @@ const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children }) => {
 								provides a variety of delicious food, drinks, and snacks. Want
 								to order our dishes? Immediately login to your account!
 							</p>
-						</div>
-					</div>
-				</div>
+						</section>
+					</section>
+				</article>
 
-				<div className="flex items-center w-full max-w-md p-6 mx-auto lg:w-2/6 font-semibold">
-					<div className="flex-1">
-						<div className="text-center">
+				<article className="flex items-center w-full max-w-md p-6 mx-auto lg:w-2/6 font-semibold">
+					<section className="flex-1">
+						<section className="text-center">
 							<h2 className="text-4xl font-bold text-center text-white">
 								Mini Galaxy Cafe
 							</h2>
 
 							<p className="my-3 text-gray-300">{subContent}</p>
-						</div>
+						</section>
 
 						{children}
-					</div>
-				</div>
-			</div>
-		</motion.div>
+					</section>
+				</article>
+			</section>
+		</motion.section>
 	);
 };
 

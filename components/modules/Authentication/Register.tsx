@@ -1,33 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useAuth } from "@context";
-import { RegisterInputType, registerObj } from "./interface";
 import { AuthForm, HandlerAccount } from "@elements";
-import { useHandleAuth } from "@utils";
+import { registerObj, registerValidationSchema } from "./constant";
+import { useFormik } from "formik";
 import Router from "next/router";
 import BaseAuth from "./BaseAuth";
 
 const Register = () => {
-	const { user, errorAuth, setErrorAuth } = useAuth();
-	const { handleChange, handleRegister } = useHandleAuth();
-	const [data, setData] = useState<RegisterInputType>(registerObj);
+	const { user, register, errorAuth, setErrorAuth } = useAuth();
+	const { initialValues, validationSchema } = useMemo(() => {
+		return {
+			initialValues: registerObj,
+			validationSchema: registerValidationSchema,
+		};
+	}, []);
+
+	const formik = useFormik({
+		initialValues,
+		validationSchema,
+		onSubmit: (values, { resetForm }) => {
+			if (values) {
+				register(values);
+				resetForm();
+			}
+		},
+	});
 
 	useEffect(() => {
 		user && Router.push("/menu");
 
-		if (errorAuth) {
-			setData(registerObj);
-			setErrorAuth("");
-		}
+		errorAuth && setErrorAuth("");
 	}, [user, errorAuth, setErrorAuth]);
 
 	return (
 		<BaseAuth typeForm="Register">
-			<AuthForm
-				typeForm="Register"
-				handleChange={(e) => handleChange(e, setData)}
-				handleRegister={(e) => handleRegister(e, data)}
-				{...data}
-			/>
+			<AuthForm typeForm="Register" formik={formik} />
 
 			<HandlerAccount
 				href="/login"

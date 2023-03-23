@@ -11,7 +11,7 @@ export interface ButtonProps {
 	buttonName: string;
 	buttonType: "button" | "submit";
 	className: string;
-	error: boolean[];
+	errors: Object;
 }
 
 export interface ModifierButtonProps extends BuyerProduct {

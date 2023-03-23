@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { buttonCheckOutAnimation } from "@utils";
 import {
@@ -14,12 +14,19 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 	modalBtnType,
 	to,
 }) => {
-	const isCheckOut: boolean = to === "Checkout";
-	const isCancelOrder: boolean = to === "Cancel Order";
+	const { isCheckOut, isCancelOrder } = useMemo(() => {
+		return {
+			isCheckOut: to === "Checkout",
+			isCancelOrder: to === "Cancel Order",
+		};
+	}, [to]);
 	const isEmpty = isCheckOut && !productList!.length;
 	const htmlFor =
 		to === "Payment" ? `confirmationModal` : isEmpty ? `` : `confirmationModal`;
-	const { initial, animate, exit, transition } = buttonCheckOutAnimation;
+	const { initial, animate, exit, transition } = useMemo(
+		() => buttonCheckOutAnimation,
+		[]
+	);
 	const newTransition =
 		to === "Payment"
 			? { ...transition, delay: 0.2 + 0.2 * productList!.length }
