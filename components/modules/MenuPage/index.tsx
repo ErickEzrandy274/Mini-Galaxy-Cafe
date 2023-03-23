@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { WelcomingCardData } from "./data";
 import { motion } from "framer-motion";
 import { pageTransition, menutitleAnimation } from "@utils";
 import { WelcomingCard } from "@elements";
 
 const MenuPage = () => {
-	const { initial, animate, transition } = pageTransition;
+	const { initial, animate, transition } = useMemo(() => pageTransition, []);
 	const {
 		initial: titleInitial,
 		animate: titleAnimate,
 		exit: titleExit,
 		transition: titleTransition,
-	} = menutitleAnimation;
+	} = useMemo(() => menutitleAnimation, []);
+	const memoizedData = useMemo(() => WelcomingCardData, []);
 
 	return (
 		<motion.div
@@ -32,7 +33,7 @@ const MenuPage = () => {
 			</motion.div>
 
 			<div className="flex lg:flex-row flex-col gap-8 justify-center items-center">
-				{WelcomingCardData?.map((item: any, index: number) => {
+				{memoizedData.map((item: any, index: number) => {
 					return (
 						<WelcomingCard
 							key={"welcomingCard-" + index}

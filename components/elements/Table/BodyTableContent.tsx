@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
 	makeRupiahValue,
 	useWindowSize,
@@ -25,7 +25,10 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({
 	setNewData,
 }) => {
 	const { width } = useWindowSize();
-	const { initial, animate, exit, transition } = pageTransition;
+	const { initial, animate, exit, transition } = useMemo(
+		() => pageTransition,
+		[]
+	);
 	const { setUserStuff } = useUserStuff();
 	const dispatch = useDispatch();
 	const {

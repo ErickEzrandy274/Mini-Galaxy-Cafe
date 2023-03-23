@@ -2,6 +2,7 @@ import { useWindowSize, menutitleAnimation } from "@utils";
 import { CheckoutTableProps } from "./interface";
 import { motion } from "framer-motion";
 import { BuyerProduct, BodyTableContent } from "@elements";
+import { useMemo } from "react";
 
 const CheckoutTable: React.FC<CheckoutTableProps> = ({
 	products,
@@ -9,7 +10,10 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({
 	setNewData,
 }) => {
 	const { width } = useWindowSize();
-	const { initial, animate, exit, transition } = menutitleAnimation;
+	const { initial, animate, exit, transition } = useMemo(
+		() => menutitleAnimation,
+		[]
+	);
 
 	return (
 		<table className="text-sm sm:text-base w-full text-gray-400 text-center table-fixed">
