@@ -8,7 +8,6 @@ import BaseAuth from "./BaseAuth";
 
 const Register = () => {
 	const { user, register, errorAuth, setErrorAuth } = useAuth();
-
 	const { initialValues, validationSchema } = useMemo(() => {
 		return {
 			initialValues: registerObj,
