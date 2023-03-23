@@ -1,34 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useAuth, useUserStuff } from "@context";
-import { LoginInputType, loginObj } from "./interface";
 import { AuthForm, HandlerAccount } from "@elements";
-import { useHandleAuth } from "@utils";
+import { loginObj, loginValidationSchema } from "./constant";
+import { useFormik } from "formik";
 import Router from "next/router";
 import BaseAuth from "./BaseAuth";
 
 const Login = () => {
-	const { user, errorAuth, setErrorAuth } = useAuth();
-	const { handleChange, handleLoginWithEmailAndPassword } = useHandleAuth();
+	const { user, loginWithEmailAndPassword, errorAuth, setErrorAuth } =
+		useAuth();
 	const { setUserStuff } = useUserStuff();
-	const [data, setData] = useState<LoginInputType>(loginObj);
+
+	const { initialValues, validationSchema } = useMemo(() => {
+		return {
+			initialValues: loginObj,
+			validationSchema: loginValidationSchema,
+		};
+	}, []);
+
+	const formik = useFormik({
+		initialValues,
+		validationSchema,
+		onSubmit: (values, { resetForm }) => {
+			if (values) {
+				loginWithEmailAndPassword(values);
+				resetForm();
+			}
+		},
+	});
 
 	useEffect(() => {
 		user && Router.push("/menu");
 
-		if (errorAuth) {
-			setData(loginObj);
-			setErrorAuth("");
-		}
+		errorAuth && setErrorAuth("");
 	}, [user, errorAuth, setErrorAuth, setUserStuff]);
 
 	return (
 		<BaseAuth typeForm="Login">
-			<AuthForm
-				typeForm="Login"
-				handleChange={(e) => handleChange(e, setData)}
-				handleLogin={(e) => handleLoginWithEmailAndPassword(e, data)}
-				{...data}
-			/>
+			<AuthForm typeForm="Login" formik={formik} />
 
 			<HandlerAccount
 				href="/register"
