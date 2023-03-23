@@ -14,13 +14,3 @@ export interface TypeForm {
 }
 
 export interface BaseAuthProps extends TypeForm, MainLayoutProps {}
-
-export const loginObj = {
-	email: "",
-	password: "",
-};
-
-export const registerObj = {
-	...loginObj,
-	nickname: "",
-};
