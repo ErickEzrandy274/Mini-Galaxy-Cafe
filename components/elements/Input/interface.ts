@@ -1,9 +1,10 @@
 import { BaseSyntheticEvent } from "react";
-import { FeedbackType } from "@utils";
 
 export interface InputProps {
 	name: string;
 	value: string;
-	error: FeedbackType;
+	errorMsg: string;
+	errTouched: boolean;
 	handleChange: (e: BaseSyntheticEvent) => void;
+	handleBlur: (e: BaseSyntheticEvent) => void;
 }
