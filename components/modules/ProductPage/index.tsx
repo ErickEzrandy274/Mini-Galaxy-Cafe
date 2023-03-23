@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { LandingPageProps } from "./interface";
 import { FavContextProvider } from "@context";
 import { useSelector } from "react-redux";
@@ -15,11 +15,11 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 		animate: titleAnimate,
 		exit: titleExit,
 		transition: titleTransition,
-	} = menutitleAnimation;
+	} = useMemo(() => menutitleAnimation, []);
 
 	return (
 		<FavContextProvider>
-			<div className="flex flex-col md:flex-row mx-auto md:mx-10 gap-5 md:gap-0 font-semibold">
+			<section className="flex flex-col md:flex-row mx-auto md:mx-10 gap-5 md:gap-0 font-semibold">
 				<motion.h2
 					initial={titleInitial}
 					animate={titleAnimate}
@@ -47,9 +47,9 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 					to="Checkout"
 					modalType="Checkout"
 				/>
-			</div>
+			</section>
 
-			<div className="flex flex-wrap m-5">
+			<section className="flex flex-wrap m-5">
 				{data?.map((item: any, index: number) => {
 					return (
 						<ProductCard
@@ -60,7 +60,7 @@ const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
 						/>
 					);
 				})}
-			</div>
+			</section>
 		</FavContextProvider>
 	);
 };
