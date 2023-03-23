@@ -1,63 +1,38 @@
 import React, { useMemo } from "react";
-import { checkDisabilityButton, FeedbackType } from "@utils";
 import { Button, Input, QuickAccess } from "@elements";
 import { AuthFormProps } from "./interface";
+import { authInput } from "@modules";
 
-const AuthForm: React.FC<AuthFormProps> = ({
-	typeForm,
-	handleChange,
-	handleLogin,
-	handleRegister,
-	email,
-	password,
-	nickname,
-}) => {
-	const dataError: FeedbackType[] = checkDisabilityButton({
-		typeForm,
-		email,
-		password,
-		nickname,
-	});
-
-	const disableButton = useMemo(
-		() => dataError?.map((item: FeedbackType) => item.disable),
-		[dataError]
+const AuthForm: React.FC<AuthFormProps> = ({ typeForm, formik }) => {
+	const memoizedAuthInput = useMemo(() => authInput, []);
+	const buttonClassName = useMemo(
+		() =>
+			"font-semibold w-full px-4 py-2 tracking-wide uppercase transition-colors duration-200 transform rounded-lg",
+		[]
 	);
 
 	return (
-		<form
-			onSubmit={typeForm === "Login" ? handleLogin : handleRegister}
-			className="flex flex-col gap-4"
-		>
-			{typeForm === "Register" && (
-				<Input
-					value={nickname!}
-					name="nickname"
-					handleChange={handleChange}
-					error={dataError[2]}
-				/>
-			)}
+		<form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
+			{memoizedAuthInput.map(({ name, type }) => {
+				const props = {
+					name: name,
+					value: formik.values[name],
+					errorMsg: formik.errors[name],
+					errTouched: formik.touched[name],
+					handleChange: formik.handleChange,
+					handleBlur: formik.handleBlur,
+				};
 
-			<Input
-				value={email}
-				name="email"
-				handleChange={handleChange}
-				error={dataError[1]}
-			/>
-
-			<Input
-				value={password}
-				name="password"
-				handleChange={handleChange}
-				error={dataError[0]}
-			/>
+				return type === "ALL" || type === typeForm ? (
+					<Input key={name} {...props} />
+				) : null;
+			})}
 
 			<Button
-				error={disableButton}
+				errors={formik.errors}
 				buttonName={typeForm}
 				buttonType="submit"
-				className="font-semibold w-full px-4 py-2 tracking-wide uppercase
-                        transition-colors duration-200 transform rounded-lg "
+				className={buttonClassName}
 			/>
 
 			{typeForm === "Login" && <QuickAccess />}
