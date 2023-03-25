@@ -33,6 +33,7 @@ const dataBuyerSlice = createSlice({
 						const { amount } = obj;
 						state.productList[index] = { ...productList[index], amount };
 					}
+					break;
 
 				case DELETE_PRODUCT:
 					const { amount } = obj;
@@ -43,6 +44,8 @@ const dataBuyerSlice = createSlice({
 					} else {
 						state.productList[index] = { ...productList[index], amount };
 					}
+					break;
+				
 				default:
 					return state;
 			}

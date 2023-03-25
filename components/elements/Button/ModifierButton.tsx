@@ -1,16 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import {
-	INITIAL_NUM,
-	RESET_NUM,
-	BuyerProduct,
-	ProductCardProps,
-	IconMinus,
-	IconPlus,
-} from "@elements";
+import { INITIAL_NUM, IconMinus, IconPlus } from "@elements";
 import { ModifierButtonProps } from "./interface";
-import { handleDataBuyer, ADD_PRODUCT, DELETE_PRODUCT } from "@reduxs";
+import { useDebounce, useHandleNum } from "@utils";
 
 const ModifierButton: React.FC<ModifierButtonProps> = ({
 	setIsModifierButtonOpen,
@@ -22,26 +13,26 @@ const ModifierButton: React.FC<ModifierButtonProps> = ({
 	dataId,
 	amount,
 }) => {
-	const product: ProductCardProps = { name, type, image, price, dataId, index };
-	let [num, setNum] = useState<number>(amount ? amount : INITIAL_NUM);
-	const dispatch = useDispatch();
+	const [num, setNum] = useState<number>(amount ? amount : INITIAL_NUM);
+	const debouncedNum = useDebounce(num, 200);
+	const { handleIncrement, handleDecrement } = useHandleNum({
+		name,
+		type,
+		image,
+		price,
+		dataId,
+		index,
+	});
 
-	const handleNum = (btnType: "increment" | "decrement") => {
-		if (btnType === "increment") {
-			setNum(++num);
-			const obj: BuyerProduct = { ...product, amount: num };
-			dispatch(handleDataBuyer({ obj, type: ADD_PRODUCT }));
-		} else {
-			if (num > 1) {
-				setNum(--num);
-				const obj: BuyerProduct = { ...product, amount: num };
-				dispatch(handleDataBuyer({ obj, type: DELETE_PRODUCT }));
-			} else {
-				const newObj = { ...product, amount: RESET_NUM };
-				dispatch(handleDataBuyer({ obj: newObj, type: DELETE_PRODUCT }));
-				setIsModifierButtonOpen(false);
-			}
-		}
+	const handleIncrementParams = {
+		prevNum: num,
+		setNum,
+	};
+
+	const handleDecrementParams = {
+		...handleIncrementParams,
+		debouncedNum,
+		setIsModifierButtonOpen,
 	};
 
 	return (
@@ -49,9 +40,9 @@ const ModifierButton: React.FC<ModifierButtonProps> = ({
 			className="flex justify-center items-center p-2.5 px-4 rounded-lg bg-violet-700 
             text-base sm:text-lg shadow-xl gap-3 font-semibold"
 		>
-			<IconMinus onClick={() => handleNum("decrement")} />
+			<IconMinus onClick={() => handleDecrement(handleDecrementParams)} />
 			<span>{num}</span>
-			<IconPlus onClick={() => handleNum("increment")} />
+			<IconPlus onClick={() => handleIncrement(handleIncrementParams)} />
 		</section>
 	);
 };
