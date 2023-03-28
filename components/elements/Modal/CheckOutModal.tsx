@@ -70,7 +70,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 									onClick={() => setIsModalOpen(false)}
 									className="btn btn-outline btn-accent"
 								>
-									{isCancelOrder ? "No" : "Cancel"}
+									<p className="pt-1">{isCancelOrder ? "No" : "Cancel"}</p>
 								</button>
 
 								<button
@@ -79,7 +79,7 @@ const CheckOutModal: React.FC<CheckoutModalProps> = ({
 									}
 									className="btn btn-outline btn-success"
 								>
-									{isCancelOrder ? "Yes" : text}
+									<p className="pt-1">{isCancelOrder ? "Yes" : text}</p>
 								</button>
 							</section>
 						</>

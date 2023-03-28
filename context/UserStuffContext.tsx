@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
 import { getBuyerProduct } from "@utils";
 import { useDispatch } from "react-redux";
-import { set_productlist } from "@reduxs";
+import { setProductlist } from "@reduxs";
 import { MainLayoutProps } from "@modules";
 
 const UserStuffContext = createContext<any>({});
@@ -21,7 +21,7 @@ export const UserStuffContextProvider: React.FC<MainLayoutProps> = ({
 			await getBuyerProduct(user?.uid).then((res) => {
 				const data = res?.buyerProduct?.map((item: any) => item);
 				setUserStuff(data ?? []);
-				dispatch(set_productlist({ obj: data ?? [] }));
+				dispatch(setProductlist({ obj: data ?? [] }));
 			});
 		};
 
