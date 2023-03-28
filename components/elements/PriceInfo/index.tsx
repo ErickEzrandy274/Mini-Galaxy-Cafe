@@ -24,10 +24,10 @@ const PriceInfo: React.FC<PriceInfoProps> = ({ title, data, index }) => {
 				...transition,
 				delay: 0.2 + 0.2 * (data.length + index),
 			}}
-			className={`flex justify-between w-60`}
+			className={`flex justify-between w-[20rem]`}
 		>
-			<p>{title}</p>
-			<p>{makeRupiahValue(content)}</p>
+			<p className="tracking-wide">{title}</p>
+			<p className="tracking-widest">{makeRupiahValue(content)}</p>
 		</motion.section>
 	);
 };
