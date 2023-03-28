@@ -82,7 +82,7 @@ const LandingPage = () => {
                         focus:ring-[#3ABFF8] focus:ring-offset-gray-100 transition duration-200 ease-in hover:scale-110"
 							onClick={() => push("/menu")}
 						>
-							Go to Menu
+							<p className="pt-1">Go to Menu</p>
 						</button>
 					</motion.div>
 				</motion.div>

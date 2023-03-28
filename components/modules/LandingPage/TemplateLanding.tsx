@@ -86,7 +86,7 @@ const TemplateLanding: React.FC<TemplateLandingProps> = ({
                         focus:ring-[#3ABFF8] focus:ring-offset-gray-100 transition duration-200 ease-in hover:scale-110"
 						onClick={() => push(href)}
 					>
-						{linkName}
+						<p className="pt-1">{linkName}</p>
 					</button>
 				</motion.div>
 			</motion.div>

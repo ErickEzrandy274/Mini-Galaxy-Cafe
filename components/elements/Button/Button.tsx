@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
 			type={buttonType}
 			disabled={disable}
 		>
-			{buttonName}
+			<p className="pt-1">{buttonName}</p>
 		</button>
 	);
 };
