@@ -27,7 +27,7 @@ const BaseAuth: React.FC<BaseAuthProps> = ({ typeForm, children }) => {
 			}`}
 		>
 			<section className="flex justify-center lg:h-[40rem] rounded-lg">
-				<article className="hidden bg-cover lg:block lg:w-2/3 bg-[url('../public/Chan-Walrus.webp')] rounded-l-lg">
+				<article className="hidden bg-cover lg:block lg:w-2/3 bg-[url('/Chan-Walrus.webp')] rounded-l-lg">
 					<section className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40 rounded-l-lg">
 						<section>
 							<h2 className="text-4xl font-bold text-white">
