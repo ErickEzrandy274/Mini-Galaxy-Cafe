@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx}",
@@ -8,6 +10,9 @@ module.exports = {
 			spacing: {
 				"1/10": "10%",
 				"1/15": "15%",
+			},
+			fontFamily: {
+				sans: ["Josefin Sans", "sans-serif", ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},
