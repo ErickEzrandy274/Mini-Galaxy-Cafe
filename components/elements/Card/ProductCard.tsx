@@ -54,13 +54,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
 				removed && "hidden"
 			}`}
 		>
-			<section className="card card-compact bg-base-100 shadow-xl">
+			<section className="card card-compact h-full bg-base-100 shadow-xl">
 				<OptimizedImage name={name} image={image} />
 
-				<article className="card-body text-white tracking-wide">
+				<article className="card-body text-white tracking-wide justify-between">
 					<h2 className="card-title font-semibold">{name}</h2>
 
-					<section className="flex justify-between pb-2">
+					<section className="flex justify-between">
 						<p className="text-lg">{makeRupiahValue(price)}</p>
 						<FavButton setRemoved={setRemoved} data={cardProps} />
 					</section>
