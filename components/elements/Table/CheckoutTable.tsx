@@ -3,6 +3,7 @@ import { CheckoutTableProps } from "./interface";
 import { motion } from "framer-motion";
 import { BuyerProduct, BodyTableContent } from "@elements";
 import { useMemo } from "react";
+import { tableHeader } from "./constant";
 
 const CheckoutTable: React.FC<CheckoutTableProps> = ({
 	products,
@@ -29,53 +30,21 @@ const CheckoutTable: React.FC<CheckoutTableProps> = ({
 					transition={transition}
 					className="grid grid-cols-2 sm:grid-cols-4 px-0 sm:px-5 md:px-10"
 				>
-					<motion.th
-						initial={initial}
-						animate={animate}
-						exit={exit}
-						transition={{ ...transition, delay: 0.25 }}
-						scope="col"
-						className="p-3 sm:px-6"
-					>
-						Product name
-					</motion.th>
-
-					{width >= 640 && (
-						<>
+					{tableHeader.map(({ name, headerDelay, size }) => {
+						return width >= 640 || size === "all" ? (
 							<motion.th
+								key={name}
 								initial={initial}
 								animate={animate}
 								exit={exit}
-								transition={{ ...transition, delay: 0.45 }}
+								transition={{ ...transition, delay: headerDelay }}
 								scope="col"
-								className="p-3 sm:px-6"
+								className={`p-3 sm:px-6 ${name === "Price" && "rounded-tr-md"}`}
 							>
-								Category
+								{name}
 							</motion.th>
-
-							<motion.th
-								initial={initial}
-								animate={animate}
-								exit={exit}
-								transition={{ ...transition, delay: 0.65 }}
-								scope="col"
-								className="p-3 sm:px-6"
-							>
-								Amount
-							</motion.th>
-						</>
-					)}
-
-					<motion.th
-						initial={initial}
-						animate={animate}
-						exit={exit}
-						transition={{ ...transition, delay: 0.85 }}
-						scope="col"
-						className="p-3 sm:px-6 rounded-tr-md"
-					>
-						Price
-					</motion.th>
+						) : null;
+					})}
 				</motion.tr>
 			</thead>
 
