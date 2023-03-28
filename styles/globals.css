@@ -23,6 +23,7 @@ a {
 /* reference link: https://stackoverflow.com/questions/17758578/how-to-remove-the-arrows-in-a-scroll-bar-through-css */
 ::-webkit-scrollbar {
 	width: 0.35rem;
+	height: 0.2rem;
 }
 
 /* Track */
