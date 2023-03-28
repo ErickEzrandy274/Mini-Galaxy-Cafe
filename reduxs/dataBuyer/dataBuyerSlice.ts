@@ -45,13 +45,13 @@ const dataBuyerSlice = createSlice({
 						state.productList[index] = { ...productList[index], amount };
 					}
 					break;
-				
+
 				default:
 					return state;
 			}
 		},
 
-		set_productlist(
+		setProductlist(
 			state,
 			action: PayloadAction<{
 				obj: BuyerProduct[];
@@ -60,7 +60,7 @@ const dataBuyerSlice = createSlice({
 			state.productList = action.payload.obj;
 		},
 
-		reset_product(state) {
+		resetProduct(state) {
 			return {
 				...state,
 				productList: [],
@@ -73,7 +73,7 @@ export const selectProductList = ({ dataBuyer }: RootState) => {
 	return dataBuyer.productList;
 };
 
-export const { handleDataBuyer, reset_product, set_productlist } =
+export const { handleDataBuyer, resetProduct, setProductlist } =
 	dataBuyerSlice.actions;
 const dataBuyerReducer = dataBuyerSlice.reducer;
 export default dataBuyerReducer;
