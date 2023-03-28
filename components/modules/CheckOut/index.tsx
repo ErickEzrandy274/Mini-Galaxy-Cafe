@@ -82,7 +82,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 							/>
 						</article>
 
-						<section className="rounded-md shadow-md">
+						<section className="rounded-md shadow-md overflow-x-auto">
 							<CheckoutTable
 								products={newData}
 								newData={newData}
