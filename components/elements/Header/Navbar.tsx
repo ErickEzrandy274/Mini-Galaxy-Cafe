@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { Disclosure, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import Router from "next/router";
 import { useAuth, useUserStuff } from "@context";
 import { useDispatch } from "react-redux";
-import { reset_product } from "@reduxs";
+import { resetProduct } from "@reduxs";
 import {
 	Indicator,
 	NewLink,
@@ -15,6 +14,7 @@ import {
 } from "@elements";
 import { useCallback, useMemo } from "react";
 import Link from "next/link";
+import Router from "next/router";
 
 const Navbar = () => {
 	const { user, logout } = useAuth();
@@ -23,7 +23,7 @@ const Navbar = () => {
 	const memoizedDispatch = useMemo(() => dispatch, [dispatch]);
 
 	const handleLogout = useCallback(() => {
-		memoizedDispatch(reset_product());
+		memoizedDispatch(resetProduct());
 		logout();
 		Router.push("/login");
 	}, [memoizedDispatch, logout]);
@@ -89,7 +89,7 @@ const Navbar = () => {
 								</section>
 
 								<section className="hidden md:block md:ml-3">
-									<section className="flex space-x-3">
+									<section className="flex space-x-3 items-center">
 										{navigation?.map((item: navData, index: number) => (
 											<NewLink {...item} key={`NewLink-${index}`} />
 										))}

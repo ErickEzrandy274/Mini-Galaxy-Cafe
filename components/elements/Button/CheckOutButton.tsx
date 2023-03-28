@@ -50,7 +50,9 @@ const ModalButton: React.FC<CheckOutModalButtonProps> = ({
 				} `}
 			>
 				{!isCancelOrder && (isCheckOut ? <IconCheckout /> : <IconPayment />)}
-				{isCheckOut ? "Check Out" : isCancelOrder ? to : "Pay"}
+				<p className="pt-1">
+					{isCheckOut ? "Check Out" : isCancelOrder ? to : "Pay"}
+				</p>
 			</motion.label>
 
 			{isCheckOut && <Tooltip type={modalBtnType} productList={productList!} />}
