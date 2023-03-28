@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuth, useUserStuff } from "@context";
 import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
-import { reset_product, selectProductList } from "@reduxs";
+import { resetProduct, selectProductList } from "@reduxs";
 import {
 	BlankContentInfo,
 	BuyerProduct,
@@ -38,7 +38,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		setNewData([]);
 		setIsPayed(true);
 		await deleteBuyerProduct(uid);
-		dispatch(reset_product());
+		dispatch(resetProduct());
 		setUserStuff([]);
 		setTimeout(() => {
 			setIsLoading(false);
@@ -47,22 +47,22 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 
 	const handleCancelOrder = async () => {
 		await deleteBuyerProduct(uid);
-		dispatch(reset_product());
+		dispatch(resetProduct());
 		setUserStuff([]);
 	};
 
 	return (
-		<motion.div
+		<motion.section
 			initial={initial}
 			animate={animate}
 			exit={exit}
 			transition={transition}
 			className="mx-4 sm:mx-10"
 		>
-			<div className="bg-gray-100/10 flex flex-col gap-5 p-4 sm:p-10 rounded-lg">
+			<section className="bg-gray-100/10 flex flex-col gap-5 p-4 py-8 sm:p-10 rounded-lg">
 				{productList?.length > 0 && !isPayed ? (
 					<>
-						<div className="flex justify-between">
+						<article className="flex flex-col sm:flex-row gap-3 justify-between">
 							<motion.h1
 								initial={secInit}
 								animate={secAnim}
@@ -80,20 +80,20 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 								productList={productList}
 								handleAction={handleCancelOrder}
 							/>
-						</div>
+						</article>
 
-						<div className="rounded-md shadow-md">
+						<section className="rounded-md shadow-md">
 							<CheckoutTable
 								products={newData}
 								newData={newData}
 								setNewData={setNewData}
 							/>
-						</div>
+						</section>
 
-						<div
+						<section
 							className={`w-full flex flex-col items-center sm:items-end space-y-4 p-2 text-white font-semibold`}
 						>
-							{PriceInfoConstant?.map((item: string, index: number) => {
+							{PriceInfoConstant.map((item: string, index: number) => {
 								return (
 									<PriceInfo
 										title={item}
@@ -111,10 +111,10 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 								productList={productList}
 								handleAction={handlePayment}
 							/>
-						</div>
+						</section>
 					</>
 				) : (
-					<div className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10 relative">
+					<section className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10 relative">
 						{isLoading ? (
 							<LoadingInfo info="Our system is serving payment for your order" />
 						) : isPayed ? (
@@ -130,10 +130,10 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 								delay={0.75}
 							/>
 						)}
-					</div>
+					</section>
 				)}
-			</div>
-		</motion.div>
+			</section>
+		</motion.section>
 	);
 };
 
