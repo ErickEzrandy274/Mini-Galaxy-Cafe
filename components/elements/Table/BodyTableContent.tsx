@@ -62,25 +62,25 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({
 			animate={animate}
 			exit={exit}
 			transition={{ ...transition, delay: 0.2 + 0.2 * delay }}
-			className={`bg-gray-800 border-gray-700 font-semibold shadow-lg block border-b ${
+			className={`grid grid-cols-2 sm:grid-cols-4 bg-gray-800 border-gray-700 font-semibold shadow-lg border-b px-0 sm:px-5 md:px-10 ${
 				isRemoved && `hidden`
 			}`}
 		>
 			<td
 				scope="row"
-				className="p-3 break-words sm:px-6 sm:py-4 w-[30rem] text-gray-300 tracking-wide"
+				className="p-3 break-words sm:px-6 sm:py-4 text-gray-300 tracking-wide"
 			>
 				{name}
 			</td>
 
 			{width >= 640 && (
 				<>
-					<td className="p-3 sm:px-6 sm:py-4 w-1/4">{type}</td>
-					<td className="p-3 sm:px-6 sm:py-4 w-1/4">{amount}</td>
+					<td className="p-3 sm:px-6 sm:py-4">{type}</td>
+					<td className="p-3 sm:px-6 sm:py-4">{amount}</td>
 				</>
 			)}
 
-			<td className="p-3 sm:px-6 sm:py-4 w-1/4">
+			<td className="p-3 sm:px-6 sm:py-4">
 				<div className="flex justify-around sm:justify-center gap-3 items-center">
 					{makeRupiahValue(price * amount)} {width < 640 && `(${amount}pcs)`}
 					<IconTrash onClick={handleDelete} />
