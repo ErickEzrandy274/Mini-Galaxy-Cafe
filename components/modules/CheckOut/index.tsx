@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useAuth, useUserStuff } from "@context";
 import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
-import { resetProduct, selectProductList } from "@reduxs";
+import { resetProduct, useProductListSelector } from "@reduxs";
 import {
 	BlankContentInfo,
 	BuyerProduct,
@@ -27,7 +27,7 @@ const CheckOut: React.FC<CheckOutProps> = ({ data }) => {
 		exit: secExit,
 		transition: secTrans,
 	} = menutitleAnimation;
-	const productList: BuyerProduct[] = useSelector(selectProductList);
+	const productList: BuyerProduct[] = useProductListSelector();
 	const [isPayed, setIsPayed] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [newData, setNewData] = useState<DataType>(data);

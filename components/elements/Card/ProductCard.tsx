@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-import { handleDataBuyer, selectProductList, ADD_PRODUCT } from "@reduxs";
+import { addDataBuyer, useProductListSelector } from "@reduxs";
 import {
 	BuyerProduct,
 	FavButton,
@@ -25,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 		useState<boolean>(false);
 	const [removed, setRemoved] = useState<boolean>(false);
 	const dispatch = useDispatch();
-	const productList: BuyerProduct[] = useSelector(selectProductList);
+	const productList: BuyerProduct[] = useProductListSelector();
 	const indexProduct = productList?.findIndex(
 		(item: BuyerProduct) => item.dataId === dataId
 	);
@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
 	const handleClick = () => {
 		const obj: BuyerProduct = { ...cardProps, index, amount: INITIAL_NUM };
-		dispatch(handleDataBuyer({ obj, type: ADD_PRODUCT }));
+		dispatch(addDataBuyer(obj));
 		setIsModifierButtonOpen(true);
 	};
 

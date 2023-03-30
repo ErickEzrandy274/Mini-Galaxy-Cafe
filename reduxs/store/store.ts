@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import {
 	persistStore,
 	persistReducer,
@@ -9,18 +9,14 @@ import {
 	PURGE,
 	REGISTER,
 } from "redux-persist";
-import dataBuyerReducer from "../dataBuyer/dataBuyerSlice";
-import storage from "redux-persist/lib/storage";
 import { createWrapper } from "next-redux-wrapper";
+import storage from "redux-persist/lib/storage";
+import rootReducer from "reduxs/reducer";
 
 const persistConfig = {
 	key: "root",
 	storage,
 };
-
-const rootReducer = combineReducers({
-	dataBuyer: dataBuyerReducer,
-});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

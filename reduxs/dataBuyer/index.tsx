@@ -1,1 +1,2 @@
-export * from "./dataBuyerSlice";
+export * from "./slice";
+export * from "./selector";

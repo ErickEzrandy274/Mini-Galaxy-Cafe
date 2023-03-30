@@ -1,14 +1,13 @@
 import React, { useMemo } from "react";
 import { LandingPageProps } from "./interface";
 import { FavContextProvider } from "@context";
-import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { menutitleAnimation } from "@utils";
-import { selectProductList } from "@reduxs";
+import { useProductListSelector } from "@reduxs";
 import { BuyerProduct, ModalWrapper, ProductCard } from "@elements";
 
 const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {
-	const productList: BuyerProduct[] = useSelector(selectProductList);
+	const productList: BuyerProduct[] = useProductListSelector();
 
 	const {
 		initial: titleInitial,

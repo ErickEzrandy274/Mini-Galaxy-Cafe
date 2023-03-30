@@ -1,11 +1,10 @@
 import React from "react";
 import { BaseIconProps } from "./interface";
 import { BuyerProduct } from "@elements";
-import { useSelector } from "react-redux";
-import { selectProductList } from "@reduxs";
+import { useProductListSelector } from "@reduxs";
 
 const IconCheckout: React.FC<BaseIconProps> = ({ width = 25, height = 25 }) => {
-	const productList: BuyerProduct[] = useSelector(selectProductList);
+	const productList: BuyerProduct[] = useProductListSelector();
 
 	return (
 		<svg
