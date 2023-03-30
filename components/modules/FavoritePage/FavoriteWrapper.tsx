@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth, useFavContext } from "@context";
-import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { selectProductList } from "@reduxs";
 import {
 	BlankContentInfo,
 	BuyerProduct,
@@ -10,12 +8,12 @@ import {
 	ProductCard,
 } from "@elements";
 import { menutitleAnimation } from "@utils";
+import { useProductListSelector } from "@reduxs";
 
 const FavoriteWrapper = ({ data }: any) => {
-	const productList: BuyerProduct[] = useSelector(selectProductList);
-
 	const { favDataSize } = useFavContext();
 	const [isEmpty, setIsEmpty] = useState(!!favDataSize);
+	const productList: BuyerProduct[] = useProductListSelector();
 
 	useEffect(() => {
 		setIsEmpty(!(favDataSize > 0));
@@ -29,7 +27,7 @@ const FavoriteWrapper = ({ data }: any) => {
 
 	return (
 		<>
-			<div className="flex flex-col md:flex-row mx-10 gap-5 md:gap-0 font-semibold">
+			<section className="flex flex-col md:flex-row mx-10 gap-5 md:gap-0 font-semibold">
 				<motion.h2
 					initial={initial}
 					animate={animate}
@@ -60,18 +58,18 @@ const FavoriteWrapper = ({ data }: any) => {
 						modalBtnType="Others"
 					/>
 				)}
-			</div>
+			</section>
 
 			{isEmpty ? (
-				<div className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10">
+				<section className="flex flex-col gap-5 text-center text-4xl sm:text-5xl lg:text-6xl text-gray-300 my-10">
 					<BlankContentInfo
 						firstContent="No favorites product"
 						secondContent="Select it first!"
 						delay={0.75}
 					/>
-				</div>
+				</section>
 			) : (
-				<div className="flex flex-wrap m-5">
+				<section className="flex flex-wrap m-5">
 					{data?.map((item: any, index: number) => {
 						return (
 							<ProductCard
@@ -82,7 +80,7 @@ const FavoriteWrapper = ({ data }: any) => {
 							/>
 						);
 					})}
-				</div>
+				</section>
 			)}
 		</>
 	);
