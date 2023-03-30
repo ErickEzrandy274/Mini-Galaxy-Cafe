@@ -21,7 +21,7 @@ export const UserStuffContextProvider: React.FC<MainLayoutProps> = ({
 			await getBuyerProduct(user?.uid).then((res) => {
 				const data = res?.buyerProduct?.map((item: any) => item);
 				setUserStuff(data ?? []);
-				dispatch(setProductlist({ obj: data ?? [] }));
+				dispatch(setProductlist(data ?? []));
 			});
 		};
 
