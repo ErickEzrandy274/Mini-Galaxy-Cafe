@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { HandleDecrementProps, HandleIncrementProps } from "./interface";
 import { BuyerProduct, ProductCardProps, RESET_NUM } from "@elements";
-import { ADD_PRODUCT, DELETE_PRODUCT, handleDataBuyer } from "@reduxs";
+import { addDataBuyer, deleteDataBuyer } from "@reduxs";
 import { useDispatch } from "react-redux";
 
 const useHandleNum = (productObj: ProductCardProps) => {
@@ -13,7 +13,7 @@ const useHandleNum = (productObj: ProductCardProps) => {
 		({ prevNum, setNum }: HandleIncrementProps) => {
 			setNum(prevNum + 1);
 			const obj: BuyerProduct = { ...product, amount: prevNum + 1 };
-			dispatch(handleDataBuyer({ obj, type: ADD_PRODUCT }));
+			dispatch(addDataBuyer(obj));
 		},
 		[dispatch, product]
 	);
@@ -28,10 +28,10 @@ const useHandleNum = (productObj: ProductCardProps) => {
 			if (debouncedNum > 1) {
 				setNum(prevNum - 1);
 				const obj: BuyerProduct = { ...product, amount: prevNum - 1 };
-				dispatch(handleDataBuyer({ obj, type: DELETE_PRODUCT }));
+				dispatch(deleteDataBuyer(obj));
 			} else {
 				const newObj = { ...product, amount: RESET_NUM };
-				dispatch(handleDataBuyer({ obj: newObj, type: DELETE_PRODUCT }));
+				dispatch(deleteDataBuyer(newObj));
 				setIsModifierButtonOpen(false);
 			}
 		},

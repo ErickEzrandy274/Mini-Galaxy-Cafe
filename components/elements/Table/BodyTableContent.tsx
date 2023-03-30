@@ -9,7 +9,7 @@ import { IconTrash, ProductCardProps, RESET_NUM } from "@elements";
 import { BodyTableContentProps } from "./interface";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { DELETE_PRODUCT, handleDataBuyer } from "@reduxs";
+import { deleteDataBuyer } from "@reduxs";
 import { useAuth, useUserStuff } from "@context";
 
 const BodyTableContent: React.FC<BodyTableContentProps> = ({
@@ -46,12 +46,7 @@ const BodyTableContent: React.FC<BodyTableContentProps> = ({
 			dataId,
 			index,
 		};
-		dispatch(
-			handleDataBuyer({
-				obj: { ...product, amount: RESET_NUM },
-				type: DELETE_PRODUCT,
-			})
-		);
+		dispatch(deleteDataBuyer({ ...product, amount: RESET_NUM }));
 		setNewData(newData.filter((item) => item.dataId !== dataId));
 		await removeBuyerProduct(uid, dataId, setUserStuff);
 	};
