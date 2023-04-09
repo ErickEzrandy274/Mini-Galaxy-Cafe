@@ -1,6 +1,6 @@
 import React from "react";
-import { FavContextProvider } from "@context";
 import { FavCardProps } from "@elements";
+import { FavContextProvider } from "@utils";
 import FavoriteWrapper from "./FavoriteWrapper";
 
 const FavoritePage: React.FC<FavCardProps> = ({ data }) => {

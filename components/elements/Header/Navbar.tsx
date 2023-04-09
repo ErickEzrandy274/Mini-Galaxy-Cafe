@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { Disclosure, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { useAuth, useUserStuff } from "@context";
+import { resetProduct, useAuth, useUserStuff } from "@utils";
 import { useDispatch } from "react-redux";
-import { resetProduct } from "@reduxs";
 import {
 	Indicator,
 	NewLink,
@@ -36,7 +35,7 @@ const Navbar = () => {
 				<>
 					<section className="max-w-7xl mx-auto p-1.5 md:px-6 lg:px-8">
 						<article className="relative flex items-center justify-between h-24 md:h-14">
-							<section className="absolute inset-y-0 right-2 flex items-center md:hidden">
+							<section className="absolute inset-y-0 right-2 flex items-center xl:hidden">
 								{/* Mobile menu button*/}
 
 								<Disclosure.Button
@@ -65,7 +64,7 @@ const Navbar = () => {
 								</Disclosure.Button>
 							</section>
 
-							<section className="flex-1 flex items-center justify-center md:items-stretch md:justify-start">
+							<section className="flex-1 flex items-center justify-center xl:items-stretch xl:justify-start">
 								<section className="flex-shrink-0 flex items-center">
 									<Link href="/" passHref>
 										<a>
@@ -88,7 +87,7 @@ const Navbar = () => {
 									</Link>
 								</section>
 
-								<section className="hidden md:block md:ml-3">
+								<section className="hidden xl:block xl:ml-3">
 									<section className="flex space-x-3 items-center">
 										{navigation?.map((item: navData, index: number) => (
 											<NewLink {...item} key={`NewLink-${index}`} />
@@ -97,7 +96,7 @@ const Navbar = () => {
 								</section>
 							</section>
 
-							<section className="hidden lg:block md:ml-6">
+							<section className="hidden xl:block">
 								<section className="flex space-x-4">
 									<PreferredRoute
 										navData={authNavs}
@@ -109,7 +108,7 @@ const Navbar = () => {
 						</article>
 					</section>
 
-					<Disclosure.Panel className="md:hidden">
+					<Disclosure.Panel className="xl:hidden">
 						<section className="flex flex-col px-3 pt-2 pb-3 space-y-1">
 							{navigation?.map((item: navData) => {
 								return (

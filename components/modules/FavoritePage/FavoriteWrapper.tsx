@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth, useFavContext } from "@context";
 import { motion } from "framer-motion";
 import {
 	BlankContentInfo,
@@ -7,8 +6,12 @@ import {
 	ModalWrapper,
 	ProductCard,
 } from "@elements";
-import { menutitleAnimation } from "@utils";
-import { useProductListSelector } from "@reduxs";
+import {
+	menutitleAnimation,
+	useAuth,
+	useFavContext,
+	useProductListSelector,
+} from "@utils";
 
 const FavoriteWrapper = ({ data }: any) => {
 	const { favDataSize } = useFavContext();

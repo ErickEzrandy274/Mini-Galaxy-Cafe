@@ -1,8 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
-import { getBuyerProduct } from "@utils";
+import { getBuyerProduct, setProductlist } from "@utils";
 import { useDispatch } from "react-redux";
-import { setProductlist } from "@reduxs";
 import { MainLayoutProps } from "@modules";
 
 const UserStuffContext = createContext<any>({});

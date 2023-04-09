@@ -19,8 +19,6 @@
 			"@modules": ["components/modules"],
 			"@elements": ["components/elements"],
 			"@utils": ["components/utils"],
-			"@context": ["context"],
-			"@reduxs": ["reduxs"],
 			"@styles/*": ["styles/*"]
 		}
 	},

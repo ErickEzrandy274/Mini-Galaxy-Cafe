@@ -7,7 +7,7 @@ const PreferredRoute: React.FC<RouteProps> = ({
 	handleLogout,
 }) => {
 	return user ? (
-		<UserDetected className="px-3" user={user} handleLogout={handleLogout} />
+		<UserDetected className="p-3" user={user} handleLogout={handleLogout} />
 	) : (
 		<>
 			{navData?.map((item: navData, index: number) => (

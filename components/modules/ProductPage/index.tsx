@@ -1,9 +1,11 @@
 import React, { useMemo } from "react";
 import { LandingPageProps } from "./interface";
-import { FavContextProvider } from "@context";
 import { motion } from "framer-motion";
-import { menutitleAnimation } from "@utils";
-import { useProductListSelector } from "@reduxs";
+import {
+	FavContextProvider,
+	menutitleAnimation,
+	useProductListSelector,
+} from "@utils";
 import { BuyerProduct, ModalWrapper, ProductCard } from "@elements";
 
 const ProductPage: React.FC<LandingPageProps> = ({ data, type }) => {

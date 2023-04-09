@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from "react";
 import { HandleDecrementProps, HandleIncrementProps } from "./interface";
 import { BuyerProduct, ProductCardProps, RESET_NUM } from "@elements";
-import { addDataBuyer, deleteDataBuyer } from "@reduxs";
 import { useDispatch } from "react-redux";
+import { addDataBuyer, deleteDataBuyer } from "@utils";
 
 const useHandleNum = (productObj: ProductCardProps) => {
 	const rawDispatch = useDispatch();

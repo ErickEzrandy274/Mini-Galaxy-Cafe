@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { useAuth, useUserStuff } from "@context";
+import { useAuth, useUserStuff } from "@utils";
 import { NavProps, Indicator } from "@elements";
 import Link from "next/link";
 

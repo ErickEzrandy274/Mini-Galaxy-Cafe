@@ -9,8 +9,7 @@ import { IconTrash, ProductCardProps, RESET_NUM } from "@elements";
 import { BodyTableContentProps } from "./interface";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { deleteDataBuyer } from "@reduxs";
-import { useAuth, useUserStuff } from "@context";
+import { useAuth, useUserStuff, deleteDataBuyer } from "@utils";
 
 const BodyTableContent: React.FC<BodyTableContentProps> = ({
 	name,
