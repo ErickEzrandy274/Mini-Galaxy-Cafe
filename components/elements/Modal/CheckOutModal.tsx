@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { addBuyerProduct } from "@utils";
-import { useAuth, useUserStuff } from "@context";
+import { useAuth, useUserStuff } from "@utils";
 import { IconWarning, LoadingInfo } from "@elements";
 import { CheckoutModalProps } from "./interface";
 import Router from "next/router";

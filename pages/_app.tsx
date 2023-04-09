@@ -1,11 +1,11 @@
 import type { AppProps } from "next/app";
-import { AuthContextProvider, UserStuffContextProvider } from "@context";
 import { useRouter } from "next/router";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ScrollButton } from "@elements";
 import { persistor, wrapper } from "@reduxs";
 import { MainLayout, ProtectedRoute } from "@modules";
+import { AuthContextProvider, UserStuffContextProvider } from "@utils";
 import Head from "next/head";
 import React from "react";
 import "@styles/globals.css";

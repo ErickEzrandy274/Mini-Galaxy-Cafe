@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
 import { LandingPageProps } from "./interface";
-import { FavContextProvider } from "@context";
 import { motion } from "framer-motion";
-import { menutitleAnimation } from "@utils";
+import { FavContextProvider, menutitleAnimation } from "@utils";
 import { useProductListSelector } from "@reduxs";
 import { BuyerProduct, ModalWrapper, ProductCard } from "@elements";
 

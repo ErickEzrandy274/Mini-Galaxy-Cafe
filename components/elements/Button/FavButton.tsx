@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useAuth, useFavContext } from "@context";
+import { useAuth, useFavContext } from "@utils";
 import { handleFav } from "@utils";
 import { IconStar, FavButtonProps } from "@elements";
 
