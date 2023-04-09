@@ -19,7 +19,7 @@
 			"@modules": ["components/modules"],
 			"@elements": ["components/elements"],
 			"@utils": ["components/utils"],
-			"@context": ["context"],
+			"@context": ["components/utils"],
 			"@reduxs": ["reduxs"],
 			"@styles/*": ["styles/*"]
 		}
