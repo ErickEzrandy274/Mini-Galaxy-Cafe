@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import dataBuyerReducer from "reduxs/dataBuyer/slice";
+import dataBuyerReducer from "../dataBuyer/slice";
 
 const rootReducer = combineReducers({
 	dataBuyer: dataBuyerReducer,

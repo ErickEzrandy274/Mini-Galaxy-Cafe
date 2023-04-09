@@ -11,7 +11,7 @@ import {
 } from "redux-persist";
 import { createWrapper } from "next-redux-wrapper";
 import storage from "redux-persist/lib/storage";
-import rootReducer from "reduxs/reducer";
+import rootReducer from "../reducer";
 
 const persistConfig = {
 	key: "root",
