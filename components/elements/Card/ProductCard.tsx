@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-import { addDataBuyer, useProductListSelector } from "@reduxs";
 import {
 	BuyerProduct,
 	FavButton,
@@ -10,7 +9,12 @@ import {
 	OptimizedImage,
 	ProductCardProps,
 } from "@elements";
-import { makeRupiahValue, menutitleAnimation } from "@utils";
+import {
+	addDataBuyer,
+	makeRupiahValue,
+	menutitleAnimation,
+	useProductListSelector,
+} from "@utils";
 
 const ProductCard: React.FC<ProductCardProps> = ({
 	name,

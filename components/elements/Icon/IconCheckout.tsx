@@ -1,7 +1,7 @@
 import React from "react";
 import { BaseIconProps } from "./interface";
 import { BuyerProduct } from "@elements";
-import { useProductListSelector } from "@reduxs";
+import { useProductListSelector } from "@utils";
 
 const IconCheckout: React.FC<BaseIconProps> = ({ width = 25, height = 25 }) => {
 	const productList: BuyerProduct[] = useProductListSelector();

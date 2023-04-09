@@ -6,8 +6,12 @@ import {
 	ModalWrapper,
 	ProductCard,
 } from "@elements";
-import { menutitleAnimation, useAuth, useFavContext } from "@utils";
-import { useProductListSelector } from "@reduxs";
+import {
+	menutitleAnimation,
+	useAuth,
+	useFavContext,
+	useProductListSelector,
+} from "@utils";
 
 const FavoriteWrapper = ({ data }: any) => {
 	const { favDataSize } = useFavContext();

@@ -4,3 +4,4 @@ export * from "./function";
 export * from "./api";
 export * from "./hooks";
 export * from "./context";
+export * from "./reduxs";

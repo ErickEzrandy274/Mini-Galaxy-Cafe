@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { Disclosure, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { useAuth, useUserStuff } from "@utils";
+import { resetProduct, useAuth, useUserStuff } from "@utils";
 import { useDispatch } from "react-redux";
-import { resetProduct } from "@reduxs";
 import {
 	Indicator,
 	NewLink,

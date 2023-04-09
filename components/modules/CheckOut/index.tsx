@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { CheckOutProps, DataType } from "./interface";
 import { motion } from "framer-motion";
-import { resetProduct, useProductListSelector } from "@reduxs";
 import {
 	BlankContentInfo,
 	BuyerProduct,
@@ -16,7 +15,9 @@ import {
 	deleteBuyerProduct,
 	menutitleAnimation,
 	pageTransition,
+	resetProduct,
 	useAuth,
+	useProductListSelector,
 	useUserStuff,
 } from "@utils";
 
