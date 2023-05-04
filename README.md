@@ -1,11 +1,11 @@
 # Mini Galaxy Cafe
 ## Feature
-> 1. Authentication (Register or Login with OAuth via Google, Facebook, or GitHub)
-> 2. Every authenticated user can see list of food
-> 3. Every authenticated user can see list of beverage
-> 4. Every authenticated user can see list of snack
-> 5. Every authenticated user can make favorite product
-> 6. Every authenticated user can order multiple product
+> 1. Authentication (Sign Up or Sign In with OAuth via Google, Facebook, or GitHub)
+> 2. Every authenticated user can view the food list
+> 3. Every authenticated user can view the drink list
+> 4. Every authenticated user can view the snack list
+> 5. Every authenticated user can order multiple products
+> 6. Every authenticated user can create favorite products
 > 7. Every authenticated user can cancel product orders
 ## Tech that is used to develop this Application:
 
