@@ -15,3 +15,7 @@
 
 > - ## [Production](https://mini-galaxy-cafe.vercel.app/)
 > - ## [Preview](https://mini-galaxy-cafe-erickezrandy274.vercel.app/)
+
+<br/>
+
+Special thanks to my friend, [Steven](https://github.com/steven2801) that helped me to develop favorite feature
