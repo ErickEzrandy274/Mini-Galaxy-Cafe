@@ -1,14 +1,13 @@
 import Head from "next/head";
 import React from "react";
 import { BASE_URL, getHeaders, setData } from "@utils";
-import { ProductPage } from "@modules";
+import dynamic from "next/dynamic";
+import axios from "axios";
 
 export async function getServerSideProps() {
 	try {
-		const response = await fetch(`${BASE_URL}Beverages`, getHeaders);
-
-		const { documents } = await response.json();
-		const data = setData(documents);
+		const { data: rawData } = await axios.get(`${BASE_URL}Beverages`, getHeaders);
+		const data = setData(rawData.documents);
 
 		return { props: { data } };
 	} catch (error) {
@@ -17,13 +16,15 @@ export async function getServerSideProps() {
 }
 
 const beverage = ({ data }: any) => {
+	const BeveragesPage = dynamic(() => import("../components/modules/ProductPage"), { ssr: false });
+
 	return (
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Beverage</title>
 				<meta name="description" content="Mini Galaxy Cafe Beverages Product" />
 			</Head>
-			<ProductPage data={data} type="Beverages" />
+			<BeveragesPage data={data} type="Beverages" />
 		</>
 	);
 };
