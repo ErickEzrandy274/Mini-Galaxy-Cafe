@@ -2,13 +2,12 @@ import Head from "next/head";
 import React from "react";
 import { BASE_URL, getHeaders, setData } from "@utils";
 import dynamic from "next/dynamic";
+import axios from "axios";
 
 export async function getServerSideProps() {
 	try {
-		const response = await fetch(`${BASE_URL}Beverages`, getHeaders);
-
-		const { documents } = await response.json();
-		const data = setData(documents);
+		const { data: rawData } = await axios.get(`${BASE_URL}Beverages`, getHeaders);
+		const data = setData(rawData.documents);
 
 		return { props: { data } };
 	} catch (error) {
