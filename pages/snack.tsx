@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
-import { ProductPage } from "@modules";
 import { BASE_URL, getHeaders, setData } from "@utils";
+import dynamic from "next/dynamic";
 
 export async function getServerSideProps() {
 	try {
@@ -17,13 +17,15 @@ export async function getServerSideProps() {
 }
 
 const snack = ({ data }: any) => {
+	const SnacksPage = dynamic(() => import("../components/modules/ProductPage"), { ssr: false });
+
 	return (
 		<>
 			<Head>
 				<title>Mini Galaxy Cafe | Snack</title>
 				<meta name="description" content="Mini Galaxy Cafe Snacks Product" />
 			</Head>
-			<ProductPage data={data} type="Snacks" />
+			<SnacksPage data={data} type="Snacks" />
 		</>
 	);
 };

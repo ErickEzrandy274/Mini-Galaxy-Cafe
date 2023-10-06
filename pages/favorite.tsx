@@ -2,9 +2,11 @@ import Head from "next/head";
 import React from "react";
 import { getFavoriteData } from "@utils";
 import { FavCardProps } from "@elements";
-import { FavoritePage } from "@modules";
+import dynamic from "next/dynamic";
 
 const favorite = ({ data }: FavCardProps) => {
+	const FavoritePage = dynamic(() => import("../components/modules/FavoritePage"), { ssr: false });
+
 	return (
 		<>
 			<Head>
