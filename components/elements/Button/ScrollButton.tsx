@@ -37,15 +37,15 @@ const ScrollButton = () => {
 			onClick={scrollToTop}
 			aria-label="scroll button"
 			aria-labelledby="scroll button"
-			className={`bg-red-600 text-white font-bold leading-tight 
-                uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 
-                focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg 
-				transition duration-700 ease-in-out fixed bottom-5 right-5 z-20 p-3 ${
-					visible ? `opacity-100` : `opacity-0`
-				}`}
+			className={`bg-red-600 text-white font-bold leading-tight
+					uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 
+					focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg 
+					transition duration-700 ease-in-out fixed bottom-5 right-5 z-20 ${
+						visible ? `opacity-100` : `opacity-0`
+					}`}
 		>
 			<section
-				className={`flex flex-col justify-center items-center gap-1 ${
+				className={`flex flex-col justify-center items-center gap-1 p-3 rounded-full w-max ${
 					inProductPage ? `hover:scale-110` : `hover:scale-125`
 				} ease-out duration-500 transition`}
 			>
