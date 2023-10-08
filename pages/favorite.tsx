@@ -5,7 +5,7 @@ import { FavCardProps } from "@elements";
 import dynamic from "next/dynamic";
 
 const favorite = ({ data }: FavCardProps) => {
-	const FavoritePage = dynamic(() => import("@modules").then(mod => mod.FavoritePage));
+	const FavoritePage = dynamic(() => import("../components/modules/FavoritePage"));
 
 	return (
 		<>

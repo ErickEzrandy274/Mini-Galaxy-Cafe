@@ -5,7 +5,7 @@ import { CheckOutProps } from "@modules";
 import dynamic from "next/dynamic";
 
 const checkout = ({ data }: CheckOutProps) => {
-	const CheckOutPage = dynamic(() => import("@modules").then(mod => mod.CheckOut));
+	const CheckOutPage = dynamic(() => import("../components/modules/CheckOut"));
 
 	return (
 		<>
