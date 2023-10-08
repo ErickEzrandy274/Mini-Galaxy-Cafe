@@ -16,7 +16,7 @@ export async function getServerSideProps() {
 }
 
 const food = ({ data }: any) => {
-	const FoodsPage = dynamic(() => import("../components/modules/ProductPage"), { ssr: false });
+	const FoodsPage = dynamic(() => import("../components/modules/ProductPage"));
 
 	return (
 		<>
